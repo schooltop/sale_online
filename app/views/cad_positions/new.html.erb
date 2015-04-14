@@ -1,0 +1,217 @@
+
+<%= render :partial=>"left"%>
+
+<script type="text/javascript">
+	function check_feedback(form) {
+		var chkStatus = document.getElementsByName("marks[]");
+		var i = 0
+		for( j = 0; j < chkStatus.length; j++) {
+			if(chkStatus[j].checked == true) {
+				i = i + 1
+				document.getElementById('cad_position_cad_contact_id').value = chkStatus[j].value
+				break
+			}
+		}
+		if(i == 0) {
+			alert("请先选择或创建一个联系人!")
+		} else {
+			document.forms[2].submit();
+			return true;
+		}
+	}
+</script>
+
+<div id="content">
+
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h1>发布职位
+ <!--	<%= text_field_with_auto_complete :stu_reg_inf, :name%>--></h1>
+<% form_for(@cad_position) do |f| %> 
+   <%= f.error_messages %>
+
+       <table width="100%" id="Accountsbasic_searchSearchForm" class="edit view search">
+          <tr>
+            <td height="10" colspan="5"></td> 
+          </tr>
+	                             
+          <tr>
+             <td height="30" align="right" class="text"><strong>职位名称：</strong></td>
+             <td colspan="3" align="left" class="text">
+             <%= f.text_field :positionname ,:style=>"width:243px;"%>	
+             <span id="sp_ejob_title"></span>
+          </td>          
+          </tr>
+          
+           <tr>
+				  <td height="30" align="right" class="text"><strong>联系人：</strong></td>
+                  <td height="30"  align="left" class="text">
+                  	<span class="red2">
+                    <%= text_field_with_auto_complete :user, :name %>   
+                    </span>
+                  </td>
+				  <td height="30" align="right" class="text"><strong>部门名称：</strong></td>
+				  <td  align="left" class="text"> 
+					<%= f.select( :dept_id, Dept.all.collect {|p| [ p.name, p.id ] },:include_blank => true )%>           
+		             <span id="sp_ejob_title"></span>
+		          </td>                 
+          </tr> 
+                <tr>
+                  <td height="30" align="right" class="text"><strong>招聘人数：</strong></td>
+                  <td align="left" class="text"><%= f.text_field :positionnum ,:style=>"width:30px;"%>	 人&nbsp;<span id="sp_ejob_num"></span>
+                  </td>
+                  <td height="30" align="right" class="text"><strong>截止日期：</strong></td>
+                  <td align="left" class="text">
+                  	<%= calendar_date_select_tag "cad_position[limittime]",Time.now.strftime('%Y-%m-%d %H:%M:%S' ),:time => true  %>
+                  	<!-- <%=f.date_select( :limittime, :use_month_numbers => true,:minute_step =>5 , :order => [:year, :month,:day])%> -->
+                   </td>
+               </tr>
+                
+                <tr>                                    
+                  <td align="right" class="text"><strong>工作地点：</strong></td>
+                  <td align="left" class="text">
+                  	<%= text_field_with_auto_complete :city, :name %>	
+                    <!-- <%=f.select( :city_id, City.find(:all).collect {|p| [ truncate(p.name.gsub(/<[^>]*>/, ""), 30), p.id ] },:include_blank => true )%> -->
+                    <span id="sp_ejob_dq"></span>
+                  </td>  
+                  <td height="30" align="right" class="text"><strong>工作经验：</strong></td>
+                  <td colspan="3" align="left" class="text"><%= f.text_field :exparience ,:style=>"width:30px;"%>
+                  	<span class="text">年以上</span></td>             
+                  </tr>
+
+                <tr>
+                  <td width="18%" height="30" align="right" class="text"><strong>性别要求：</strong></td>
+                  <td width="32%" height="30" align="left" class="text">      
+                    <select name="cad_position[sex]" style="width:100px;">
+                  　　　　                       <option value="">--不限--</option>
+                       <option value="男" >男</option>
+                       <option value="女" >女</option>
+                    </select>
+                  </td>
+                  <td width="15%" align="right" class="text"><strong>年龄范围：</strong></td>
+                  <td width="35%" align="left" class="text">
+                    <%= f.text_field :age ,:style=>"width:30px;"%>
+                    <%if nil%><select name="cad_position[age]" style="width:45px;" title="年龄范围下限">
+                     <option value="">--</option>     
+                      <option value="25" >25</option>
+                      <option value="30" >30</option>
+                      <option value="35" >35</option>
+                      <option value="40" >40</option>
+                      <option value="45" >45</option>
+                      <option value="50" >50</option>
+                      <option value="55" >55</option>
+                      <option value="60" >60</option>
+                    </select>                    
+                    <span class="text"> - </span><select name="cad_position[toage]" style="width:45px;" title="年龄范围上限">
+                      <option value="">--</option>
+                      <option value="20" >20</option>
+                     <option value="25" >25</option>
+                     <option value="30" >30</option>
+                      <option value="35" >35</option>
+                      <option value="40" >40</option>
+                      <option value="45" >45</option>
+                      <option value="50" >50</option>
+                     <option value="55" >55</option>
+                      <option value="60" >60</option>
+                    </select>
+                    <%end%>
+                  </td>
+                </tr>
+                <tr>
+                  <td height="30" align="right" class="text"><strong>学历要求：</strong></td>
+                  <td height="30" align="left" class="text">
+                  <%= f.select( :educationbg_id, City.find(:all).collect {|p| [ truncate(p.name.gsub(/<[^>]*>/, ""), 30), p.id ] },:include_blank => true )%>
+                  </td>
+                  <td height="30" align="right" class="text"><strong>月薪范畴：</strong></td>
+                  <td align="left" class="text"><%= f.text_field :wage ,:style=>"width:10px;"%>
+                  <span class="text">-</span>
+                  <%= f.text_field :towage ,:style=>"width:10px;"%>元/月
+                  </td>
+                </tr>
+                <tr>
+                  <td height="30" align="right" class="text"><strong>到岗时间：</strong></td>
+                  <td height="30" align="left" class="text">
+                  <select name="cad_position[timeline]" style="width:45px;" title="到岗时间">
+                      <option value="">--</option>
+                      <option value="20" >随时</option>
+                      <option value="25" >即刻</option>
+                      <option value="25" >一周内</option>
+                      <option value="25" >一月内</option>
+                      <option value="25" >三月内</option>
+                    </select>
+                  </td>
+                  <td align="right" class="text"><strong>工作性质：</strong></td>
+                  <td align="left" class="text">
+                   <select name="cad_position[workquale]" style="width:45px;" title="工作性质">
+                      <option value="">--</option>
+                      <option value="20" >全职</option>
+                      <option value="25" >兼职</option>
+                      <option value="25" >实习</option>
+                    </select>
+                    <span id="sp_ejob_dq"></span>
+                  </td>
+                </tr>
+                                 
+                <tr>
+                  <td height="30" align="right" class="text"><font color="red">* </font><strong>简历投递邮箱：</strong></td>
+                  <td height="30"  align="left" class="text"><span class="red2">
+                     <%= f.text_field :email ,:style=>"width:100px;"%>
+                     </span>
+                  <td height="30" align="right" class="text"><strong>网申链接：</strong></td>
+                  <td height="30"  align="left" class="text"><span class="red2">
+                     <%= f.text_field :netsite ,:style=>"width:100px;"%>
+                     </span></td>
+                </tr>                                              
+               <!--  <tr>
+                  <td height="30" align="right" class="text"><strong>职位关键字1：</strong></td>
+                  <td height="30" colspan="3" align="left" class="text"><span class="red2">
+                     <%=f.text_field :keya ,:style=>"width:100px;"%>
+                     </span></td>
+                </tr>
+                <tr>
+                  <td height="30" align="right" class="text"><strong>职位关键字2：</strong></td>
+                 <td height="30" colspan="3" align="left" class="text"><span class="red2">
+                    <%=f.text_field :keyb ,:style=>"width:100px;"%>
+                  </span></td>
+                </tr>
+                <tr>
+                  <td height="30" align="right" class="text"><strong>职位关键字3：</strong></td>
+                  <td height="30" colspan="3" align="left" class="text">
+                    <span class="red2">
+                     <%=f.text_field :keyc ,:style=>"width:100px;"%>
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td height="30" align="right" class="text"><strong>职位关键字4：</strong></td>
+                  <td height="30" colspan="3" align="left" class="text">
+                    <span class="red2">
+                      <%=f.text_field :keyd ,:style=>"width:100px;"%>
+                    </span>
+                  </td>
+                </tr> 
+                <tr>
+                  <td height="30" align="right" class="text">&nbsp;</td>
+                  <td height="30" colspan="3" align="left" valign="top" class="red2">如：投融资，CFO，Oracle DBA…(职位更容易被检索)</td>
+                </tr>-->
+                <tr>
+                 
+                  <td colspan="4" align="left" class="text">
+                  	<script type="text/javascript" src="/javascripts/ckeditor/ckeditor.js"></script>
+                  	<textarea tabindex="2" id="describe" name="describe" class="ckeditor" width="20"></textarea>
+                  	<!-- <%=f.text_area :describe, :cols => 88, :rows => 12%> -->
+                  </td>
+                </tr>
+                 <tr>
+		   <td align="left" colspan="4">
+		   	<%if @s_id%>
+		   	<%= f.submit '保存' %>	   	  
+		   	<%else%>
+		   	<%= button_to_function "保存", "check_feedback(this)" %> 
+		   	<%end%>
+		   </td>
+		  </tr>
+              </table>
+	   </div>
+
+    
+<% end %>
+</div>

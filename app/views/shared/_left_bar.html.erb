@@ -1,0 +1,45 @@
+<div id="sidebar">
+    <div class="side-single">
+					    		<div class="widget wk-my-account">
+									    <div class="content">
+									        <div class="account">
+									            <dl class="member">
+									                <dt class="m-photo">
+									                    <a href="/centers" title="<%=current_user.login%>">
+									                        <img src="<%=current_user.head_picture%>" style="width:50px;height:50px;">
+									                    </a>
+									                </dt>
+									             </dl>
+									        </div>
+									
+									        <div class="account-name-div">
+									        	<dl>
+									             	<dt><a class="account-name" href="/centers"><%=current_user.login%></a></dt>
+									             </dl>
+									        </div>
+									    </div>
+								</div>
+								<div class="lv-2-box">
+									<%if current_admin%>
+									 	<%=left_menu t(:manage_website),child_link_to(:url=>"/manage_website",:title=>(t :manage_website))%>
+									 	<%=left_menu t(:manage_users),child_link_to(:url=>"/users",:title=>(t :manage_users))%>
+									 	<%=left_menu t(:manage_permissions),child_link_to(:url=>"/roles",:title=>(t :manage_permissions))%>
+									<%elsif current_ywy%>
+										<%=left_menu t(:manage_accounts),child_link_to(:url=>"/accounts",:title=>(t :manage_accounts))%>
+									<%else%>
+										<%=left_menu t(:manage_yiru),child_link_to(:url=>"/my_yiru",:title=>(t :my_yiru))%>
+										<%=left_menu t(:manage_yichu),child_link_to(:url=>"/my_yichu",:title=>(t :my_yichu))+
+										   child_link_to(:url=>"/waiting_to_line",:title=>(t :waiting_to_line))%>
+										<%=left_menu t(:manage_ziliao),child_link_to(:url=>"/self_profile",:title=>(t :self_profile))+
+										   child_link_to(:url=>"/manage_address",:title=>(t :manage_address)) %>
+										<%=left_menu t(:in_and_out),child_link_to(:url=>"/credit_last",:title=>(t :credit_last))+
+										   child_link_to(:url=>"/statistics",:title=>(t :in_num_statistics)) +
+										   child_link_to(:url=>"/statistics?type=out_num",:title=>(t :out_num_statistics)) +
+										   child_link_to(:url=>"/statistics/graphs",:title=>(t :sta_table)) %>
+									<%end%>
+									
+									<%=left_menu t(:setting_safety),child_link_to(:url=>"/change_password",:title=>(t :reset_password))%>
+									
+								</div>
+       </div>
+</div>

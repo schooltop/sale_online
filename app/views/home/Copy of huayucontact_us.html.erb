@@ -1,0 +1,65 @@
+<title><%=t :contact_us%></title>
+<div id="contact_us">
+<table border="0" width="930px">
+<tr><td colspan="2"><h3><%=t :contact_us%></h3></td></tr>
+
+<tr><td colspan="2">
+<p style="padding: 10px;">
+	<%=t :contact_us_desc%>
+</p>
+</td></tr>
+
+<tr><td width=50 >
+	</td><td width="250px"><b><%= t :phone%>:0086-10-62560910</b>
+</td></tr>
+<tr><td>
+	</td><td><b><%= t :email%>:jamstjamst@163.com</b>
+</td></tr>
+<tr><td>
+	</td><td><b><%= t :address%>: <%=t :address_desc%></b>
+</td></tr>
+
+<tr><td colspan="2">
+<% form_tag :controller=>'home', :action => 'contactus', :id=>"userFrm" do %>
+<table id="con_us"><tr>
+	<td width=100px><%=t :your_email%>:</td><td>
+		<%=input_with_value_tag :type=>"text",:id=>"email",:name=>"email",:size=>60,
+		:value=>(current_user ? current_user.email : "")%></td>
+	</tr>
+	<tr><td><%=t :subject%>:</td><td><input type="text" id="subject" name="subject" size="60"/></td>
+	</tr>
+	<tr><td><%=t :content%>:</td><td><textarea name="body" cols="120" rows="10"></textarea></td>
+	</tr>
+	<tr><td></td><td align="left"><input onclick="check_feedback(this);" type="button" class="mark-button button" value="<%=t :submit%>">
+	</td>
+	</tr>
+</table>
+<%end%>	
+</td></tr>
+</table>
+</div>
+<style>
+	#con_us input{
+		margin: 1px;
+	}
+	#con_us td{
+		padding: 10px;
+	}
+</style>
+<script>
+  function check_feedback(form)
+  {
+      if (document.getElementById("email").value.length==0 )    
+          {
+            alert("电子邮件不能为空!");
+            return false;
+          }
+      if (document.getElementById("subject").value.length == 0)    
+          {
+            alert("邮件主题不为空!");
+            return false;
+          }          
+      document.forms[0].submit();
+      return true;
+  }
+</script>

@@ -1,0 +1,119 @@
+<%=render :partial=>"/admins/left"%>
+  <div id="content">
+        <table style="width:100%"><tbody><tr><td width="100%">
+      <div class="moduleTitle">
+<h2>提成配置</h2>
+<span>&nbsp;
+<a href="" class="utilsLink" target="_blank">
+<img src="/images/crm/help.gif" alt="帮助"></a>
+<a href="/help" class="utilsLink" target="_blank">
+帮助
+</a></span></div>
+
+<script>
+var keys = [ "Accounts|basic_search","Accounts|advanced_search"]; 
+tabPreviousKey = '';
+
+function selectTabCSS(key)
+{ for( var i=0; i<keys.length;i++)
+  {
+   var liclass = '';
+   var linkclass = '';
+
+ if ( key == keys[i])
+ {
+   var liclass = 'active';
+   var linkclass = 'current';
+ }
+  	document.getElementById('tab_li_'+keys[i]).className = liclass;
+
+  	document.getElementById('tab_link_'+keys[i]).className = linkclass;
+  }
+    SUGAR.searchForm.searchFormSelect(key, tabPreviousKey);
+    tabPreviousKey = key;
+}
+</script>
+
+<ul id="searchTabs" class="tablist">
+<li class="active" id="tab_li_Accounts|basic_search"><a class="current" id="tab_link_Accounts|basic_search" href="javascript:selectTabCSS('Accounts|basic_search');">新建</a></li>	
+</ul>
+<script></script>
+
+
+<font color="#ff0000"><%=flash[:notice]%></font>
+<<<<<<< .mine
+<% form_tag :action =>'update' do -%>
+=======
+<% form_tag  do -%>
+<%for commission_config in @commission_configs%>
+>>>>>>> .r27230
+<div id="LBL_ADDRESS_INFORMATION">
+<table width="100%" border="0" cellspacing="1" cellpadding="0" class="edit view">
+<tbody><tr><th align="left" colspan="4">
+<h4>提成配置</h4>
+</th>
+</tr>
+<%for commission_config in @commission_configs%>
+ <tr>	
+ 		<td scope="row" nowrap="nowrap" width="8.3%">提成类型：</td>
+<<<<<<< .mine
+		<td nowrap="nowrap" width="15%"><%= commission_config.commission_style.name %></td>	
+=======
+		<td nowrap="nowrap" width="15%">
+		<%= hidden_field_tag "collect_item[][commission_style_id]", {},:style=>"width:140px" ,:value=>commission_config.commission_style_id %>
+        <%= commission_config.commission_style.name %>
+		</td>	
+>>>>>>> .r27230
+		<td scope="row" nowrap="nowrap" width="8.3%">提成比例：</td>
+<<<<<<< .mine
+		<td nowrap="nowrap" width="15%"><%= commission_config.proprotion%></td>
+=======
+		<td nowrap="nowrap" width="15%"><%= text_field_tag "collect_item[][proprotion]", {},:style=>"width:140px",:value=>commission_config.proprotion%></td>
+		
+ 	
+>>>>>>> .r27230
+ 		<td scope="row" nowrap="nowrap" width="8.3%" align="left">适用时间：</td>
+<<<<<<< .mine
+		<td nowrap="nowrap" width="%" align="left"><%= commission_config.for_time%></td>
+=======
+		<td nowrap="nowrap" width="%" align="left">
+		  	<%= calendar_date_select_tag "collect_item[][for_time]",commission_config.for_time,:time => true,:style=>"width:140px"  %>
+      
+			
+			</td>
+		
+
+		
+>>>>>>> .r27230
+ </tr>
+<% end %>
+<script type="text/javascript" language="javascript">
+    var fromKey = '';
+    var toKey = 'billing';
+    var checkbox = toKey + "_checkbox";
+    var obj = new TestCheckboxReady(checkbox); 
+</script>
+</tbody></table>
+</div>
+<div id="LBL_EMAIL_ADDRESSES">
+
+
+
+<div class="buttons">
+  <p>
+<<<<<<< .mine
+  <%= submit_tag "保存" ,:html=>{:class=>'submit'} %>
+  <!--   <%#= submit_tag "保存" ,:html=>{:class=>'submit'} %> -->
+=======
+  
+  <!--   <%#= submit_tag "保存" ,:html=>{:class=>'submit'} %> -->
+>>>>>>> .r27230
+  </p><% end %>
+</div>
+
+        </td></tr></tbody></table>
+    </div>
+
+
+
+

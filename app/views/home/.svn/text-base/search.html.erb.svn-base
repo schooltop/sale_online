@@ -1,0 +1,30 @@
+<%col_num = 4%>
+<%=stylesheet_link_tag "search"%>
+  		<div class="module">
+  			搜索页面<br />
+  			
+  				共<%=@productions.size%>个结果
+		  			<div id="search-productions">
+		  				<div style="width:70%;">
+				  				<%@productions.each do |p|%>
+									<div class="order-bd last <%=p.id%>p">
+										<div class="baobei">
+								                <a target="_blank" href="/productions/<%=p.id%>" class="pic s50">
+													<img title="<%=t :show_p_desc%>" src="<%=p.first_picture%>">
+												</a>
+												<div class="desc">
+														<a class="baobei-name" target="_blank" 
+														href="/productions/<%=p.id%>"><%=truncate_html(p.description,100)%>...</a>				
+											             <!-- <div class="spec">
+																		<span>estt</span>
+														</div> -->
+												</div>           
+									 	</div>
+									 	<div class="right-p-price"><%=the_price p%><%=t :yuan%></div>
+									 	<div><%=p.company rescue nil%></div>
+										
+									</div>
+								<%end%>
+						</div>
+		  			</div>
+  		</div>

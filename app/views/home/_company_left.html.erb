@@ -1,0 +1,23 @@
+<%=stylesheet_link_tag "categories"%>
+<div id="company_menu">
+		<div class="m_title">
+          <h2><a href="/company_desc"><%=t :company_desc%></a></h2>
+        </div>
+        <ul>
+        	<%company_menu.each_with_index do |m,i|%>
+	        	<li>       
+		        		 <span>
+		        		 	<a href="/company_desc/<%=i+1%>" class="cate_title"><%=t m%></a>
+	        		 	</span>            
+	        	</li> 
+        	<%end%>
+        </ul>   
+ </div>
+ <div id="company_content">
+		<div class="m_title">
+          <h2>
+          	<a href="/company_desc"><%=t :company_desc%></a> >> 
+          	<a href="/company_desc/<%=@menu_id%>"><%=t company_menu[@menu_id-1]%></a>
+          </h2>
+        </div>
+ </div>

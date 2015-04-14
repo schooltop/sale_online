@@ -1,0 +1,169 @@
+
+/*production table*/
+	.bought-table {
+table-layout: fixed;
+width: 100%;
+border-collapse: collapse;
+}
+.leave_message div{
+	display: inline;
+}
+.leave_message{
+	padding: 20px;
+	background: #F2F6FF;
+}
+#leave_message{
+	padding: 5px;
+}
+table {
+	font-size: inherit;
+	font: 100%;
+}
+.bought-table {
+border-collapse: collapse;
+}
+.bought-table .col-name th,.bought-table .col-name td {
+	height: 33px;
+	text-align: center;
+	background-repeat: repeat-x;
+	border-top: 1px solid #C4D5E0;
+	border-bottom: 1px solid #C4D5E0;
+	color: black;
+	font-weight: bold;
+}
+/*.bought-table .button, .bought-table .col-name th, .bought-table .toolbtn {
+background: url(/images/centers/bars.png) no-repeat;
+}*/
+caption, th {
+text-align: left;
+}
+address, caption, cite, code, dfn, em, strong, th, var {
+	font-style: normal;
+	font-weight: normal;
+}
+.bought-table .toolbar {
+height: 30px;
+background-color: 
+#F3F3F3;
+}.bought-table .toolbar td {
+border: 1px solid 
+#DEDEE0;
+border-width: 1px 0;
+}
+.bought-table td {
+line-height: 1.5;
+border: 1px solid 
+#D4E7FF;
+}.bought-table td {
+line-height: 1.5;
+}
+Inherited from table#J_BoughtTable.bought-table
+.bought-table .all-selector {
+margin: 0 6px 0 10px;
+line-height: 20px;
+vertical-align: middle;
+}
+select, input, button, textarea {
+font: 100% Tahoma,Helvetica,Arial,sans-serif;
+}.bought-table .toolbtn {
+display: inline-block;
+width: 59px;
+height: 20px;
+margin-left: 5px;
+line-height: 20px;
+vertical-align: middle;
+text-align: center;
+background-position: 0 -250px;
+}.bought-table .long-toolbtn {
+width: 84px;
+background-position: 0 -208px;
+}
+
+.bought-table .order-hd td {
+height: 29px;
+padding-bottom: 1px;
+line-height: 29px;
+}.bought-table .order-hd .no, .bought-table .order-hd .seller, .bought-table .order-hd .deal-time, .bought-table .order-hd .order-num {
+display: inline-block;
+}
+Inherited from td
+.bought-table .order-hd td {
+line-height: 29px;
+}
+Inherited from tr.order-hd
+.bought-table .order-hd {
+color: 
+#404040;
+}.bought-table .all-selector {
+margin: 0 6px 0 10px;
+line-height: 20px;
+vertical-align: middle;
+}.bought-table .baobei .pic img {
+width: 50px;
+height: 50px;
+}
+.s50 img {
+max-width: 50px;
+max-height: 50px;
+}.bought-table .baobei .pic {
+margin-right: 10px;
+border: 1px solid 
+#E9E9E9;
+}
+.bought-table .baobei .pic, .bought-table .baobei .desc {
+display: inline;
+float: left;
+}.bought-table .order-bd td.baobei {
+border-right: none;
+}
+.bought-table .order-bd .baobei {
+padding-left: 10px;
+padding-right: 0;
+text-align: left;
+}
+.bought-table .order-bd .baobei {
+border-left-color: 
+#D4E7FF;
+}
+.bought-table .order-bd td {
+padding: 8px 5px;
+overflow: hidden;
+text-align: center;
+vertical-align: top;
+border-left-color: #E6E6E6;
+border-right-color: #E6E6E6;
+}.bought-table .baobei .baobei-name {
+display: block;
+max-height: 38px;
+margin-top: -2px;
+overflow: hidden;
+line-height: 18px;
+}.no{
+	padding: 0px 10px;
+}.baobei{
+	width:220px;
+}
+
+.manage-t tr td{
+	padding: 2px;
+}
+
+td.s-amount a {
+display: inline-block;
+width: 9px;
+height: 9px;
+line-height: 9px;
+text-align: center;
+background: 
+white;
+font-family: arial;
+overflow: hidden;
+color: 
+#555;
+border: 1px solid 
+#88B5DE;
+margin: 5px 0 0;
+color: 
+#88B5DE;
+cursor: pointer;
+}

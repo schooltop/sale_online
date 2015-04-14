@@ -1,0 +1,157 @@
+<%=render :partial=>"/admins/left"%>
+
+
+  <div id="content">
+        <table style="width:100%"><tbody><tr><td width="100%">
+      <div class="moduleTitle">
+<h2>VIP会员消费</h2>
+<span>&nbsp;
+<a href="" class="utilsLink" target="_blank">
+<img src="/images/crm/help.gif" alt="帮助"></a>
+<a href="/help" class="utilsLink" target="_blank">
+帮助
+</a></span></div>
+
+<script>
+var keys = [ "Accounts|basic_search","Accounts|advanced_search"]; 
+tabPreviousKey = '';
+
+function selectTabCSS(key)
+{ for( var i=0; i<keys.length;i++)
+  {
+   var liclass = '';
+   var linkclass = '';
+
+ if ( key == keys[i])
+ {
+   var liclass = 'active';
+   var linkclass = 'current';
+ }
+  	document.getElementById('tab_li_'+keys[i]).className = liclass;
+
+  	document.getElementById('tab_link_'+keys[i]).className = linkclass;
+  }
+    SUGAR.searchForm.searchFormSelect(key, tabPreviousKey);
+    tabPreviousKey = key;
+}
+</script>
+
+<ul id="searchTabs" class="tablist">
+<li class="active" id="tab_li_Accounts|basic_search"><a class="current" id="tab_link_Accounts|basic_search" href="javascript:selectTabCSS('Accounts|basic_search');">VIP用户查询</a></li>	
+</ul>
+<script></script>
+<form name="search_form" id="search_form" class="search_form" method="get" action="/vip_car_search">
+<input type="hidden" name="searchFormTab" value="basic_search">
+<div id="Accountsbasic_searchSearchForm" style="" class="edit view search">
+
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tbody><tr>
+	<td scope="row" nowrap="nowrap" width="8.3%">VIP帐号</td>
+	<td nowrap="nowrap" width="25%"><input type="text" name="name" id="name" size="30" maxlength="" value="" title="" tabindex=""> </td>
+	</tr>
+<tr>
+	<td colspan="5">&nbsp;</td>
+	<td style="text-align: right">
+	</td>
+</tr>
+</tbody></table>
+
+</div>
+<div id="Accountssaved_viewsSearchForm" style="display: none; " ;=""></div>
+<span class="white-space">
+</span>
+<%= submit_tag("提交", :name => "send",:class=>'button') -%>
+</form>
+
+
+
+<font color="#ff0000"><%=flash[:notice]%></font>
+<% form_for(@vip_record) do |f| %>
+  <%= f.error_messages %>
+
+<%if @user%>
+<div id="LBL_ACCOUNT_INFORMATION">
+<table width="100%" border="0" cellspacing="1" cellpadding="0" class="edit view">
+<tbody><tr><th align="left" colspan="8">
+<h4>用户信息</h4>
+</th>
+</tr>
+<tr>    <%=f.hidden_field :user_id,:value=>@user.id%>
+		<td scope="row" nowrap="nowrap" width="8.3%">用户姓名</td>
+		<td nowrap="nowrap" width="25%"><%=@user.name%> </td>
+		<td scope="row" nowrap="nowrap" width="8.3%">用户性别</td>
+		<td nowrap="nowrap" width="25%"><input type="text" name="name_com" id="name_com" size="30" maxlength="" value="" title="" tabindex=""> </td>
+		<td scope="row" nowrap="nowrap" width="8.3%">电子邮件</td>
+		<td nowrap="nowrap" width="25%"><%=@user.email%></td>
+	 </tr>
+	 <tr>
+		
+		<td scope="row" nowrap="nowrap" width="8.3%">证件类型</td>
+		<td nowrap="nowrap" width="25%"><%=select("post", "city_id", City.all.collect {|p| [ p.name, p.id ] }, { :include_blank => true })%></td>
+		<td scope="row" nowrap="nowrap" width="8.3%">证件号码</td>
+		<td nowrap="nowrap" width="25%"><input type="text" name="website" id="website" size="30" maxlength="" value="" title="" tabindex=""> </td>
+		<td scope="row" nowrap="nowrap" width="8.3%">手机号码</td>
+		<td nowrap="nowrap" width="25%"><input type="text" name="email" id="email" size="30" value="" title="" tabindex="">  </td>
+	</tr>
+</tbody></table>
+</div>
+<%for vip in @user.time_vips%>
+<div id="LBL_ACCOUNT_INFORMATION">
+<table width="100%" border="0" cellspacing="1" cellpadding="0" class="edit view">
+<tbody><tr><th align="left" colspan="6">
+<h4>会员卡信息>><%=vip.vip_style.name%></h4>
+</th>
+</tr>
+    <tr bordercolor="#ff0000">    
+		<td scope="row" nowrap="nowrap" width="8.3%">卡账号</td>
+		<td nowrap="nowrap" width="25%"><%=@user.name%> </td>
+		<td scope="row" nowrap="nowrap" width="8.3%">到期时间</td>
+		<td nowrap="nowrap" width="25%"><input type="text" name="name_com" id="name_com" size="30" maxlength="" value="" title="" tabindex=""> </td>
+		<td scope="row" nowrap="nowrap" width="8.3%">卡状态</td>
+		<td nowrap="nowrap" width="25%"><%=@user.email%></td>
+	 </tr>
+	
+</tbody></table>
+</div>
+<%end%>
+
+
+<div id="LBL_ACCOUNT_INFORMATION">
+<table width="100%" border="0" cellspacing="1" cellpadding="0" class="edit view">
+<tbody><tr><th align="left" colspan="6">
+<h4>会员卡特权汇总</h4>
+</th>
+</tr>	
+	<tr>		
+		<td scope="row" nowrap="nowrap" width="8.3%"><b>特权种类</b></td>
+		<td scope="row" nowrap="nowrap" width="8.3%"><b>数量</b></td>
+	</tr>
+	
+	<%for vip_service in VipService.all%>
+	<%if @user.one_vip_service(vip_service.id)%>
+	<tr>		
+		<td scope="row" nowrap="nowrap" width="8.3%"><%=vip_service.description%></td>
+		<td scope="row" nowrap="nowrap" width="8.3%"><%=@user.one_vip_service(vip_service.id)%></td>
+	</tr>
+	<%end%>
+	<%end%>
+	
+</tbody></table>
+</div>
+
+
+
+<div id="LBL_EMAIL_ADDRESSES">
+
+
+<div class="buttons">
+  <p>
+    <%= f.submit '保存' %>
+  </p><% end %>
+</div>
+<%end%>
+
+
+        </td></tr></tbody></table>
+    </div>
+

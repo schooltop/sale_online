@@ -1,0 +1,132 @@
+<%=render :partial=>"/admins/left"%>
+  <div id="content">
+        <table style="width:100%"><tbody><tr><td width="100%">
+      <div class="moduleTitle">
+<h2>财务：<%= Time.now.strftime('%Y-%m' ) %> 月份</h2>
+<span>&nbsp;
+<a href="" class="utilsLink" target="_blank">
+<img src="/images/crm/help.gif" alt="帮助"></a>
+<a href="/help" class="utilsLink" target="_blank">
+帮助
+</a></span></div>
+
+<script>
+var keys = [ "Accounts|basic_search","Accounts|advanced_search"]; 
+tabPreviousKey = '';
+
+function selectTabCSS(key)
+{ for( var i=0; i<keys.length;i++)
+  {
+   var liclass = '';
+   var linkclass = '';
+
+ if ( key == keys[i])
+ {
+   var liclass = 'active';
+   var linkclass = 'current';
+ }
+  	document.getElementById('tab_li_'+keys[i]).className = liclass;
+
+  	document.getElementById('tab_link_'+keys[i]).className = linkclass;
+  }
+    SUGAR.searchForm.searchFormSelect(key, tabPreviousKey);
+    tabPreviousKey = key;
+}
+</script>
+
+<ul id="searchTabs" class="tablist">
+<li class="active" id="tab_li_Accounts|basic_search"><a class="current" id="tab_link_Accounts|basic_search" href="javascript:selectTabCSS('Accounts|basic_search');">新建</a></li>	
+</ul>
+<script>
+  function plus(){
+  var val1 = parseInt(document.getElementById("val1").value);
+  var val2 = parseInt(document.getElementById("val2").value);
+  document.getElementById("collect_item__need_attendance_days").value=val1; 
+  document.getElementById("collect_item__meal").value=val2;
+  }
+</script>
+
+
+<font color="#ff0000"><%=flash[:notice]%></font>
+<% form_tag :action =>'create' do -%>
+
+<div id="LBL_ADDRESS_INFORMATION">
+<table width="100%" border="0" cellspacing="1" cellpadding="0" class="edit view">
+<tbody>
+	<tr>
+	<td scope="row" nowrap="nowrap" align="left"><h4>参考列</h4></td>
+	<td  scope="row" nowrap="nowrap" width="8.3%"><h4>当月需上班天数：</h4></td>
+	<td  nowrap="nowrap" width="5%"><input id="val1"  onkeyup="plus()"/></td>
+	<td  scope="row" nowrap="nowrap" width="8.3%"><h4>餐补：</h4></td>
+	<td  nowrap="nowrap" width="5%"><input id="val2"  onkeyup="plus()"/></td>
+    </tr>
+<%for work in @works%>
+	<tr>	
+ 		<td scope="row" nowrap="nowrap" width="8.3%">员工：</td>
+		<td nowrap="nowrap" width="15%">
+		<%= hidden_field_tag "collect_item[][work_id]", {},:style=>"width:140px" ,:value=>work.id %>
+		<%= work.name %>
+		</td>	
+		<!--  <td scope="row" nowrap="nowrap" width="8.3%" align="left">月份时间：</td>
+		<td nowrap="nowrap" width="%" align="left">
+		<%= hidden_field_tag "collect_item[][for_time]",Time.now.to_s,:style=>"width:140px"  %>
+		<%= Time.now.strftime('%Y-%m' ) %> 
+		</td> -->
+		    <td scope="row" nowrap="nowrap" width="8.3%">当月需上班天数：</td>
+			<td nowrap="nowrap" width="15%"><%= text_field_tag "collect_item[][need_attendance_days]", {},:style=>"width:140px",:onchange=>"plus()"%></td>
+	 		<td scope="row" nowrap="nowrap" width="8.3%">餐补：</td>
+			<td nowrap="nowrap" width="15%"><%= text_field_tag "collect_item[][meal]", {},:style=>"width:140px",:onchange=>"plus()"%></td>		
+			<td scope="row" nowrap="nowrap" width="8.3%">奖金：</td>
+			<td nowrap="nowrap" width="15%"><%= text_field_tag "collect_item[][award]", {},:style=>"width:140px"%></td>
+			<td scope="row" nowrap="nowrap" width="8.3%">奖金详细描述：</td>
+			<td nowrap="nowrap" width="15%"><%= text_field_tag "collect_item[][award_detail]", {},:style=>"width:140px"%></td>		
+			<td scope="row" nowrap="nowrap" width="8.3%">补贴：</td>
+			<td nowrap="nowrap" width="15%"><%= text_field_tag "collect_item[][allowance]", {},:style=>"width:140px"%></td>	
+			<td scope="row" nowrap="nowrap" width="8.3%">补贴描述：</td>
+			<td nowrap="nowrap" width="15%"><%= text_field_tag "collect_item[][allowance_detail]", {},:style=>"width:140px"%></td>
+			<td scope="row" nowrap="nowrap" width="8.3%">扣钱：</td>
+			<td nowrap="nowrap" width="15%"><%= text_field_tag "collect_item[][lessmoney]", {},:style=>"width:140px"%></td>		
+	 	
+	 		<td scope="row" nowrap="nowrap" width="8.3%">扣钱详细描述：</td>
+			<td nowrap="nowrap" width="15%"><%= text_field_tag "collect_item[][less_detail]", {},:style=>"width:140px"%></td>	
+			<td scope="row" nowrap="nowrap" width="8.3%">扣税：</td>
+			<td nowrap="nowrap" width="15%"><%= text_field_tag "collect_item[][tax]", {},:style=>"width:140px"%></td>
+			<td scope="row" nowrap="nowrap" width="8.3%">备注：</td>
+			<td nowrap="nowrap" width="15%"><%= text_field_tag "collect_item[][description]", {},:style=>"width:140px"%></td>	
+	
+	 		<!-- <td scope="row" nowrap="nowrap" width="8.3%">本月工资系数：</td>
+			<td nowrap="nowrap" width="15%"><%= text_field_tag "collect_item[][work_salary_id]", {},:style=>"width:140px"%></td>	
+			<td scope="row" nowrap="nowrap" width="8.3%">考勤开始时间：</td>
+					<td nowrap="nowrap" width="%" align="left">
+		     <%= calendar_date_select_tag "collect_item[][work_start_time]",Time.now.strftime('%Y-%m-%d' ),:style=>"width:140px"  %></td>		
+			<td scope="row" nowrap="nowrap" width="8.3%">勤考结束时间：</td>
+			<td nowrap="nowrap" width="%" align="left">
+		     <%= calendar_date_select_tag "collect_item[][work_end_time]",Time.now.strftime('%Y-%m-%d' ),:style=>"width:140px"  %></td>		
+	 		<td scope="row" nowrap="nowrap" width="8.3%">记录人员：</td>
+			<td nowrap="nowrap" width="15%"><%= hidden_field_tag "collect_item[][user_id]", {},:style=>"width:140px"%>
+				<%= current_user.name %>
+			</td> -->
+					
+	 
+ </tr>
+ <% end %>
+<script type="text/javascript" language="javascript">
+    var fromKey = '';
+    var toKey = 'billing';
+    var checkbox = toKey + "_checkbox";
+    var obj = new TestCheckboxReady(checkbox); 
+</script>
+</tbody></table>
+</div>
+<div id="LBL_EMAIL_ADDRESSES">
+
+
+
+<div class="buttons">
+  <p>
+    <%= submit_tag "保存" ,:html=>{:class=>'submit'} %>
+  </p><% end %>
+</div>
+
+        </td></tr></tbody></table>
+    </div>

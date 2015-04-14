@@ -1,0 +1,12 @@
+<h1>Editing leave_state</h1>
+
+<% form_for(@leave_state) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @leave_state %> |
+<%= link_to 'Back', leave_states_path %>

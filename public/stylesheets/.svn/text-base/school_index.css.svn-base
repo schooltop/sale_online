@@ -1,0 +1,481 @@
+@CHARSET "UTF-8";
+/*index*/
+#school_index_top{
+ width:980px;
+ height:auto;
+}
+#school_index_top_l{
+ width:690px;
+ height:auto;
+ float:left;
+}
+/*school index tab*/
+.snTab {
+	width:794px;
+	border:1px solid #D4D4D4;
+
+	margin-top:0px;
+
+	float: none;
+	margin-bottom:0px;
+}
+.TabTitle {
+	clear: both;
+	
+	margin-top:20px;
+	overflow: hidden;
+}
+ .TabTitle ul {
+	margin:0;
+	padding:0;
+}
+ .TabTitle li {
+	float: left;
+	cursor: pointer;
+	margin-left:1px;
+	list-style-type: none;
+	font-weight:bold;
+	font-size:12px;
+	color:#ffffff;
+	text-align:center;
+	line-height:50px 
+}
+ .TabTitle .active {
+	background:url(/images/discription/lan.png) repeat-x;
+	height:54px;
+	width:191px;
+	font-size:14px;
+}
+ .TabTitle .normal {
+	background:url(/images/discription/hui.png) repeat-x;
+	height:47px;
+	width:168px;
+    margin-top:7px; 
+}
+.snTab .TabContent {
+	width:auto;
+	background:#fff;
+	margin: 0px auto;
+	padding:10px 0 0 0;
+}
+.none1 {
+	display:none;
+}
+.school_flash {
+	FONT-SIZE: 0px;
+	WIDTH:690px;
+	HEIGHT:376px;
+	
+	padding: 0 0 0 5px ;
+}
+#school_play{
+	OVERFLOW: hidden;
+	WIDTH:690px;
+	POSITION: relative;
+	HEIGHT: 376px;
+	padding: 0 0 0 5px ;
+}
+#play_text {
+	Z-INDEX: 1002;
+	RIGHT: 0px;
+	BOTTOM: 0px;
+	POSITION: absolute
+}
+#play_text UL {
+	DISPLAY: block;
+	PADDING-TOP: 1px;
+	LIST-STYLE-TYPE: none;
+	opacity: 0.8;
+	_padding-top: 0px
+}
+#play_text UL LI {
+	DISPLAY: block;
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 12px;
+	FILTER: Alpha(Opacity=80);
+	FLOAT:left;
+	WIDTH:171px;
+	CURSOR: pointer;
+	COLOR: #fff;
+	LINE-HEIGHT: 25px;
+	MARGIN-RIGHT: 1px;
+	HEIGHT: 25px;
+	BACKGROUND-COLOR: #666666;
+	TEXT-ALIGN: center;
+	opacity: 0.8
+}
+#play_list A {
+	DISPLAY: block;
+	OVERFLOW: hidden;
+	WIDTH:690px;
+	POSITION: absolute;
+	HEIGHT: 376px
+}
+#play_list img{
+	width:690px;
+	height:376px;
+	border:0;
+	}
+.school_index_top_l_t{
+ height:31px;
+ background:url(/images/discription/school_left_t_trade.png) no-repeat top center;
+ padding-top:27px;
+ padding-left:138px;
+ padding-right:18px;
+}
+.school_index_top_l_t .span_l{
+ font-size:13px;
+ color:#7d7d7d;
+}
+.school_index_top_l_t .span_r a{
+ color:#2b2b2b;
+ text-decoration:none;
+}
+.school_index_top_l_c{
+ height:auto;
+ background:url(/images/discription/school_left_c.png) repeat-y top center;
+ padding-left:10px;
+}
+.school_index_top_l_b{
+ height:23px;
+ background:url(/images/discription/school_left_b.png) no-repeat top center;
+ margin-bottom:10px;
+}
+#index_bigonepic{
+ height:210px;
+ width:160px;
+ border:1px solid #CCC;
+ padding:5px;
+ float:left;
+}
+#index_bigonepic a{
+ color:#2b2b2b;
+ text-decoration:none;
+}
+#index_bigonepic a:hover{
+ color:#F60;
+ text-decoration:underline;
+}
+#index_bigonepic p{
+ text-indent:10px;
+ line-height:1.4;
+}
+#index_bigonepic img{
+ width:160px;
+ height:120px;
+}
+#index_bigonepic_r{
+ height:224px;
+ width:480px;
+ float:right;
+}
+.school_trade_div{
+  width:300px;
+  height:85px;
+  border-bottom:1px dotted #ccc;
+  float:left;
+  margin-right:15px;
+  margin-top:5px;
+  margin-bottom:5px;
+  padding:5px;
+}
+.school_trade_div img{
+  border:1px solid #CCC;
+  width:80px;
+  height:80px;
+  float:left;
+}
+.school_share table tr td{
+ padding:5px;
+}
+.school_share table tr td a{
+	color:#595959;
+	text-decoration:none;
+}
+.school_share table tr td a:hover{
+	color:#F60;
+	text-decoration:underline;
+}
+.tr1{
+background:#F4F9FC;
+}
+.tr2{
+background:#FFFFFF;
+}
+.school_trade_div_r{
+  width:210px;
+  float:right;
+  line-height:1.2;
+}
+.school_trade_div_r a{
+  color:#090;
+  text-decoration:none;
+}
+.school_trade_div_r a:hover{
+  color:#090;
+  text-decoration:underline;
+}
+.school_trade_div_r p{
+ text-indent:10px;
+ line-height:1.3;
+}
+#myTab0_Content0{
+ padding-left:10px;
+}
+.snews_top_div{
+ width:210px;
+ height:62px;
+ margin-bottom:5px;
+ float:left;
+ margin-right:7px;
+ color:#595959;
+}
+.snews_top_div span{
+  float:right;
+  width:90px;
+  margin-top:5px;
+  line-height:1.2;
+}
+.snews_top_div span a{
+	color:#325e7f;
+	text-decoration:none;
+	}
+.snews_top_div span a:hover{
+	color:#325e7f;
+	text-decoration:underline;
+	}
+.snews_top_div img{
+  border:1px solid #CCC;
+  width:110px;
+  height:62px;
+  float:left;
+}
+#myTab0_Content0 ul li{
+  list-style:none;
+  background:url(/images/discription/arrow.gif) left center no-repeat;
+  width:500px;
+  float:left;
+  padding-left:5px;
+  line-height:1.5;
+}
+#myTab0_Content0 ul li a{
+	color:#2b2b2b;
+	text-decoration:none;
+	}
+#myTab0_Content0 ul li a:hover{
+	color:#00F;
+	text-decoration:underline;
+	}
+#myTab0_Content1{
+ padding-left:10px;
+}
+.spic_div{
+ width:98px;
+ float:left;
+ height:98px;
+ margin-right:12px;
+ text-align:center;
+}
+.spic_div a{
+	color:#30F;
+	text-decoration:none;
+}
+.spic_div a:hover{
+	color:#30F;
+	text-decoration:underline;
+	}
+.spic_div img{
+ border:0;
+ width:95px;
+ height:73px;
+ margin-bottom:3px;
+ }
+.tit_pic_div{
+	position:relative;
+	float:left;
+	margin-right:15px;
+	text-align:center;
+	margin-bottom:10px;
+	width:100px;
+}
+.pic_title_div{
+	width:100%;
+	height:16px;
+	font-size:13px;
+	margin-top:4px;
+	}
+.pic_title_div a{
+	color:#2B2B2B;
+	font-size:12px;
+	text-decoration:none;
+	}
+.pic_title_div a:hover{
+	color:#00C;
+	font-size:12px;
+	text-decoration:underline;
+	}
+.tit_pic span {
+	width:100px;
+	height:14px;
+	padding-top:2px;
+	background:#000;
+	display:block;
+	color:#CCC;
+	position:absolute;
+	bottom:20px;
+	left:0;
+	filter:alpha(opacity=60);
+	-moz-opacity:0.6;
+	opacity:0.6;
+	font-family:'宋体';
+	font-size:13px;
+	text-align:center;
+	cursor:hand;
+	float:right;
+}
+.tit_pic img{
+	width:100px;
+	height:80px;
+	border:0;
+	}
+.tit_pic a:hover span {
+	text-decoration:none;
+	color:#FFFFFF;
+}
+#school_index_top_r{
+ width:300px;
+ height:auto;
+ float:right;
+ color:#595959;
+}
+.school_index_top_r_t{
+ height:32px;
+ background:url(/images/discription/school_right_t.png) no-repeat top center;
+ padding-top:15px;
+ font-size:14px;
+ font-weight:bolder;
+ padding-left:18px;
+ padding-right:8px;
+}
+.school_index_top_r_c{
+ height:auto;
+ background:url(/images/discription/school_right_c.png) repeat-y top center;
+ padding:3px 10px;
+}
+.school_index_top_r_c ul{
+  list-style:none;
+}
+.school_index_top_r_c ul li{
+  list-style:none;
+  background-image:url(/images/discription/school_libg.gif);
+  background-position:left center;
+  background-repeat:no-repeat;
+  padding-left:6px;
+  line-height:1.7;
+}
+.school_index_top_r_c ul li a{
+	color:#2b2b2b;
+	text-decoration:none;
+	}
+.school_index_top_r_c ul li a:hover{
+	color:#00F;
+	text-decoration:underline;
+	}
+.school_index_top_r_b{
+ height:10px;
+ background:url(/images/discription/school_right_b.png) no-repeat center;
+ margin-bottom:10px;
+}
+.school_index_top_r_t1{
+ height:23px;
+ background:url(/images/discription/school_right_bg_t.png) no-repeat top center;
+ padding-top:9px;
+ font-size:14px;
+ font-weight:bolder;
+ padding-left:18px;
+ padding-right:8px;
+}
+.school_index_top_r_c1{
+ height:auto;
+ background:url(images/school_right_bg_c.png) repeat-y top center;
+ padding:3px 10px;
+}
+.school_index_top_r_c1 ul li{
+  width:270px;
+  list-style:none;
+  clear:both;
+  background-image:url(/images/discription/school_libg.gif);
+  background-position:left center;
+  background-repeat:no-repeat;
+  padding-left:6px;
+  line-height:1.4;
+}
+.school_index_top_r_c1 ul li a{
+	color:#2b2b2b;
+	text-decoration:none;
+	}
+.school_index_top_r_c1 ul li a:hover{
+	color:#00F;
+	text-decoration:underline;
+	}
+.school_index_top_r_b1{
+ height:26px;
+ background:url(/images/discription/school_right_bg_b.png) no-repeat top center;
+ padding:3px 10px;
+ margin-bottom:10px;
+}
+/*index ad*/
+#school_index_ad{
+width:980px;
+height:60px;
+border:1px solid #CCCCCC;
+margin:0px auto;
+}
+#school_index_ad img{
+ border:0;
+}
+/*index company*/
+#school_company{
+ width:980px;
+ height:auto;
+ margin-top:10px;
+}
+#school_company h3{
+ width:965px;
+ height:17px;
+ padding-top:7px;
+ padding-left:15px;
+ background:url(/images/discription/980_bg.png) 0 0 no-repeat;
+}
+#school_company_c{
+ width:978px;
+ height:auto;
+ border-left:1px solid #CCC;
+ border-right:1px solid #CCC;
+ padding-bottom:10px;
+ padding-top:10px;
+}
+#school_company_c ul li{
+ float:left;
+ width:140px;
+ text-align:center;
+}
+#school_company_c ul li img{
+ width:120px;
+ height:33px;
+ border:1px solid #CCC;
+ margin-bottom:5px;
+}
+#school_company_c ul li a{
+ color:#595959;
+ text-decoration:none;
+}
+#school_company_c ul li a:hover{
+ color:#f60;
+ text-decoration:underline;
+}
+#school_company_b{
+ width:980px;
+ height:3px;
+ background:url(/images/discription/980_bg.png) 0 -25px no-repeat;
+}

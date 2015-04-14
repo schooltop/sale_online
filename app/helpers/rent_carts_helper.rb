@@ -1,0 +1,2 @@
+module RentCartsHelper
+end

@@ -1,0 +1,274 @@
+ <script type="text/javascript">
+ function checkAll(n){
+ if (n == 0) {
+ 	var chkStatus = document.getElementsByName("active[cad_contact_ids][]");
+ 	for (i = 0; i < chkStatus.length; i++) {
+ 		chkStatus[i].checked = event.srcElement.checked;
+ 	}
+ }
+ else if(n==1) {
+ 	var chkStatus1 = document.getElementsByName("active[stu_reg_inf_ids][]");
+ 	for (i = 0; i < chkStatus1.length; i++) {
+ 		chkStatus1[i].checked = event.srcElement.checked;
+ 	}
+ }
+	}
+</script>
+<%=render :partial=>"/admins/left"%>
+
+<div id="content">
+
+        <table style="width:100%"><tbody><tr><td>
+        	<div class="moduleTitle">
+<h2>会员卡类型: <%=@vip_style.name%></h2>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<%if flash[:notice]%>
+<font color="red" size="5"><%=flash[:notice]%></font>
+<% end %>
+<span><a href="" class="utilsLink">
+<img src="/images/crm/print.gif" alt="打印"></a>
+<a href="" class="utilsLink">
+打印
+</a>&nbsp;
+<a href="" class="utilsLink" target="_blank">
+<img src="/images/crm/help.gif" alt="帮助"></a>
+<a href="/help" class="utilsLink" target="_blank">
+帮助
+</a></span></div>
+<table cellpadding="1" cellspacing="0" border="0" width="100%">
+<tbody><tr>
+<td class="buttons" align="left" nowrap="">
+	
+<button type="button" class="button" title="编辑" onclick="document.location.href='/service_tasks/<%=@vip_style.id%>/edit'">编辑</button>
+<button type="button" class="button" title="返回列表" onclick="document.location.href='/service_tasks'">返回列表</button>
+<!-- <%= link_to '删除', @cad_enterprise, :confirm => '确定要删除此客户么?', :method => :delete ,:class=>"button" %> --></td>
+<td class="buttons" align="left" nowrap=""></td>
+<td align="right" width="100%"></td>
+</tr>
+</tbody>
+</table>
+<div id="DEFAULT" class="detail view">
+<table id="detailpanel_1" cellspacing="0">
+<tbody><tr class="pagination">
+<td colspan="20" style="padding: 0px;">
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr>
+<td nowrap="" align="right">
+		</td></tr></tbody></table></td></tr>
+<tr>
+<td width="12.5%" scope="row">
+VIP类型:
+</td>
+<td width="37.5%">
+<span id="name"><%=@vip_style.name%></span>
+</td>
+<td width="12.5%" scope="row">
+	VIP价格:
+</td>
+<td width="37.5%">
+<%=@vip_style.mark%>
+</td>
+</tr>
+<tr>
+<td width="12.5%" scope="row">
+会籍有效期:
+</td>
+<td width="37.5%">
+	<%=@vip_style.usefulltime%>年
+</td>
+<td width="12.5%" scope="row">
+T2MAX会员价:
+</td>
+<td width="37.5%">
+	<%=@vip_style.vipprice%>
+</td>
+</tr>
+<tr>
+<td width="12.5%" scope="row">
+分店优惠政策:
+</td>
+<td width="37.5%">
+<%=@vip_style.vipbargin%>
+</td>
+<td width="12.5%" scope="row">
+本类会员现有数量:
+</td>
+<td width="37.5%">
+<%=(Vip.find(:all,:conditions=>"vip_style_id=#{@vip_style.id}")).size%>位
+</td>
+</tr>
+<tr>
+<td width="12.5%" scope="row">
+本月新增会员数:
+</td>
+<td width="37.5%">
+	<%=(Vip.find(:all,:conditions=>"vip_style_id=#{@vip_style.id} and fromtime>'#{Time.now.beginning_of_month.to_formatted_s(:db)}' ")).size%>
+位</td>
+<td width="12.5%" scope="row">
+即将到期会员数:
+</td>
+<td width="37.5%">
+<span id="employees"><%=(Vip.find(:all,:conditions=>"vip_style_id=#{@vip_style.id} and totime<'#{(Time.now+(30*24*60*60))}'")).size%>位</span>
+</td>
+</tr>
+
+</tbody></table>
+</div>
+
+
+<script>
+	SUGAR.subpanelUtils.currentSubpanelGroup = '所有';
+	
+	SUGAR.subpanelUtils.subpanelMoreTab = '协作';
+	
+	SUGAR.subpanelUtils.subpanelMaxSubtabs = '12';
+	
+	SUGAR.subpanelUtils.subpanelHtml = new Array();
+	
+	SUGAR.subpanelUtils.loadedGroups = Array();
+	SUGAR.subpanelUtils.loadedGroups.push('所有');
+	
+	SUGAR.subpanelUtils.subpanelSubTabs = new Array();
+	SUGAR.subpanelUtils.subpanelGroups = new Array();
+	SUGAR.subpanelUtils.subpanelGroups['所有'] = ['activities', 'history'];
+	SUGAR.subpanelUtils.subpanelGroups['销售'] = ['contacts', 'opportunities', 'leads', 'accounts'];
+	SUGAR.subpanelUtils.subpanelGroups['市场'] = ['contacts', 'leads', 'accounts'];
+	SUGAR.subpanelUtils.subpanelGroups['服务'] = ['contacts', 'cases'];
+	SUGAR.subpanelUtils.subpanelGroups['活动'] = ['activities', 'history'];
+	SUGAR.subpanelUtils.subpanelGroups['协作'] = ['project', 'contacts', 'cases'];
+
+	SUGAR.subpanelUtils.subpanelTitles = {};
+
+	SUGAR.subpanelUtils.tabCookieName = get_module_name() + '_sp_tab';
+	
+	SUGAR.subpanelUtils.showLinks = false;
+	
+	SUGAR.subpanelUtils.requestUrl = '';
+</script>
+
+
+
+<ul id="groupTabs" class="subpanelTablist">
+	<li id="所有_sp_tab">
+		<a class="current" href="javascript:SUGAR.subpanelUtils.loadSubpanelGroup('所有');">所有</a>
+	</li>
+	<!-- <li id="销售_sp_tab">
+		<a class="" href="javascript:SUGAR.subpanelUtils.loadSubpanelGroup('销售');">销售</a>
+	</li>
+	<li id="市场_sp_tab">
+		<a class="" href="javascript:SUGAR.subpanelUtils.loadSubpanelGroup('市场');">市场</a>
+	</li> 
+	<li id="服务_sp_tab">
+		<a class="" href="javascript:SUGAR.subpanelUtils.loadSubpanelGroup('服务');">服务</a>
+	</li>
+	<li id="活动_sp_tab">
+		<a class="" href="javascript:SUGAR.subpanelUtils.loadSubpanelGroup('活动');">活动</a>
+	</li> 
+	<li id="协作_sp_tab">
+		<a class="" href="javascript:SUGAR.subpanelUtils.loadSubpanelGroup('协作');">协作</a>
+	</li> -->
+</ul>
+<table width="100%" cellspacing="0" cellpadding="0" border="0" class="subpanelTabForm">
+	<tbody><tr>
+		<td>
+
+
+
+<% form_remote_tag :url => { :controller => 'enterprise_active_marks'}, 
+				   :update => 'all', 
+				   :html => { :name => 'myaccs' } do -%>
+<ul class="noBullet" id="subpanel_list">
+	<li class="noBullet" id="whole_subpanel_activities"><div id="subpanel_title_activities" onmouseover="this.style.cursor = 'move';"><table width="100%" cellpadding="0" cellspacing="0" border="0" class="formHeader h3Row">
+<tbody><tr>
+<td nowrap=""><h3><span><a name="activities"> </a><span id="show_link_activities" style="display: none"><a href="#" class="utilsLink" onclick="current_child_field = 'activities';showSubPanel('activities',null,null,'Accounts');document.getElementById('show_link_activities').style.display='none';document.getElementById('hide_link_activities').style.display='';return false;"><img src="/images/crm/advanced_search.gif" width="8" height="8" alt="显示" border="0 align=" absmiddle""=""></a></span><span id="hide_link_activities" style="display: "><a href="#" class="utilsLink" onclick="hideSubPanel('activities');document.getElementById('hide_link_activities').style.display='none';document.getElementById('show_link_activities').style.display='';return false;"><img src="/images/crm/basic_search.gif" width="8" height="8" alt="隐藏" border="0" align="absmiddle"></a></span>&nbsp;相关特权种类</span></h3></td><td width="100%"><img height="1" width="1" src="/images/crm/blank.gif" alt=""></td></tr>
+</tbody></table></div><div cookie_name="activities_v" id="subpanel_activities" style="display:">
+<table cellpadding="0" cellspacing="0" width="100%" border="0" class="list view">
+<tbody>
+<tr class="pagination">
+<td colspan="20" align="right">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tbody><tr>
+		<td align="left"><span><table cellpadding="0" cellspacing="0"><tbody><tr>
+			<td class="buttons">
+		
+
+				<td class="buttons">
+					<%= hidden_field_tag 'form_action1' %>
+					<input type="hidden" id="service_task_id" name="service_task_id" value="<%=@vip_style.id%>">
+					<%=submit_tag "添加特权" ,:onClick=>"document.location.href='/service_tasks/add_contact?service_task_id=#{@vip_style.id}'"%>
+			        <!-- <%=submit_tag "添加企业/联系人", :name => "contact",:class=>"button" ,  :onClick => "document.myaccs.form_action1.value='contact' "%> -->					
+					<!-- <%=submit_tag "加入答谢库", :name => "gift",:class=>"button" ,  :onClick => "document.myaccs.form_action1.value='gift' "%> -->
+					
+					</td></tr></tbody></table></span></td>
+					
+					<td nowrap="" align="right"><%= will_paginate @vip_details ,:prev_label => '上一页', :next_label => '下一页'%></td></tr></tbody></table>
+				</td>
+		</tr>
+		<tr height="20">
+			
+			<th scope="col" width="30%" nowrap="nowrap"><span sugar="slot6">
+				特权种类&nbsp;</span></th>	
+			<th scope="col" width="20%" nowrap="nowrap"><span sugar="slot2">
+				数量/单位 &nbsp;</span></th>
+			<th scope="col" width="30%" nowrap="nowrap"><span sugar="slot4">
+				描述</span></th>		
+			<th scope="col" width="15%" nowrap="nowrap"><span sugar="slot3">
+				操作&nbsp;</span></th>								
+			</tr>
+			  <%@vip_details.each do |vip_detail|%>
+	    	<tr height="20" class="oddListRowS1">
+			
+			
+			<td scope="row" valign="top" nowrap="nowrap"><span sugar="slot6b">
+				<%=vip_detail.vip_service.description if vip_detail.vip_service%></span></td>			
+			
+			<td scope="row" valign="top" nowrap="nowrap"><span sugar="slot2b">
+				<%=vip_detail.timenum%><%=vip_detail.point%>
+			</span></td>
+						
+			<td scope="row" valign="top" nowrap="nowrap"><span sugar="slot5b"><%=vip_detail.discription%></span></td>
+	
+			<td scope="row" valign="top" nowrap="nowrap"><span sugar="slot5b"><%= link_to '删除', vip_detail, :confirm => '您确定删除该特权事项吗?', :method => :delete %></span></td>
+			
+		    </tr>
+		    <%end%>			
+		</tbody>
+		</table>
+		</div>
+		</div></li>
+<%end%>		
+
+
+</ul></td></tr></tbody></table>  
+
+  <script>
+    	var SubpanelInit = function() {
+    		SubpanelInitTabNames(["activities","history","contacts","opportunities","leads","cases","accounts","bugs","project"]);
+    	}
+        var SubpanelInitTabNames = function(tabNames) {
+    		subpanel_dd = new Array();
+    		j = 0;
+    		for(i in tabNames) {
+    			subpanel_dd[j] = new ygDDList('whole_subpanel_' + tabNames[i]);
+    			subpanel_dd[j].setHandleElId('subpanel_title_' + tabNames[i]);
+    			subpanel_dd[j].onMouseDown = SUGAR.subpanelUtils.onDrag;
+    			subpanel_dd[j].afterEndDrag = SUGAR.subpanelUtils.onDrop;
+    			j++;
+    		}
+
+    		YAHOO.util.DDM.mode = 1;
+    	}
+    	currentModule = 'Accounts';
+    	YAHOO.util.Event.addListener(window, 'load', SubpanelInit);
+    </script><!-- crmprint --><script>		if(window.addEventListener){
+			window.addEventListener("load", checkAlerts, false);
+		}else{
+			window.attachEvent("onload", checkAlerts);
+		}
+		
+		</script>
+<!--end body panes-->
+        </td></tr></tbody></table>
+
+    </div>
+    <div class="clear"></div>
+

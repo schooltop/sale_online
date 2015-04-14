@@ -1,0 +1,48 @@
+<%=render :partial=>"left"%>
+
+<div id="content">
+     <table style="width:100%"><tbody><tr><td>
+       <div class="moduleTitle">
+         <h2>部门: <%=@dept.name%></h2>
+            <span><a href="" class="utilsLink"><img src="/images/crm/print.gif" alt="打印"></a>
+                  <a href="" class="utilsLink">打印</a>&nbsp;
+                  <a href="" class="utilsLink" target="_blank">
+                  <img src="/images/crm/help.gif" alt="帮助"></a>
+                  <a href="/help" class="utilsLink" target="_blank">帮助</a>
+            </span>
+       </div>
+<table cellpadding="1" cellspacing="0" border="0" width="100%">
+<tbody>
+   <tr>
+     <td class="buttons" align="left" nowrap="">
+     <button type="button" class="button" title="编辑" onclick="document.location.href='/depts/<%=@dept.id%>/edit'">编辑</button>
+     &nbsp;
+     <button type="button" class="button" title="返回列表" onclick="document.location.href='/depts'">返回列表</button>
+     </td>
+  </tr>
+</tbody>
+</table>
+    <div id="DEFAULT" class="detail view">
+       <table id="detailpanel_1" cellspacing="0">
+          <tbody>
+            <tr class="pagination">
+                 <td colspan="20" style="padding: 0px;">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tbody>
+                      <tr><td nowrap="" align="right"></td></tr>
+                    </tbody>
+                  </table>
+                 </td>
+            </tr>
+            <tr>
+                <td width="12.5%" scope="row">部门名称:</td>
+                <td width="37.5%"><span id="name"><%=@dept.name%></span></td>
+                <td width="12.5%" scope="row">所属公司:</td>
+                <td width="37.5%">
+                <%=select(:company, :id, @company.collect {|p| [ p.name, p.id ] }, { :include_blank => false })%>
+                </td>
+            </tr>
+           
+          </tbody>
+       </table>
+</div>

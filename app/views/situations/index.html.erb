@@ -1,0 +1,18 @@
+<h1>Listing situations</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% @situations.each do |situation| %>
+  <tr>
+    <td><%= link_to 'Show', situation %></td>
+    <td><%= link_to 'Edit', edit_situation_path(situation) %></td>
+    <td><%= link_to 'Destroy', situation, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New situation', new_situation_path %>

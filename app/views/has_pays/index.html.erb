@@ -1,0 +1,18 @@
+<h1>Listing has_pays</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% @has_pays.each do |has_pay| %>
+  <tr>
+    <td><%= link_to 'Show', has_pay %></td>
+    <td><%= link_to 'Edit', edit_has_pay_path(has_pay) %></td>
+    <td><%= link_to 'Destroy', has_pay, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New has_pay', new_has_pay_path %>

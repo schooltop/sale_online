@@ -1,0 +1,22 @@
+  <%=stylesheet_link_tag "news"%>
+  
+  
+  <%if session[:user]%>
+        <a href="/center">
+		<%else%>
+		<a href="/users/login">
+		<%end%>
+  
+  		<div class="module">
+  			<div id="left-content">
+  			<!-- 	<%#=render :partial=>"/shared/categories"%> -->
+  			</div>
+  			<div id="right-content">	
+				<div class="news-title">	 
+					<h3><%=@news.name%></h3>
+				</div>			
+				<div class="time"><%=t :the_time%>:<%=into_datetime @news.publish_time%></div>
+				<div class="news-content"><%=@news.text%></div>
+				
+  			</div>
+  		</div>

@@ -1,0 +1,130 @@
+<%=stylesheet_link_tag "buy","tables"%>
+<font color="#ff0000"> <%=flash[:notice]%> </font>
+<div id="order-other-info">
+					<table class="order-table seller-type-B bought-table">
+						<tr class="shop-hd col-name" style="background-color:#8ed8f8 ">
+				            <td class="s-title" style="width:300px;">
+				                                           商品：
+				            </td>
+				            <td colspan="2" class="s-price">详细</td>
+	
+				            <td class="s-total"><%=t :small_total%></td>
+				        </tr>			        
+				        <%a=0%>
+				        <%for @production in @order.line_items %>
+				        <tr class="order-bd last item">
+								<td class="baobei">
+						                <a target="_blank" href="/productions/" class="pic s50">
+											<img title="查看宝贝详情" src="">
+										</a>
+										<div class="desc">
+												<a class="baobei-name" target="_blank" 
+												href="/productions/<%=@production.product.id%>"><%= h(@production.product.title) %></a>				
+										</div>           
+							 	</td>
+							 	<td colspan="2">
+							 		<%vip_record=VipRecord.find(:last,:conditions=>"order_id=#{@order.id} and line_item_id=#{@production.id}")%>
+							 		<%if vip_record%>
+							 		
+							 		<%if @production.quantity>vip_record.timenum%> 
+							 		VIP兑换X<%=vip_record.timenum%>
+							 		&nbsp;&nbsp;<%=@production.price%>¥&nbsp;X&nbsp;<%=@production.quantity-vip_record.timenum%> 
+							 		<%elsif @production.quantity=vip_record.timenum%>
+							 		VIP兑换X<%=vip_record.timenum%>
+							 		<%else%>
+							 		VIP兑换X<%=vip_record.timenum%>
+							 		<%end%>			 		
+							 		<%else%>
+							 		<%=@production.price%>¥&nbsp;X&nbsp;<%=@production.quantity%> 
+							 		<%end%>
+							 		
+							 	</td>
+							 	
+							 	<td><span class="small_total_span<%=@production.product.id%>">
+							 		<%vip_record=VipRecord.find(:last,:conditions=>"order_id=#{@order.id} and line_item_id=#{@production.id}")%>
+							 		<%if vip_record%>							 		
+							 		<%if @production.quantity>vip_record.timenum%> 
+							 		<%=@production.price*(@production.quantity-vip_record.timenum)%>¥
+							 		<%a=a+@production.price*(@production.quantity-vip_record.timenum)%>
+							 		<%elsif @production.quantity=vip_record.timenum%>
+							 		0¥
+							 		<%else%>
+							 		0¥
+							 		<%end%>			 		
+							 		<%else%>
+							 		<%=@production.price*@production.quantity%>¥
+							 		<%a=a+@production.price*@production.quantity%>
+							 		<%end%>
+							 		</span></td>					
+							</tr>
+							<%end%>
+							
+					  </table>
+				</div>
+
+               	<% form_for :order, :url => { :action => :save_order_infs } do |form| %>
+             <div id="order-other-info">
+					<table class="order-table seller-type-B bought-table">
+						<tr class="shop-hd col-name" style="background-color:#8ed8f8 ">
+				            <td class="s-title" colspan="4" >
+				                                           订单提交
+				            </td>
+				        </tr>												
+						<tr class="shop-hd col-name" >
+				            <td class="s-title" style="width:300px;" colspan="2">
+				                <%=t :Name%>:
+				            </td>
+				            <td class="s-price" colspan="2"><%if current_user%><%= form.text_field :name, :size => 40,:value=>current_user.login %>  <%else%><%= form.text_field :name, :size => 40 %><%end%></td>				           
+				        </tr>
+				        <tr class="shop-hd col-name" >
+				            <td class="s-title" style="width:300px;" colspan="2">
+				                <%=t :email%>:
+				            </td>
+				               <div class="clear">&nbsp;</div>
+				            <td class="s-price" colspan="2"><%if current_user%><%= form.text_field :email, :size => 40,:value=>current_user.email %>  <%else%><%= form.text_field :email, :size => 40 %><%end%></td>				           
+				        </tr>
+				        <tr class="shop-hd col-name" >
+				            <td class="s-title" style="width:300px;" colspan="2">
+				                <%=t :Tel%>:
+				            </td>
+				            <td class="s-price" colspan="2"><%if current_user&&current_user.user_profile%><%= form.text_field :tel, :size => 40,:value=>current_user.user_profile.tel_num %>  <%else%><%= form.text_field :tel, :size => 40 %><%end%></td>				           
+				        </tr>
+				        <tr class="shop-hd col-name" >
+				            <td class="s-title" style="width:300px;" colspan="2">
+				                <%=t :Pay_with%>:
+				            </td>
+				            <td class="s-price" colspan="2">
+				            	<%=form.select :pay_type, Order::PAYMENT_TYPES%></td>				           
+				        </tr>
+				       	        
+				        
+							
+							<tr>
+								<td colspan="4" class="leave_message">
+									<div><%=t :leave_message%></div>
+									<div style="margin: 20px;padding: 10px;">
+										<%= form.text_area :address, :rows => 4,:cols => 100,:placeholder=>t(:message_to_seller)%>			
+									</div>													
+								</td>
+							</tr>
+					  </table>
+				</div>
+				  <div class="order-go" data-spm="4" data-spm-max-idx="1">
+                    <div class="J_AddressConfirm address-confirm">
+                        <div class="kd-popup pop-back">
+                            <div class="box">
+                            	
+                                <div class="bd">
+                                    <div class="point-in">
+									      <em class="t"><%=t :real_pay%>：</em>    <span class="price g_price ">
+									        <span>¥</span><em class="style-large-bold-red small_total_span" id="parts"><%=a%>¥</em>
+									    </span>
+									</div>
+                                </div>
+                            </div>
+                               <input type="submit"  id="J_Go" class="btn-go" value=""/><b class="dpl-button"></b>
+                        </div>
+                    </div>
+                </div>
+               
+                <% end %>  

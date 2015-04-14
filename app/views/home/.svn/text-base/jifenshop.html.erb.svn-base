@@ -1,0 +1,33 @@
+
+  		<div class="module">
+  			<div id="left-content">
+  				<%=render :partial=>"/shared/categories"%>
+  			</div>
+  			
+  			<div id="right-content">
+				<div class="slide_right">
+					<div style="margin: 20px;">
+						<h1><font color="#a1daf8" ><%=t :jifenshop%></font></h1>
+					</div>
+				</div>		
+													
+				<div id="productions-content">
+					<div class="produtions-show" style="margin-bottom:2px;background-color:#d9d9d9;height:150px   ">
+			     		<div style="float:left "><img src="/images/product/spa4.jpg" width="300px" height="150px"></div>
+			     		<div style="width:370px;height:150px;float:left;margin-left: 10px;padding-top: 10px  ">
+			     		成为VIP会员，每消费一块钱积分一分。多多超值换购好礼等你来拿！	
+			     		</div>
+			     	</div>
+					<div class="heng-bar">
+					    		<h3><%=t :duihuan_ps%>
+					    			<span style="float: right;margin-right: 40px;"><%=link_to t(:more),"/suggest_nb"%></span>
+					    		</h3>
+					</div>
+			     	<div class="produtions-show">
+			     		<%=render :partial=>"/home/suggest_productions",:locals=>{:ps=>@jf_ps}%>
+			     	</div>
+					
+  				</div>
+  			</div>
+  		</div>
+		

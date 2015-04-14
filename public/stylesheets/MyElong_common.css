@@ -1,0 +1,54 @@
+.content{width:800px;}
+.content a{color:#36c;text-decoration:none}
+.content a:hover{color:#f60;text-decoration:underline}
+.content .price{font-family:arial;color:#f60}
+.content .pfh{font-family:arial;font-size:12px}
+.content .t20{font-size:20px}
+.content .icon_info{display:inline-block;width:16px;height:16px;margin-left:3px;background:url("/images/center/my_common.png") no-repeat 0 -100px;vertical-align:-3px;*vertical-align:middle;cursor:pointer}
+.content .icon_info:hover{background-position:0 -120px}
+.content .icon_deadline{display:inline-block;width:49px;height:14px;background:url("/images/center/my_common.png") no-repeat 0 -162px;overflow:hidden}
+.content .expand,.content .collapse{display:inline-block;width:9px;height:5px;margin-left:3px;margin-right:5px;background:url("/images/center/my_common.png") no-repeat -100px 0;vertical-align:1px;*vertical-align:5px;_vertical-align:-3px}
+.content .collapse{background-position:-100px -20px}
+.my_details h4{margin-bottom:10px;padding-left:10px;font-family:Microsoft Yahei,\5b8b\4f53,sans-serif;font-size:12px}
+.content .my_table{width:100%;border-collapse:collapse;margin:0 auto 10px}
+.content table.tc th,.content table.tc td{text-align:left}
+.content .my_table th,.content .my_table td{padding-left:10px;height:28px}
+.content .my_table th{background:#f5f5f5;border-top:1px solid #ccc}
+.content .my_table td{border-bottom:1px dotted #ccc}
+.intxt{border:1px solid #d8d8d8;width:113px;height:18px;padding:5px 0 5px 5px;line-height:18px;font-size:14px;box-shadow:inset 1px 1px 2px #e9e9e9;*vertical-align:middle}
+.intxt:focus{border:1px solid #0ea0ef;box-shadow:0 0 5px #09f;outline:0}
+.popup li{height:30px;line-height:30px;margin-bottom:10px}
+.popup .title{display:inline-block;width:90px;padding-right:5px;text-align:right}
+#page_list{text-align:right;margin-right:10px}
+#page_list a,#page_list .txt{display:inline-block;padding:1px 7px;margin-right:5px;border:1px solid #ccc;border-radius:3px;background:#fff;background:-moz-linear-gradient(top,#fff 40%,#ededed 100%);background:-webkit-linear-gradient(top,#fff 40%,#ededed 100%);background:-o-linear-gradient(top,#fff 40%,#ededed 100%);background:linear-gradient(to bottom,#fff 40%,#ededed 100%)}
+#page_list a:hover{text-decoration:none;background:#ededed;color:#36c;border-color:#666;box-shadow:inset 0 0 5px 0 rgba(0,0,0,0.2)}
+#page_list .cur{border-color:#fff;color:#333;font-weight:700;background:#fff}
+#page_list .cur:hover{text-decoration:none;background:#fff;border-color:#fff;color:#333;box-shadow:0;cursor:default}
+#page_list .txt{border-color:#fff;color:#333;background:#fff}
+#page_list .txt:hover{text-decoration:none;background:#fff;border-color:#fff;color:#333;box-shadow:0;cursor:default}
+.content .navigation{width:163px;background:#f5f5f5;border:1px solid #d7d7d7}
+.content .navigation .level{padding:10px;background:#8ed8f8;font-size:14px;font-family:Microsoft Yahei,\5b8b\4f53,sans-serif;color:#fff}
+.content .navigation .level span{display:inline-block;width:16px;height:16px;margin-right:3px;background:url("/images/center/my_common.png") no-repeat;vertical-align:-3px;*vertical-align:middle}
+.content .level span.elite{background-position:0 0}
+.content .level span.vip{background-position:0 -20px}
+.content .navigation dl dt{font-size:16px;font-family:Microsoft Yahei,\5b8b\4f53,sans-serif;color:#333;margin:5px 0}
+.content .navigation dl dt span{display:inline-block;width:16px;height:16px;margin-right:3px;background:url("/images/center/my_common.png") no-repeat;vertical-align:-3px;*vertical-align:middle}
+.content .navigation dl dt .nav_order{background-position:0 -40px}
+.content .navigation dl dt .nav_account{background-position:0 -60px}
+.content .navigation dl dt .nav_user{background-position:0 -78px}
+.content .navigation dl dd a{display:block;color:#333;font-size:14px;line-height:24px;padding-left:20px}
+.content .en dl dd a{font-size:12px}
+.content .navigation dl dd a:hover,.content .navigation dl dd a.on{color:#000;background:#dbdbdb;text-decoration:none}
+.content .navigation .bt1{border-top:1px solid #e6e6e6}
+.content .navigation .invite{background:#fff;border-bottom:1px solid #ccc}
+.content .navigation .new{display:inline-block;width:20px;height:14px;background:url("/images/center/my_common.png") no-repeat 0 -140px;overflow:hidden}
+.content .main{width:753px;min-height:523px;padding:10px 15px;border:1px solid #d7d7d7}
+.content .main .breadcrumb{border-bottom:2px solid #0092e3;line-height:24px;padding-bottom:5px;padding-left:10px;font-size:14px;font-family:Microsoft Yahei,\5b8b\4f53,sans-serif;color:#666}
+.content .main .breadcrumb h1{display:inline;font-size:14px;font-family:Microsoft Yahei,\5b8b\4f53,sans-serif;color:#666}
+.content .main .tab{border-bottom:1px solid #c96702;height:31px;padding-left:20px}
+.content .main .tab li{float:left;line-height:20px;cursor:pointer;margin-right:5px;border:1px solid #DDD;border-bottom:0;text-align:center}
+.content .main .tab li:hover{border-color:#666}
+.content .main .tab li.cur{color:#CF7A21;border:1px solid #C96702;border-bottom:1px solid #fff;font-size:14px;color:#333;font-weight:700}
+.content .main .tab li a{display:block;padding:5px 20px}
+.content .main .tab li a:hover{text-decoration:none}
+.content .main .tab li.cur a{color:#333}

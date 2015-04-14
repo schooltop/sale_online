@@ -1,0 +1,71 @@
+          
+            <%= stylesheet_link_tag "depot", :media => "all" %>
+            <!-- <%= error_messages_for 'order' %> -->
+            <font color="#ff0000"> <%=flash[:notice]%> </font>
+             <%=stylesheet_link_tag "buy","tables"%>
+             <% form_for :order, :url => { :action => :save_order } do |form| %>
+             <div id="order-other-info">
+					<table class="order-table seller-type-B bought-table">
+						<tr class="shop-hd col-name" style="background-color:#8ed8f8 ">
+				            <td class="s-title" colspan="4" >
+				                                           订单提交
+				            </td>
+				        </tr>												
+						<tr class="shop-hd col-name" >
+				            <td class="s-title" style="width:300px;" colspan="2">
+				                <%=t :Name%>:
+				            </td>
+				            <td class="s-price" colspan="2"><%if current_user%><%= form.text_field :name, :size => 40,:value=>current_user.login %>  <%else%><%= form.text_field :name, :size => 40 %><%end%></td>				           
+				        </tr>
+				        <tr class="shop-hd col-name" >
+				            <td class="s-title" style="width:300px;" colspan="2">
+				                <%=t :email%>:
+				            </td>
+				               <div class="clear">&nbsp;</div>
+				            <td class="s-price" colspan="2"><%if current_user%><%= form.text_field :email, :size => 40,:value=>current_user.email %>  <%else%><%= form.text_field :email, :size => 40 %><%end%></td>				           
+				        </tr>
+				        <tr class="shop-hd col-name" >
+				            <td class="s-title" style="width:300px;" colspan="2">
+				                <%=t :Tel%>:
+				            </td>
+				            <td class="s-price" colspan="2"><%if current_user&&current_user.user_profile%><%= form.text_field :tel, :size => 40,:value=>current_user.user_profile.tel_num %>  <%else%><%= form.text_field :tel, :size => 40 %><%end%></td>				           
+				        </tr>
+				        <tr class="shop-hd col-name" >
+				            <td class="s-title" style="width:300px;" colspan="2">
+				                <%=t :Pay_with%>:
+				            </td>
+				            <td class="s-price" colspan="2">
+				            	<%=form.select :pay_type, Order::PAYMENT_TYPES,:prompt => "请选择一种支付方式"%></td>				           
+				        </tr>
+				       	        
+				        
+							
+							<tr>
+								<td colspan="4" class="leave_message">
+									<div><%=t :leave_message%></div>
+									<div style="margin: 20px;padding: 10px;">
+										<%= form.text_area :address, :rows => 4,:cols => 100,:placeholder=>t(:message_to_seller)%>			
+									</div>													
+								</td>
+							</tr>
+					  </table>
+				</div>
+				  <div class="order-go" data-spm="4" data-spm-max-idx="1">
+                    <div class="J_AddressConfirm address-confirm">
+                        <div class="kd-popup pop-back">
+                            <div class="box">
+                            	
+                                <div class="bd">
+                                    <div class="point-in">
+									      <em class="t"><%=t :real_pay%>：</em>    <span class="price g_price ">
+									        <span>¥</span><em class="style-large-bold-red small_total_span" id="parts"><%= number_to_currency(@cart.total_price) %></em>
+									    </span>
+									</div>
+                                </div>
+                            </div>
+                               <input type="submit"  id="J_Go" class="btn-go" value=""/><b class="dpl-button"></b>
+                        </div>
+                    </div>
+                </div>
+               
+                <% end %>  

@@ -1,0 +1,5 @@
+<h4><%=@permission.name %></h4>
+<br>
+<h4>Action： <%= @permission.action%></h4>
+<%= link_to '编辑', edit_permission_path(@permission) %> |
+<%= link_to '返回', permissions_path %>

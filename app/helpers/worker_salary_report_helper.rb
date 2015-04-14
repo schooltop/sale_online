@@ -1,0 +1,2 @@
+module WorkerSalaryReportHelper
+end

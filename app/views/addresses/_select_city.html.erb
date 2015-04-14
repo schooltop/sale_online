@@ -1,0 +1,13 @@
+  <select id="city_id" name="address[city_id]" onchange="check_city(this.value)">
+						    		<%@cities.each do |p|%>
+						    			<option value="<%=p.id%>" <%="selected='true'" if @address && @address.city_id == p.id%> ><%=p.name%></option>
+						    		<%end%>
+  </select>
+				   <div id="select_areas" class="areas">
+							    <select id="area_id" name="address[area_id]">
+						    		<%@areas.each do |p|%>
+						    			<option value="<%=p.id%>" <%="selected='true'" if @address && @address.area_id == p.id%> ><%=p.name%></option>
+						    		<%end%>
+							    </select>
+				  </div>
+	                	

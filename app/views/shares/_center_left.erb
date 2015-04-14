@@ -1,0 +1,61 @@
+
+<div class="navigation left">
+    <div class="level">
+        
+        普通会员</div>
+    
+    <div class="p10">
+        <dl>
+            <dt><span class="nav_order"></span>订单管理</dt>
+            <dd>
+                <a href="/jichang">机场服务订单</a></dd>
+            <dd>
+                <a href="/speser">特色服务订单</a></dd>
+            
+            <dd>
+                <a href="/hotel">酒店订单</a></dd>
+            <dd>
+                <a href="/ticket">机票订单</a></dd>
+            
+        </dl>
+        
+        <dl class="mt5 pt5 bt1">
+            <dt><span class="nav_account"></span>账户管理</dt>
+            <!-- <dd>
+                <a href="#">现金账户/消费券</a></dd> -->
+            <dd>
+                <a href="/jifen">积分</a></dd>
+        </dl>
+        
+        <dl class="mt5 pt5 bt1">
+            <dt><span class="nav_user"></span>个人设置</dt>
+            
+            <dd>
+                <a href="/user_profiles/id/edit">个人资料</a></dd>
+            <dd>
+                <a href="/change_password">密码修改</a></dd>
+            
+            <!-- <dd>
+                <a href="#">常用旅客信息</a></dd>
+            <dd>
+                <a href="#">常用地址</a></dd>
+            <dd>
+                <a href="#">常用银行卡</a></dd> -->
+        </dl>
+        
+        <dl class="mt5 pt5 bt1">
+            <dd>
+                <a href="#" target="_blank">我的社区首页</a></dd>
+            <dd>
+                <a href="#">我的邮件订阅</a></dd>
+        </dl>
+        <%if current_user&&(current_user.is_admin?||current_user.work)%>
+         <dl class="mt5 pt5 bt1">
+            <dd>
+                <a href="/admins" target="_blank">系统管理</a></dd>
+        </dl>
+        <%end%>
+    </div>
+</div>
+
+ 

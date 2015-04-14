@@ -1,0 +1,89 @@
+<%=render :partial=>"/admins/left"%>
+<script type="text/javascript">
+ function checkAll(n){
+ if (n == 0) {
+ 	var chkStatus = document.getElementsByName("role[permission_ids][]");
+ 	for (i = 0; i < chkStatus.length; i++) {
+ 		chkStatus[i].checked = event.srcElement.checked;
+ 	}
+ }
+ else {
+ 	var chkStatus1 = document.getElementsByName("role[user_ids][]");
+ 	for (i = 0; i < chkStatus1.length; i++) {
+ 		chkStatus1[i].checked = event.srcElement.checked;
+ 	}
+ }
+
+	}
+</script>
+
+<% form_for(@role) do |f| %>
+ <div id="content">
+ 	
+<div class="moduleTitle">
+<h2>角色管理>><%=@role.name%></h2>
+<span>&nbsp;
+</span></div>
+ 	
+<div id="LBL_ACCOUNT_INFORMATION">
+<table width="100%" border="0" cellspacing="1" cellpadding="0" class="edit view">
+<tbody><tr><th align="left" colspan="8">
+<h4>该组权限：</h4>
+</th>
+</tr>
+<%i=0%>
+	<input type="checkbox" name="checkall" onclick="checkAll(0);" checked="checked"/>全选/反选<br />
+<% Permission.all.each do |permission| %> 
+                   <%if i==0%>
+						    <tr>
+					<%elsif (i>=5&&i%5==0)%>
+							</tr><tr>
+					<%else%>
+				   <%end%>
+							
+		  <td width=230>
+             <%= check_box_tag "role[permission_ids][]",permission.id ,@role.permissions.include?(permission)%>
+                  <%= permission.name %> 
+			 <%i=i+1%>
+		  </td>
+ <%end%>		
+</tr> 
+</tbody></table>
+</div>
+
+<div id="LBL_ACCOUNT_INFORMATION">
+<table width="100%" border="0" cellspacing="1" cellpadding="0" class="edit view">
+<tbody><tr><th align="left" colspan="8">
+<h4>该组用户：</h4>
+</th>
+</tr>
+<%i=0%>
+	<input type="checkbox" name="checkall" onclick="checkAll(1);" checked="checked"/>全选/反选<br />
+<% Work.alluser.each do |user| %> 
+                   <%if i==0%>
+						    <tr>
+					<%elsif (i>=5&&i%5==0)%>
+							</tr><tr>
+					<%else%>
+				   <%end%>
+							
+		  <td width=230>
+             <%= check_box_tag "role[user_ids][]",user.id,@role.users.include?(user)%>
+                  <%= user.email %> 
+			 <%i=i+1%>
+		  </td>
+ <%end%>		
+</tr> 
+</tbody></table>
+</div>
+<div class="buttons">
+  <p>
+    <p>
+    <%= f.submit '保存' %>
+    <button type="button" class="button" title="返回" onclick="document.location.href='/roles'">返回</button>
+  </p><% end %>
+  </p>
+</div>
+
+
+</div>

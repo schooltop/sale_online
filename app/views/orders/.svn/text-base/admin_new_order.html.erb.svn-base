@@ -1,0 +1,62 @@
+
+<%if current_user&&current_user.is_admin?%>
+<%=render :partial=>"/admins/kefuleft"%>
+<%else%>
+<%=render :partial=>"/admins/left"%>
+<%end%>
+
+
+ <div id="content">
+ <table style="width:100%"><tbody><tr><td width="100%">
+      <div class="moduleTitle">
+      <h2>工作人员新建订单入口</h2>
+      </div>
+      
+<%=render :partial=>"check_order"%>
+<!--下单选项列表-->		
+<%=javascript_include_tag 'school_menu'%>		
+<%= stylesheet_link_tag 'school_show' %>		
+<%= stylesheet_link_tag 'school_index' %>
+ <div class="TabTitle" style="width:1140px ">
+        <ul id="myTab0">
+          <li class="active" onclick="snTabs(this,0);"><%='SPA类型'%></li>
+          <!-- <li class="normal" onclick="snTabs(this,1);"><%='VIP办卡类型'%></li> -->
+          <!-- <li class="normal" onclick="snTabs(this,1);"><%='餐饮类型'%></li>
+          <li class="normal" onclick="snTabs(this,2);"><%='住房类型'%></li> -->
+        </ul>
+      </div>
+<div class="snTab" style="width:1153px ">
+      <!-- 标题开始 -->  
+      <!-- 内容开始 -->
+ <div class="TabContent">
+   
+  <div id="myTab0_Content0">
+    <%@state="spas"%>  
+ 	<%=render :partial=>"/order_styles/spas",:object=>@state%>    
+     <div class="clear">&nbsp;</div>
+  </div>
+       
+  <div id="myTab0_Content1" class="none1"> 
+  	<%@state="vips"%> 
+    <%#=render :partial=>"/order_styles/vips",:object=>@state%>     	
+     <div class="clear">&nbsp;</div>
+  </div>
+      
+  <div id="myTab0_Content2" class="none1">  	
+     <%="此项下单功能未开通"%>  
+    <div class="clear">&nbsp;</div>
+  </div>             
+</div>  
+</div><br/>
+        </td></tr></tbody></table>
+    </div>
+
+<script type="text/javascript">
+    function update_price(i){ 
+		var newid = document.getElementById("product_ids").value;
+		var vipid = document.getElementById("vip_id").value;
+		var newquantity = jQuery('#quantity'+i+'_').val();
+		jQuery.post("/products/add_comment",{id:newid,quantity:newquantity,num:i,vip_id:vipid},function(result){		
+		jQuery('#top_price'+i).html(result); });
+	}
+</script>

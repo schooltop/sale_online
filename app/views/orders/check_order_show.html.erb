@@ -1,0 +1,259 @@
+<%=render :partial=>"/admins/left"%>
+
+
+  <div id="content">
+  <table style="width:100%"><tbody><tr><td width="100%">
+  <div class="moduleTitle">
+<h2>新增跟单服务</h2>
+<span>&nbsp;
+<a href="" class="utilsLink" target="_blank">
+<img src="/images/crm/help.gif" alt="帮助"></a>
+<a href="/help" class="utilsLink" target="_blank">
+帮助
+</a></span></div>
+<%if @vip%>
+<div id="LBL_ACCOUNT_INFORMATION">
+<table width="100%" border="0" cellspacing="1" cellpadding="0" class="edit view">
+<tbody><tr><th align="left" colspan="8">
+<h4>VIP卡信息</h4>
+</th>
+</tr>
+     <tr>    
+		<td scope="row" nowrap="nowrap" width="8.3%">VIP卡号</td>
+		<td nowrap="nowrap" width="25%"><%=@vip.vip_num%></td>
+		<td scope="row" nowrap="nowrap" width="8.3%">VIP卡类型</td>
+		<td nowrap="nowrap" width="25%"><%=@vip.vip_style.name%></td>
+		<td scope="row" nowrap="nowrap" width="8.3%">有效期</td>
+		<td nowrap="nowrap" width="25%"><%=@user.fromtime.strftime("%Y-#m-#d") if @vip.fromtime%>-<%=@vip.totime.strftime("%Y-#m-#d") if @vip.totime%></td>
+	 </tr>
+	 <%if @vip.vip_style.vip_categry==1%>
+	 <tr>		
+		<td scope="row" nowrap="nowrap" width="8.3%">用户余额</td>
+		<td nowrap="nowrap" width="25%"><%=@vip.leave_money%></td>
+	 </tr>
+	<%elsif @vip.vip_style.vip_categry==2%>
+	 <tr>		
+		<td scope="row" nowrap="nowrap" width="8.3%">剩余优惠次数</td>
+		<td nowrap="nowrap" width="25%"></td>
+	 </tr>
+	<%end%>
+</tbody></table>
+</div>
+<%end%>
+
+
+<%form_for :order,@order,:url =>{:controller=>'check_admin_order'} do |f| %>
+  <%= f.error_messages %>
+  <%=hidden_field_tag :order_id, "",:value=>@order.id%>
+<div id="LBL_ACCOUNT_INFORMATION">
+<table width="100%" border="0" cellspacing="1" cellpadding="0" class="edit view">
+<tbody><tr><th align="left" colspan="8">
+<h4>订单信息</h4>
+</th>
+</tr>
+<tr>
+	
+<td valign="top"  width="12.5%" scope="row">
+   <%= f.label :订单号 %><br />
+</td>
+<td valign="top" width="37.5%">
+   <%=@order.order_num%>
+</td>
+<td valign="top"  width="12.5%" scope="row">
+   </td>
+<td valign="top" width="37.5%">
+   <%if @vip%> <%=f.hidden_field :pay_type,:value=>"VIP卡" %> <%else%><%=f.select :pay_type, Order::PAYMENT_TYPES,:prompt => "请选择一种支付方式"%><%end%>
+</td>
+
+</tr>
+
+    <%if @vip&&@vip.vip_style.vip_categry==1%>
+    
+    <%if @vip.leave_money-@order.total_price>0%>
+    <%vip_pay=@order.total_price%>
+    <%vip_leave=@vip.leave_money-@order.total_price%>
+    <%=hidden_field_tag :vip_replace_price, "",:value=>@order.total_price%>
+    <%else%>
+    <%vip_pay=@vip.leave_money%>
+    <%vip_leave=0%>
+    <%=hidden_field_tag :vip_replace_price, "",:value=>@vip.leave_money%>
+    <%end%>
+     <tr>		
+		<td scope="row" nowrap="nowrap" width="8.3%">您的当前总余额<font color="#FF5F80">¥<%=@vip.leave_money%></font>，本次将使用<font color="#FF5F80">¥<%=vip_pay%></font>，剩余<font color="#FF5F80">¥<%=vip_leave%></font></td>
+	 </tr>
+	<%elsif @vip&&@vip.vip_style.vip_categry==2%>
+	 <tr>		
+		<td scope="row" nowrap="nowrap" width="8.3%">
+			
+<% form_remote_tag  :url=>{:controller =>'send_vip_dh_message'},:update=>'passnum_all' do -%>
+									<%if @vip&&@vip.user&&@order.line_items.size>0%>	
+									<%=hidden_field_tag :user_id,"",:value=>@vip.user_id%>	
+									<%=hidden_field_tag :order_id,"",:value=>@order.id%>							
+									<div ><font color="#8ed8f8" size="5px">您有以下VIP特权可兑换消费</font></div>
+									<div style="margin: 20px;padding: 10px;">
+								    <table class="order-table seller-type-B bought-table">									
+									<%for @production in @order.line_items%>  									  
+									<%product=Product.find(@production.product.id)%>
+									<%if product.vip_service_id&&@vip.user.one_vip_service(product.vip_service_id)%>
+									<tr class="shop-hd col-name" style="background-color:#8ed8f8">
+				                    <td class="s-title" style="width:300px;"> 
+									<%=VipService.find(product.vip_service_id).description%>兑换<%=product.title%>: 可用数量 <%=@vip.user.one_vip_service(product.vip_service_id)%>
+									<input type="hidden" name="dh" value="1">
+									<%= text_field_tag "dh#{product.vip_service_id}[#{@production.id}]","",:placeholder=>t(:change_num)%><br/>
+									</td></tr>
+									<%end%>
+									<%end%><br/>																			
+									</div>		
+									</table><br/>	
+									<%end%>	
+<%end%>				
+		</td>
+	 </tr>
+	<%end%>
+</tbody></table>
+</div>
+<div id="LBL_ADDRESS_INFORMATION">
+<table width="100%" border="0" cellspacing="1" cellpadding="0" class="edit view">
+<tbody><tr><th align="left" colspan="8">
+<h4>订单项目</h4>
+</th>
+</tr>
+<tr>
+<td valign="top" width="100%">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tbody>
+	<tr>
+		
+<td valign="top"  width="15%" >
+   <b><%= f.label :商品名称 %></b>
+</td>
+<td valign="top" width="15%">
+    <b><%= f.label :商品类型%></b>
+</td>
+<td valign="top"  width="10%" >
+   <b><%= f.label :数量 %></b>
+</td>
+<td valign="top" width="10%">
+    <b><%= f.label :单价%></b>
+</td>
+<td valign="top"  width="10%" >
+   <b><%= f.label :小结 %></b>
+</td>
+<td valign="top" width="15%">
+   <b><%= f.label :开始时间%></b>
+</td>
+<td valign="top" width="15%">
+   <b><%= f.label :结束时间%></b>
+</td>
+<td valign="top"  width="15%">
+   <b><%= f.label :支付状态 %></b>
+</td>
+<td valign="top" width="15%">
+   <b><%= f.label :处理状态%></b>
+</td>
+</tr>	
+<%=hidden_field_tag :order_id,"",:value=>@order.id %>
+<%if @vip%><%=hidden_field_tag :vip_id,"",:value=>@vip.id %><%end%>
+<%@order.line_items.each do |line_item|%>
+	    	<tr height="20" class="oddListRowS1" style="background-color:#ffffff ">			
+			<td scope="row" valign="top" nowrap="nowrap"><span sugar="slot2b">
+				<%=line_item.product.title%>
+				</span></td>		
+			<td scope="row" valign="top" nowrap="nowrap"><span sugar="slot5b">
+				<%if line_item.product.service_style%>
+				 <%=line_item.product.service_style.name%>
+				<%elsif line_item.product.service&&line_item.product.service.service_style%>
+				 <%=line_item.product.service.service_style.name%>
+				<%end%>
+				</span></td>	
+			<td scope="row" valign="top" nowrap="nowrap"><span sugar="slot5b"><%=line_item.quantity%></span></td>											 			
+			<td scope="row" valign="top" nowrap="nowrap"><span sugar="slot5b"><%=line_item.price%></span></td>
+			<td scope="row" valign="top" nowrap="nowrap"><span sugar="slot5b"><%=line_item.total_price%></span></td>
+			<td scope="row" valign="top" nowrap="nowrap"><span sugar="slot5b"><%=line_item.fromtime.strftime("%Y-%m-%d %H:%M") if line_item.fromtime%></span></td>
+			<td scope="row" valign="top" nowrap="nowrap"><span sugar="slot5b"><%=line_item.totime.strftime("%Y-%m-%d %H:%M") if line_item.totime%></span></td>
+			<td scope="row" valign="top" nowrap="nowrap"><span sugar="slot5b"><%if line_item.order.has_pay%><%=line_item.order.has_pay.name%><%else%><font color="#ff0000">未支付</font><%end%></span></td>
+			<td scope="row" valign="top" nowrap="nowrap"><span sugar="slot5b"><%if line_item.situation%><%=line_item.situation%><%else%><font color="#ff0000">未处理</font><%end%></span></td>
+		</tr><%end%>	
+</tbody></table>
+<script type="text/javascript" language="javascript">
+    var fromKey = '';
+    var toKey = 'billing';
+    var checkbox = toKey + "_checkbox";
+    var obj = new TestCheckboxReady(checkbox); 
+</script>
+</td><td valign="top" width="50%">
+<script type="text/javascript" src="include/SugarFields/Fields/Address/SugarFieldAddress.js"></script>
+
+
+</td></tr>
+</tbody></table>
+</div>
+
+
+<div id="LBL_EMAIL_ADDRESSES">
+
+
+<div id="LBL_DESCRIPTION_INFORMATION">
+<table width="100%" border="0" cellspacing="1" cellpadding="0" class="edit view">
+<tbody><tr><th align="left" colspan="8">
+<h4>说明信息</h4>
+</th>
+</tr>
+<%if @vip&&@vip.vip_style.vip_categry==1%>
+	<%if @vip.leave_money-@order.total_price<0%>
+		<tr>
+			<td valign="top"  width="12.5%" scope="row">
+			    <%= f.label :应付金额 %><br />
+			</td>
+			<td valign="top" width="37.5%">
+				<font color="#FF5F80">¥<%=@order.total_price-@vip.leave_money%></font><%=f.hidden_field :total_price,:value=>@order.total_price-@vip.leave_money%>
+			</td>
+		</tr>
+	<%else%>
+		<tr>
+			<td valign="top"  width="12.5%" scope="row">
+			    <%= f.label :应付金额 %><br />
+			</td>
+			<td valign="top" width="37.5%">
+				<font color="#FF5F80">¥0</font>
+			</td>
+		</tr>
+	<%end%>
+<%else%>
+<tr>
+	<td valign="top"  width="12.5%" scope="row">
+	    <%= f.label :应付金额 %><br />
+	</td>
+	<td valign="top" width="37.5%">
+		<font color="#FF5F80">¥<%=@order.total_price%></font><%=f.hidden_field :total_price,:value=>@order.total_price%>
+	</td>
+</tr>
+<%end%>
+
+<tr>
+	<td valign="top"  width="12.5%" scope="row">
+	    <%= f.label :说明 %><br />
+	</td>
+	<td valign="top" width="37.5%">
+		<%= f.text_area :leave_message, :cols => 80, :rows => 6%>
+	</td>
+</tr>
+<tr>
+<td valign="top" id="_label" width="12.5%" scope="row">
+</td>
+<td valign="top" width="37.5%">
+</td><td valign="top" id="_label" width="12.5%" scope="row">
+</td>
+<td valign="top" width="37.5%">
+</td></tr>
+</tbody></table>
+</div>
+<div class="buttons">
+  <p>
+    <%= f.submit '保存' %>
+  </p><% end %>
+</div>
+</div>
+        </td></tr></tbody></table>
+    </div>
+

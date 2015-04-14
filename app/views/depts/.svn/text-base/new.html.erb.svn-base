@@ -1,0 +1,30 @@
+
+<% form_for(@dept) do |f| %>
+   <div id="LBL_ACCOUNT_INFORMATION">
+       <table width="100%" border="0" cellspacing="1" cellpadding="0" class="edit view">
+         <tbody><tr><th align="left" colspan="8">
+               <h4>部门信息</h4>
+             </th>
+           </tr>
+           <tr>
+             <td valign="top" id="name_label" width="12.5%" scope="row">
+               <%= f.label :部门名称 %><span class="required">*</span><br />
+             </td>
+             <td valign="top" width="37.5%">
+               <%= f.text_field :name%>
+             </td>
+             <td valign="top" id="name_label" width="12.5%" scope="row">
+               <%= f.label :所属公司名称 %><span class="required">*</span><br />
+             </td>
+             <td valign="top" id="name_label" width="12.5%" scope="row">
+              <%=f.select( :company_id, Company.all.collect {|p| [ p.name, p.id ] },:include_blank => true)%>
+             </td>
+           </tr>
+
+         </tbody>
+       </table>
+        <p>
+        <%= f.submit '保存' %>&nbsp;&nbsp;&nbsp;
+        <button type="button" class="button" title="返回列表" onclick="document.location.href='/depts'">返回列表</button>
+        </p>
+<% end %>

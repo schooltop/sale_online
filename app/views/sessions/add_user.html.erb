@@ -1,0 +1,55 @@
+
+<div id="user_signup">
+<h1 align=center>add new user</h1>
+<% @user.password = @user.password_confirmation = nil %>
+
+<%= error_messages_for :user %>
+<% form_for :users, :url =>{:controller=>'sessions',:action=>'addUser'}  do |f| -%>
+<table>
+<tr><td><%= f.label :login %></td>
+<td><%= f.text_field :login %></td>
+</tr>
+<tr>
+<td><%= f.label :email %></td>
+<td><%= f.text_field :email %></td>
+</tr>
+<tr>
+<td><%= f.label :password %></td>
+<td><%= f.password_field :password %></td>
+</tr>
+<tr>
+<td><%= f.label :password_confirmation, 'Confirm Password' %></td>
+<td><%= f.password_field :password_confirmation %></td>
+</tr>
+<%i=1%>
+<tr>
+	<td align='center' colspan=2><%=f.label :请选择用户角色 %></td>
+</tr>
+<tr>
+	<% @roles.each do |role| %> 
+	<%if i%3==0 %>
+	</tr><tr>
+	<td>		
+        <%= check_box_tag "users[role_ids][]",role.id,@user.roles.include?(role)%> 
+        <%= role.name %>        
+	</td>
+	<% else %>
+	<td>		
+        <%= check_box_tag "users[role_ids][]",role.id,@user.roles.include?(role)%> 
+        <%= role.name %>        
+	</td>
+	<%end%>
+	 <% i=i+1 %>
+	 <% end %> 
+</tr>
+
+<tr>
+<td colspan="2" align="center">
+	<input type="submit" class="btn" value="Sign Up" >
+	</td>
+</tr>
+
+
+</table>
+<% end -%>
+</div>

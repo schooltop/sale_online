@@ -1,0 +1,17 @@
+<div id="header">
+                <div id="logo">
+                   <a title="<%=t :website%>" href="<%=website_url%>" target="_blank"><img src="<%=website_url%>/images/logo.png" ></a>
+            </div>
+</div>
+<div id="main">
+        <div class="container list">
+			           亲爱的 <%= @user.login_name %>,<br/><br/>
+			<p>
+			           感谢您注册易吧！您的账户已激活！<br/>
+			           <br/>
+			           
+			</p>
+        </div>
+</div>
+<%=render :partial=>"/user_mailer/style"%>
+

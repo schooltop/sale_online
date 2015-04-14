@@ -1,0 +1,12 @@
+<h1>Editing has_pay</h1>
+
+<% form_for(@has_pay) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @has_pay %> |
+<%= link_to 'Back', has_pays_path %>

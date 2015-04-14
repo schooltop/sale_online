@@ -1,0 +1,186 @@
+     <div id="HideMenu" class="leftList">
+		<div id="hiddenShortcuts" class="leftList">
+		   <div id='unittree' height=100% class='clsTreeDiv'>
+
+                  <SCRIPT LANGUAGE="JavaScript">
+var tree = new WebFXTree('客服后台管理功能');
+                      <!--         流程管理                   -->
+                      var security = new WebFXTreeItem('流程管理')
+                      tree.add(security);
+
+                      node = security.add(new WebFXTreeItem('新建订单'));
+                      node.target = 'content';
+                      node.action="<%= url_for :controller=>'admin_new_order'%>";
+                      
+                      node = security.add(new WebFXTreeItem('待处理订单'));
+                      node.target = 'content'; 
+                      node.action="<%= url_for :controller=>'orders'%>";   
+                      
+                      node = security.add(new WebFXTreeItem('调度任务'));
+                      node.target = 'content'; 
+                      node.action="<%= url_for :controller=>'service_tasks'%>"; 
+                                            
+                     <!--   // node = security.add(new WebFXTreeItem('门店/服务商处理'));
+                      // node.target = 'content'; 
+                      // node.action="<%= url_for :controller=>'service_tasks'%>";  -->
+                      
+                      node = security.add(new WebFXTreeItem('处理流程查询'));
+                      node.target = 'content'; 
+                      node.action="<%= url_for :controller=>'orders', :action=>'oldorders'%>"; 
+                      
+                      <!--         安全管理                   -->
+                      var security = new WebFXTreeItem('安全管理')
+                      tree.add(security);
+
+                      node = security.add(new WebFXTreeItem('用户管理'));
+                      node.target = 'content';
+                      node.action="<%= url_for :controller=>'users'%>";
+ 
+                      
+                      node = security.add(new WebFXTreeItem('角色管理'));
+                      node.target = 'content'; 
+                      node.action="<%= url_for :controller=>'roles'%>";   
+                      
+                      node = security.add(new WebFXTreeItem('权限管理'));
+                      node.target = 'content'; 
+                      node.action="<%= url_for :controller=>'permissions'%>";   
+                      
+                      <!--          功能管理                  -->
+                      var workflow = new WebFXTreeItem('功能管理')
+                      tree.add(workflow);     
+
+                      node = workflow.add(new WebFXTreeItem('新闻管理'));
+                      node.target = 'content';
+                      node.action="<%= url_for :controller=>'news'%>";    
+
+                      node = workflow.add(new WebFXTreeItem('合作商户管理'));
+                      node.target = 'content';
+                      node.action="<%= url_for :controller=>'companies'%>"; 
+
+                      node = workflow.add(new WebFXTreeItem('门店房间管理'));
+                      node.target = 'content';
+                      node.action="<%= url_for :controller=>'spas'%>";        
+                       					  
+                      node = workflow.add(new WebFXTreeItem('门店菜单管理'));
+                      node.target = 'content';
+                      node.action="<%= url_for :controller=>'services'%>";  
+					  
+					  node = workflow.add(new WebFXTreeItem('门店仓库管理'));
+                      node.target = 'content';
+                      node.action="<%= url_for :controller=>'orders'%>";                             
+       
+        			  node = workflow.add(new WebFXTreeItem('邮件模版管理'));
+                      node.target = 'content';
+                      node.action="<%= url_for :controller=>'orders'%>";      
+         			        
+                      node = workflow.add(new WebFXTreeItem('发送邮件给用户'));
+                      node.target = 'content';
+                      node.action="<%= url_for :controller=>'orders'%>";  
+                      document.write(tree);
+
+                      tree.expandAll();
+                  </script>  
+
+                </div> 
+		</div>
+		</div>   
+        
+        
+        
+        
+        <div id="leftHandle">
+    <img id="HideHandle" name="HideHandle" src="/images/crm/hide.gif" alt="">
+</div>    <div id="leftColumn">
+                <div id="shortcuts" class="leftList">
+    <img id="shortcuts_img" alt="隐藏" align="right" src="/images/crm/hide_submenu_shortcuts.gif">
+    <img id="shortcuts_img_1" alt="显示" align="right" src="/images/crm/show_submenu_shortcuts.gif">
+   <div id='unittree' height=100% class='clsTreeDiv'>
+
+                  <SCRIPT LANGUAGE="JavaScript">
+                     var tree = new WebFXTree('客服后台管理功能');
+                      <!--         流程管理                   -->
+                      var security = new WebFXTreeItem('流程管理')
+                      tree.add(security);
+
+                      node = security.add(new WebFXTreeItem('新建订单'));
+                      node.target = 'content';
+                      node.action="<%= url_for :controller=>'admin_new_order'%>";
+                      
+                      node = security.add(new WebFXTreeItem('待处理订单'));
+                      node.target = 'content'; 
+                      node.action="<%= url_for :controller=>'orders'%>";   
+                      
+                      node = security.add(new WebFXTreeItem('调度任务'));
+                      node.target = 'content'; 
+                      node.action="<%= url_for :controller=>'service_tasks'%>"; 
+                                            
+                      // node = security.add(new WebFXTreeItem('门店/服务商处理'));
+                      // node.target = 'content'; 
+                      // node.action="<%= url_for :controller=>'service_tasks'%>"; 
+                      
+                      node = security.add(new WebFXTreeItem('处理流程查询'));
+                      node.target = 'content'; 
+                      node.action="<%= url_for :controller=>'orders', :action=>'oldorders'%>"; 
+                      
+                      <!--         安全管理                   -->
+                      var security = new WebFXTreeItem('安全管理')
+                      tree.add(security);
+
+                      node = security.add(new WebFXTreeItem('用户管理'));
+                      node.target = 'content';
+                      node.action="<%= url_for :controller=>'users'%>";
+ 
+                      
+                      node = security.add(new WebFXTreeItem('角色管理'));
+                      node.target = 'content'; 
+                      node.action="<%= url_for :controller=>'roles'%>";   
+                      
+                      node = security.add(new WebFXTreeItem('权限管理'));
+                      node.target = 'content'; 
+                      node.action="<%= url_for :controller=>'permissions'%>";   
+                      
+                      <!--          功能管理                  -->
+                      var workflow = new WebFXTreeItem('功能管理')
+                      tree.add(workflow);     
+
+                      node = workflow.add(new WebFXTreeItem('新闻管理'));
+                      node.target = 'content';
+                      node.action="<%= url_for :controller=>'news'%>";    
+
+                      node = workflow.add(new WebFXTreeItem('合作商户管理'));
+                      node.target = 'content';
+                      node.action="<%= url_for :controller=>'companies'%>"; 
+
+                      node = workflow.add(new WebFXTreeItem('门店房间管理'));
+                      node.target = 'content';
+                      node.action="<%= url_for :controller=>'spas'%>";        
+                       					  
+                      node = workflow.add(new WebFXTreeItem('门店菜单管理'));
+                      node.target = 'content';
+                      node.action="<%= url_for :controller=>'services'%>";  
+					  
+					  node = workflow.add(new WebFXTreeItem('门店仓库管理'));
+                      node.target = 'content';
+                      node.action="<%= url_for :controller=>'orders'%>";                             
+       
+        			  node = workflow.add(new WebFXTreeItem('邮件模版管理'));
+                      node.target = 'content';
+                      node.action="<%= url_for :controller=>'orders'%>";      
+         			        
+                      node = workflow.add(new WebFXTreeItem('发送邮件给用户'));
+                      node.target = 'content';
+                      node.action="<%= url_for :controller=>'orders'%>";  
+                      document.write(tree);
+
+                      tree.expandAll();
+                  </script>  
+
+                </div> 
+</div>
+        <div id="newRecord">
+<img id="newrecordicon" alt="隐藏" align="right" src="/images/crm/hide_submenu_shortcuts.gif">
+<img id="newrecordicon_1" alt="显示" align="right" src="/images/crm/show_submenu_shortcuts.gif">
+</div>
+    </div>
+    
+

@@ -1,0 +1,23 @@
+<h4>编辑权限</h4>
+
+<% form_for(@permission) do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :权限名称 %><br />
+    <%= f.text_field :name %>
+  </p>
+   <p>
+    <%= f.label :Action %><br />
+    <%= f.text_field :action %>
+  </p>
+  <p>
+    <%= f.label :所属系统 %><br/>
+    <%=f.select( :stu_state_id, StuState.find(:all).collect {|p| [ p.name_zh_CN, p.id ] },:include_blank => true)%>
+  </p>
+  <p>
+    <%= f.submit '更新' %>
+  </p>
+<% end %>
+
+<%= link_to '查看', @permission %> |
+<%= link_to '返回', permissions_path %>

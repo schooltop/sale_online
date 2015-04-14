@@ -1,0 +1,55 @@
+ <div class="login">
+ 	<div class="column main">
+<% form_for :users, :url => users_path do |f| -%>
+<h2 class="subdued">
+    <%=t :sign_a_new%>
+  </h2>
+  <div class="fieldgroup">
+
+    <div class="fields">
+      <dl class="form">
+	    <dt><label><%= t :login_name%></label></dt>
+	    <dd>
+	    	<%= f.text_field :login , :onblur=>"check_login_unique()",:id=>"users_login",:size=>"30"%>
+	    	<p class="note" id="login_note"><%= t :at_least_3%></p>
+	    	<p class="error" id="login_error"></p>
+	    </dd>
+	  </dl>
+
+      <dl class="form">
+	    <dt><label><%= t :email_address%></label></dt>
+	    <dd>
+	    	<%= f.text_field :email , :onblur=>"check_unique()",:id=>"users_email",:size=>"30"%>
+	    	<p class="note" id="email_note"><%= t :no_share_email%></p>
+	    	<p class="error" id="email_error"></p>
+	    </dd>
+	  </dl>
+
+      <dl class="form">
+	    <dt><label><%= t :password%></label></dt>
+	    <dd><%= f.password_field :password ,:onblur=>"check_pass()",:id=>"users_password",:size=>30%>
+	    	<p class="note" id="password_note"><%=t :at_least_six%></p>
+			<p class="error" id="password_error"></p>
+       </dd>
+      </dl>
+      
+	   <dl class="form">
+	    <dt><label><%= t :confirm_password%></label></dt>
+	    <dd>
+	    	<%= f.password_field :password_confirmation, :onblur=>"check_password()" ,:id=>"users_password_confirmation"%>
+	    	<p class="note" id="pass_con_note"><%= t :same_to_pass%></p>
+	    	<p class="error" id="pass_con_error"></p>
+	    </dd>
+	   </dl>
+    </div>
+  </div>
+  <div class="form-actions">
+  	<!-- <input type="submit" class="mark-button button" value="<%=t(:create)%>" onclick="final_check"> -->
+  	<button type="submit" class="button" style="border:0px ">
+	  	 		<img width="104" height="30" alt="" src="/images/discription/sigup.png" />
+	</button>
+  </div>
+ <%end%>
+
+  </div>  
+ </div>

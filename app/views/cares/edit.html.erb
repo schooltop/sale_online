@@ -1,0 +1,121 @@
+<%=render :partial=>"/admins/left"%>
+  <div id="content">
+        <table style="width:100%"><tbody><tr><td width="100%">
+      <div class="moduleTitle">
+<h2>财务</h2>
+<span>&nbsp;
+<a href="" class="utilsLink" target="_blank">
+<img src="/images/crm/help.gif" alt="帮助"></a>
+<a href="/help" class="utilsLink" target="_blank">
+帮助
+</a></span></div>
+
+<script>
+var keys = [ "Accounts|basic_search","Accounts|advanced_search"]; 
+tabPreviousKey = '';
+
+function selectTabCSS(key)
+{ for( var i=0; i<keys.length;i++)
+  {
+   var liclass = '';
+   var linkclass = '';
+
+ if ( key == keys[i])
+ {
+   var liclass = 'active';
+   var linkclass = 'current';
+ }
+  	document.getElementById('tab_li_'+keys[i]).className = liclass;
+
+  	document.getElementById('tab_link_'+keys[i]).className = linkclass;
+  }
+    SUGAR.searchForm.searchFormSelect(key, tabPreviousKey);
+    tabPreviousKey = key;
+}
+</script>
+
+<ul id="searchTabs" class="tablist">
+<li class="active" id="tab_li_Accounts|basic_search"><a class="current" id="tab_link_Accounts|basic_search" href="javascript:selectTabCSS('Accounts|basic_search');">新建</a></li>	
+</ul>
+<script></script>
+
+
+<font color="#ff0000"><%=flash[:notice]%></font>
+<% form_for(@care) do |f| %>
+  <%= f.error_messages %>
+
+<div id="LBL_ADDRESS_INFORMATION">
+<table width="100%" border="0" cellspacing="1" cellpadding="0" class="edit view">
+<tbody><tr><th align="left" colspan="4">
+<h4>绩效</h4>
+</th>
+</tr>
+	 <tr>	
+	 		<td scope="row" nowrap="nowrap" width="8.3%">员工：</td>
+			<td nowrap="nowrap" width="15%"><%=f.text_field :work_id%></td>	
+			<td scope="row" nowrap="nowrap" width="8.3%">月份时间：</td>
+			<td nowrap="nowrap" width="15%"><%=f.text_field :form_time%></td>
+			<td scope="row" nowrap="nowrap" width="8.3%">当月需上班天数：</td>
+			<td nowrap="nowrap" width="15%"><%=f.text_field :need_attendance_days%></td>		
+	 </tr>
+	 <tr>	
+	 		<td scope="row" nowrap="nowrap" width="8.3%">餐补：</td>
+			<!-- <td nowrap="nowrap" width="15%"> -->
+<!-- 				<%#= calendar_date_select_tag "care[for_time]",@care.for_time ? @care.for_time.strftime('%Y-%m-%d' ):Time.now.strftime('%Y-%m-%d' ) ,:time => true %>	 -->			</td>	
+			<td nowrap="nowrap" width="15%"><%=f.text_field :meal%></td>			
+			<td scope="row" nowrap="nowrap" width="8.3%">奖金：</td>
+			<td nowrap="nowrap" width="15%"><%=f.text_field :award%></td>
+			<td scope="row" nowrap="nowrap" width="8.3%">奖金详细描述：</td>
+			<td nowrap="nowrap" width="15%"><%=f.text_field :award_detail%></td>		
+	 </tr>
+	 <tr>	
+	 		<td scope="row" nowrap="nowrap" width="8.3%">补贴：</td>
+			<td nowrap="nowrap" width="15%"><%=f.text_field :allowance%></td>	
+			<td scope="row" nowrap="nowrap" width="8.3%">补贴描述：</td>
+			<td nowrap="nowrap" width="15%"><%=f.text_field :allowance_detail%></td>
+			<td scope="row" nowrap="nowrap" width="8.3%">扣钱：</td>
+			<td nowrap="nowrap" width="15%"><%=f.text_field :lessmoney%></td>		
+	 </tr>
+	  <tr>	
+	 		<td scope="row" nowrap="nowrap" width="8.3%">扣钱详细描述：</td>
+			<td nowrap="nowrap" width="15%"><%=f.text_field :less_detail%></td>	
+			<td scope="row" nowrap="nowrap" width="8.3%">扣税：</td>
+			<td nowrap="nowrap" width="15%"><%=f.text_field :tax%></td>
+			<td scope="row" nowrap="nowrap" width="8.3%">备注：</td>
+			<td nowrap="nowrap" width="15%"><%=f.text_field :description%></td>		
+	 </tr>
+	 <tr>	
+	 		<td scope="row" nowrap="nowrap" width="8.3%">本月工资系数：</td>
+			<td nowrap="nowrap" width="15%"><%=f.text_field :work_salary_id%></td>	
+			<td scope="row" nowrap="nowrap" width="8.3%">考勤开始时间：</td>
+			<td nowrap="nowrap" width="15%"><%=f.text_field :work_start_time%></td>
+			<td scope="row" nowrap="nowrap" width="8.3%">勤考结束时间：</td>
+			<td nowrap="nowrap" width="15%"><%=f.text_field :work_end_time%></td>			
+	 </tr>
+	 <tr>	
+	 		<td scope="row" nowrap="nowrap" width="8.3%">记录人员：</td>
+			<td nowrap="nowrap" width="15%"><%=f.text_field :user_id%></td>
+			<td scope="row" nowrap="nowrap" width="8.3%">创建时间：</td>
+			<td nowrap="nowrap" width="15%"><%=f.text_field :created_at%></td>
+					
+	 </tr>
+<script type="text/javascript" language="javascript">
+    var fromKey = '';
+    var toKey = 'billing';
+    var checkbox = toKey + "_checkbox";
+    var obj = new TestCheckboxReady(checkbox); 
+</script>
+</tbody></table>
+</div>
+<div id="LBL_EMAIL_ADDRESSES">
+
+
+
+<div class="buttons">
+  <p>
+     <%= f.submit '提交' %>
+  </p><% end %>
+</div>
+
+        </td></tr></tbody></table>
+    </div>

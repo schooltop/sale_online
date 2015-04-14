@@ -1,0 +1,18 @@
+<h1>Listing dostyles</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% @dostyles.each do |dostyle| %>
+  <tr>
+    <td><%= link_to 'Show', dostyle %></td>
+    <td><%= link_to 'Edit', edit_dostyle_path(dostyle) %></td>
+    <td><%= link_to 'Destroy', dostyle, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New dostyle', new_dostyle_path %>

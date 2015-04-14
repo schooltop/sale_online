@@ -1,0 +1,68 @@
+<%=stylesheet_link_tag "top_bar"%>
+<div id="site-nav" role="navigation"><div id="site-nav-bd">
+    <p class="login-info" style="margin: 0px 10px;"><a href="/">欢迎您来到<%=t :t2max%>!</a></p>
+    <p class="login-info">
+        		<%if current_user%>
+        		<span class="vip-areas user" id="J_Vip_Areas">
+	        	<span class="vip-head">
+	        			<a class="user-nick" href="/centers" target="_top"><%=current_user.login%></a>
+				        	<span class="vip-content" id="J_VipContent">
+				        		<a href="/centers" class="avatar">
+				        			<img  width="80" height="80" src="<%=current_user.head_picture%>"></a>
+					        			<span class="vip-operate"><a href="/centers" ><%=current_user.name%></a><!-- <a href="/setting_account" target="_top"><%=t :account_manage%></a> -->
+					        				<a target="_top" href="/logout" id="J_Logout"><%=t :logout%></a>
+				        				</span>
+				        				<span class="vip-my-level">
+				        					<a class="vip-my-level2" target="_top" href="/"
+					        					 rel="nofollow">
+					        				</a>
+					        			</span>
+				        			<a class="vip-my-power" href="/centers" rel="nofollow" target="_top"><%=t :my_t2max%></a>
+				        		<span class="vip-medal" id="J_VipMedal">
+				        			<!-- <span class="vip-medalgroup">
+				        				<span class="vip-medal-content" id="J_VipMedalContent" pageid="1">
+				        					<a  target="_self" href="/">
+				        						<img src="/">
+				        					</a>
+				        				</span>
+				        			</span> -->
+				        		</span>
+				        	</span>
+				       </span>
+				      </span>
+        			<a href="/logout"><%=t :logout%></a>
+        		<%else%>
+        			<a href="/login" target="_top"><%=t :login%></a>
+        			<a href="/signup" target="_top"><%=t :signup%></a>
+        		<%end%>
+    </p>
+    <ul class="quick-menu">
+    	<li class="home"><a href="/"><%= t :home%></a></li>
+        <li class="home"><a href="/vipnotice"><%= t :t2max_tel%></a></li>
+        <li class="home"><a href="/stores"><b><%= t :my_store%></b></a></li>
+        <li><a class="shopping_text" href="/discription" title="" id="destination"><%= t :about_t2max%></a></li>
+        <li><a class="shopping_text" href="#" title="" id="destination">English</a></li>
+
+	<!-- <li class="mytaobao menu-item">
+	  <div class="menu">
+	    <a class="menu-hd" href="/centers" target="_top"><%=t :buyer_center%><b></b></a>
+	    <div class="menu-bd" style="height: 94px;width:100px"  id="menu-4">
+	      <div class="menu-bd-panel" id="myTaobaoPanel">
+	        <div>
+	          <a href="/" target="_top" rel="nofollow">已买到的宝贝</a>
+	        </div>
+	      </div>
+	    </div> 
+	  </div>
+	</li>
+	
+	<li class="seller-center menu-item">
+	  <div class="menu">
+	    <a class="menu-hd" href="/manage_productions" target="_top" ><%=t :seller_center%><b></b></a>
+	  </div>
+	</li> -->
+
+</ul>
+
+
+</div></div>

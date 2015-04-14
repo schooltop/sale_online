@@ -1,0 +1,122 @@
+<%=render :partial=>"/admins/left"%>
+  <div id="content">
+        <table style="width:100%"><tbody><tr><td width="100%">
+      <div class="moduleTitle">
+<h2>新增VIP服务信息</h2>
+<span>&nbsp;
+<a href="" class="utilsLink" target="_blank">
+<img src="/images/crm/help.gif" alt="帮助"></a>
+<a href="/help" class="utilsLink" target="_blank">
+帮助
+</a></span></div>
+
+<script>
+var keys = [ "Accounts|basic_search","Accounts|advanced_search"]; 
+tabPreviousKey = '';
+
+function selectTabCSS(key)
+{ for( var i=0; i<keys.length;i++)
+  {
+   var liclass = '';
+   var linkclass = '';
+
+ if ( key == keys[i])
+ {
+   var liclass = 'active';
+   var linkclass = 'current';
+ }
+  	document.getElementById('tab_li_'+keys[i]).className = liclass;
+
+  	document.getElementById('tab_link_'+keys[i]).className = linkclass;
+  }
+    SUGAR.searchForm.searchFormSelect(key, tabPreviousKey);
+    tabPreviousKey = key;
+}
+</script>
+
+<ul id="searchTabs" class="tablist">
+<li class="active" id="tab_li_Accounts|basic_search"><a class="current" id="tab_link_Accounts|basic_search" href="javascript:selectTabCSS('Accounts|basic_search');">查找</a></li>	
+</ul>
+<script></script>
+
+
+<font color="#ff0000"><%=flash[:notice]%></font>
+<% form_for(@vip_service) do |f| %>
+  <%= f.error_messages %>
+
+<div id="LBL_ADDRESS_INFORMATION">
+<table width="100%" border="0" cellspacing="1" cellpadding="0" class="edit view">
+<tbody><tr><th align="left" colspan="4">
+<h4>VIP服务信息</h4>
+</th>
+</tr>
+ 
+ <tr>	
+ 		<td scope="row" nowrap="nowrap" width="8.3%">服务类型</td>
+		<td nowrap="nowrap" width="25%">
+			<%=f.select( :service_style_id,ServiceStyle.all.collect {|p| [ p.name, p.id ] },:include_blank => true)%>
+			
+		</td>	
+		<td scope="row" nowrap="nowrap" width="8.3%">VIP价格</td>
+		
+		  <td nowrap="nowrap" width="25%"><%=f.text_field :price,:size=>30%></td>
+		
+
+		
+ </tr>
+
+ <tr>	
+ 			
+		<td scope="row" nowrap="nowrap" width="8.3%">提供服务</td>
+		<td nowrap="nowrap" width="25%">
+		             <%=f.radio_button(:provider_id,"1",{})%>是
+			         <%=f.radio_button(:provider_id,"",{})%>否
+		</td>	
+
+		
+ </tr>
+<script type="text/javascript" language="javascript">
+    var fromKey = '';
+    var toKey = 'billing';
+    var checkbox = toKey + "_checkbox";
+    var obj = new TestCheckboxReady(checkbox); 
+</script>
+</tbody></table>
+</div>
+<div id="LBL_EMAIL_ADDRESSES">
+
+
+<div id="LBL_DESCRIPTION_INFORMATION">
+<table width="100%" border="0" cellspacing="1" cellpadding="0" class="edit view">
+<tbody><tr><th align="left" colspan="4">
+<h4>说明信息</h4>
+</th>
+</tr><tr>
+<td valign="top"  width="12.5%" scope="row">
+   <%= f.label :说明 %><br />
+</td> 
+<td valign="top" width="37.5%">
+	<%= f.text_area :description, :cols => 80, :rows => 6%>
+
+</td>
+
+</tr>
+<tr>
+<td valign="top" id="_label" width="12.5%" scope="row">
+</td>
+<td valign="top" width="37.5%">
+</td><td valign="top" id="_label" width="12.5%" scope="row">
+</td>
+<td valign="top" width="37.5%">
+</td></tr>
+</tbody></table>
+</div>
+<div class="buttons">
+  <p>
+    <%= f.submit '保存' %>
+  </p><% end %>
+</div>
+
+        </td></tr></tbody></table>
+    </div>
+

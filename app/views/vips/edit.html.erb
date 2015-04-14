@@ -1,0 +1,12 @@
+<h1>Editing vip</h1>
+
+<% form_for(@vip) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @vip %> |
+<%= link_to 'Back', vips_path %>

@@ -1,0 +1,12 @@
+<h1>Editing rent_cart</h1>
+
+<% form_for(@rent_cart) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @rent_cart %> |
+<%= link_to 'Back', rent_carts_path %>

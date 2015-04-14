@@ -1,0 +1,89 @@
+
+<%=render :partial=>"/admins/left"%>
+<div id="content">
+     <table style="width:100%"><tbody><tr><td>
+       <div class="moduleTitle">
+         <h2>绩效</h2>
+            <span><a href="" class="utilsLink"><img src="/images/crm/print.gif" alt="打印"></a>
+                  <a href="" class="utilsLink">打印</a>&nbsp;
+                  <a href="" class="utilsLink" target="_blank">
+                  <img src="/images/crm/help.gif" alt="帮助"></a>
+                  <a href="/help" class="utilsLink" target="_blank">帮助</a>
+            </span>
+       </div>
+<table cellpadding="1" cellspacing="0" border="0" width="100%">
+<tbody>
+   <tr>
+     <td class="buttons" align="left" nowrap="">
+     <button type="button" class="button" title="编辑" onclick="document.location.href='/checkins/<%=@checkin.id%>/edit'">编辑</button>
+     &nbsp;
+     <button type="button" class="button" title="返回列表" onclick="document.location.href='/checkins'">返回列表</button>
+     </td>
+  </tr>
+</tbody>
+</table>
+    <div id="DEFAULT" class="detail view">
+       <table id="detailpanel_1" cellspacing="0">
+          <tbody>
+            <tr class="pagination">
+                 <td colspan="20" style="padding: 0px;">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tbody>
+                      <tr><td nowrap="" align="right"></td></tr>
+                    </tbody>
+                  </table>
+                 </td>
+            </tr>
+            <tr>
+                <td width="12.5%" scope="row">公司：</td>
+                <td width="20.5%"><span id="name"><%=@checkin.company_id%></span></td>
+                <td width="12.5%" scope="row">部门：</td>
+                <td width="20.5%"><%=@checkin.dept_id%> </td>
+                <td width="12.5%" scope="row">员工：</td>
+                <td width="20.5%"><%=@checkin.work_id%></td>	
+            </tr>
+            <tr>
+                <td width="12.5%" scope="row">事件：</td>
+                <td width="20.5%"><span id="name"><%=@checkin.event_id%></span></td>
+                <td width="12.5%" scope="row">记录员：</td>
+                <td width="20.5%"><%=@checkin.user_id%> </td>
+                <td width="12.5%" scope="row">迟到：</td>
+                <td width="20.5%"><%=@checkin.late%></td>	
+            </tr>
+            <tr>
+                <td width="12.5%" scope="row">早退：</td>
+                <td width="20.5%"><span id="name"><%=@checkin.leaver%></span></td>
+                <td width="12.5%" scope="row">调休：</td>
+                <td width="20.5%"><%=@checkin.truant%> </td>
+                <td width="12.5%" scope="row">迟到时间：</td>
+                <td width="20.5%"><%=@checkin.latetime%></td>	
+            </tr>
+            <tr>
+                <td width="12.5%" scope="row">早退时间：</td>
+                <td width="20.5%"><span id="name"><%=@checkin.leavertime%></span></td>
+                <td width="12.5%" scope="row">加班：</td>
+                <td width="20.5%"><%=@checkin.kuaban%> </td>
+                <td width="12.5%" scope="row">加班记录：</td>
+                <td width="20.5%"><%=@checkin.kuabanrecord%></td>	
+            </tr>
+            <tr>
+               
+                <td width="12.5%" scope="row">调休记录：</td>
+                <td width="20.5%"><%=@checkin.truantrecord%></td>	
+            </tr>
+
+<script type="text/javascript" language="javascript">
+    var fromKey = '';
+    var toKey = 'billing';
+    var checkbox = toKey + "_checkbox";
+    var obj = new TestCheckboxReady(checkbox); 
+</script>
+</tbody></table>
+</div>
+
+
+
+
+
+  
+</div>

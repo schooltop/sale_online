@@ -1,0 +1,7 @@
+
+   <%for child in @parent.childmenus%>
+      <img src='/stylesheets/themes/ultrapower/images2/menu_t_current.png'  border='0' align='absmiddle' style='margin-right:8px;margin-left:5px'/>
+      <%= check_box_tag "are[myare_ids][]",child.id ,FreedReport::Tabmenu.parent_menus.collect{|sel|sel.id}.include?(child.id)%>
+      <%= child.name %> </br>
+      <%if child.childmenus%><%@parent=child%><div id="<%=child.id%>"><%=render :partial=>"tree_tag",:object=>@parent%></div><%end%>
+   <%end%>

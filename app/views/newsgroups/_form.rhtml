@@ -1,0 +1,16 @@
+<% form_for @newsgroup ,:html => { :multipart => true,:id=>"address_form" }  do |f| %>
+		<dl class="">
+	  				<dt><%=t :title%>:</dt>
+	  				<dd class="col2">
+	  					<%= text_field 'newsgroup', 'name',:class=>"itext itext-long",:maxlength=>"50"  %>
+	  				</dd>
+	  			</dl>
+					<dt>&nbsp;</dt>
+					<dd>
+						<%= f.submit t(:save),:class=>"btn-confirm" %>
+					</dd>
+					<dd>
+						<%= link_to_function t(:cancel),"jQuery('#address_form').remove();",:class=>"btn-confirm" %>
+					</dd>
+<% end %>
+

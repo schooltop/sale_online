@@ -1,0 +1,106 @@
+
+
+<%=render :partial=>"/admins/left"%>
+
+<div id="content">
+
+        <table style="width:100%"><tbody><tr><td>
+        	<div class="moduleTitle">
+<h2>信息列表:</h2>
+</div>
+
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0" class="formHeader h3Row">
+<tbody><tr>
+<td nowrap=""><h3><span>信息列表</span></h3></td><td width="100%"><img height="1" width="1" src="/images/crm/blank.gif" alt=""></td></tr>
+</tbody></table>
+
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;">
+	
+</div>
+<table cellpadding="0" cellspacing="0" width="100%" border="0" class="list view">
+	<tbody><tr class="pagination">
+		<td colspan="8">
+			<table border="0" cellpadding="0" cellspacing="0" width="100%" class="paginationTable">
+				<tbody><tr>
+			<td nowrap="nowrap" width="1%" align="right" class="paginationChangeButtons">
+				<%if @news.size>1%>
+					<%= will_paginate @news ,:prev_label => '上一页', :next_label => '下一页'%>
+				<%end%></td>
+				</tr>
+			</tbody></table>
+		</td>
+	</tr><tr height="20">
+		
+				<th scope="col" width="25%" nowrap="nowrap">
+					<div style="white-space: nowrap;" width="100%" align="left">
+               		
+                                                       编号&nbsp;&nbsp;
+					<img border="0" src="/images/crm/arrow_down.gif" width="8" height="10" align="absmiddle" alt="排序">
+					</div>
+			   </th>
+			
+				
+				<th scope="col" width="25%" nowrap="nowrap">
+					<div style="white-space: nowrap;" width="100%" align="left">
+               		
+                                                       标题&nbsp;&nbsp;
+					<img border="0" src="/images/crm/arrow_down.gif" width="8" height="10" align="absmiddle" alt="排序">
+					</div>
+			   </th>
+			
+				<th scope="col" width="20%" nowrap="nowrap">
+				<div style="white-space: nowrap;" width="100%" align="left">
+                      
+                                                                类型&nbsp;&nbsp;
+					<img border="0" src="/images/crm/arrow.gif" width="8" height="10" align="absmiddle" alt="排序">
+				</div>
+			</th>
+			
+				<th scope="col" width="20%" nowrap="nowrap">
+				<div style="white-space: nowrap;" width="100%" align="left">
+                 
+                                                                发布时间&nbsp;&nbsp;
+				<img border="0" src="/images/crm/arrow.gif" width="8" height="10" align="absmiddle" alt="排序">
+				</div>
+			</th>
+			<th scope="col" nowrap="nowrap" width="1%">操作&nbsp;</th>
+			</tr>
+		 <%@news.each do |mynew|%>
+		 
+		    <tr height="20" class="oddListRowS1">
+			 			<td scope="row" align="left" valign="top">
+							<%= link_to mynew.id,:action=>"show",:id=>mynew.id -%></td>
+						<td scope="row" align="left" valign="top">
+							<%= link_to mynew.name,:action=>"show",:id=>mynew.id -%></td>
+						<td scope="row" align="left" valign="top">
+							<%=mynew.newsgroup.name%></td>
+						<td scope="row" align="left" valign="top">
+							<%if mynew.publish_time%><%=mynew.publish_time.strftime('%Y-%m-%d' )%><%end%></td>
+						<td width="1%" class="oddListRowS1" bgcolor="" nowrap="">
+						  <%= link_to image_tag("/images/crm/edit_inline.gif"),:action=>"edit",:id=>mynew.id -%> <%= link_to "修改",:action=>"edit",:id=>mynew.id -%>
+						  <%= link_to image_tag("/images/crm/delete_inline.gif"), mynew, :confirm => '您确认删除该活动吗?',:method => :delete -%><%= link_to "删除", mynew, :confirm => '您确认删除该活动吗?',:method => :delete -%>
+						</td>
+	    	</tr>
+		<%end%> 	
+		
+	  </tbody></table>
+	</td>
+	</tr></tbody></table>
+<script>
+	
+function lvg_nav(m,id,act,offset,t){if(t.href.search(/#/) < 0){return;}else{if(act=='pte'){act='ProjectTemplatesEditView';}else if(act=='d'){ act='DetailView';}else{ act='EditView';}url = 'index.php?module='+m+'&offset=' + offset + '&stamp=1317013853036747600&return_module='+m+'&action='+act+'&record='+id;t.href=url;}}
+function lvg_dtails(id){return SUGAR.util.getAdditionalDetails( 'Accounts',id, 'adspan_'+id);}
+</script>
+
+<!-- crmprint -->
+						<script>		if(window.addEventListener){
+							window.addEventListener("load", checkAlerts, false);
+						}else{
+							window.attachEvent("onload", checkAlerts);
+						}
+						</script><!--end body panes-->
+
+
+		</div>	

@@ -1,0 +1,12 @@
+        <%if flash[:notice]%>
+        <div class="welcome-info">
+        	<%=flash[:notice]%>
+		</div>
+		<%end%>
+        <div class="welcome-info">
+        	
+			<p><strong><%=t :welcome%>，<%=current_user.login rescue "notice"%>：</strong><%=t(:enter_all)%></p>
+		</div>
+  		<div class="welcome-info">
+			<%=render :partial=>"user_profiles/form"%> 
+  		</div>

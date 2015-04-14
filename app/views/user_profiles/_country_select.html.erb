@@ -1,0 +1,9 @@
+<select id="user_profile_nationality" name="user_profile[nationality]">
+	<%@countries =  Country.find(:all,:order=>'convert(chinese_name using gbk)')%>
+	<%@countries.each do |country|%>
+		<option value="<%=country.english_name%>" <%="selected='true'" if @user_profile.country_id == country.id || country.english_name == "China"%>>
+			<%=country.chinese_name%>
+		</option>
+    <%end%>
+   
+</select>

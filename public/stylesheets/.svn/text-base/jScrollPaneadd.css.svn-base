@@ -1,0 +1,67 @@
+.jScrollPaneContainer {
+	position: relative;
+	overflow: hidden;
+	z-index: 1;
+	height: 280px;
+}
+
+.jScrollPaneTrack {
+	position: absolute;
+	cursor: pointer;
+	right: 0;
+	top: 0;
+	height: 100%;
+	background:url("/images/oldimages/bgSliding.gif") repeat-y scroll 0 0 transparent;
+}
+.jScrollPaneDrag {
+	position: absolute;
+	background:url("/images/oldimages/scroll.gif") repeat-y scroll 0 0 transparent;
+	cursor: pointer;
+	overflow: hidden;
+}
+.jScrollPaneDragTop {
+	position: absolute;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+}
+.jScrollPaneDragBottom {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	overflow: hidden;
+}
+a.jScrollArrowUp {
+	display: block;
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	right: 0;
+	text-indent: -2000px;
+	overflow: hidden;
+	/*background-color: #666;*/
+	height: 9px;
+}
+a.jScrollArrowUp:hover {
+	/*background-color: #f60;*/
+}
+
+a.jScrollArrowDown {
+	display: block;
+	position: absolute;
+	z-index: 1;
+	bottom: 0;
+	right: 0;
+	text-indent: -2000px;
+	overflow: hidden;
+	/*background-color: #666;*/
+	height: 9px;
+}
+
+
+a.jScrollArrowUp {background:url("/images/oldimages/basic_arrow_up.gif") repeat-x scroll 0 0 ;margin:0;padding:0;}
+a.jScrollArrowDown {background:url("/images/oldimages/basic_arrow_down.gif") repeat-x scroll 0 0 transparent;margin:0;padding:0;}
+
+a.jScrollArrowDown:hover {background-position: 0 -15px;}
+a.jScrollArrowUp:hover {background-position: 0 -15px;}
+a.jScrollActiveArrowButton, a.jScrollActiveArrowButton:hover {background-position: 0 -30px;}

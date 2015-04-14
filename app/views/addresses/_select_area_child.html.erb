@@ -1,0 +1,6 @@
+
+							    <select id="area_id" name="address[area_id]">
+						    		<%@areas.each do |p|%>
+						    			<option value="<%=p.id%>" <%="selected='true'" if @address && @address.area_id == p.id%> ><%=p.name%></option>
+						    		<%end%>
+							    </select>

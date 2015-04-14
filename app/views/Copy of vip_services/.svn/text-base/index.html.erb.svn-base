@@ -1,0 +1,18 @@
+<h1>Listing vip_services</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% @vip_services.each do |vip_service| %>
+  <tr>
+    <td><%= link_to 'Show', vip_service %></td>
+    <td><%= link_to 'Edit', edit_vip_service_path(vip_service) %></td>
+    <td><%= link_to 'Destroy', vip_service, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New vip_service', new_vip_service_path %>

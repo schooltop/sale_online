@@ -1,0 +1,120 @@
+<table width="100%" cellpadding="0" cellspacing="0" border="0" class="formHeader h3Row" >
+	<tbody><tr bgcolor="#78bbe6">
+		<td nowrap=""><h3>
+		职业发展>>职位查看
+		</h3></td><td width="100%">							
+		</td>													
+	</tr>
+</tbody></table>  
+
+ <table class="print" width="750"  frame="box"  border="0" align="center" cellpadding="0" cellspacing="0" >
+         <tr>
+             <td height="30" align="right" width="152px" class="text">公司名称：</td>
+             <td align="left" width="240px" class="text">
+             <%=@cad_position.title%>	
+             <span id="sp_ejob_title"></span>
+           </td>
+           <td height="30" align="right" width="152px" class="text">工作经验：</td>
+                  <td align="left" width="240px" class="text"><%=@cad_position.exparience%>
+                  	<%if @cad_position.exparience&&@cad_position.exparience!=""%>
+                  	<span class="text">年以上</span>
+                  	<%end%>
+             </td>
+             
+          </tr>
+          
+              <tr>
+                 <td height="30" align="right" width="152px" class="text">职位分类：</td>
+                 <td align="left" width="240px" class="text">
+                <%if @cad_position.nposition%><%=@cad_position.nposition.name%><%end%>                    
+                 <span id="sp_ejob_jobtitle" class="red2"></span>
+                  </td>
+                  <td height="30" align="right" width="152px" class="text">职位名称：</td>
+             <td align="left" width="240px" class="text">
+             <%=@cad_position.positionname %>	
+             <span id="sp_ejob_title"></span>
+             </td>
+                  <!-- <td height="30" align="right" width="152px" class="text">招聘人数：</td>
+                  <td align="left" width="240px" class="text"><%=@cad_position.positionnum %>	 人&nbsp;<span id="sp_ejob_num"></span>
+                  </td> -->
+                </tr>
+                                
+               <!--  <tr>
+                  <td height="30" align="right" width="152px" class="text">职位月薪范围：</td>
+                  <td align="left" width="240px" class="text"><%=@cad_position.wage %>
+                  <span class="text">-</span>
+                  <%=@cad_position.towage %> 
+                  </td>               
+                  <td height="30" align="right" width="152px" class="text">工作经验：</td>
+                  <td align="left" width="240px" class="text"><%=@cad_position.exparience%>
+                  	<span class="text">年以上</span></td>
+                </tr> -->
+                
+               <!--  <tr>
+                  <td width="18%" height="30" align="right" width="152px" class="text">性别要求：</td>
+                  <td width="32%" height="30" align="left" width="240px" class="text">      
+                    <%=@cad_position.sex%>  
+                  </td>
+                  <td width="15%" align="right" width="152px" class="text">年龄范围：</td>
+                  <td width="35%" align="left" width="240px" class="text">
+                    <%=@cad_position.age%>  
+                    <span class="text"> - </span>
+                    <%=@cad_position.toage%>  
+                  </td>
+                </tr> -->
+                
+                <tr>
+                  <td height="30" align="right" width="152px" class="text">学历要求：</td>
+                  <td height="30" align="left" width="240px" class="text">
+                    <%if @cad_position.educationbg%><%=@cad_position.educationbg.name%><%end%>              
+                  </td>
+                  <td align="right" width="152px" class="text">工作地点：</td>
+                  <td align="left" width="240px" class="text">
+                   <%if @cad_position.city%><%=@cad_position.city.name%><%end%>
+                    <span id="sp_ejob_dq"></span>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td height="30" align="right" width="152px" class="text">预计截止日期：</td>
+                  <td align="left" width="240px" class="text">
+                  	<%=@cad_position.limittime.strftime('%Y-%m-%d')%><br/>	
+                   </td>
+                  <td height="30" align="right" width="152px" class="text">网申：</td>
+                  <td align="left" width="240px" class="text">
+                  	<%=@cad_position.netsite%><br/>	
+                   </td>
+                </tr>
+                
+              <!--   <tr>
+                  <td height="30" align="right" class="text">专业需求：</td>
+                  <td colspan="3" align="left" class="text">
+                  	<%for major in @cad_position.majors%>
+                  	<%=major.name%>
+                  	<%end%>
+                  </td>
+                </tr> -->
+                
+                 <tr>
+                  <td height="30" align="right" width="152px" class="text">职位描述：</td>
+                  <td colspan="3" align="left" class="text">
+                  	<%=@cad_position.describe%>
+                  </td>
+                </tr>
+                              
+                 <tr>
+		   <td align="center"></td>
+		   <td align="center" colspan="3">		   	
+		  <font color="#ff0000" size="4"> <%= link_to '返回', :controller=>"cad_positions" ,:action=>"topt" %> &nbsp;|&nbsp; <%if @chect==1%>职位已应聘<%else%><%= link_to '应聘', :controller=>"one_employ" ,:cad_position_id=>@cad_position.id%><%end%></font> 
+		   </td>
+		  </tr>
+          </table>    
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,103 @@
+<!-- <div class="contentContainer">
+     <div class="collapsed"><div class="left"><span  /images/oldimages/filettoBox.png>T2max</span></div><div class="right"><a href="#" title="Expand">展开</a></div><div class="clear"></div></div>
+
+	 <div class="open">
+     <div class="floatLeft" style="background-color:#56cdff;width:287px;"><font color="#000000" style="margin-left:15px;font-size:18px "><b>VIP快捷通道贵宾接送机服务</b></font></div>
+	 <div class="floatRight awardsPanel"> </div>
+	 <div class="clear"></div>
+	 <div class="text scroll-pane" id="pane2" style="height:135px "><p>我们为您提供机场通行优先权，让您的商旅畅通无阻；
+</p><p>我们的豪华车队24小时在为您候命，随时准备以贵宾礼仪接送机服务；
+</p><p>资深英伦式管家为您安排行程并全程跟从
+</p><p>如需预定请致电：400 008 7272 
+</p></div>
+	 <div class="filettoSlider"><img src="/images/oldimages/filettoBox.png" tppabs="http://www.t2max.com/img/filettoBox.png" alt="" /></div>
+	 <div class="bottom left" id="leftLink">
+	 <ul><li /images/oldimages/filettoBox.png><a href="/品牌 T2max1会员章程.doc" target="_blank">下载宣传册</a></li></ul></div>
+	 <div class="bottom right" id="rightLink">
+	 <ul><li /images/oldimages/filettoBox.png>
+	 	
+	 	 <%session[:go_back]=request.request_uri%>
+	 	 <a title="ADD TO CART"  href="/stores/add_to_cart?id=3"><img width="150" height="25" alt="" src="/images/services/add_to_cart.png" /></a> 
+	 	
+	 	</li></ul></div>
+  <div class="clear">  
+  </div>  
+   </div> 
+  </div>
+  
+   <div style="position:absolute;right:200px; top:170px; width:auto;  height:auto;">
+ <img width="530" height="430" alt="" src="/images/services/vipfast.png" />
+  </div> -->
+  
+<div class="collapsed" style="width:927px;">
+  		<div class="left"><span><b>T2MAX机场服务专区</b></span></div>
+  		<div class="right"><a href="#" title="展开">展开</a></div>
+  		<div class="clear"></div>
+  	</div>
+  	<div class="open"  style="height:630px;">
+  		
+  	<div class="sx" style="margin-right: 250px"><!-- <h1 style="font-size: 22px;
+color: #56cdff;
+font-weight: normal;
+padding: 8px 0 8px 0;">T2MAX机场服务专区</h1> -->
+  	 <div class="floatLeft" style="background-color:#56cdff;width:382px;height:26px "><font color="#4e4e4e" style="margin-left:15px;font-size:18px;line-height:26px  "><b>VIP快捷通道贵宾接送机服务</b></font></div>
+	 <div class="floatRight awardsPanel"> </div>
+	 <div class="clear"></div>
+	 <div style="width: 377px">
+	 <div class="text scroll-pane" id="pane2" style="height:165px;"><p style="font-size:14px ">
+	我们为您提供机场通行优先权，让您的商旅畅通无阻；<br>
+我们的豪华车队24小时在为您候命，随时准备以贵宾礼仪接送机服务；<br>
+资深英伦式管家为您安排行程并全程跟从；<br>
+如需预定请致电：400 008 7272 
+	 	</p>	 	
+	 </div>
+	 </div>
+		 <% form_remote_tag  :url=>{:controller =>'stores',:action=>"add_to_cart",:id=>3},:update=>'stus_all' do -%>
+		 <div align="center" width="380px">价格：<font color="#ff0000" size="6px" weight="blod">￥118 </font>(60分钟)</div>
+	  	 <table border="1px" bordercolor="#56cdff" align="center" width="380px" >
+	  	 	<tr><td>
+	  	 		<table  align="center" cellpadding="0" cellspacing="0" style="margin-top:10px ">
+	  	 <tr align="left" height="40px"><td >购买数量：</td>
+	  	 	<td class="s-amount">
+	  	 		<a class="minus">-</a>
+				<input class="amount-text" value="" name="amount" onkeyup="update_price();" style="width:100px ">
+				<a class="plus">+</a>
+			</td>
+		 </tr>
+		 <tr align="left"><td>选择时间：</td>
+	  	 	<td >
+	  	 		<%=calendar_date_select_tag "tedbgtime",Time.now.strftime('%Y-%m-%d' ),:time => true ,:style=>"width:100px;opacity: 1;z-index: 0;"  %>
+			</td>
+		 </tr>	
+	  	 <tr height="50px"><td id="stus_all"></td><td > 
+	  	 	<button type="submit" class="button" style="border:0px ">
+	  	 		<img width="160" height="30" alt="" src="/images/services/add_to_cart.png" style="float:right "/>
+	  	 	</button>
+	  	 	</td></tr>	  	 
+	  	    
+	  	    </table>
+	  	    </td></tr>
+	  	 </table>
+	  	 
+	  	 <%end%>
+  	</div>
+  		
+  		<div class="text scroll-pane press" id="pane3" style="width:420px;z-index:-130">  			
+  			<div class="pressContainer" name="0" style="z-index:-130;">
+  				<img width="402" height="374" alt="" src="/images/product/vipfast.jpg" />			
+  			</div>	
+  		</div>
+  	
+  	</div>
+  	
+                             <%= javascript_include_tag 'defaults' %>
+							 <script>																																	
+												jQuery('.minus').click(function(){
+													if (jQuery('.amount-text').val() == "1"){}
+													else{
+													jQuery('.amount-text').val(Number(jQuery('.amount-text').val())-1);																							 
+													}
+												});jQuery('.plus').click(function(){
+													jQuery('.amount-text').val(Number(jQuery('.amount-text').val())+1);
+												});												
+							 </script> 

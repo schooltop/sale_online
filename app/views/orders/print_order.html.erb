@@ -1,0 +1,116 @@
+
+<div>
+
+          <div>
+            <h2>订单号: <%=@order.order_num%>&nbsp;&nbsp;T2MAX订单打印</h2>
+            <span><a href="" class="utilsLink">
+                <img src="/images/crm/print.gif" alt="打印"></a>
+              <a href="" class="utilsLink">
+                打印
+              </a>&nbsp;
+            </span>
+          </div>
+                <div>
+            <h5>-------------------------------------------------------------------------------------------------------------------</h5>
+            <table  style="width:50%">
+             <tr>
+              <th width="5%">项目</th>
+              <th width="5%">床位</th>
+              <th width="5%">原价</th>
+              <th width="5%">数量</th>
+              <th width="5%">折扣</th>
+              <th width="5%">小计</th>
+             </tr>
+             <%for line_item in @order.line_items%>
+             <tr>
+              <td width="5%" align="center"><%=line_item%></td>
+              <td width="5%" align="center"><%=line_item%></td>
+              <td width="5%" align="center"><%=line_item.price%></td>
+              <td width="5%" align="center"><%=line_item.quantity%></td>
+              <td width="5%" align="center"><%=line_item.price*line_item.quantity-line_item.total_price%></td>
+              <td width="5%" align="center"><%=line_item.total_price%></td>
+             </tr>
+             <%end%>
+            </table>
+            <h5>------------------------------------------------------------------------------------------------------------------</h5>
+          </div>
+          <div>
+            <table  style="width:50%">
+            	<tr>
+            	  <td style="width:5%" align="left">操作员:</td>
+                  <td style="width:5%" align="left"><%=current_user.name%></td>
+                  <td style="width:5%" align="left" >总计:</td>
+                  <td style="width:5%" align="left" ><%=@order.total_price%></td>
+                </tr>
+                
+                <!-- <tr>
+                  <td style="width:5%" align="left">卡:</td>
+                  <td style="width:5%" align="left">0</td>
+                  <td style="width:5%" align="left">信用卡:</td>
+                  <td style="width:5%" align="left">0</td>
+                </tr>
+                <tr>
+                  <td style="width:5%" align="left">代币券:</td>
+                  <td style="width:5%" align="left">0</td>
+                  <td style="width:5%" align="left">客户款:</td>
+                  <td style="width:5%" align="left">0</td>
+                </tr>
+                 <tr>
+                  <td style="width:5%" align="left">免单:</td>
+                  <td style="width:5%" align="left">0</td>
+                  <td style="width:5%" align="left">有效期:</td>
+                  <td style="width:5%" align="left">2015-01-01/td>
+                </tr> -->
+                
+                <%if @paytype=="VIP卡"&&@vip&&&&@vip.vip_style.vip_categry==1%>
+                <tr>
+                  <td style="width:5%" align="left">会员卡号:</td>
+                  <td style="width:5%" align="left"><span><%=@vip.vip_num%></span></td>
+                  <td style="width:5%" align="left">会员名称:</td>
+                  <td style="width:5%" align="left" ><span><%=@vip.user.name if @vip.user%></span></td>
+                </tr>
+                <tr> 
+                  <td style="width:5%" align="left">卡上余额:</td>
+                  <td style="width:5%" align="left"><%=@vip.leave_money%></td>
+                  <td style="width:5%" align="left">享受折扣:</td>
+                  <td style="width:5%" align="left"><%=@vip.vip_style.vipbargin%></td>  
+                </tr> 
+                <%end%>
+                <tr>
+                  <td style="width:5%" align="left">打印时间:</td>
+                  <td style="width:5%" align="left"><%=Time.now.strftime("%Y-%m-%d")%></td>
+                  <td style="width:5%" align="left">顾客签名:</td>
+                  <td style="width:5%" align="left">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                </tr>
+               
+            </table>
+            <table>
+              <tr>
+                <td style="width:50%" align="center">
+                <span></span>
+                </td>
+            </tr>
+                <tr>
+                <td style="width:50%" align="center">
+                <span></span>
+                </td>
+            </tr>
+            <tr>
+                <td style="width:100%" align="center">
+                <span>谢谢光临!</span>
+                </td>
+            </tr>
+             <tr>
+                <td style="width:100%" align="center">
+                <span>欢迎下次再来!</span>
+                </td>
+            </tr>
+             <tr>
+                <td style="width:100%" align="center">
+                <span>电话:400 008 7272</span>
+                </td>
+            </tr>
+            </table>
+          </div>
+          </div>
+

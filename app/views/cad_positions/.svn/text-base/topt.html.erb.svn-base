@@ -1,0 +1,29 @@
+<table width="100%" cellpadding="0" cellspacing="0" border="0" class="formHeader h3Row" >
+					<tbody><tr bgcolor="#78bbe6">
+					<td nowrap=""><h3>
+						职业发展>>最新职位
+						</h3></td><td width="100%">							
+				</td>													
+						</tr>
+					</tbody></table>   
+
+
+<table class="print" frame="box" cellpadding="0" cellspacing="0" width="100%" border="0" class="list view">
+  <tr>
+  	<th scope="col" width="200px" nowrap="nowrap"><b>企业名称</b></th>
+  	<th scope="col" width="200px" nowrap="nowrap"><b>招聘职位</b></th>
+    <th scope="col" width="150px" nowrap="nowrap"><b>操作</b></th>
+  </tr>
+
+<% @cad_positions.each do |cad_position| %>
+  <tr>
+  	<td width="200px"><%=cad_position.title%></td>
+  	<td width="200px"><%=cad_position.positionname%></td>
+    <td width="150px"><%= link_to '查看', :controller=>"user_position_show",:id=>cad_position.id %></td>
+  </tr>
+  <% end %>
+  <tr><td colspan="3"><div style=" float:right;"><%= will_paginate @cad_positions ,:prev_label => '上一页', :next_label => '下一页'%> </div></td></tr>
+</table>
+
+  
+ 

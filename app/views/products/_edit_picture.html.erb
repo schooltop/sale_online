@@ -1,0 +1,20 @@
+    
+     <%@product.pictures.each_with_index do |p,i|%>
+		  			<tr class="">
+		  				<td height="30" align="right" class="text"><strong>照片：</strong></td>
+		  				<td class="col2">
+		  					<img id= "<%=p.id%>_-small-img" src="<%=p.src%>" style="max-height: 100px;max-witdh: 100px;border: 2px solid #999;">
+		  					<%=link_to_remote t(:delete),:url=>{:action=>"delete_picture",:id=>p.id,:pid=>@product.id},
+		  					                    :update=>"edit_picture",:html=>{:class=>"mark-button"}%>
+		  				</td>
+		  			</tr>
+	 <%end%>
+	 <%((@product.pictures.size + 1)..picture_limit).each do |i|%>
+		  			<tr class="">
+		  				<td height="30" align="right" class="text"><strong>照片：</strong></td>
+		  				<td class="col2">
+		  					<%= file_field_tag "picture#{i}"%>
+		  				</td>
+		  			</tr>
+	<%end rescue nil%>
+	

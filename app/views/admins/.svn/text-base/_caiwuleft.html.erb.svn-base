@@ -1,0 +1,68 @@
+     <div id="HideMenu" class="leftList">
+		<div id="hiddenShortcuts" class="leftList">
+		    <h3><span>快捷方式</span></h3>
+		    <ul onmouseover="hiliteItem(this,'no');">
+		    <li>
+		        <a href="#"><img src="/images/crm/CreateCalls.gif" width="16" height="16" alt="员工工资" border="0" align="absmiddle">&nbsp;<span>员工工资</span></a>
+		    </li>
+		    <li>
+		        <a href="#"><img src="/images/crm/CreateCalls.gif" width="16" height="16" alt="仓库管理" border="0" align="absmiddle">&nbsp;<span>仓库管理</span></a>
+		    </li>
+		    <li>
+		        <a href="#"><img src="/images/crm/CreateCalls.gif" width="16" height="16" alt="成本管理" border="0" align="absmiddle">&nbsp;<span>成本管理</span></a>
+		    </li>
+		    <li>
+		        <a href="#"><img src="/images/crm/CreateAccounts.gif" width="16" height="16" alt="VIP分析" border="0" align="absmiddle">&nbsp;<span>VIP分析</span></a>
+		    </li>
+    	    <li>
+		        <a href="#"><img src="/images/crm/CreateEmails.gif" width="16" height="16" alt="客房收入分析" border="0" align="absmiddle">&nbsp;<span>客房收入分析</span></a>
+		    </li> 
+	        <li>
+		        <a href="#"><img src="/images/crm/CreateTasks.gif" width="16" height="16" alt="餐饮收入分析" border="0" align="absmiddle">&nbsp;<span>餐饮收入分析</span></a>
+		    </li> 
+		    <li>
+		        <a href="#"><img src="/images/crm/CreateOpportunities.gif" width="16" height="16" alt="SPA收入分析" border="0" align="absmiddle">&nbsp;<span>SPA收入分析</span></a>
+		    </li>   
+		        </ul>
+		</div>
+		</div>   
+     
+        <div id="leftHandle">
+    <img id="HideHandle" name="HideHandle" src="/images/crm/hide.gif" alt="">
+</div>    <div id="leftColumn">
+                <div id="shortcuts" class="leftList">
+    <img id="shortcuts_img" alt="隐藏" align="right" src="/images/crm/hide_submenu_shortcuts.gif">
+    <img id="shortcuts_img_1" alt="显示" align="right" src="/images/crm/show_submenu_shortcuts.gif">
+   <h3><span>快捷方式</span></h3>
+    <ul id="ul_shortcuts">
+		     <li>
+		        <a href="#"><img src="/images/crm/CreateCalls.gif" width="16" height="16" alt="员工工资" border="0" align="absmiddle">&nbsp;<span>员工工资</span></a>
+		    </li>
+		    <li>
+		        <a href="#"><img src="/images/crm/CreateCalls.gif" width="16" height="16" alt="仓库管理" border="0" align="absmiddle">&nbsp;<span>仓库管理</span></a>
+		    </li>
+		    <li>
+		        <a href="#"><img src="/images/crm/CreateCalls.gif" width="16" height="16" alt="成本管理" border="0" align="absmiddle">&nbsp;<span>成本管理</span></a>
+		    </li>
+		    <li>
+		        <a href="#"><img src="/images/crm/CreateAccounts.gif" width="16" height="16" alt="VIP分析" border="0" align="absmiddle">&nbsp;<span>VIP分析</span></a>
+		    </li>
+    	    <li>
+		        <a href="#"><img src="/images/crm/CreateEmails.gif" width="16" height="16" alt="客房收入分析" border="0" align="absmiddle">&nbsp;<span>客房收入分析</span></a>
+		    </li> 
+	        <li>
+		        <a href="#"><img src="/images/crm/CreateTasks.gif" width="16" height="16" alt="餐饮收入分析" border="0" align="absmiddle">&nbsp;<span>餐饮收入分析</span></a>
+		    </li> 
+		    <li>
+		        <a href="/finance_report"><img src="/images/crm/CreateOpportunities.gif" width="16" height="16" alt="SPA收入分析(工作人员)" border="0" align="absmiddle">&nbsp;<span>SPA收入分析(工作人员)</span></a>
+		    </li>            
+                    <li>
+		        <a href="/finance_report/customer"><img src="/images/crm/CreateOpportunities.gif" width="16" height="16" alt="SPA收入分析(客户)" border="0" align="absmiddle">&nbsp;<span>SPA收入分析(客户)</span></a>
+		    </li>
+        </ul>
+</div>
+        <div id="newRecord">
+<img id="newrecordicon" alt="隐藏" align="right" src="/images/crm/hide_submenu_shortcuts.gif">
+<img id="newrecordicon_1" alt="显示" align="right" src="/images/crm/show_submenu_shortcuts.gif">
+</div>
+    </div>

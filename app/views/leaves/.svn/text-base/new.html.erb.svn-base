@@ -1,0 +1,130 @@
+<%=render :partial=>"/admins/left"%>
+  <div id="content">
+        <table style="width:100%"><tbody><tr><td width="100%">
+      <div class="moduleTitle">
+<h2>员工请假申请</h2>
+<span>&nbsp;
+<a href="" class="utilsLink" target="_blank">
+<img src="/images/crm/help.gif" alt="帮助"></a>
+<a href="/help" class="utilsLink" target="_blank">
+帮助
+</a></span></div>
+
+<script>
+var keys = [ "Accounts|basic_search","Accounts|advanced_search"]; 
+tabPreviousKey = '';
+
+function selectTabCSS(key)
+{ for( var i=0; i<keys.length;i++)
+  {
+   var liclass = '';
+   var linkclass = '';
+
+ if ( key == keys[i])
+ {
+   var liclass = 'active';
+   var linkclass = 'current';
+ }
+  	document.getElementById('tab_li_'+keys[i]).className = liclass;
+
+  	document.getElementById('tab_link_'+keys[i]).className = linkclass;
+  }
+    SUGAR.searchForm.searchFormSelect(key, tabPreviousKey);
+    tabPreviousKey = key;
+}
+</script>
+
+<ul id="searchTabs" class="tablist">
+<li class="active" id="tab_li_Accounts|basic_search"><a class="current" id="tab_link_Accounts|basic_search" href="javascript:selectTabCSS('Accounts|basic_search');">新建</a></li>	
+</ul>
+<script></script>
+
+
+<font color="#ff0000"><%=flash[:notice]%></font>
+<% form_for(@leave) do |f| %>
+  <%= f.error_messages %>
+
+<div id="LBL_ADDRESS_INFORMATION">
+<table width="100%" border="0" cellspacing="1" cellpadding="0" class="edit view">
+<tbody><tr><th align="left" colspan="4">
+<h4>请假申请</h4>
+</th>
+</tr>
+ <tr>	
+ 		<td scope="row" nowrap="nowrap" width="8.3%">申请人：</td>
+		<td nowrap="nowrap" width="15%"><%=current_user.name%></td>	
+		<td scope="row" nowrap="nowrap" width="8.3%">员工号：</td>
+		<td nowrap="nowrap" width="15%"><%=current_user.work.worknum if current_user.work%></td>
+		
+ 	
+ 		<td scope="row" nowrap="nowrap" width="8.3%">请假类型</td>
+		<td nowrap="nowrap" width="15%">
+			<%=f.select( :leave_style_id,LeaveStyle.all.collect {|p| [ p.name, p.id ] },:include_blank => true)%>
+			
+		</td>	
+		<td scope="row" nowrap="nowrap" width="8.3%">开始时间</td>
+		<td nowrap="nowrap" width="15%">
+			<%=calendar_date_select_tag  "leave[start_time]",@leave.start_time ? @leave.start_time.strftime('%Y-%m-%d %H:%M:%S' ):Time.now.strftime('%Y-%m-%d %H:%M:%S' ) ,:time => true %>
+		</td>	
+		<td scope="row" nowrap="nowrap" width="8.3%">结束时间</td>
+		<td nowrap="nowrap" width="15%">
+			<%= calendar_date_select_includes%>
+            <% CalendarDateSelect.format = :finnish%>
+
+			<%=calendar_date_select_tag  "leave[end_time]",@leave.end_time ? @leave.end_time.strftime('%Y-%m-%d %H:%M:%S' ):Time.now.strftime('%Y-%m-%d %H:%M:%S' ) ,:time => true %>
+		 
+          
+		</td>	
+		<td  nowrap="nowrap" width="8.3%">天数</td>
+		<td    width="10">
+			<%= f.text_field :days %> 
+				
+		</td>	
+
+		
+ </tr>
+
+<script type="text/javascript" language="javascript">
+    var fromKey = '';
+    var toKey = 'billing';
+    var checkbox = toKey + "_checkbox";
+    var obj = new TestCheckboxReady(checkbox); 
+</script>
+</tbody></table>
+</div>
+<div id="LBL_EMAIL_ADDRESSES">
+
+
+<div id="LBL_DESCRIPTION_INFORMATION">
+<table width="100%" border="0" cellspacing="1" cellpadding="0" class="edit view">
+<tbody><tr><th align="left" colspan="4">
+<h4>说明信息</h4>
+</th>
+</tr><tr>
+<td valign="top"  width="12.5%" scope="row">
+   <%= f.label :请假原因 %><br />
+</td> 
+<td valign="top" width="37.5%">
+	<%= f.text_area :description, :cols => 80, :rows => 6%>
+
+</td>
+
+</tr>
+<tr>
+<td valign="top" id="_label" width="12.5%" scope="row">
+</td>
+<td valign="top" width="37.5%">
+</td><td valign="top" id="_label" width="12.5%" scope="row">
+</td>
+<td valign="top" width="37.5%">
+</td></tr>
+</tbody></table>
+</div>
+<div class="buttons">
+  <p>
+    <%= f.submit '保存草稿' %> &nbsp;  <%= f.submit '提交' %>
+  </p><% end %>
+</div>
+
+        </td></tr></tbody></table>
+    </div>

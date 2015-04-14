@@ -1,0 +1,85 @@
+<style>
+    div{
+		font-family: Microsoft Sans Serif;
+    }
+	#courses{
+		height: 320px;
+	}
+	#blogs{
+		min-height: 320px;
+	}
+	#course,#course_cate{
+		float: left;
+	}
+	#course{
+		clear:both;
+		width: 415px;
+		height: 248px;
+		margin-top: 10px;
+		background-image: url(<%=@url%>/images/mailer/course.png);
+   }
+   .course_title,#course_cate{
+   	padding:20px;
+   	color: #FA9718;;
+   	font-weight: bold;
+
+   }
+   #course_cate{
+   	margin: 20px 0 0 95px;
+   }
+   #course_cate p{
+   	line-height: 10px;
+	font-size: 20px;
+	color: black;
+   }
+   #blog_content p{
+   	line-height: 30px;
+	font-size: 14px;
+	color: #666
+   }
+   a{
+   	color: black;
+   }
+   #course_cate a{
+   	text-decoration: none;
+   }
+</style>
+<div style="margin: 0 auto;width:750px;">
+	<%=image_tag "#{@url}/images/mailer/top.png"%>
+	<%=image_tag "#{@url}/images/mailer/join.png"%>
+	<%=link_to (image_tag "#{@url}/images/mailer/join_btn.png",:style=>"margin: -20px 0 30px 240px;"),"#{@url}/penpals",:target=>"_blank"%>
+	<%=image_tag "#{@url}/images/mailer/line.png"%>
+	<div id="courses">
+		<div class="course_title">
+			<span style="float: left;">
+				Today's Free Lesson : 
+				<%=link_to "Hello 你好 >>","#{@url}/lessons/25",:target=>"_blank"%></span> 
+			<span style="float: right;margin-right: 70px;">Classification >></span> 
+		</div>
+		<div id="course">
+			<%=link_to (image_tag "#{@url}/images/mailer/play.png",:style=>"margin: 70px 150px;"),"#{@url}/lessons/25",:target=>"_blank"%>
+		</div>
+		<div id="course_cate">
+			<%Course.all.each do |c|%>
+				<p style="line-height: 10px;font-size: 20px;"><%=link_to c.name_english,"/lessons/list/#{c.id}",:target=>"_blank"%></p>
+			<%end%>
+		</div>
+	</div>
+	<%=image_tag "#{@url}/images/mailer/line.png"%>
+	<div id="blogs">
+		<div class="course_title">
+			<span style="float: left;">
+				Today's Blogs
+				<%=link_to " >>","#{@url}/blogs",:target=>"_blank"%></span> 
+		</div>
+		<div id="blog_content">
+			<%Blog.find(:all,:order=>"created_at DESC",:limit=>3).each do |blog|%>
+				<p style="line-height: 10px;font-size: 16px;font-weight: bold;">
+					<%=link_to blog.title,"#{@url}/blogs/#{blog.id}",:target=>"_blank"%></p>
+				<p>
+					<%=Sanitize.clean(blog.content)%></p>
+			<%end%>
+		</div>
+	</div>
+	<%=image_tag "#{@url}/images/mailer/bottom.png"%>
+</div>

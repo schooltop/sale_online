@@ -1,0 +1,188 @@
+ <script type="text/javascript">
+ function checkAll(n){
+ if (n == 0) {
+ 	var chkStatus = document.getElementsByName("gift[cad_contact_ids][]");
+ 	for (i = 0; i < chkStatus.length; i++) {
+ 		chkStatus[i].checked = event.srcElement.checked;
+ 	}
+ }
+	}
+</script>
+<%=render :partial=>"/admins/left"%>
+<div id="content">
+        <table style="width:100%"><tbody><tr><td>
+        	<div class="moduleTitle">
+<h2>VIP服务</h2>
+<span><a hre f="" class="utilsLink">
+<img src="/images/crm/print.gif" alt="打印"></a>
+<a href="" class="utilsLink">
+打印
+</a>&nbsp;
+<a href="" class="utilsLink" target="_blank">
+<img src="/images/crm/help.gif" alt="帮助"></a>
+<a href="/help" class="utilsLink" target="_blank">
+帮助
+</a></span></div>
+<table cellpadding="1" cellspacing="0" bservice="0" width="100%">
+<tbody><tr>
+<td class="buttons" align="left" nowrap="">
+<div>
+<div style="float:left;">
+<button type="button" class="button" title="编辑" onclick="document.location.href='/vip_details/<%=@vip_detail.id%>/edit'">编辑</button>
+<button type="button" class="button" title="返回列表" onclick="document.location.href='/vip_details'">返回列表</button>
+ </div>
+ </div>
+</td>
+<td class="buttons" align="left" nowrap=""></td>
+<td align="right" width="100%"></td>
+</tr>
+</tbody>
+</table>
+<div id="DEFAULT" class="detail view">
+<table id="detailpanel_1" cellspacing="0">
+<tbody><tr class="pagination">
+<td colspan="20" style="padding: 0px;">
+<table bservice="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr>
+<td nowrap="" align="right">
+		</td></tr></tbody></table></td></tr>
+
+<tr>
+<td width="12.5%" scope="row">
+会员级别:
+</td>
+<td width="37.5%">
+<span id="name"><%=@vip_detail.vip_style.name%></span>
+</td>
+<td width="12.5%" scope="row">
+会员服务:
+</td>
+<td width="37.5%">
+<span id="name"><%=@vip_detail.vip_service.description%></span>
+</td>
+</tr>
+<tr>
+<td width="12.5%" scope="row">
+服务次数:
+</td>
+<td width="37.5%">
+<span id="name"><%=@vip_detail.timenum%></span>
+</td>
+<td width="12.5%" scope="row">
+单位:
+</td>
+<td width="37.5%">
+<span id="name"><%=@vip_detail.point%></span>
+</td>
+</tr>
+<tr>
+
+<td width="12.5%" scope="row">
+服务信息描述:
+</td>
+<td width="37.5%"><%=@vip_detail.discription%>
+</td>
+</tr>
+</tbody></table>
+</div>
+<script>
+	SUGAR.subpanelUtils.currentSubpanelGroup = '所有';
+	
+	SUGAR.subpanelUtils.subpanelMoreTab = '协作';
+	
+	SUGAR.subpanelUtils.subpanelMaxSubtabs = '12';
+	
+	SUGAR.subpanelUtils.subpanelHtml = new Array();
+	
+	SUGAR.subpanelUtils.loadedGroups = Array();
+	SUGAR.subpanelUtils.loadedGroups.push('所有');
+	
+	SUGAR.subpanelUtils.subpanelSubTabs = new Array();
+	SUGAR.subpanelUtils.subpanelGroups = new Array();
+	SUGAR.subpanelUtils.subpanelGroups['所有'] = ['activities'];
+	SUGAR.subpanelUtils.subpanelGroups['销售'] = ['contacts', 'opportunities', 'leads', 'accounts'];
+	SUGAR.subpanelUtils.subpanelGroups['市场'] = ['contacts', 'leads', 'accounts'];
+	SUGAR.subpanelUtils.subpanelGroups['服务'] = ['contacts', 'cases'];
+	SUGAR.subpanelUtils.subpanelGroups['活动'] = ['activities', 'history'];
+	SUGAR.subpanelUtils.subpanelGroups['协作'] = ['activities', 'history', 'contacts', 'cases'];
+
+	SUGAR.subpanelUtils.subpanelTitles = {};
+
+	SUGAR.subpanelUtils.tabCookieName = get_module_name() + '_sp_tab';
+	
+	SUGAR.subpanelUtils.showLinks = false;
+	
+	SUGAR.subpanelUtils.requestUrl = '';
+</script>
+
+
+
+<ul id="groupTabs" class="subpanelTablist">
+	<li id="所有_sp_tab">
+		<a class="current" href="javascript:SUGAR.subpanelUtils.loadSubpanelGroup('所有');">所有</a>
+	</li>
+</ul>
+<table width="100%" cellspacing="0" cellpadding="0" bservice="0" class="subpanelTabForm">
+	<tbody><tr>
+		<td>
+
+<% form_remote_tag :url => { :controller => 'enterprise_gift_marks'}, 
+				   :update => 'all', 
+				   :html => { :name => 'myaccs' } do -%>	
+
+<ul class="noBullet" id="subpanel_list">
+	
+	<li class="noBullet" id="whole_subpanel_activities"><div id="subpanel_title_activities" onmouseover="this.style.cursor = 'move';"><table width="100%" cellpadding="0" cellspacing="0" bservice="0" class="formHeader h3Row">
+<tbody><tr>
+<td nowrap=""><h3><span><a name="activities"> </a><span id="show_link_activities" style="display: none"><a href="#" class="utilsLink" onclick="current_child_field = 'activities';showSubPanel('activities',null,null,'Accounts');document.getElementById('show_link_activities').style.display='none';document.getElementById('hide_link_activities').style.display='';return false;"><img src="/images/crm/advanced_search.gif" width="8" height="8" alt="显示" bservice="0 align=" absmiddle""=""></a></span><span id="hide_link_activities" style="display: "><a href="#" class="utilsLink" onclick="hideSubPanel('activities');document.getElementById('hide_link_activities').style.display='none';document.getElementById('show_link_activities').style.display='';return false;"><img src="/images/crm/basic_search.gif" width="8" height="8" alt="隐藏" bservice="0" align="absmiddle"></a></span>&nbsp;相关订单项目</span></h3></td><td width="100%"><img height="1" width="1" src="/images/crm/blank.gif" alt=""></td></tr>
+</tbody></table></div><div cookie_name="activities_v" id="subpanel_activities" style="display:">
+    <script>document.getElementById("subpanel_activities" ).cookie_name="activities_v";</script><script>markSubPanelLoaded('activities');</script>    <div id="list_subpanel_activities"><script>
+				function select_overlib() {
+					return overlib('<a style=\'width: 150px\' class=\'menuItem\' onmouseover=\'hiliteItem(this,"yes");\' onmouseout=\'unhiliteItem(this);\' onclick=\'if (document.MassUpdate.select_entire_list.value==1){document.MassUpdate.select_entire_list.value=0;sListView.check_all(document.MassUpdate, "mass[]", true, 10)}else {sListView.check_all(document.MassUpdate, "mass[]", true)};\' href=\'#\'>当前页&nbsp;(10)</a><a style=\'width: 150px\' class=\'menuItem\' onmouseover=\'hiliteItem(this,"yes");\' onmouseout=\'unhiliteItem(this);\' onclick=\'sListView.check_entire_list(document.MassUpdate, "mass[]",true,1);\' href=\'#\'>整个列表&nbsp;(1)</a><a style=\'width: 150px\' class=\'menuItem\' onmouseover=\'hiliteItem(this,"yes");\' onmouseout=\'unhiliteItem(this);\' onclick=\'sListView.clear_all(document.MassUpdate, "mass[]", false);\' href=\'#\'>无</a>', CENTER, '', STICKY, MOUSEOFF, 3000, CLOSETEXT, '<img bservice=0 src=/images/crm/close_inline.gif?s=6641602f67ed3d7dd3b81f8a02a59ed3&c=1>', WIDTH, 150, CLOSETITLE, '关闭', CLOSECLICK, FGCLASS, 'olOptionsFgClass', CGCLASS, 'olOptionsCgClass', BGCLASS, 'olBgClass', TEXTFONTCLASS, 'olFontClass', CAPTIONFONTCLASS, 'olOptionsCapFontClass', CLOSEFONTCLASS, 'olOptionsCloseFontClass');
+				}
+				</script>
+
+
+<table cellpadding="0" cellspacing="0" width="100%" bservice="0" class="list view">
+<tbody>	
+<tr class="pagination">
+<td colspan="20" align="right">
+	<table cellpadding="0" cellspacing="0" width="100%" bservice="0" class="list view" id="all">
+	
+		</table>
+		</div>
+		</div></li>
+<%end%>
+</ul></td></tr></tbody></table>  
+
+  <script>
+    	var SubpanelInit = function() {
+    		SubpanelInitTabNames(["activities","history","contacts","opportunities","leads","cases","accounts","bugs","project"]);
+    	}
+        var SubpanelInitTabNames = function(tabNames) {
+    		subpanel_dd = new Array();
+    		j = 0;
+    		for(i in tabNames) {
+    			subpanel_dd[j] = new ygDDList('whole_subpanel_' + tabNames[i]);
+    			subpanel_dd[j].setHandleElId('subpanel_title_' + tabNames[i]);
+    			subpanel_dd[j].onMouseDown = SUGAR.subpanelUtils.onDrag;
+    			subpanel_dd[j].afterEndDrag = SUGAR.subpanelUtils.onDrop;
+    			j++;
+    		}
+
+    		YAHOO.util.DDM.mode = 1;
+    	}
+    	currentModule = 'Accounts';
+    	YAHOO.util.Event.addListener(window, 'load', SubpanelInit);
+    </script><!-- crmprint --><script>		if(window.addEventListener){
+			window.addEventListener("load", checkAlerts, false);
+		}else{
+			window.attachEvent("onload", checkAlerts);
+		}
+		
+		</script>
+<!--end body panes-->
+        </td></tr></tbody></table>
+
+    </div>
+    <div class="clear"></div>
+

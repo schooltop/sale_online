@@ -1,0 +1,12 @@
+<h1>Editing spa</h1>
+
+<% form_for(@spa) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @spa %> |
+<%= link_to 'Back', spas_path %>

@@ -1,0 +1,498 @@
+
+<%=render :partial=>"left"%>
+
+<div id="content">
+
+        <table style="width:100%"><tbody><tr><td>
+        	<div class="moduleTitle">
+<h2>公司名称: <%=@company.name%></h2>
+<span><a href="" class="utilsLink">
+<img src="/images/crm/print.gif" alt="打印"></a>
+<a href="" class="utilsLink">
+打印
+</a>&nbsp;
+<a href="" class="utilsLink" target="_blank">
+<img src="/images/crm/help.gif" alt="帮助"></a>
+<a href="/help" class="utilsLink" target="_blank">
+帮助
+</a></span></div>
+<table cellpadding="1" cellspacing="0" border="0" width="100%">
+
+<tbody><tr>
+<td class="buttons" align="left" nowrap="">
+
+<button type="button" class="button" title="编辑"    onclick="document.location.href='/companiess/<%=@company.id%>/edit'">编辑</button>
+<button type="button" class="button" title="返回列表"  onclick="document.location.href='/companiess'">返回列表</button></td>
+<td class="buttons" align="left" nowrap=""></td>
+ 
+<td align="right" width="100%"></td>
+</tr>
+
+</tbody>
+</table>
+<div id="DEFAULT" class="detail view">
+<table id="detailpanel_1" cellspacing="0">
+<tbody><tr class="pagination">
+<td colspan="20" style="padding: 0px;">
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr>
+<td nowrap="" align="right">
+		</td></tr></tbody></table></td></tr>
+<tr>
+<td width="12.5%" scope="row">
+公司名称:
+</td>
+<td width="37.5%">
+<span id="name"><%=@company.name%></span>
+</td>
+<td width="12.5%" scope="row">
+公司卡号:
+</td>
+<td width="37.5%">
+<%=@company.comnum%>
+</td>
+</tr>
+<tr>
+<td width="12.5%" scope="row">
+公司电话:
+</td>
+<td width="37.5%">
+<%=@company.tel%>
+</td>
+<td width="12.5%" scope="row">
+公司邮箱:
+</td>
+<td width="37.5%">
+<%=@company.email%>	
+</td>
+</tr>
+
+
+</tbody></table>
+</div>
+
+
+<script>
+	SUGAR.subpanelUtils.currentSubpanelGroup = '所有';
+	
+	SUGAR.subpanelUtils.subpanelMoreTab = '协作';
+	
+	SUGAR.subpanelUtils.subpanelMaxSubtabs = '12';
+	
+	SUGAR.subpanelUtils.subpanelHtml = new Array();
+	
+	SUGAR.subpanelUtils.loadedGroups = Array();
+	SUGAR.subpanelUtils.loadedGroups.push('所有');
+	
+	SUGAR.subpanelUtils.subpanelSubTabs = new Array();
+	SUGAR.subpanelUtils.subpanelGroups = new Array();
+	SUGAR.subpanelUtils.subpanelGroups['所有'] = ['leads','activities', 'history', 'contacts', 'cases'];
+	SUGAR.subpanelUtils.subpanelGroups['员工'] = ['works','history'];
+	SUGAR.subpanelUtils.subpanelGroups['部门'] = ['depts', 'cases'];
+	SUGAR.subpanelUtils.subpanelGroups['服务'] = ['contacts', 'leads'];
+	SUGAR.subpanelUtils.subpanelGroups['活动'] = ['contacts', 'activities'];
+	SUGAR.subpanelUtils.subpanelGroups['协作'] = ['project'];
+
+	SUGAR.subpanelUtils.subpanelTitles = {};
+
+	SUGAR.subpanelUtils.tabCookieName = get_module_name() + '_sp_tab';
+	
+	SUGAR.subpanelUtils.showLinks = false;
+	
+	SUGAR.subpanelUtils.requestUrl = '';
+</script>
+
+
+
+<ul id="groupTabs" class="subpanelTablist">
+	<li id="所有_sp_tab">
+		<a class="current" href="javascript:SUGAR.subpanelUtils.loadSubpanelGroup('所有');">所有</a>
+	</li>
+	<li id="员工_sp_tab">
+		<a class="" href="javascript:SUGAR.subpanelUtils.loadSubpanelGroup('员工');">员工</a>
+	</li>
+	<li id="部门_sp_tab">
+		<a class="" href="javascript:SUGAR.subpanelUtils.loadSubpanelGroup('部门');">部门</a>
+	</li> 
+	<li id="服务_sp_tab">
+		<a class="" href="javascript:SUGAR.subpanelUtils.loadSubpanelGroup('服务');">服务</a>
+	</li>
+	<li id="活动_sp_tab">
+		<a class="" href="javascript:SUGAR.subpanelUtils.loadSubpanelGroup('活动');">活动</a>
+	</li><!-- 
+	<li id="协作_sp_tab">
+		<a class="" href="javascript:SUGAR.subpanelUtils.loadSubpanelGroup('协作');">协作</a>
+	</li> -->
+</ul>
+ <table width="100%" cellspacing="0" cellpadding="0" border="0" class="subpanelTabForm">
+	<tbody><tr>
+		<td>
+
+
+
+
+<ul class="noBullet" id="subpanel_list">
+	
+	
+
+
+	
+	
+	
+	
+<li class="noBullet" id="whole_subpanel_leads"><div id="subpanel_title_leads" onmouseover="this.style.cursor = 'move';">
+	<table width="100%" cellpadding="0" cellspacing="0" border="0" class="formHeader h3Row"> 
+<tr> 
+<td nowrap><h3><span><a name="leads"> </a><span id="show_link_leads" style="display: none"><a href='#' class='utilsLink' onclick="current_child_field = 'leads';showSubPanel('leads',null,null,'Accounts');document.getElementById('show_link_leads').style.display='none';document.getElementById('hide_link_leads').style.display='';return false;"><img src="themes/default/images/advanced_search.gif?s=b9b355c811e6778e8f052313d0fce202&c=1" width="8" height="8" alt="显示" border="0 align="absmiddle"" /></a></span><span id="hide_link_leads" style="display: inline"><a href='#' class='utilsLink' onclick="hideSubPanel('leads');document.getElementById('hide_link_leads').style.display='none';document.getElementById('show_link_leads').style.display='';return false;"><img src="/images/crm/basic_search.gif" width="8" height="8" alt="隐藏" border="0" align="absmiddle" /></a></span>&nbsp;服务</span></h3></td><td width='100%'><IMG height='1' width='1' src='themes/default/images/blank.gif?s=b9b355c811e6778e8f052313d0fce202&c=1' alt=''></td></tr> 
+</table></div>
+<div cookie_name="leads_v" id="subpanel_leads" style="display:inline"> 
+    <script>document.getElementById("subpanel_leads" ).cookie_name="leads_v";
+    markSubPanelLoaded('leads');</script>   
+     <div id="list_subpanel_leads">
+     	 
+
+<table cellpadding="0" cellspacing="0" width="100%" border="0" class="list view">
+<tbody>
+<tr class="pagination">
+<td colspan="20" align="right">
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td align="left"><span><table cellpadding="0" cellspacing="0"><tbody><tr><td class="buttons">
+
+<input title="新增服务" accesskey="L" onclick="window.open('/works/new?ompany_id=<%=@company.id%>');" class="button" type="submit" name="button" value="新增服务" >
+
+</td><td class="buttons">
+<!---->
+
+</td></tr></tbody></table></span></td>
+<td nowrap="" align="right">
+					<%if @works.size>1%>
+					<%= will_paginate @works ,:prev_label => '上一页', :next_label => '下一页'%>
+				<%end%>
+				</td>
+		</tbody></table>
+		</td>
+	</tr><tr height="20">
+				<th>
+					<input type="checkbox" name="checkall" onclick="checkUncheckAll(this);"/>
+				</th>
+				
+				<th scope="col" width="20%" nowrap="nowrap">
+					<div style="white-space: nowrap;" width="100%" align="left">
+               		
+                                                       员工卡号&nbsp;&nbsp;
+					<img border="0" src="/images/crm/arrow_down.gif" width="8" height="10" align="absmiddle" alt="排序">
+					</div>
+			   </th>
+			
+				<th scope="col" width="20%" nowrap="nowrap">
+				<div style="white-space: nowrap;" width="100%" align="left">
+                      
+                                                                员工姓名&nbsp;&nbsp;
+					<img border="0" src="/images/crm/arrow.gif" width="8" height="10" align="absmiddle" alt="排序">
+				</div>
+			</th>
+			<th scope="col" width="20%" nowrap="nowrap">
+				<div style="white-space: nowrap;" width="100%" align="left">
+                   
+                                                                邮箱&nbsp;&nbsp;
+				<img border="0" src="/images/crm/arrow.gif" width="8" height="10" align="absmiddle" alt="排序">
+				</div>
+			</th>
+				<th scope="col" width="18%" nowrap="nowrap">
+				<div style="white-space: nowrap;" width="100%" align="left">
+                   
+                                                                电话&nbsp;&nbsp;
+				<img border="0" src="/images/crm/arrow.gif" width="8" height="10" align="absmiddle" alt="排序">
+				</div>
+			</th>
+			<th scope="col" width="18%" nowrap="nowrap">
+				<div style="white-space: nowrap;" width="100%" align="left">
+                    
+                                                                状态&nbsp;&nbsp;
+				<img border="0" src="/images/crm/arrow.gif" width="8" height="10" align="absmiddle" alt="排序">
+				</div>
+			</th>
+					
+								
+			<th scope="col" nowrap="nowrap" width="2%">操作&nbsp;</th>
+			</tr>
+ <%@works.each do |work|%>
+		    <tr height="20" class="oddListRowS1">
+						<td width="1%" class="nowrap">
+							<%= check_box_tag 'work_ids[]', work.id %>
+                           	</td>
+						<td scope="row" align="left" valign="top">
+							<a href="/works/<%=work.id%>"> <%=work.worknum%></a>
+							</td>
+						<td scope="row" align="left" valign="top">
+							<a href="/works/<%=work.id%>"><%=work.name%></a></td>
+							<td scope="row" align="left" valign="top">
+							<%=work.email%>
+							</td>
+						<td scope="row" align="left" valign="top">
+							<%=work.phone%></td>
+						<td scope="row" align="left" valign="top">
+							<%=work.agreement%></td>				
+						<td width="2%" class="oddListRowS1" bgcolor="" nowrap="">
+						  <%= link_to image_tag("/images/crm/edit_inline.gif"),:action=>"edit",:id=>work.id -%><%= link_to "修改",:action=>"edit",:id=>work.id -%>
+						  <%= link_to image_tag("/images/crm/delete_inline.gif"), work,:method => :delete -%><%= link_to "删除", work, :confirm => '您确认删除该work吗?',:method => :delete -%>
+						</td>
+	    	</tr>
+		<%end%> 	
+</tbody> 
+</table> 
+</div> 
+</div></li>
+
+
+<li class="noBullet" id="whole_subpanel_history"><div id="subpanel_title_history" onmouseover="this.style.cursor = 'move';"><table width="100%" cellpadding="0" cellspacing="0" border="0" class="formHeader h3Row">
+<tbody><tr>
+<td nowrap=""><h3><span><a name="history"> </a><span id="show_link_history" style="display: none"><a href="#" class="utilsLink" onclick="current_child_field = 'history';showSubPanel('history',null,null,'Accounts');document.getElementById('show_link_history').style.display='none';document.getElementById('hide_link_history').style.display='';return false;"><img src="/images/crm/advanced_search.gif" width="8" height="8" alt="显示" border="0 align=" absmiddle""=""></a></span><span id="hide_link_history" style="display: inline"><a href="#" class="utilsLink" onclick="hideSubPanel('history');document.getElementById('hide_link_history').style.display='none';document.getElementById('show_link_history').style.display='';return false;"><img src="/images/crm/basic_search.gif" width="8" height="8" alt="隐藏" border="0" align="absmiddle"></a></span>&nbsp;招聘</span></h3></td><td width="100%"><img height="1" width="1" src="/images/crm/blank.gif" alt=""></td></tr>
+</tbody></table></div><div cookie_name="history_v" id="subpanel_history" style="display:inline">
+    <script>document.getElementById("subpanel_history" ).cookie_name="history_v";</script><script>markSubPanelLoaded('history');</script>    <div id="list_subpanel_history"><script>
+				function select_overlib() {
+					return overlib('<a style=\'width: 150px\' class=\'menuItem\' onmouseover=\'hiliteItem(this,"yes");\' onmouseout=\'unhiliteItem(this);\' onclick=\'if (document.MassUpdate.select_entire_list.value==1){document.MassUpdate.select_entire_list.value=0;sListView.check_all(document.MassUpdate, "mass[]", true, 10)}else {sListView.check_all(document.MassUpdate, "mass[]", true)};\' href=\'#\'>当前页&nbsp;(10)</a><a style=\'width: 150px\' class=\'menuItem\' onmouseover=\'hiliteItem(this,"yes");\' onmouseout=\'unhiliteItem(this);\' onclick=\'sListView.check_entire_list(document.MassUpdate, "mass[]",true,0);\' href=\'#\'>整个列表&nbsp;(0)</a><a style=\'width: 150px\' class=\'menuItem\' onmouseover=\'hiliteItem(this,"yes");\' onmouseout=\'unhiliteItem(this);\' onclick=\'sListView.clear_all(document.MassUpdate, "mass[]", false);\' href=\'#\'>无</a>', CENTER, '', STICKY, MOUSEOFF, 3000, CLOSETEXT, '<img border=0 src=/images/crm/close_inline.gif?s=6641602f67ed3d7dd3b81f8a02a59ed3&c=1>', WIDTH, 150, CLOSETITLE, '关闭', CLOSECLICK, FGCLASS, 'olOptionsFgClass', CGCLASS, 'olOptionsCgClass', BGCLASS, 'olBgClass', TEXTFONTCLASS, 'olFontClass', CAPTIONFONTCLASS, 'olOptionsCapFontClass', CLOSEFONTCLASS, 'olOptionsCloseFontClass');
+				}
+				</script>
+<table cellpadding="0" cellspacing="0" width="100%" border="0" class="list view">
+<tbody>
+<tr class="pagination">
+<td colspan="20" align="right">
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td align="left"><span><table cellpadding="0" cellspacing="0"><tbody><tr><td class="buttons">
+
+<input title="新增招聘" accesskey="L" onclick="window.open('/depts/new?company_id=<%=@company.id%>');" class="button" type="submit" name="button" value="新增招聘" >
+</td><td class="buttons">
+<!---->
+</td></tr></tbody></table></span></td>
+<td nowrap="nowrap" width="1%" align="right" class="paginationChangeButtons">
+				<%if @depts.size>1%>
+					<%= will_paginate @depts ,:prev_label => '上一页', :next_label => '下一页'%>
+				<%end%></td>
+				</tr>
+			</tbody></table>
+		</td>
+	</tr><tr height="20">
+				<th>
+					<input type="checkbox" name="checkall" onclick="checkUncheckAll(this);"/>
+				</th>
+				
+				<th scope="col" width="20%" nowrap="nowrap">
+					<div style="white-space: nowrap;" width="100%" align="left">
+               		
+                                                       dept卡号&nbsp;&nbsp;
+					<img border="0" src="/images/crm/arrow_down.gif" width="8" height="10" align="absmiddle" alt="排序">
+					</div>
+			   </th>
+			
+				<th scope="col" width="20%" nowrap="nowrap">
+				<div style="white-space: nowrap;" width="100%" align="left">
+                      
+                                                                店面名称&nbsp;&nbsp;
+					<img border="0" src="/images/crm/arrow.gif" width="8" height="10" align="absmiddle" alt="排序">
+				</div>
+			</th>
+			<th scope="col" width="20%" nowrap="nowrap">
+				<div style="white-space: nowrap;" width="100%" align="left">
+                   
+                                                                所属公司&nbsp;&nbsp;
+				<img border="0" src="/images/crm/arrow.gif" width="8" height="10" align="absmiddle" alt="排序">
+				</div>
+			</th>
+				<th scope="col" width="18%" nowrap="nowrap">
+				<div style="white-space: nowrap;" width="100%" align="left">
+                   
+                                                                联系电话&nbsp;&nbsp;
+				<img border="0" src="/images/crm/arrow.gif" width="8" height="10" align="absmiddle" alt="排序">
+				</div>
+			</th>
+			<th scope="col" width="18%" nowrap="nowrap">
+				<div style="white-space: nowrap;" width="100%" align="left">
+                    
+                                                                联系地址&nbsp;&nbsp;
+				<img border="0" src="/images/crm/arrow.gif" width="8" height="10" align="absmiddle" alt="排序">
+				</div>
+			</th>
+					
+								
+			<th scope="col" nowrap="nowrap" width="2%">操作&nbsp;</th>
+			</tr>
+		
+		 <%@depts.each do |dept|%>
+		    <tr height="20" class="oddListRowS1">
+						<td width="1%" class="nowrap">
+							<%= check_box_tag 'dept_ids[]', dept.id %>
+                           	</td>
+						<td scope="row" align="left" valign="top">
+							<a href="/depts/<%=dept.id%>"> <%=dept.id%></a>
+							</td>
+						<td scope="row" align="left" valign="top">
+							<a href="/depts/<%=dept.id%>"><%=dept.name%></a></td>
+						<td scope="row" align="left" valign="top">
+							
+							<a href="/companies/<%=dept.company_id%>"><%=dept.company.name if dept.company%></a></td>
+						<td scope="row" align="left" valign="top">
+							</td>
+						<td scope="row" align="left" valign="top">
+							<%=dept.name%></td>
+									
+						<td width="2%" class="oddListRowS1" bgcolor="" nowrap="">
+						  <%= link_to image_tag("/images/crm/edit_inline.gif"),:action=>"edit",:id=>dept.id -%><%= link_to "修改",:action=>"edit",:id=>dept.id -%>
+						  <%= link_to image_tag("/images/crm/delete_inline.gif"), dept,:method => :delete -%><%= link_to "删除", dept, :confirm => '您确认删除该dept吗?',:method => :delete -%>
+						</td>
+	    	</tr>
+		<%end%> 	
+</tbody>
+</table>
+</div>
+</div></li>
+
+
+
+<li class="noBullet" id="whole_subpanel_cases"><div id="subpanel_title_cases" onmouseover="this.style.cursor = 'move';"><table width="100%" cellpadding="0" cellspacing="0" border="0" class="formHeader h3Row">
+<tbody><tr>
+<td nowrap=""><h3><span><a name="cases"> </a><span id="show_link_cases" style="display: none"><a href="#" class="utilsLink" onclick="current_child_field = 'cases';showSubPanel('cases',null,null,'Accounts');document.getElementById('show_link_cases').style.display='none';document.getElementById('hide_link_cases').style.display='';return false;"><img src="/images/crm/advanced_search.gif" width="8" height="8" alt="显示" border="0 align=" absmiddle""=""></a></span><span id="hide_link_cases" style="display: "><a href="#" class="utilsLink" onclick="hideSubPanel('cases');document.getElementById('hide_link_cases').style.display='none';document.getElementById('show_link_cases').style.display='';return false;"><img src="/images/crm/basic_search.gif" width="8" height="8" alt="隐藏" border="0" align="absmiddle"></a></span>&nbsp;客户答谢记录</span></h3></td><td width="100%"><img height="1" width="1" src="/images/crm/blank.gif" alt=""></td></tr>
+</tbody></table></div><div cookie_name="cases_v" id="subpanel_cases" style="display:">
+    <script>document.getElementById("subpanel_cases" ).cookie_name="cases_v";</script><script>markSubPanelLoaded('cases');</script>    <div id="list_subpanel_cases"><script>
+				function select_overlib() {
+					return overlib('<a style=\'width: 150px\' class=\'menuItem\' onmouseover=\'hiliteItem(this,"yes");\' onmouseout=\'unhiliteItem(this);\' onclick=\'if (document.MassUpdate.select_entire_list.value==1){document.MassUpdate.select_entire_list.value=0;sListView.check_all(document.MassUpdate, "mass[]", true, 10)}else {sListView.check_all(document.MassUpdate, "mass[]", true)};\' href=\'#\'>当前页&nbsp;(10)</a><a style=\'width: 150px\' class=\'menuItem\' onmouseover=\'hiliteItem(this,"yes");\' onmouseout=\'unhiliteItem(this);\' onclick=\'sListView.check_entire_list(document.MassUpdate, "mass[]",true,1);\' href=\'#\'>整个列表&nbsp;(1)</a><a style=\'width: 150px\' class=\'menuItem\' onmouseover=\'hiliteItem(this,"yes");\' onmouseout=\'unhiliteItem(this);\' onclick=\'sListView.clear_all(document.MassUpdate, "mass[]", false);\' href=\'#\'>无</a>', CENTER, '', STICKY, MOUSEOFF, 3000, CLOSETEXT, '<img border=0 src=/images/crm/close_inline.gif?s=6641602f67ed3d7dd3b81f8a02a59ed3&c=1>', WIDTH, 150, CLOSETITLE, '关闭', CLOSECLICK, FGCLASS, 'olOptionsFgClass', CGCLASS, 'olOptionsCgClass', BGCLASS, 'olBgClass', TEXTFONTCLASS, 'olFontClass', CAPTIONFONTCLASS, 'olOptionsCapFontClass', CLOSEFONTCLASS, 'olOptionsCloseFontClass');
+				}
+				</script>
+<table cellpadding="0" cellspacing="0" width="100%" border="0" class="list view">
+<tbody>
+<tr class="pagination">
+<td colspan="20" align="right">
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td align="left"><span><table cellpadding="0" cellspacing="0"><tbody><tr><td class="buttons">
+<input title="添加答谢" accesskey="L" onclick="window.open('/spas/new');" class="button" type="submit" name="button" value="添加答谢" >
+
+</td><td class="buttons">
+
+</td></tr></tbody></table></span></td>
+<td nowrap="nowrap" width="1%" align="right" class="paginationChangeButtons">
+				<%if @spas.size>1%>
+					<%= will_paginate @spas ,:prev_label => '上一页', :next_label => '下一页'%>
+				<%end%></td>
+				</tr>
+			</tbody></table>
+		</td>
+	</tr><tr height="20">
+				<th>
+					<input type="checkbox" name="checkall" onclick="checkUncheckAll(this);"/>
+				</th>
+				
+				<th scope="col" width="10%" nowrap="nowrap">
+					<div style="white-space: nowrap;" width="100%" align="left">               		
+                                                               称号&nbsp;&nbsp;
+					<img border="0" src="/images/crm/arrow_down.gif" width="8" height="10" align="absmiddle" alt="排序">
+					</div>
+			   </th>
+			    <th scope="col" width="10%" nowrap="nowrap">
+				<div style="white-space: nowrap;" width="100%" align="left">                      
+                                                                状态&nbsp;&nbsp;
+					<img border="0" src="/images/crm/arrow.gif" width="8" height="10" align="absmiddle" alt="排序">
+				</div>
+			</th>
+				<th scope="col" width="15%" nowrap="nowrap">
+				<div style="white-space: nowrap;" width="100%" align="left">                      
+                                                                所属公司&nbsp;&nbsp;
+					<img border="0" src="/images/crm/arrow.gif" width="8" height="10" align="absmiddle" alt="排序">
+				</div>
+			</th>
+			<th scope="col" width="15%" nowrap="nowrap">
+				<div style="white-space: nowrap;" width="100%" align="left">                      
+                                                                所属产品&nbsp;&nbsp;
+					<img border="0" src="/images/crm/arrow.gif" width="8" height="10" align="absmiddle" alt="排序">
+				</div>
+			</th>
+			<th scope="col" width="15%" nowrap="nowrap">
+				<div style="white-space: nowrap;" width="100%" align="left">
+                   
+                                                                市场价&nbsp;&nbsp;
+				<img border="0" src="/images/crm/arrow.gif" width="8" height="10" align="absmiddle" alt="排序">
+				</div>
+			</th>
+				<th scope="col" width="15%" nowrap="nowrap">
+				<div style="white-space: nowrap;" width="100%" align="left">
+                   
+                                                                公司价&nbsp;&nbsp;
+				<img border="0" src="/images/crm/arrow.gif" width="8" height="10" align="absmiddle" alt="排序">
+				</div>
+			</th>
+			<th scope="col" width="18%" nowrap="nowrap">
+				<div style="white-space: nowrap;" width="100%" align="left">
+                    
+                                                                描述&nbsp;&nbsp;
+				<img border="0" src="/images/crm/arrow.gif" width="8" height="10" align="absmiddle" alt="排序">
+				</div>
+			</th>
+					
+								
+			<th scope="col" nowrap="nowrap" width="2%">操作&nbsp;</th>
+			</tr>
+		
+		 <%@spas.each do |spa|%>
+		    <tr height="20" class="oddListRowS1">
+						<td width="1%" class="nowrap">
+							<%= check_box_tag 'spa_ids[]', spa.id %>
+                           	</td>
+						<td scope="row" align="left" valign="top">
+							<a href="/spas/<%=spa.id%>"> <%=spa.name%></a>
+							</td>
+						<td scope="row" align="left" valign="top">
+							<%=spa.situation.name%>
+							</td>
+						<td scope="row" align="left" valign="top">
+							<a href="/companies/<%=spa.company_id%>"><%=spa.company.name%></a></td>
+						<td scope="row" align="left" valign="top">
+							<a href="/products/<%=spa.product_id%>"> <%=spa.product.title%></a>
+							</td>
+						<td scope="row" align="left" valign="top">
+							<%=spa.regprice%>
+							</td>						
+						<td scope="row" align="left" valign="top">
+							<%=spa.comprice%></td>
+						<td scope="row" align="left" valign="top">
+							<%=spa.description%></td>				
+						<td width="2%" class="oddListRowS1" bgcolor="" nowrap="">
+						  <%= link_to image_tag("/images/crm/edit_inline.gif"),:action=>"edit",:id=>spa.id -%><%= link_to "下单",:controller=>"orders",:action=>"new",:iteambean=>"Spa",:bean_id=>spa.id -%>
+						  <!-- <%= link_to image_tag("/images/crm/delete_inline.gif"), spa,:method => :delete -%><%= link_to "删除", spa, :confirm => '您确认删除该spa吗?',:method => :delete -%> -->
+						</td>
+	    	</tr>
+		<%end%> 	
+</tbody>
+</table>
+</div>
+</div></li>
+
+
+
+</ul></td></tr></tbody></table>  
+
+  <script>
+    	var SubpanelInit = function() {
+    		SubpanelInitTabNames(["activities","history","contacts","opportunities","leads","cases","accounts","bugs","project"]);
+    	}
+        var SubpanelInitTabNames = function(tabNames) {
+    		subpanel_dd = new Array();
+    		j = 0;
+    		for(i in tabNames) {
+    			subpanel_dd[j] = new ygDDList('whole_subpanel_' + tabNames[i]);
+    			subpanel_dd[j].setHandleElId('subpanel_title_' + tabNames[i]);
+    			subpanel_dd[j].onMouseDown = SUGAR.subpanelUtils.onDrag;
+    			subpanel_dd[j].afterEndDrag = SUGAR.subpanelUtils.onDrop;
+    			j++;
+    		}
+
+    		YAHOO.util.DDM.mode = 1;
+    	}
+    	currentModule = 'Accounts';
+    	YAHOO.util.Event.addListener(window, 'load', SubpanelInit);
+    </script><!-- crmprint --><script>		if(window.addEventListener){
+			window.addEventListener("load", checkAlerts, false);
+		}else{
+			window.attachEvent("onload", checkAlerts);
+		}
+		
+		</script>
+<!--end body panes-->
+        </td></tr></tbody></table>
+
+    </div>
+    <div class="clear"></div> 

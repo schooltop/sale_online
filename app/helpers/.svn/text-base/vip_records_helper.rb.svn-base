@@ -1,0 +1,2 @@
+module VipRecordsHelper
+end

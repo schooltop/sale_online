@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <%= stylesheet_link_tag 'global2','login_and_sign'%>
+    <%= javascript_include_tag 'jquery','prototype','validate' %>
+</head>
+<body>
+<div id="doc">
+	<%=render :partial=>"/shared/top_bar"%>
+	<%=render :partial=>"/shared/logo_header"%>
+	 <div id="nav-menu">
+		<%=render :partial=>"/shared/nav"%>
+	</div> 
+  	<div id="content">
+  		<%=yield%>
+  	</div>
+  	<%=render :partial=>"/shared/footer"%>
+</div>
+</body>
+</html>
+

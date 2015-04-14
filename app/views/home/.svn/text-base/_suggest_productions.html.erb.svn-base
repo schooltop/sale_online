@@ -1,0 +1,16 @@
+<%ps.each do |p|%>
+		<div class="min-production-desc">
+				<div class="p-img">
+					<a href="/product/<%=p.id%>"><img src="<%=p.first_picture%>" /></a>
+				</div>
+				<div class="p-desc">
+						<p class="right-p-desc">
+							<a href="/product/<%=p.id%>" target="_blank"><%=p.title%> </a>
+						</p>
+						<p class="right-p-price"><a href="/product/<%=p.id%>" target="_blank" style="color:#d00"><%=the_price p%> </a></p>
+						<p class="right-p-price"> <font size="2px"><%=p.unit%></font></p>
+						<p><%if p.is_jf%>参与积分兑换:需<%=p.jfnum%>分<%else%><%=t :had_sold%><%=p.order_num%> <%end%></p>
+				</div>
+			
+		</div>
+<%end%>

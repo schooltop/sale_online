@@ -1,0 +1,26 @@
+
+  		<div class="module">
+  			<div id="left-content">
+  				<!-- <%#=render :partial=>"/shared/categories"%> -->
+  			</div>
+  			<div id="right-content">	
+				 <%Newsgroup.newsType.each do |g|%>
+									<div id="jdnews" class="m m1" style="width:820px;margin: 20px;">
+											<div class="mt">
+												<h2><%=g.name%></h2>
+											</div>
+											<div class="mc" style="height:auto;">
+												<ul>
+													<%g.news.each do |news|%>
+										      			<li class="odd">
+										      				<a href="/news/<%=news.id%>" target="_blank" ><%=news.name%></a>
+										      				<span style="float: right;"><%=into_datetime news.publish_time%></span>
+										      			</li>
+									      			<%end%>
+									      		</ul>
+									      	</div>
+										</div>
+				<%end%>
+  			</div>
+  		</div>
+		

@@ -1,0 +1,87 @@
+.table_button {
+	font-family: "宋体";
+	color:#003399;
+	font-size: 12px;
+	font-weight:bold;
+	border-bottom: 1px solid #7FB3DB;
+	border-right: 1px solid #7FB3DB;
+	background-image: url(images/bluebuttonbg.gif);
+}
+td {
+	font-family: "宋体";
+	font-size: 12px;
+}
+.td_button {
+	border-right: 1px solid #7FB3DB;
+	text-align:right
+}
+
+.table_content {
+	font-family: "宋体";
+	font-size: 12px;
+	border-left: 1px solid #7FB3DB;
+	border-top: 1px solid #7FB3DB;
+	border-bottom: 1px solid #7FB3DB;
+	padding:4px;
+}
+
+.td_content {
+	border-top: 1px solid #E1E1E1;
+	border-right: 1px solid #7FB3DB;
+	background-color: #F4F4F4;
+	text-align:left;
+	padding-left:13px;
+	padding-right:13px;
+	}
+
+.td_content_right {
+	border-right: 1px solid #7FB3DB;
+	border-bottom: 1px solid #7FB3DB;
+	text-align:left
+}
+
+body { font-size: 12px;font-family: 宋体,"Arial";margin-left:15; margin:0;} 
+
+a:link{font-size:12px; color:#000; TEXT-DECORATION: none} 
+a:hover{font-size:12px; color:#000; TEXT-DECORATION: underline}   
+a:active{font-size:12px; color:#000; TEXT-DECORATION: none} 
+a:visited{font-size:12px; color:#000; TEXT-DECORATION: none} 
+  
+.tabletitle{
+	background-color:#95B9E1;
+	background-image:url(images_zhm/main_bg0.gif);
+	font-family:"宋体";
+	font-size: 14px;
+	font-weight: bold;
+} 
+.trwhite{
+	background-color:#95B9E1;
+} 
+.trbule{
+	background-color:#0264CD; color:#FFFFFF
+} 
+.trbule2{
+	background-color:#C3DFF5; height:22;
+} 
+.treeeeee{
+	background-color:#eeeeee;
+} 
+.trwhitecorner{
+	background-color:#ffffff; height:5; width:5
+}
+.hr{height:1; color:cccccc}
+.text12 {
+	font-family: "宋体";
+	font-size: 12px;
+}
+
+.list {
+	border: 1px solid #1463c6;
+}
+
+#toplinkicon {
+	text-align:center;
+}
+#toplinkicon img {
+	margin-bottom: 4px; border:0;
+}

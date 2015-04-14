@@ -1,0 +1,103 @@
+
+<script language="JavaScript" type="text/javascript">
+window.onload=function snTabs(){
+var tabObj = <%=session[:top_tab]%>; 	
+for(i=0; i<5; i++)
+{
+	
+  if (i == tabObj)
+  {
+   document.getElementById("all"+i).style.display = "block";
+  }else{   
+   document.getElementById("all"+i).style.display = "none";
+  }
+}
+}
+ </script>
+
+ <div style="float:right ">
+	<div id="home_page_top" >	
+        <div id="navigation_bar" class="menu">
+            <ul style="padding-top:40px;">           	       	
+            	
+            <li>
+                <img src="/images/oldimages/line.png"  alt="" />
+            </li>	
+            	
+            <li>
+               <%if current_user%><a href="/centers" class="nov"><%='会员中心'%></a>
+               <%else%>
+               <a href="/login" class="nov"><%='会员中心'%></a>
+               <%end%>
+               <div style="margin-top: 20px;display:none " id="all4">
+                	<div style="padding:0px;margin: 0px "><img src="/images/oldimages/bluforwor.png"  alt="" / align="center"></div>
+                	<div style="height:5px;background-color:#8ed8f8  ">
+                	</div>
+                </div>
+            </li>
+ 	
+            	
+            <li>
+                <img src="/images/oldimages/line.png"  alt="" />
+            </li>	
+            	
+            <li>
+               <a href="/discription" class="nov"><%='关于我们'%></a>
+                <div style="margin-top: 25px;display:none " id="all0">
+                	<div style="padding:0px;margin: 0px "><img src="/images/oldimages/bluforwor.png"  alt="" / align="center"></div>
+                 	<div style="height:5px;background-color:#8ed8f8  ">
+                	</div>
+                </div>
+            </li>
+ 
+ 
+           <li>
+                <img src="/images/oldimages/line.png"  alt="" />
+            </li>
+            
+ 
+            <li>
+                <a href="/jifenshop" class="nov" style="padding: 0px 23px 0px 23px;"><%=t :jifenshop%></a>
+                	<div style="margin-top: 20px;display:none " id="all1">
+                	<div style="padding:0px;margin: 0px "><img src="/images/oldimages/bluforwor.png"  alt="" / align="center"></div>
+                	<div style="height:5px;background-color:#8ed8f8  ">
+                	</div>
+                </div>
+               
+            </li>            
+            
+            <li>
+                <img src="/images/oldimages/line.png"  alt="" />
+            </li>
+          
+            
+            <li>         	
+                <a href="/air_nav" class="nov" ><%=t :air_nav%>                  	
+                 </a>
+                <div style="margin-top: 20px;display:none " id="all2">
+                	<div style="padding:0px;margin: 0px "><img src="/images/oldimages/bluforwor.png"  alt="" / align="center"></div>
+                	<div style="height:5px;background-color:#8ed8f8  ">
+                	</div>
+                </div>                        
+            </li>
+            
+            
+            <li>
+                <img src="/images/oldimages/line.png"  alt="" />
+            </li>
+            
+            <li>
+                <a href="/home" class="nov"><%='主页'%></a>
+                <div style="margin-top: 20px;display:none " id="all3">
+                	<div style="padding:0px;margin: 0px "><img src="/images/oldimages/bluforwor.png"  alt="" / align="center"></div>
+                	<div style="height:5px;background-color:#8ed8f8  ">
+                	</div>
+                </div>
+            </li>
+            <li>
+                <img src="/images/oldimages/line.png"  alt="" />
+            </li>
+        </ul>
+    </div>
+    </div>
+   </div>

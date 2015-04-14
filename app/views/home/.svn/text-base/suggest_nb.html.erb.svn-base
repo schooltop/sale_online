@@ -1,0 +1,25 @@
+
+  		<div class="module">
+  			<div id="left-content">
+  				<%=render :partial=>"/shared/categories"%>
+  			</div>
+  			<div id="right-content">
+				<div class="slide_right">
+					<div style="margin: 30px;">
+						<h1><%=t :suggest_nb%></h1>
+					</div>
+				</div>		
+							
+				<div id="productions-content">
+					<div class="heng-bar">
+					    		<h3><%=t :suggest_ps%></h3>
+					</div>
+			     	<div class="produtions-show">
+			     		<%=render :partial=>"/home/suggest_productions",:locals=>{:ps=>@suggest_ps}%>
+			     		
+												<%=paginate_objs @suggest_ps	%>	
+			     	</div>
+  				</div>
+  			</div>
+  		</div>
+		

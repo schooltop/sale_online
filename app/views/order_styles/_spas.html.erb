@@ -1,0 +1,189 @@
+
+<%form_for :order,@order,:url =>{:controller=>'admin_create'} do |f| %>
+  <%= f.error_messages %>
+  <%if @user%><%=hidden_field_tag :user_id,"",:value=>@user.id %><%else%><%=hidden_field_tag :user_id,"",:value=>0%> <%end%>
+  <%if @vip%><%=hidden_field_tag :vip_id,"",:value=>@vip.id %><%else%><%=hidden_field_tag :vip_id,"",:value=>0%> <%end%>
+  <%=f.hidden_field :form_state,:value=>@state%>
+<font color="#ff0000"><%=flash[:notice]%></font>
+
+<%= calendar_date_select_includes%>
+<% CalendarDateSelect.format = :finnish%>
+<script type="text/javascript">___saveJQFromPrototype = jQuery; jQuery = undefined; jQuery = undefined;</script>
+
+<script type="text/javascript">jQuery = ___saveJQFromPrototype; jQuery = ___saveJQFromPrototype;</script>
+
+   <%=javascript_include_tag 'mln.colselect1' %>
+   <%=stylesheet_link_tag 'mln.colselect'  %>
+<table width="100%" cellspacing="0" cellpadding="0" border="0" class="subpanelTabForm">
+<tbody><tr>
+		<td>
+<ul class="noBullet" id="subpanel_list">
+	<li class="noBullet" id="whole_subpanel_activities">
+<div id="subpanel_title_activities" onmouseover="this.style.cursor = 'move';">
+<table width="100%" cellpadding="0" cellspacing="0" border="0" class="formHeader h3Row">
+<tbody>
+<tr><td nowrap=""><h3><span><a name="activities"> </a><span id="show_link_activities" style="display: none"><a href="#" class="utilsLink" onclick="current_child_field = 'activities';showSubPanel('activities',null,null,'Accounts');document.getElementById('show_link_activities').style.display='none';document.getElementById('hide_link_activities').style.display='';return false;"><img src="/images/crm/advanced_search.gif" width="8" height="8" alt="显示" border="0 align=" absmiddle""=""></a></span><span id="hide_link_activities" style="display: "><a href="#" class="utilsLink" onclick="hideSubPanel('activities');document.getElementById('hide_link_activities').style.display='none';document.getElementById('show_link_activities').style.display='';return false;"><img src="/images/crm/basic_search.gif" width="8" height="8" alt="隐藏" border="0" align="absmiddle"></a></span>&nbsp;请选择您需要的服务</span></h3>	
+</td>
+<td width="100%"><img height="1" width="1" src="/images/crm/blank.gif" alt="">
+</td></tr>
+</tbody></table></div>
+
+<div cookie_name="activities_v" id="subpanel_activities" style="display:">
+<table cellpadding="0" cellspacing="0" width="100%" border="0" class="list view">
+<tbody>
+<tr class="pagination">
+<td colspan="20" align="right">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tbody><tr>
+		<td align="left"><span><table cellpadding="0" cellspacing="0"><tbody><tr>
+			<td class="buttons">
+
+				<td class="buttons">
+					<%= hidden_field_tag 'form_action1' %>
+					<%= submit_tag("提交", :name => "send",:class=>'button') -%>
+		            <input type="button" onClick="showEdbg(document.getElementById('edbg_size').value)" value="添加详单">
+					</td></tr></tbody></table></span></td>
+					
+					</tr></tbody></table>
+				</td>
+		</tr>
+		
+		    <tr height="20">
+			<th>		    
+    <input  type="hidden" id= "edbg_size" name= "edbg_size" value= "1"> 
+    <input  type="hidden" id= "product_ids" name= "product_ids" > 
+	<%1.upto 10 do |i|%>
+	<%if i==1%>
+	<table id="edbg<%= i%>" name="edbg<%= i%>"  class="print" width="1117" style="margin-top:0px;border-color: #8ed8f8" frame="box"  border="0"  cellpadding="0" cellspacing="0" >
+	<tr><td align="left" width="227">&nbsp;&nbsp;从：<%=calendar_date_select_tag "fromtime#{i}",Time.now.strftime('%Y-%m-%d %H:%M' ),:time => true ,:style=>"width:130px" %></td> <td colspan="2" align="center" width="519"><input type="button" onClick="destroyRemark('edbg'+<%= i%>)" value="删除"></td>
+  	<tr><td align="left">&nbsp;&nbsp;至：<%=calendar_date_select_tag "totime#{i}",Time.now.strftime('%Y-%m-%d %H:%M' ),:time => true ,:style=>"width:130px"  %></td>  	
+  	<td align="left"> 
+  	<div id="product_id<%=i%>" style=" float: left;"></div> 
+  	 <script type="text/javascript"> 
+			var colObj = {"Items":[
+			
+			<% @products.each do |product|%>
+			   {"name":"<%=product.title%>","topid":"0","colid":"<%=product.id%>","value":"<%=product.id%>","fun":function(){}},
+			<% end %>
+			
+			<% @lproducts.each do |lproduct|%>
+			   {"name":"<%=lproduct.title%><%=lproduct.price%><%=lproduct.unit%>","topid":"<%=lproduct.parent_id%>","colid":"<%=lproduct.id%>","value":"<%=lproduct.id%>","fun":function(){}},
+			<% end %>
+			
+			{"name":"不选","topid":"","colid":"","value":"","fun":function(){}}
+			
+			]};
+						
+			jQuery("#product_id<%=i%>").mlnColsel1(colObj,{
+				title:"选择服务",
+				value:"",
+				width:200
+			});
+		  </script> 
+		  
+		  
+<script type="text/javascript">
+    function update_price(i){ 
+		var newid = document.getElementById("product_ids").value;
+		var vipid = document.getElementById("vip_id").value;
+		var newquantity = jQuery('#quantity'+i+'_').val();
+		jQuery.post("/products/add_comment",{id:newid,quantity:newquantity,num:i,vip_id:vipid},function(result){		
+		jQuery('#top_price'+i).html(result); });
+	}
+</script>
+  		
+  	</td> 
+  	<td align="left"> 数量：<%=select( "quantity#{i}","", [[1,1],[2,2],[3,3],[4,4],[5,5],[6,6],[7,7],[8,8],[9,9],[10,10]],{:include_blank => true},:onchange=>"update_price(#{i})")%></td></tr>
+  	<tr><td align="left" id="top_price<%=i%>">&nbsp;&nbsp;小结：<%= text_field_tag "price#{i}","",:style=>"width:140px"%>元</td>  	
+  	<td align="left"> 物资匹配：<%=select( "spa#{i}","",Spa.find(:all,:conditions=>"situation_id=5").collect {|p| [ p.name, p.id ] },:include_blank => true)%></td>
+  	 <td align="left"> 人力匹配：<%=select( "work#{i}","", @works.collect {|p| [ p.name, p.id ] },:include_blank => true)%></td></tr>
+  	<tr><td align="left"  colspan="3">
+		<%=text_area_tag "description#{i}","",:cols=>216,:rows=>4,:placeholder=>t(:message_to_seller)%>    	
+    </td></tr>
+	</table>
+	<%else%>
+	<table id="edbg<%= i%>" name="edbg<%= i%>" class="print" width="1117" style="display:none;margin-top:0px;border-color: #8ed8f8;" fram  e="box"  border="0" cellpadding="0" cellspacing="0" >
+	<tr><td align="left" width="227">&nbsp;&nbsp;从：<%=calendar_date_select_tag "fromtime#{i}",Time.now.strftime('%Y-%m-%d %H:%M' ),:time => true ,:style=>"width:130px" %></td> <td colspan="2" align="center" width="519"><input type="button" onClick="destroyRemark('edbg'+<%= i%>)" value="删除"></td>
+  	<tr><td align="left">&nbsp;&nbsp;至：<%=calendar_date_select_tag "totime#{i}",Time.now.strftime('%Y-%m-%d %H:%M' ),:time => true ,:style=>"width:130px"  %></td>  	
+  	<td align="left"> 
+  	<div id="product_id<%=i%>" style=" float: left;"></div> 
+  	 <script type="text/javascript"> 
+			var colObj = {"Items":[
+			
+			<% @products.each do |product|%>
+			   {"name":"<%=product.title%>","topid":"0","colid":"<%=product.id%>","value":"<%=product.id%>","fun":function(){}},
+			<% end %>
+			
+			<% @lproducts.each do |lproduct|%>
+			   {"name":"<%=lproduct.title%><%=lproduct.price%><%=lproduct.unit%>","topid":"<%=lproduct.parent_id%>","colid":"<%=lproduct.id%>","value":"<%=lproduct.id%>","fun":function(){}},
+			<% end %>
+			
+			{"name":"不选","topid":"","colid":"","value":"","fun":function(){}}
+			
+			]};
+						
+			jQuery("#product_id<%=i%>").mlnColsel1(colObj,{
+				title:"选择服务",
+				value:"",
+				width:200
+			});
+		  </script> 
+  		</td>
+  	 <td align="left"> 数量：<%=select( "quantity#{i}","", [[1,1],[2,2],[3,3],[4,4],[5,5],[6,6],[7,7],[8,8],[9,9],[10,10]],{:include_blank => true},:onchange=>"update_price(#{i})")%></td></tr>
+  	<tr><td align="left" id="top_price<%=i%>">&nbsp;&nbsp;小结：<%= text_field_tag "price#{i}","",:style=>"width:140px"%>元</td>  	
+  	<td align="left"> 物资匹配：<%=select( "spa#{i}","",Spa.find(:all,:conditions=>"situation_id=5").collect {|p| [ p.name, p.id ] },:include_blank => true)%></td>
+  	 <td align="left"> 人力匹配：<%=select( "work#{i}","", @works.collect {|p| [ p.name, p.id ] },:include_blank => true)%></td></tr>
+  	<tr><td align="left"  colspan="3">
+		<%=text_area_tag "description#{i}","",:cols=>216,:rows=>4,:placeholder=>t(:message_to_seller)%>    	
+    </td></tr>
+    </table>
+	<%end%>
+	<%end%>
+	
+		    </th>
+		    </tr>
+		    
+<tr><td colspan="10">
+  <p>
+    <%= f.submit '保存' %>
+  </p>
+</td></tr> 
+		    
+		</tbody>
+		</table>
+		</div>
+		</div>
+  		
+</li>	
+</ul></td></tr>
+</tbody></table>  
+
+
+
+
+<% end %>
+
+
+ <script type="text/javascript">
+	
+function showEdbg(n){
+	if (n<21)
+	{
+		document.getElementById('edbg_size').value=Number(document.getElementById('edbg_size').value)+1;
+	}
+	else
+	{
+		document.getElementById('edbg_size').value=1;
+	}
+    document.getElementById('edbg'+document.getElementById('edbg_size').value).style.display="block";
+	
+}
+
+function destroyRemark(trid){
+	var account_base = document.getElementById(trid);
+    account_base.parentNode.removeChild(account_base);
+}		
+
+</script>
+
+

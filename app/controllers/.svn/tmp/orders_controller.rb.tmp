@@ -1,0 +1,270 @@
+class OrdersController < ApplicationController
+  # GET /orders
+  # GET /orders.xml
+  auto_complete_for :product, :title
+  
+  layout "admins"
+  def index
+    @orders = Order.find(:all,:conditions=>"be_delete is null", :order =>'convert(created_at using gbk)desc').paginate :page=>params[:page], :per_page=>40
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @orders }
+    end
+  end
+  
+  def oldorders
+    @orders = Order.find(:all,:conditions=>"be_delete is null").paginate :page=>params[:page], :per_page=>40
+  end
+
+  def admin_new_order#店员前台创建客户订单页面
+  @user=current_user
+  @order = Order.new  
+  if @user.is_admin?
+  @works=Work.find(:all,:conditions=>"company_id is not null",:order=>"company_id")   
+  else
+  @works=Work.find(:all,:conditions=>"company_id=#{@user.work.company_id}") 
+  @company=@user.work.company 
+  end
+  
+  @products=Product.find(:all,:conditions=>"parent_id=6")
+  @lproducts = []
+     for lproduct in @products
+       if lproduct.children!=[]
+         @lproducts+=Product.find(:all,:conditions =>"parent_id = #{lproduct.id}",:order => 'convert(title using gbk)')
+       end
+     end  
+  end
+
+  # GET /orders/1
+  # GET /orders/1.xml
+  def show
+    @order = Order.find(params[:id])
+    @line_items=@order.line_items.paginate :page=>params[:page], :per_page=>40
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @order }
+    end
+  end
+
+  # GET /orders/new
+  # GET /orders/new.xml
+  def products_search#商品累心搜索
+    sql = ""
+    @cad_contacts1 = Array.new
+    name = params[:name] unless params[:name].nil?
+    name_ent = params[:name_ent] unless params[:name_ent].nil?
+    name_com =  params[:name_com] unless  params[:name_com].nil?
+    user_id = params[:post][:user_id] unless params[:post][:user_id].nil?
+    tel = params[:tel] unless params[:tel].nil? 
+    website= params[:website] unless params[:website].nil? 
+    email= params[:email] unless params[:email].nil? 
+    city_id = params[:post][:city_id] unless params[:post][:city_id].nil?
+    
+    unless name.nil? || name.empty?
+      sql += "  and name like '%#{name}%' "
+    end  
+    
+    unless name_ent.nil? || name_ent.empty?
+      sql += "  and name like '%#{name_ent}%' "
+    end         
+    
+    unless city_id.nil? || city_id.empty?
+      sql += " and city_id = '#{city_id}' "
+    end 
+    
+    unless user_id.nil? || user_id.empty?
+      sql += " and user_id = #{user_id} "
+    end 
+    
+    unless tel.nil? || tel.empty? 
+      sql += " and tel = '#{tel}' "
+    end    
+    
+    unless website.nil? || website.empty? 
+      sql += " and website = '#{website}' "
+    end 
+    
+      unless email.nil? || email.empty? 
+      sql += " and email = '#{email}' "
+    end 
+    
+    @cad_contactss= CadContact.find_by_sql("select * from cad_contacts where id is not null #{sql} ")
+      
+    @cad_contacts = @cad_contactss.paginate( :page => params[:page],:per_page => 230, :order =>'convert(created_at using gbk)desc',:order => 'convert(name using gbk)')
+  
+  end
+  
+  
+  
+  def new
+    if params[:user_id]
+      @user=User.find(params[:user_id])
+    end
+    @order = Order.new
+    @newiteam=params[:iteambean].constantize.find(params[:bean_id])
+    @product=@newiteam.product
+    
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @order }
+    end
+  end
+
+  # GET /orders/1/edit
+  def edit
+    @order = Order.find(params[:id])
+  end
+
+  def admin_create
+    @order = Order.new
+    @order.user_id=current_user.id
+    @order.save #生成订单      
+            
+    @total_price=0
+     for i in 1..20
+       a="work"+i.to_s
+       c="spa"+i.to_s
+       d="description"+i.to_s
+       f="fromtime"+i.to_s
+       t="totime"+i.to_s
+       q="quantity"+i.to_s
+       p="price"+i.to_s
+       pro="product_id"+i.to_s
+       if params[a][0]&&params[a][0].to_i>0&&params[pro]
+        @total_price=@total_price+ params[price][0].to_i
+        product=Product.find(params[pro][0].to_i) 
+        li=LineItem.new()#记录到购物单
+        li.comfrom="店面" 
+        li.product_id = product.id
+        li.service_id =product.service_id
+        li.service_style_id=product.service.service_style_id
+        li.quantity    = params[:line_item][:quantity]
+        li.price     = product.price
+        li.total_price = params[p][0].to_i
+        li.totime = params[:line_item][:totime]
+        li.fromtime= Time.now
+        li.save
+      newiteam=params[:iteambean].constantize.find(params[:bean_id])#资源使用状态改变
+      newiteam.situation_id=6
+      newiteam.save
+        @service_task = ServiceTask.new
+        @service_task.order_id=@order.id
+        @service_task.user_id=current_user.id
+        @service_task.situation_id=3
+        @service_task.description="店面消费现场分配业务"
+        @service_task.line_item_id=li.id
+        @service_task.save
+        @service_task.task_num="TASK"+"0"*(7 - @service_task.id.to_s.length) + @service_task.id.to_s
+        @service_task.save
+         task_entries=TaskEntry.new
+         task_entries.service_task_id=@service_task.id
+         task_entries.user_id=current_user.id#记录人
+         task_entries.work_id=params[a][0].to_i
+         task_entries.company_id=params[c][0].to_i
+         task_entries.description=params[d].to_s
+         task_entries.save
+         
+         material_task=MaterialTask.new
+         material_task.service_task_id=@service_task.id
+         material_task.amodel=current_user.id
+         material_task.emodel=params[a][0].to_i
+         material_task.action_id=params[c][0].to_i
+         material_task.user_id=current_user.id
+         material_task.task_entry_id=params[d].to_s
+         material_task.save
+       end
+     end
+     
+     @order.update_attributes(:order_num=>"ORDER"+"0"*(7 - @order.id.to_s.length) + @order.id.to_s,:total_price=>@total_price)
+
+     if @state=="spas"
+       redirect_to :action=>"index"
+     elsif @state=="vips"
+       redirect_to :action=>"index"
+     end
+     
+  end
+
+  # POST /orders
+  # POST /orders.xml
+  def create
+    @order = Order.new(params[:order])
+    product=Product.find(params[:line_item][:product_id])
+    @order.total_price=product.price*params[:line_item][:quantity].to_i
+      if @order.save 
+      @order.order_num="ORDER"+"0"*(7 - @order.id.to_s.length) + @order.id.to_s        
+      @order.save #生成订单      
+        li=LineItem.new()#记录到购物单
+        li.comfrom="店面" 
+        li.product_id = product.id
+        li.service_id =product.service_id
+        li.service_style_id=product.service.service_style_id
+        li.quantity    = params[:line_item][:quantity]
+        li.price     = product.price
+        li.total_price = product.price*params[:line_item][:quantity].to_i
+        li.totime = params[:line_item][:totime]
+        li.fromtime= Time.now
+        li.save
+      newiteam=params[:iteambean].constantize.find(params[:bean_id])#资源使用状态改变
+      newiteam.situation_id=6
+      newiteam.save
+     end    
+        @service_task = ServiceTask.new
+        @service_task.order_id=@order.id
+        @service_task.user_id=current_user.id
+        @service_task.situation_id=3
+        @service_task.description="店面消费现场分配业务"
+        @service_task.line_item_id=li.id
+        @service_task.save
+        @service_task.task_num="TASK"+"0"*(7 - @service_task.id.to_s.length) + @service_task.id.to_s
+        @service_task.save
+     for i in 1..20
+       a="work"+i.to_s
+       c="company"+i.to_s
+       d="description"+i.to_s
+       if params[a][0].to_i&&params[a][0].to_i>0
+         task_entries=TaskEntry.new
+         task_entries.service_task_id=@service_task.id
+         task_entries.user_id=current_user.id#记录人
+         task_entries.work_id=params[a][0].to_i
+         task_entries.company_id=params[c][0].to_i
+         task_entries.description=params[d].to_s
+         task_entries.save
+       end
+     end
+
+     redirect_to :action=>"index"
+  end
+
+  # PUT /orders/1
+  # PUT /orders/1.xml
+  def update
+    @order = Order.find(params[:id])
+    respond_to do |format|
+      if @order.update_attributes(params[:order])
+        format.html { redirect_to(@order, :notice => 'Order was successfully updated.') }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @order.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /orders/1
+  # DELETE /orders/1.xml
+  def destroy
+    @order = Order.find(params[:id])
+    @order.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(orders_url) }
+      format.xml  { head :ok }
+    end
+  end
+  
+  def print_order
+   render  :layout=>false
+  end
+
+end

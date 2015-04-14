@@ -1,0 +1,2 @@
+module LeaveStylesHelper
+end

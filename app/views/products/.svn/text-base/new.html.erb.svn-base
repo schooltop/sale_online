@@ -1,0 +1,114 @@
+<%=render :partial=>"left"%>
+
+<div id="content">
+
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h1>商品基本信息</h1>
+ <% form_for @product,:html => { :multipart => true }  do |f| %>
+   <%= f.error_messages %>
+
+       <table width="100%" id="Accountsbasic_searchSearchForm" class="edit view search">
+          <tr>
+            <td height="10" colspan="5"></td> 
+          </tr>
+	                             
+          <tr>
+             <td height="30" align="right" class="text"><strong>商品名称：</strong></td>
+             <td height="30"  align="left" class="text">         
+             		<span id="sp_ejob_title"> 
+             		<%= f.text_field :title %>	
+             		</span>
+             </td>    
+            <td height="30" align="right" class="text"><strong>英文名称：</strong></td>
+             <td  align="left" class="text">
+                <span id="sp_ejob_title">
+                	 <%= f.text_field :entile %>	
+             	</span>
+          </td>       
+          </tr>
+          
+           <tr>
+			  <td height="30" align="right" class="text"><strong>商品价格/单位：</strong></td>
+              <td height="30"  align="left" class="text">
+                  	<span class="red2">
+                    <%= f.text_field  :price ,:style=>"width:15px;"%>/<%= f.text_field :unit ,:style=>"width:15px;"%>   
+                    </span>
+              </td>
+			  <td height="30" align="right" class="text"><strong>VIP价格：</strong></td>
+				  <td  align="left" class="text"> 
+				  	           
+		             <span id="sp_ejob_title"><%= f.text_field  :vipprice %> </span>
+		          </td>                 
+          </tr> 
+          
+          <tr>
+			  <td height="30" align="right" class="text"><strong>父类型：</strong></td>
+              <td height="30"  align="left" class="text">
+                  	<span class="red2">
+                    <%=f.select( :palent_id, Product.all.collect {|p| [ p.title, p.palent_id ] },:include_blank => true)%>  
+                    </span>
+              </td>
+			  <td height="30" align="right" class="text"><strong>产品状态：</strong></td>
+				  <td  align="left" class="text">           
+		             <span id="sp_ejob_title">
+		             <%=f.radio_button(:state_id,"7",{})%>上架
+			         <%=f.radio_button(:state_id,"8",{})%>下架
+		             </span>
+		          </td>                
+          </tr> 
+          
+           <tr>
+			  <td height="30" align="right" class="text"><strong>推荐首页：</strong></td>
+              <td align="left" class="text" valign="top" >
+              <span id="sp_ejob_title">
+			    <%=f.radio_button(:is_suggest,"1",{})%>是
+			    <%=f.radio_button(:is_suggest,"",{})%>否
+			  </span>
+    			</td>
+			  <td height="30" align="right" class="text"><strong>推荐热卖：</strong></td>
+				  <td align="left" class="text" valign="top" >
+				  	<span id="sp_ejob_title">
+			    <%=f.radio_button(:is_hot,"1",{})%>是
+			    <%=f.radio_button(:is_hot,"",{})%>否
+			   </span>
+    			</td>               
+          </tr> 
+          
+               <tr>
+                  <td height="30" align="right" class="text"><strong>是否积分兑换：</strong></td>
+                  <td align="left" class="text"><%=f.radio_button(:is_jf,"1",{})%>是
+			      <%=f.radio_button(:is_jf,"",{})%>否	 &nbsp;<span id="sp_ejob_num"></span>
+                  </td>
+                  <td height="30" align="right" class="text"><strong>兑换积分数量：</strong></td>
+                  <td align="left" class="text"><%= f.text_field :jfnum ,:style=>"width:30px;"%>	 &nbsp;<span id="sp_ejob_num"></span>
+                  </td>
+               </tr>
+               
+                  <%a=["大图片380*280","大图片380*280","大图片380*280","长图片300*150","首页推荐105*105"]%>
+                  <%picture_range.each do |i|%>
+		  		  <tr>
+                  <td height="30" align="right" class="text"><strong>照片：</strong></td>
+		  				<td class="col2">
+		  					<%= file_field_tag "picture#{i}"%>&nbsp;&nbsp;&nbsp;&nbsp;<%=a[i-1]%>
+		  				</td>
+		  		  </tr>
+		  	      <%end%>
+                
+                 
+                <tr>
+                  <td height="30" align="right" class="text"><strong>描述：</strong></td>
+                  <td class="text">                
+                  	<script type="text/javascript" src="/javascripts/ckeditor/ckeditor.js"></script>
+                  	<textarea tabindex="2" id="description" name="description" class="ckeditor" width="20"></textarea>
+                  </td>
+                </tr>
+                 <tr>
+		   <td align="left" colspan="4">
+		   	<%= f.submit '保存' %>	   	  
+		   </td>
+		  </tr>
+              </table>
+	   </div>
+
+    
+<% end %>
+</div>

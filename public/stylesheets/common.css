@@ -1,0 +1,223 @@
+@charset "utf-8";
+/*\*/
+@import "reset.css"/*tpa=http://www.tristone.co.jp/oguri/include/css/reset.css*/;
+
+body {
+color:#646464;
+background-color:#fff;
+background-image:url("/images/discription/mainbg.jpg");
+background-position:center;
+background-repeat:repeat-y;
+text-align:center;
+font:13px/1.231 "Osaka", "ＭＳ Ｐゴシック", Arial, sans-serif;
+*font-size:small;
+*font:x-small;
+}
+
+/*IEでの背景1pxずれを修正
+===========================================================*/
+*:first-child+html body {
+padding-left: 1px;
+}
+
+*html body {
+padding-left: 1px;
+}
+
+/*全体
+===========================================================*/
+#container{
+	width:800px;
+	margin:auto;
+}
+
+/*共通設定
+===========================================================*/
+.clear{
+clear:both;
+}
+
+.clearfix:after{
+content:".";
+display:block;
+height:0;
+clear:both;
+visibility:hidden;
+}
+
+.clearfix{
+display:inline-table;
+}
+
+/*FLASH
+===========================================================*/
+#flashmovie {
+	margin-bottom:15px;
+}
+
+/*ヘッダー
+===========================================================*/
+
+#top {
+width:900px;
+height:110px;
+background:url("/images/discription/headerbg.png") top center no-repeat;
+margin:0 auto;
+text-align:left;
+}
+
+/*メニュー
+===========================================================*/
+
+
+/*更新情報
+===========================================================*/
+#whatsnew {
+	width:780px;
+	float:left;
+	text-align:left;
+	display: inline;
+}
+
+/*ホームバナースペース
+===========================================================*/
+
+#side_ad,
+#side_ad img{
+width:280px;
+}
+
+#side_ad {
+	float:right;
+	display:inline;
+}
+
+#side_ad ul li {
+line-height:0;
+font-size:0;
+margin-bottom:10px;
+}
+
+#side_ad a:hover img {
+opacity:0.8;
+filter: alpha(opacity=80);
+}
+
+#side_ad ul li.txtad {
+font-size:100%;
+}
+
+#side_ad ul li.txtad a {
+display:block;
+border:1px #ccc solid;
+padding:10px;
+line-height:150%;
+text-align:left;
+background-color:#f4f2eb;
+color:#666666;
+}
+
+#side_ad ul li.txtad a:hover {
+border:1px #b9ad8d solid;
+background-color:#f8f6ef;
+color:#928152;
+text-decoration:none;
+}
+
+/*フッター
+===========================================================*/
+#footer{
+clear:both;
+width:800px;
+margin:15px auto;
+background:url("/discription/hrx.gif") top  repeat-x;
+padding:10px 0;
+}
+
+#footer ul {
+float:right;
+}
+
+#footer ul li {
+font-size:85%;
+}
+
+#footer ul li a {
+color:#999999;
+display:block;
+background:url("/discription/pagetop.gif") right no-repeat;
+padding-right:15px;
+}
+
+#footer em {
+float:left;
+font-size:85%;
+color:#999;
+}
+
+#footer address {
+clear:right;
+float:right;
+margin-bottom:10px;
+}
+
+#footer address a{
+width:270px;
+height:10px;
+background:url("/discription/copyright.gif") no-repeat;
+display:block;
+font-size:10px;
+text-indent:-9999px;
+margin-top:5px;
+}
+
+#footer address a:hover {
+background-position:0 -10px;
+}
+
+/*コンテンツタイトル
+===========================================================*/
+#container .contentstitle {
+width:800px;
+height:150px;
+text-indent:-9999px;
+margin-bottom:20px;
+}
+
+#container .profile {
+height:1px;
+margin-bottom:20px;
+}
+
+#container .information {
+background:url("/discription/title.jpg") no-repeat;
+}
+
+#container .data {
+background:url("/discription/title-1.jpg") no-repeat;
+}
+
+#container .whatsnew {
+background:url("/discription/title-2.jpg") no-repeat;
+}
+
+#container .mail {
+background:url("/discription/title-3.jpg") no-repeat;
+}
+
+/*リンク初期設定
+===========================================================*/
+a:link{
+color:#978660;
+text-decoration:none;
+}
+
+a:visited{
+color:#a89979;
+text-decoration:none;
+}
+
+a:hover{
+color:#d59b2b;
+text-decoration:underline;
+}

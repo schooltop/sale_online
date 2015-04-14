@@ -1,0 +1,66 @@
+   <div class="right_F">
+            <!--welcome-->
+            <div class="welcome">
+                <div class="hello mt10"><img src="/images/center/hi.png">
+                </div>
+                <div class="mt15 ml70" id="MemberDiv">
+                    
+                    <span class="t14">您好，尊敬的会员，欢迎回来！</span>
+                    
+                    <div class="pt5">
+                        常用卡：190000000007910938
+                        
+                        <span class="pl20">
+                            手机：<%=current_user.user_profile.tel_num%>
+                            &nbsp;
+                            
+                        </span>
+                        
+                        <span class="pl20">
+                            邮箱：<%=current_user.email%>
+                            &nbsp;<a href="/user_profiles/id/edit" method="editemail">修改</a></span>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            <!--welcome end-->
+            <!--总览-->
+            <div class="overall">
+                
+                <h3>
+                    订单信息</h3>
+                <p>
+                    您当前帐户内有(<span class="red" id="hotelordercount">0</span>条) <a href="/UnConsumedOrder_cn_hotel.html">
+                        未出行酒店订单</a>， (<span class="red" id="flightordercount">0</span>条)<a href="#">
+                            未出行机票订单</a>
+                </p>
+                
+                <h3>
+                    积分账户</h3>
+                <p>可用积分：<span class='red bold'>0</span>分&nbsp;<span class='giftIcon'><img src="/images/center/jiangpin.png"></span>&nbsp;<a 
+
+href='#'>兑换好礼？</a> <br /> 
+已经冻结积分：0分<br />
+                
+                <!--LCInviteFriendNums>-1是有无资格-->
+                
+                <h3>
+                    现金账户</h3>
+                <p>可支取金额：<span class='red bold'>&yen;0 </span>&nbsp;<span class='withdrawIcon'><img src="/images/center/xianjin.png"></span>&nbsp;<a href='/#'>
+
+支取现金？</a><br />
+<!-- <span class='l_black'>出行订酒店，赚钱赚到high! 使用消费券订酒店、参加渠道返现活动，开心拿返现，轻松提现金！<a target='_blank' 
+
+href='http://www.elong.com/promotion/web/ecoupon/index.html'>了解更多赚钱秘笈</a></span> -->
+</p>
+
+              <!--   <a href="#" target="_blank" title="点击下载艺龙手机客户端"><img 
+
+src="http://static.elong.com/CMS/content/ELONGCN/MYELONG/IndexNote/app_201203121730.gif" width="305" height="75" alt="点击下载艺龙手机客户端"></a> -->
+                
+            </div>
+            <!--总览 end-->
+        </div>
+    
+    

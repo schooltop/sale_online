@@ -1,0 +1,10 @@
+
+
+
+<td scope="row" nowrap="nowrap" width="8.3%">请假类型</td>
+		<td nowrap="nowrap" width="15%">
+			<%=@leave_style.name%>
+		</td>
+<%= link_to 'Edit', edit_leave_style_path(@leave_style) %> |
+
+<%= link_to 'Back', leave_styles_path %>

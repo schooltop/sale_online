@@ -1,0 +1,12 @@
+<h1>Editing myare</h1>
+
+<% form_for(@myare) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @myare %> |
+<%= link_to 'Back', myares_path %>

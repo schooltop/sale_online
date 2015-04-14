@@ -1,0 +1,76 @@
+	<%=javascript_include_tag "validate"%>
+  		<% form_for @user_profile ,:html => { :multipart => true,:onsubmit=>"return validate_profile(this)"}  do |f| %>
+  			<%= f.error_messages %>
+  			<%= @error_messages%>
+		        <dl class="">
+	  				    <dt><%=t :contact%>:</dt>
+						<dd class="col2">
+							<div class="vpart">
+								<%= text_field 'user_profile', 'contact',:class=>"itext itext-long",:placeholder=>t(:real_name)  %>
+						    </div>
+						</dd>
+	  			</dl>
+	  								  				  				  				  				  				  			
+	  			<dl class="dl-ok">
+	  				<dt><%=t :tel_num%>:</dt>
+	  				<dd class="col2">	
+	  					<%= text_field 'user_profile', 'tel_num',:class=>"itext itext-long",:maxlength=>"50",:placeholder=>t(:tel_num)  %>
+				    </dd>
+	  			</dl>
+	  			
+				<dl class="dl-radio">
+					<dt> <%=t :gender%>:</dt>
+					<dd class="col2">
+					    <%=  radio_button("user_profile", "gender", "男",:id=>"male",:class=>"iradio",:checked=>true)%><label for="male"><%=t :male%></label>
+					    <%=  radio_button("user_profile", "gender", "女",:id=>"female",:class=>"iradio")%><label for="female"><%=t :female%></label>
+					 </dd>
+				</dl>
+               <!--  <dl class="">
+	  				<dt><%=t :position%>:</dt>
+	  				<dd class="col2">
+	  					<%= text_field 'user_profile', 'position',:class=>"itext itext-long",:maxlength=>"50"  %>
+	  				</dd>
+	  			</dl>
+	  			
+	  			<dl class="">
+	  				<dt><%=t :company%>:</dt>
+	  				<dd class="col2">
+	  					<%= text_field 'user_profile', 'company',:class=>"itext itext-long",:maxlength=>"50",:placeholder=>"无执照请填写XXX(个人)，如张三(个人)"  %>
+					</dd>
+	  			</dl>  -->
+	  			<dl class="">
+	  				<dt><%=t :nationality%>:</dt>
+	  				<dd class="col2">
+	  					<%= text_field 'user_profile', 'company',:class=>"itext itext-long",:maxlength=>"50",:placeholder=>t(:nationality)  %>
+					</dd>
+	  			</dl>
+	  			
+	  			<dl class="">
+	  				<dt><%=t :address%>:</dt>
+	  				<dd class="col2">
+	  					<%= text_field 'user_profile', 'homepage',:class=>"itext itext-long",:maxlength=>"50",:placeholder=>t(:post_address)  %>
+					</dd>
+	  			</dl>	  			
+	  			
+	  			<dl class="dl">
+	  				<dt><%=t :idcar%>:</dt>
+	  				<dd class="col2">
+	  					<%= text_field 'user_profile', 'idcar_style',:class=>"itext itext-half-l",:maxlength=>"40",:placeholder=>t(:idcar_style),:id=>"mainsell" %>
+	  					<%= text_field 'user_profile', 'idcar_num',:class=>"itext itext-half-l",:maxlength=>"40",:placeholder=>t(:idcar_num),:id=>"mainbuy" %>
+	  				</dd>
+	  			</dl>
+	  			<!-- <dl class="dl">
+	  				<dt><%=t :main_business%>:</dt>
+	  				<dd class="col2">
+	  					<%= text_field 'user_profile', 'sales',:class=>"itext itext-half-l",:maxlength=>"40",:placeholder=>t(:sale_productions),:id=>"mainsell" %>
+	  					<%= text_field 'user_profile', 'buys',:class=>"itext itext-half-l",:maxlength=>"40",:placeholder=>t(:buy_productions),:id=>"mainbuy" %>
+	  				</dd>
+	  			</dl> -->
+	  			<dl>
+					<dt>&nbsp;</dt>
+					<dd>
+						<%= f.submit t(:save),:class=>"mark-button"%>
+					</dd>
+				</dl>
+  			
+<% end %>

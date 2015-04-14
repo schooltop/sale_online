@@ -1,0 +1,11 @@
+<%require 'rubygems'
+require 'gruff'
+
+g = Gruff::Bar.new
+g.title = "我的" 
+g.data("苹果", [0,2500,2500,2500,2500,2500,2500,2500,2500,2500])
+g.data("橘子", [7000,7000,7000,7000,7000,7000,7000,7000,7000,7000])
+
+g.labels = {0 => '2003', 2 => '2004', 4 => '2005'}
+g.font = "c:/sunzhimeng/fonts/SIMHEI.TTF"
+g.write('my_fruity_graph_bar_width.png')%>

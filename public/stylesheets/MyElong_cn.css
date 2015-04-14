@@ -1,0 +1,744 @@
+.content{width:800px}
+.left_F{width:165px;float:left;border:#245aa8 solid 2px;background:#f4fcfe}
+.right_F{width:625px;float:right}
+.right_F a.down_dtline{border-bottom:1px dotted #001D75;text-decoration:none}
+.right_F a.down_dtline:hover{border-bottom:1px dotted #F30;text-decoration:none}
+h1{font-size:20px;font-family:SimHei;color:#C96702;line-height:24px}
+hr{height:1px;border:0;border-bottom:#b4b4b4 dotted 1px;overflow:hidden;font-size:1px;line-height:1px}
+.tenpayIcon{background:url("/images/center/MyElongCn.png") no-repeat 0 0;width:13px;height:16px}
+.errorIcon{background:url("/images/center/MyElongCn.png") no-repeat -64px 0;width:17px;height:16px}
+.TipsIcon{background:url("/images/center/MyElongCn.png") no-repeat -20px 0;width:17px;height:16px}
+.OKIcon{background:url("/images/center/MyElongCn.png") no-repeat -43px 0;width:17px;height:16px}
+.loading{background:url("loading.gif-t=201212271141.gif"/*tpa=http://www.elongstatic.com/myelong/pic/loading.gif?t=201212271141*/);width:189px;height:38px}
+.HelpIcon{background:url("/images/center/MyElongCn.png") -476px 0 no-repeat;width:10px;height:10px}
+.PreviousIcon{background:url("/images/center/MyElongCn.png") -515px 0 no-repeat;width:5px;height:10px}
+.NextIcon{background:url("/images/center/MyElongCn.png") -496px 0 no-repeat;width:5px;height:10px}
+.giftIcon{background:url("jiangpin.png")no-repeat;width:14px;height:16px;}
+.withdrawIcon{background:url("/images/center/MyElongCn.png") -453px 0 no-repeat;width:13px;height:16px;display:inline-block;vertical-align:middle;_vertical-align:baseline}
+.larrowIcon{background:url("/images/center/MyElongCn.png") -572px 0 no-repeat;width:6px;height:15px;display:inline-block;vertical-align:middle;_vertical-align:baseline}
+.larrowbigIcon{background:url("/images/center/MyElongCn.png") -639px 0 no-repeat;width:15px;height:15px;display:inline-block;vertical-align:middle;_vertical-align:baseline}
+.larrPicIcon{background:url("/images/center/MyElongCn.png") -774px 0 no-repeat;width:15px;height:15px;display:inline-block;margin-right:3px;vertical-align:middle;_vertical-align:baseline}
+.printIcon{background:url("/images/center/MyElongCn.png") -587px 0 no-repeat;width:14px;height:13px;display:inline-block;vertical-align:middle;_vertical-align:baseline}
+.tenpayIconBig{background:url("/images/center/MyElongCn.png") -664px -45px no-repeat;width:126px;height:43px;display:inline-block;vertical-align:middle}
+.OrderListIcon{background:url("/images/center/MyElongCn.png") -659px 0 no-repeat;width:12px;height:14px;display:inline-block;vertical-align:middle;_vertical-align:baseline}
+.MapIcon{background:url("/images/center/MyElongCn.png") -680px 0 no-repeat;width:12px;height:14px;display:inline-block;vertical-align:middle;_vertical-align:baseline}
+.phone_step1,.phone_step2{background:url("/images/center/MyElongCn.png") -67px -77px no-repeat;width:45px;height:15px;display:inline-block;vertical-align:middle;_vertical-align:baseline}
+.phone_step2{background-position:-121px -77px}
+.rightIcon{background:url("/images/center/MyElongCn.png") -802px -48px no-repeat;width:41px;height:38px;display:inline-block;vertical-align:middle}
+.passengerIcon{background:url("/images/center/MyElongCn.png") -744px 0 no-repeat;width:11px;height:14px;display:inline-block;vertical-align:-3px;vertical-align:middle\9}
+.ok_b{background:url("/images/center/MyElongCn.png") no-repeat -234px 0;width:22px;height:22px;display:inline-block;vertical-align:middle;*vertical-align:baseline}
+.fi_in_w3{background:url("/images/center/MyElongCn.png") no-repeat -698px 0;width:16px;height:16px;border:0;cursor:pointer;margin:0;padding:0;vertical-align:-4px;vertical-align:0}
+.search_bt_out{width:108px;height:28px;background:url("indicator.gif-t=201212271141.gif"/*tpa=http://www.elongstatic.com/common/pic/indicator.gif?t=201212271141*/) no-repeat center;border:0;cursor:wait;color:#999}
+.com_search235_out{width:235px;height:28px;background:url("indicator.gif-t=201212271141.gif"/*tpa=http://www.elongstatic.com/common/pic/indicator.gif?t=201212271141*/) no-repeat center;border:0;cursor:wait;color:#999}
+.rlt{position:relative}
+.normal{font-weight:normal}
+.middle{vertical-align:middle}
+.orange{color:#b05200}
+.yellow{color:#f80}
+.blue{color:#001D75}
+.t12{font-size:12px}
+.t14{font-size:14px}
+.t18{font-size:18px}
+.mt25{margin-top:25px}
+.ml25{margin-left:25px}
+.ml30{margin-left:30px}
+.ml40{margin-left:40px}
+.ml50{margin-left:50px}
+.ml70{margin-left:70px}
+.ml80{margin-left:80px}
+.ml90{margin-left:90px}
+.ml100{margin-left:100px}
+.ml150{margin-left:150px}
+.ml180{margin-left:180px}
+.ml200{margin-left:200px}
+.mr25{margin-right:25px}
+.mr30{margin-right:30px}
+.mr50{margin-right:50px}
+.lh20{line-height:20px}
+.hidden{visibility:hidden}
+.visible{visibility:visible}
+.Anone{text-decoration:none}
+.tl_dotted{border-top:1px dotted #b4b4b4}
+.input100,.input100_on{width:100px;height:21px;line-height:23px\9;background:url("/images/center/MyElongCn.png") -32px -45px no-repeat;border:0;cursor:pointer;font-size:12px;color:#FFF}
+input.gray_btn,input.gray_btn_on{width:75px;height:21px;padding-top:2px;font-size:12px;background:url("/images/center/MyElongCn.png") -395px -142px no-repeat;text-align:center;border:0;cursor:pointer;overflow:hidden}
+input.gray_btn_on{filter:alpha(Opacity=70);Opacity:.7}
+input.gray_btn_out{width:75px;height:21px;margin-top:5px;background:url("indicator.gif-t=201212271141.gif"/*tpa=http://www.elongstatic.com/common/pic/indicator.gif?t=201212271141*/) no-repeat center;border:0;cursor:wait;color:#999}
+.input100_on{background-position:-142px -45px}
+.bg_gray{background:#ebebeb}
+.bg_lblue{background:#eef7ff}
+.bg_yellow{background:#feff90}
+.bg_lyellow{background:#fffcd6}
+.b1{border:1px solid #a9cde9}
+.Level-1{background:url("/images/center/MyElongCn.png") no-repeat;width:14px;height:16px}
+.Level-1{background-position:0 -45px}
+.left_F h2{height:40px;background:#b9e0ff;line-height:40px;padding-left:10px}
+.left_F .LB{display:inline-block;margin-right:5px;_margin:12px 5px 12px 0;vertical-align:middle}
+.left_F dl{border-bottom:#b4b4b4 dashed 1px;margin:10px 5px 0;padding:0 5px 10px;line-height:22px}
+.left_F dl a{text-decoration:none}
+.left_F dt{font-size:14px}
+.left_F dd{margin-left:21px}
+.left_F .Order,.left_F .Account,.left_F .Personal{background:url("/images/center/MyElongCn.png") no-repeat;width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:5px}
+.left_F .Order{background-position:0 -75px}
+.left_F .Account{background-position:-20px -75px}
+.left_F .Personal{background-position:-40px -75px}
+.left_F .claerMP{border:0}
+.right_F .nav{background:url("/images/center/MyElongCn.png") no-repeat scroll 0 -105px;height:31px;font:bold 14px/20px sinsum;color:#fff;line-height:31px;padding-left:15px}
+.right_F .nav em{color:#ffd800;font-weight:bold}
+.right_F .nav a{color:#FFF;text-decoration:none}
+.right_F .nav a:hover{text-decoration:underline}
+.right_F .Cm_Bg{background:#f4fcfe;border:#b9e0ff solid 1px}
+.BCardBOx{border:#ccd7e0 solid 1px;width:383px;float:left;margin:0 0 10px 10px}
+.BCardBOx .title{background:url("/images/center/MyElongCn.png") no-repeat 0 -142px;height:26px;width:368px;line-height:26px;padding-left:15px;text-align:left;padding-bottom:5px}
+.BCardBOx dt,.BCardBOx dd{float:left}
+.BCardBOx dt{width:52px;text-align:right;padding-left:5px}
+.BCardBOx dd{width:321px;padding-right:5px}
+.BCardBOx .footer{width:378px;padding-bottom:5px}
+.BCardBOx .Modify,.BCardBOx .Delete{background:url("/images/center/MyElongCn.png") no-repeat;width:16px;height:16px;display:inline-block;vertical-align:middle;_vertical-align:baseline}
+.BCardBOx .Modify{background-position:-354px 0}
+.BCardBOx .Delete{background-position:-377px 0}
+#TSwitch{margin:0 10px;position:relative}
+#TSwitch .msg{background:#daebfa;padding-top:5px;padding-bottom:5px}
+#TSwitch .Switch{border-bottom:#a9cde9 solid 1px}
+#TSwitch .Switch li{cursor:pointer;float:left;text-align:center;width:110px;padding-top:5px;height:22px;margin-left:10px;font-size:14px;position:relative;background:url("/images/center/MyElongCn.png") -667px -143px no-repeat}
+#TSwitch .Switch .action{background-position:-547px -143px;margin-bottom:-1px;font-weight:bold;height:23px}
+#TSwitch .Switch .Snone{border:0;font-size:12px;background:0;margin-top:-9px;width:400px;text-align:right;position:absolute;right:10px;_right:20px}
+#TSwitch .HelpIcon{display:inline-block;margin-right:3px;vertical-align:middle}
+#TSwitch a{text-decoration:none;cursor:pointer}
+table.n_list th{background:#daebfa;padding:6px 2px 3px;font-weight:bold;text-align:center}
+table.n_list td{font-size:12px;padding:10px 2px 8px;border-bottom:1px dotted #b4b4b4;text-align:center}
+table.n_list .pl20{padding-left:20px}
+table.n_list .tl{text-align:left}
+table.n_list td.border_b_none{border-bottom:0}
+table.Anone td a{text-decoration:none;cursor:pointer}
+table.n_tab td{padding:3px 0}
+.fi_q_d p{line-height:23px}
+.fi_q_d .fi_line3{border:0;border-bottom:#999 dotted 1px;height:1px}
+.fi_q_d .fi_q_d1 li{display:inline;float:left;line-height:23px}
+.fi_q_d .fi_q_d1_w{height:158px;overflow-x:hidden;overflow-y:auto}
+.fi_q_d .fi_q_d2{width:135px;padding-right:5px;white-space:normal;word-wrap:break-word}
+.fi_q_d .fi_q_d2 input{vertical-align:middle;*vertical-align:baseline;margin-right:2px}
+.fi_q_d .fi_q_d3{width:53px;padding-right:5px}
+.fi_q_d .fi_q_d4{width:100px}
+.fi_q_d .fi_q_d5{background:#e4e3e3;padding:2px 0;margin-top:10px}
+.fi_q_d .fi_q_d6{margin-top:10px;text-align:center}
+.bounce dl dt,.bounce dl dd{padding:4px 0;font-size:12px}
+.bounce dl dt{float:left;width:135px;text-align:right}
+.bounce dl dd{margin-left:135px;text-align:left}
+.bounce dl dd.text input{height:18px}
+.bounce dl dd.ha{height:auto}
+.bounce dl dd.pl5{padding-left:5px}
+.bounce dl dd.btn input{font-size:14px;font-weight:bold}
+#ElongLogin a{font-size:12px}
+#ElongLogin dl{float:left;width:450px;padding-left:30px}
+#ElongLogin dt{margin-bottom:30px;font-size:20px;font-family:SimHei;color:#C96702;line-height:24px}
+#ElongLogin dd{font-size:14px;margin-left:90px;*margin-left:70px}
+#ElongLogin .w207{width:207px}
+#ElongLogin .w134{width:134px;margin-right:5px}
+#ElongLogin .w40{width:40px;margin-right:5px}
+#ElongLogin .bdr{border-right:#649ecc solid 1px}
+#ElongLogin .noMember{width:449px}
+#ElongLogin .noMember dd{margin-left:80px;margin-bottom:15px;font-family:simsun}
+#ElongLogin .search_bt,#ElongLogin .search_bt_an,#ElongLogin .search_bt_out{font-size:14px;font-weight:bold;text-align:center;margin-left:50px}
+#ElongLogin .noMember .search_bt,#ElongLogin .noMember .search_bt_an{margin-left:90px;margin-top:17px}
+#ElongLogin .tenpayIcon{display:inline-block;vertical-align:middle;margin-right:3px}
+#ElongLogin .errorBox{background:#fff2f2;border:#ff8f41 solid 1px;padding:5px;font-size:12px;width:260px;position:relative;margin:-10px 0 10px 120px}
+#ElongLogin .errorIcon{display:inline-block;vertical-align:middle;*vertical-align:baseline;margin-right:3px}
+#ElongLogin .loadingBox{text-align:center;font-size:14px;font-weight:bold;padding:100px 0}
+#ElongLogin .loadingBox .loading{margin:0 auto}
+.extra a{text-decoration:none}
+.extra .btns{float:left;position:relative;overflow:hidden;height:14px;padding:5px 0 5px 23px;margin-right:4px;line-height:14px}
+.extra .btns s{display:block;position:absolute;top:0;left:0;width:23px;height:23px;background-image:url("icon_cooperation.png-t=201212271141.png"/*tpa=http://www.elongstatic.com/myelong/pic/icon_cooperation.png?t=201212271141*/);background-repeat:no-repeat}
+.extra .btns a{text-decoration:none;padding-right:6px;border-right:1px solid #DBDBDB}
+.extra .qq s{background-position:0 0}
+.extra .caift s{background-position:-192px 0}
+.extra .renren s{background-position:-46px 0}
+.extra .net163 s{background-position:-69px 0}
+.extra .kaixing001 s{background-position:-92px 0}
+.extra .sina s{background-position:-115px 0}
+.extra .baidu s{background-position:-138px 0}
+.extra .safe360 s{background-position:-168px 0}
+.extra .wanlitong s{background-position:-221px 0}
+.extra .baidu a:link,.extra .baidu a:visited{border:0}
+.extra .alipay a{background:url("alipay_fl_m.png-t=201212271141.png"/*tpa=http://www.elongstatic.com/myelong/pic/alipay_fl_m.png?t=201212271141*/) no-repeat;width:74px;height:17px;margin-top:3px;margin-left:6px;_margin-left:3px;display:inline-block}
+#NewUserUp h1{font-family:微软雅黑;margin-left:25px;font-weight:bold}
+#NewUserUp .w650{width:750px;margin:0 auto}
+#NewUserUp .ml125{margin-left:125px}
+#NewUserUp .w250{width:250px}
+#NewUserUp .w150{width:150px}
+#NewUserUp .Card dt,#NewUserUp .Card dd{float:left;height:35px}
+#NewUserUp .Card dt,#NewUserUp .FillMge p{width:125px;text-align:right;font-size:14px}
+#NewUserUp .Card dd,#NewUserUp .FillMge span{width:600px}
+#NewUserUp .FillMge p,#NewUserUp .FillMge span{height:28px;padding-top:7px}
+#NewUserUp .FillMge p,#NewUserUp .FillMge span{display:inline-block}
+#NewUserUp .FillMge p,#NewUserUp .FillMge span{*display:inline;zoom:1}
+#NewUserUp .FillMge li{border:#fff solid 1px}
+#NewUserUp .FillMge li.pass_level tt{display:block;border:1px solid #ff7d00;height:5px;line-height:5px;width:120px;overflow:hidden;padding:0;margin:0;margin-left:125px}
+#NewUserUp .FillMge li.pass_level i{margin-left:125px;font-style:normal;display:block;margin-top:-3px}
+#NewUserUp .FillMge li.pass_level s{display:inline-block;background:#fff;height:5px;overflow:hidden;width:40px;padding:0;margin:0}
+#NewUserUp .FillMge li.pass_level s.low{background:#ffa22a}
+#NewUserUp .FillMge li.pass_level s.normal{background:#f28900}
+#NewUserUp .FillMge li.pass_level s.high{background:#e28000}
+#NewUserUp .com_search235,#NewUserUp .com_search235_an,#NewUserUp .com_search235_out{font-size:14px;font-weight:bold;text-align:center}
+#NewUserUp .Cm{vertical-align:middle;*vertical-align:baseline;margin-right:3px;*margin-right:0}
+#NewUserUp .Treaty{height:120px;overflow:auto;width:520px;border:#7f9db9 solid 1px;color:#666}
+#NewUserUp .addition dd,#NewUserUp .addition dt{float:left;height:30px}
+#NewUserUp .addition{background:#f3f3f3;border:#d9d9d9 solid 1px;padding-top:10px}
+#NewUserUp .addition dt{width:145px;padding-left:125px}
+#NewUserUp .addition dd{width:378px}
+#NewUserUp .addition label{width:90px;display:inline-block}
+#NewUserUp .addition input{vertical-align:middle;*vertical-align:baseline;margin-right:3px;*margin-right:0}
+#NewUserUp .com_show,#NewUserUp .com_hide{display:inline-block;position:relative;*margin-bottom:3px;_margin-bottom:-8px}
+#NewUserUp .TipsMsg{background:#f4fcfe;border:#d4e8fc solid 1px!important}
+#NewUserUp em{color:#777;margin-left:10px}
+#NewUserUp .TipsMsg em span{width:17px;height:16px;padding:0;margin-right:3px;vertical-align:middle;*vertical-align:baseline}
+#NewUserUp .OKIcon{width:17px!important;height:16px!important;padding:0!important;vertical-align:middle;*vertical-align:baseline}
+#NewUserUp #OnAddition{display:inline-block}
+#NewUserUp .FillMge span.errorIcon{background:url("/images/center/MyElongCn.png") no-repeat -65px 0;width:17px!important;height:16px!important;padding:0!important;margin-right:3px;vertical-align:middle;*vertical-align:baseline}
+.welcome{height:73px;border:1px solid #a9cde9;border-right-width:2px\9;border-bottom-width:3px\9;box-shadow:0 3px 3px #ccc;-webkit-box-shadow:0 3px 3px #ccc;-moz-box-shadow:0 3px 3px #ccc;background:#eef7ff;padding-left:28px}
+.welcome .hello{float:left;width:60px;height:53px;background:url("/images/center/MyElongCn.png") -252px -45px no-repeat}
+.tip_longcui{border-bottom:1px dotted #36c;text-decoration:none;color:#131313}
+.tip_longcui span{display:inline-block;width:10px;height:10px;background:url("/images/center/MyElongCn.png") -476px 0 no-repeat;*vertical-align:middle}
+.overall h3{padding:5px 20px;margin-top:10px;font:16px Microsoft Yahei,\5b8b\4f53;border-bottom:2px solid #a2daff}
+.overall p{margin:10px 0 15px 20px;line-height:2em}
+.overall .warn{background:#fffde3;border:1px solid #d9d282;padding:10px;padding-left:20px}
+.overall .warn ul li{color:#666;font-family:simsun}
+.hs_welcome{height:93px;position:relative}
+.hs_welcome dt{_height:20px;font-size:14px;background:url("hsbottom.gif-t=201212271141.gif"/*tpa=http://www.elongstatic.com/myelong/pic/hsbottom.gif?t=201212271141*/) bottom left no-repeat;margin-bottom:10px;padding-left:20px}
+.hs_welcome dd{padding-left:20px}
+.hs_welcome .aimg{position:absolute;top:7px;right:0;width:305px;height:75px}
+#FgPass .MobileIcon,#FgPass .EmailIcon,#FgPass .PhoneIcon,#FgPass .CardIcon{background-image:url("/images/center/MyElongCn.png");width:32px;height:32px}
+#FgPass .MobileIcon{background-position:-93px 0}
+#FgPass .EmailIcon{background-position:-127px 0}
+#FgPass .PhoneIcon{background-position:-161px 0}
+#FgPass .CardIcon{background-position:-195px 0}
+#FgPass .bg_e9{background:#e9f3fd}
+#FgPass a{font-weight:normal}
+#FgPass .uLiL{padding:20px 20px 30px 20px;position:relative}
+#FgPass .uLiL li{display:inline-block;vertical-align:middle;position:relative}
+#FgPass .uLiL li{*display:inline;zoom:1}
+#FgPass .com_search75,#FgPass .com_search75_an{color:#FFF;text-align:center;line-height:23px;*text-indent:0}
+#FgPass .uLiL li.TipsBox{background:#fafafa;border:#cde1f6 solid 1px;padding:5px 10px;position:absolute;top:56px;right:130px;width:250px}
+#FgPass .w130{width:130px}
+#FgPass .w80{width:80px}
+.forgetPw{width:960px;margin:auto;color:#333}
+.forgetPw h3{padding:20px 10px;border-bottom:1px dotted #ccc;font-size:20px;font-weight:bold;font-family:Verdana,Geneva,sans-serif,"黑体";color:#c60}
+.forgetPw p{padding:10px;font-family:Tahoma,Geneva,sans-serif;clear:left}
+.forgetPw p a{margin:0 20px 0 5px}
+.forgetPw strong{font-size:14px;font-weight:bold;color:#000}
+.forgetPw div{padding:10px;background:#e9f3fd}
+.forgetPw div.le{width:940px;margin-top:15px;float:left;padding:0}
+.forgetPw div.le p.reg{color:#F00;width:920px;text-align:center}
+.forgetPw div.le.right{float:right}
+.forgetPw div.le .hs_but{padding:0;text-align:center;line-height:30px;font-size:14px;color:#fff;font-weight:bold;width:165px;height:31px;background:url("butbg.gif-t=201212271141.gif"/*tpa=http://www.elongstatic.com/myelong/pic/butbg.gif?t=201212271141*/) no-repeat top left;margin:auto}
+.forgetPw div.le .hs_but a{display:block;text-decoration:none;color:#fff}
+.forgetPw div.le .hs_hui{padding:0;text-align:center;line-height:30px;font-size:14px;color:#fff;font-weight:bold;width:165px;height:31px;background:url("butbg.gif-t=201212271141.gif"/*tpa=http://www.elongstatic.com/myelong/pic/butbg.gif?t=201212271141*/) no-repeat left -31px;margin:auto}
+.forgetPw div.le .hs_hui a{display:block;text-decoration:none;color:#6a6a6a}
+a.but{text-decoration:none;background:url("forgetPwbut.gif-t=201212271141.gif"/*tpa=http://www.elongstatic.com/myelong/pic/forgetPwbut.gif?t=201212271141*/) 0 0;float:left;color:#fff;font-size:14px;font-weight:bold;margin-left:350px;cursor:pointer}
+a.but span{position:relative;background:url("forgetPwbut.gif-t=201212271141.gif"/*tpa=http://www.elongstatic.com/myelong/pic/forgetPwbut.gif?t=201212271141*/) top right;line-height:31px;margin:0 -30px 0 30px;padding-right:30px;float:left}
+a.but:hover{background:url("forgetPwbut.gif-t=201212271141.gif"/*tpa=http://www.elongstatic.com/myelong/pic/forgetPwbut.gif?t=201212271141*/) left -30px;height:31px;float:left;margin-left:350px}
+a.but:hover span{background:url("forgetPwbut.gif-t=201212271141.gif"/*tpa=http://www.elongstatic.com/myelong/pic/forgetPwbut.gif?t=201212271141*/) right -30px;line-height:31px;margin:0 -30px 0 30px;padding-right:30px;float:left;color:#fff;font-size:14px;font-weight:bold}
+.forgetPw div.le p a.hs_btt{width:90px;height:31px;background:url("butbg.gif-t=201212271141.gif"/*tpa=http://www.elongstatic.com/myelong/pic/butbg.gif?t=201212271141*/) no-repeat left -124px;display:block;text-align:center;line-height:30px;color:#fff;text-decoration:none;font-size:14px;font-weight:bold}
+.forgetPw div.le ul{float:left;width:445px;margin-top:33px}
+.forgetPw div.le li{padding-left:10px;line-height:22px;color:#666}
+.hsl{color:#0b7208;width:920px;text-align:center}
+.hsh{color:#f00}
+.forgetPw div.h_jzx{width:30px;height:150px;font-size:14px;font-weight:bold;background:url("forgetx.gif-t=201212271141.gif"/*tpa=http://www.elongstatic.com/myelong/pic/forgetx.gif?t=201212271141*/) no-repeat center bottom;float:left}
+.forgetPw div .h_marg{margin-left:130px;display:inline}
+.forgetPw div .h_enmarg{margin-left:90px;display:inline}
+.forgetPw div .h_marg1{margin-left:85px;display:inline}
+.forgetPw div .h_marg2{display:inline}
+.forgetPw div .h_marg4{margin-left:270px;display:inline}
+.forgetPw div .h_marg3{margin-left:97px;display:inline}
+.forgetPw div .h_marg5{margin-left:125px;display:inline}
+.forgetPw div .h_marg6{margin-left:133px;display:inline}
+.h_marg7{margin-right:5px;display:inline}
+.forgetPw div p.h_padd{text-align:center;padding-top:40px}
+.forgetPw p span.h_mar{margin:0 10px 0 0;font-weight:normal;display:inline}
+.hs_tc{float:left}
+.hs_tc strong{height:30px;color:#f00}
+.hs_tc strong.h{color:#000;font-weight:bold}
+.hs_tc strong a{color:#F60;margin:0 5px}
+.hs_tc li{height:26px;line-height:22px;font-size:12px;font-family:"宋体"}
+.hs_tc li.top{margin-top:10px}
+.hs_tc li .inptxt{width:200px;font-size:12px;margin-right:5px;display:inline}
+.hs_tc li.bg{background:url("cross.png-t=201212271141.png"/*tpa=http://www.elongstatic.com/myelong/pic/cross.png?t=201212271141*/) no-repeat left 4px;padding-left:25px;margin:10px 0}
+.hs_tc li.bgno{margin:0;color:#f00;height:50px}
+.c{clear:both;display:block}
+.hsloading{width:75px;height:22px;background:url("indicator.gif-t=201212271141.gif"/*tpa=http://www.elongstatic.com/common/pic/indicator.gif?t=201212271141*/) no-repeat center;border:0}
+#Pschange .ct{text-align:center;padding:48px 0;font-size:14px}
+#Pschange .ct dl{margin-bottom:20px}
+#Pschange .ct dt,#Pschange .ct dd{float:left;margin-bottom:10px;height:22px}
+#Pschange .ct dt{width:305px;text-align:right}
+#Pschange .ct dd{width:474px;text-align:left}
+#Pschange .search_bt,#Pschange .search_bt_an{font-weight:bold;font-size:14px;text-align:center;font-family:simsun;_padding-top:3px;vertical-align:text-bottom}
+#UsualAr .ct{padding:5px 10px}
+#UsualAr .ct .w162{width:95px;height:18px;line-height:20px;padding-right:67px}
+#UsualAr .ct .s_botton{background:url("/images/center/MyElongCn.png") no-repeat -265px 0;width:62px;height:20px;display:block;color:#131313;text-decoration:none;text-align:center;position:absolute;top:1px;top:2px\9;right:62px;*right:65px}
+#UsualAr .BCardBOx .title{color:#131313}
+#UsualAr .BCardBOx dt,#UsualAr .BCardBOx dd{color:#777}
+#UsualAr .BCardBOx .footer{width:353px;padding-left:25px;margin-top:20px}
+#UsualAr .list{margin-left:-10px;_margin-left:-20px}
+*+html #UsualAr .ie7mt{margin-top:10px}
+#UsualAr .top{background:url("/images/center/MyElongCn.png") no-repeat -404px 0;width:10px;height:9px;display:inline-block;margin-right:3px;*vertical-align:middle;_margin-top:3px}
+#UsualAr .addAddress{padding:35px 0 30px}
+#UsualAr .addAddress dt,#UsualAr .addAddress dd{float:left;height:30px}
+#UsualAr .addAddress dt{width:258px;text-align:right}
+#UsualAr .addAddress dt em{color:#F00}
+#UsualAr .addAddress dd{width:520px}
+#UsualAr .addAddress dd input{width:132px}
+#UsualAr .addAddress .footer{text-align:center;width:779px;margin-top:15px}
+#UsualAr .addAddress .footer input{width:109px}
+#UsualAr .search_bt,#UsualAr .search_bt_an{font-weight:bold;font-size:14px;text-align:center;font-family:simsun;_padding-top:3px;vertical-align:text-bottom}
+#UsualAr .w342{width:342px!important}
+#jif .ct{padding:5px 10px}
+#jif .Integral_B{background:url("/images/center/MyElongCn.png") -436px -45px no-repeat;width:64px;height:29px;display:inline-block;font-size:14px;color:#fff;text-decoration:none;padding:0 0 0 40px;line-height:29px;text-align:left}
+#jif .tab_B{width:100%;text-align:center;margin-bottom:10px}
+#jif .tab_B thead{font-weight:bold;color:#636363}
+#jif .tab_B thead td{border-bottom:#a9cde9 solid 1px}
+#jif .tab_B tbody td{border-bottom:#b4b4b4 dashed 1px}
+#jif .tab_B ul.morepdt{width:260px;margin:0 auto}
+#jif .tab_B ul.morepdt li{padding:2px 0}
+#jif .tab_B ul.morepdt li.bb{border-bottom:1px solid #ddd}
+#jif .tab_B td{padding:5px 10px}
+#jif .tab_B td span.width1{width:45px;line-height:1.2em;word-wrap:break-word;word-break:break-all;overflow:hidden;display:inline-block}
+#jif .Rules{margin:10px;padding-bottom:10px}
+#jif .Rules dl{border-bottom:#b4b4b4 dashed 1px;margin-bottom:10px;padding-bottom:10px;padding-left:20px;padding-right:10px}
+#jif .Rules dl dt{font-family:simsun;color:#C96702;font-weight:bold}
+#jif .Rules dl dd{padding-left:12px}
+#jif .Rules .BGG{background:#daebfa;border-bottom:0;padding-top:10px}
+#Cash .tab_B{width:100%;text-align:center;margin-bottom:10px}
+#Cash .tab_B thead,#Cash .xjtab_B thead{font-weight:bold;color:#636363}
+#Cash .tab_B thead td,#Cash .xjtab_B thead td{border-bottom:#a9cde9 solid 1px}
+#Cash .tab_B tbody td,#Cash .xjtab_B tbody td{border-bottom:#b4b4b4 dashed 1px}
+#Cash .tab_B td{padding:5px 10px}
+#Cash .tab_B td.tab_Bqtxtbar,#Cash .xjtab_B td.tab_Bqtxtbar{text-align:left;color:#000;font-size:14px;background:#eef7ff}
+#Cash .xjtab_B{width:100%;text-align:center;margin-bottom:10px;background:#fff;font-family:"宋体"}
+#Cash .xjtab_B thead{color:#222;background:#DAEBFA}
+#Cash .xjtab_B thead td{border-bottom:0;padding:3px 2px}
+#Cash .xjtab_B tbody td{padding:5px 10px}
+#Cash .xjprice{font-weight:bold;width:145px;text-align:right;float:left}
+#Cash .xjmx{float:left;margin-left:5px}
+#Cash .xjmx a{font-weight:normal;text-decoration:none;float:left}
+#Cash .xjmx img{vertical-align:middle}
+#Cash .w690{width:710px;margin:10px auto}
+#Cash .Mobile_RB{background:url("/images/center/MyElongCn.png") -550px -45px no-repeat;width:74px;height:29px;display:inline-block;font-size:14px;color:#fff;text-decoration:none;padding:0 0 0 30px;line-height:29px;text-align:left}
+#Cash .Bank_RB{background:url("/images/center/MyElongCn.png") -322px -45px no-repeat;width:76px;height:29px;display:inline-block;font-size:14px;color:#fff;text-decoration:none;padding:0 0 0 28px;line-height:29px;text-align:left}
+#Cash .Mobile_RB_off{background-position:-550px -74px;cursor:pointer}
+#Cash .Bank_RB_off{background-position:-322px -74px;cursor:pointer}
+#Cash .Total{background:#eaeaea;margin:10px;padding:10px 30px}
+#Cash .Mobile_f{margin:20px 10px}
+#Cash .Mobile_f .tt{font-size:14px;margin-bottom:20px}
+#Cash .Mobile_f dt{background:#daebfa}
+#Cash .Mobile_f dt em{color:#144ea2;background:#b9e0ff;width:20px;display:inline-block;text-align:center;font-weight:bold;margin-right:15px}
+#Cash .Mobile_f dd{margin-top:15px;margin-bottom:30px;padding-left:35px}
+#Cash .Mobile_f dd label{margin-right:25px}
+#Cash .Mobile_f .mer{margin-left:54px;margin-top:10px}
+#Cash .Mobile_f .search_bt,#Cash .Mobile_g .search_bt,#Cash #Cash .Mobile_g .search_bt_an,#Cash .Mobile_f .search_bt_an{font-weight:bold;font-size:14px;text-align:center;font-family:simsun;_padding-top:3px;vertical-align:text-bottom}
+#Cash .Mobile_g{font-size:14px;padding:100px 0;margin-left:176px}
+#Cash .Mobile_g .mtd{margin:70px 0 0 144px}
+#Cash .w65{width:65px;margin:0 5px}
+#Cash .h28{height:28px;line-height:28px}
+.ICBC,.CCB,.CIB,.ABC,.CMB,.PSBC,.BC,.GDB{background:url("bank_list.png-t=201212271141.png"/*tpa=http://www.elongstatic.com/myelong/pic/bank_list.png?t=201212271141*/) no-repeat;width:112px;height:33px;display:inline-block;vertical-align:middle;margin-left:5px}
+.CCB{background-position:0 -43px}
+.CIB{background-position:0 -84px}
+.ABC{background-position:0 -125px}
+.CMB{background-position:0 -166px}
+.PSBC{background-position:0 -207px}
+.BC{background-position:0 -248px}
+.GDB{background-position:0 -289px}
+#Cash .dtb span{display:inline-block}
+#Cash .dtb li{margin-bottom:15px}
+#Cash .dtb li{padding:6px 0;margin:2px 10px 2px 0}
+#Cash .dtb li.on{background:#fbfeff;border:1px solid #d4e8fc}
+#Cash .dtb .w115{width:115px;text-align:right}
+#Cash .dtb input{width:230px}
+#Coupons .h1{background:#daebfa;padding:0 20px;margin:10px 10px 0;font-weight:bold}
+#Coupons .h1 a{font-weight:normal}
+#Coupons .HelpIcon{display:inline-block;margin-right:3px;vertical-align:middle;_vertical-align:baseline;_margin-bottom:-5px;_margin-top:3px}
+#Coupons .tab{width:100%;text-align:center}
+#Coupons .tab td{padding:5px 10px;border:#a9cde9 solid 1px}
+#Coupons .tab thead td{font-size:14px;font-weight:bold;background:#daebfa}
+#Coupons .tab tbody td{background:#fff}
+#Coupons .com_hide,#Coupons .com_show{display:inline-block;margin-left:3px;*vertical-align:middle;_vertical-align:sub;*margin-top:4px;_margin-top:-4px}
+#Coupons .tad{width:100%;text-align:center}
+#Coupons .tad td{padding:7px 10px}
+#Coupons .tad thead td{background:#daebfa;color:#636363;font-weight:bold;border-bottom:#a9cde9 solid 1px}
+#Coupons .tad tbody td{border-bottom:#b4b4b4 dashed 1px}
+#Coupons .h2{background:#daebfa;padding:0 20px;margin:25px 10px 0;font-weight:bold}
+#Coupons #TSwitch{margin:0;margin:0}
+#Coupons .ulLIs{margin-left:10px;margin-top:15px}
+#Coupons .ulLIs li{padding:6px 0;margin:2px 10px 2px 0}
+#Coupons .ulLIs li.on{background:#fbfeff;border:1px solid #d4e8fc}
+#Coupons .ulLIs span{display:inline-block}
+#Coupons .ulLIs .w95{width:95px;text-align:right}
+#Coupons .ulLIs li.plk{padding-left:95px;*padding-left:85px}
+.UserInfo .title{background:#daebfa;padding:3px 20px}
+.UserInfo a{font-size:12px;color:#36c}
+.UserInfo dl.list{padding:15px 20px;_zoom:1}
+.UserInfo dl.list .pl14{padding-left:14px}
+.UserInfo dl.list dt{float:left;width:65px;height:28px}
+.UserInfo dl.list dd{height:28px}
+.UserInfo dl.list dd label{width:90px;display:inline-block}
+.UserInfo dl.list dd input{vertical-align:middle;*vertical-align:baseline;margin-right:3px;*margin-right:0}
+.UserInfo dl.other dt{width:130px}
+input.search_bt,input.search_bt_an{font-weight:bold;*vertical-align:middle}
+.UserInfo table.n_table th{background:#daebfa;padding:3px 2px;font-weight:bold}
+.UserInfo table.n_table td{font-family:Tahoma,simsun;font-size:12px;padding:3px 2px}
+.Bankcard table.n_table th{background:#daebfa;padding:6px 2px 3px;font-weight:bold;text-align:center}
+.Bankcard table.n_table td{font-family:simsun;font-size:12px;padding:10px 2px 8px;border-bottom:1px dotted #b4b4b4;text-align:center}
+.Bankcard table.n_table td.last{border-bottom:0}
+#traveler{border-top:#ccd7e0 solid 1px}
+#traveler a{text-decoration:none}
+#traveler ul li{padding:8px 0 6px;border-bottom:1px dotted #b4b4b4}
+#traveler ul li.title{background:#daebfa;padding:5px 0;font-weight:bold}
+#traveler ul li span{display:inline-block}
+#traveler ul li span.com_show,#traveler ul li span.com_hide{vertical-align:middle;_vertical-align:-3px;margin-left:2px}
+#traveler ul li span.w1{width:150px;padding-left:50px;word-wrap:break-word;word-break:break-all}
+#traveler ul li span.first{background:url("/images/center/MyElongCn.png") -479px -142px no-repeat;width:58px;height:18px;display:inline-block;vertical-align:middle;_vertical-align:1px}
+#traveler ul li span.w2{width:135px}
+#traveler ul li span.w3{width:215px;word-wrap:break-word;word-break:break-all}
+#traveler ul li span.w4{width:210px}
+#traveler ul li span.w5{width:170px}
+#traveler ul li span.w5 span.word_break{word-wrap:break-word;word-break:break-all}
+#traveler ul li span.w6{width:150px}
+#traveler ul li .detail{margin-left:200px}
+#traveler ul li .detail p{color:#636363}
+.UserInfo dl.add_trver dt{width:75px;text-align:right;padding-right:5px;padding-right:15px\9;_padding-right:5px;height:32px}
+.UserInfo dl.add_trver dd{height:32px}
+.UserInfo dl.add_trver input.card_name{width:170px}
+.UserInfo dl.add_trver select.card_list{width:160px}
+.tenpay{width:600px;margin:10px auto;padding:30px 0}
+.QQWalletloadingBox{font-size:14px;font-weight:bold;padding:150px 0;text-align:center}
+.QQWalletloadingBox .loading{margin:0 auto}
+.y_tips{border:1px solid #b7b7b7;background:#fffcd4;padding:5px 25px 5px 10px}
+.y_tips .TipsIcon{display:inline-block}
+.error_tips{border:1px solid #dd8580;background:#fcf4f2;padding:2px 5px 1px 5px}
+span..error_tips{display:inline-block}
+.order .tips{margin-top:10px;padding:10px 30px;line-height:2em;*zoom:1}
+.order table.detail td{text-align:left;border:0;border-top:1px dotted #b4b4b4}
+.order table.attach{border-top:1px dotted #b4b4b4}
+.order table.attach th{background:#ebebeb;padding:6px 2px 3px 0}
+.order table.attach td{border:0;padding:4px 0 2px 0}
+.order table.attach .pl20{padding-left:20px;text-align:left}
+.order table.other td{text-align:left}
+#cancel_success,#cancel_error{margin:0 0 20px 10px}
+#cancel_success h3,#cancel_error h3,#cancel_prompt h3{font-size:14px;font-weight:bold;margin-bottom:5px}
+#cancel_success li,#cancel_error li{margin-bottom:5px}
+#cancel_success span.price{color:#c60;font-weight:bold}
+#cancel_prompt p.cp_s{clear:both;font-size:14px;font-weight:bold;line-height:30px;width:680px;margin:0 auto;overflow:hidden}
+#cancel_prompt span.price{color:#c60;font-weight:bold}
+#cancel_prompt p span{font-weight:normal}
+.add_ticket p{padding-bottom:3px}
+.add_ticket input.w40{width:40px}
+.add_ticket span.arr_box{display:inline-block;width:15px;height:20px;vertical-align:middle}
+.add_ticket span.arr_box input{width:13px;height:8px;overflow:hidden;background:url("/images/center/MyElongCn.png") -722px 0 no-repeat;border:0;cursor:pointer}
+.add_ticket span.arr_box input.add_on{background-position:-722px -1px}
+.add_ticket span.arr_box input.reduce{background-position:-722px -9px}
+.add_ticket span.arr_box input.reduce_on{background-position:-722px -8px}
+.order_cancel{line-height:2em;padding:50px 0 20px}
+.order_cancel p.m1{margin-left:240px}
+.flight_ticket .attach.no{border-top:0}
+.flight_ticket hr.b_line{border-bottom:1px solid #cecece;margin:1px 0 3px 0;*margin:-4px 0 0 0;height:1px}
+.flight_ticket .attach.no td{padding-top:2px;padding-bottom:1px}
+.flight_ticket .attach td.lh2{line-height:2em}
+.flight_ticket .attach th.pay_tt{background::#ebebeb;font-weight:normal;text-align:left}
+.flight_ticket .info .title{background:#eef7ff;padding:5px 0 5px 20px}
+.flight_ticket .info .bl_line{border-left:1px solid #ddd}
+.flight_ticket .info .trans{border-bottom:1px dotted #ccc;height:10px;margin:-5px 90px 5px 0}
+.flight_ticket .info .trans span{display:inline;padding-left:5px;width:41px;height:20px;z-index:10;background:url("/images/center/MyElongCn.png") -224px -178px no-repeat;float:right;margin-bottom:-9px;_position:relative;_margin-bottom:-10px;color:#666;text-align:center}
+.flight_ticket .info .one_tickets{border-bottom:1px dotted #ccc;height:20px;margin:0 20px 5px -45px;z-index:100;position:relative}
+.b_tbgray{border-top:1px solid #ccc;border-bottom:1px solid #ccc}
+.cancel_flight_list{border:1px solid #6b8ec6;border-collapse:collapse}
+.cancel_flight_list th,.cancel_flight_list td{border:1px solid #6b8ec6;border-collapse:collapse;padding:5px 0;text-align:center}
+.cancel_flight_list th{background:#e4ebf5;font-weight:bold}
+table.pop_n_list th{background:#eff5fb;padding:3px 2px 1px;font-weight:bold;text-align:center}
+table.pop_n_list td{font-size:12px;padding:3px 2px 2px;text-align:center}
+table.pop_n_list .pl20{padding-left:20px}
+table.pop_n_list .tl{text-align:left}
+table.pop_n_list td.border_b_none{border-bottom:0}
+table .psline{border-left:1px solid #ddd}
+table td.txtleft{text-align:left;padding-left:5px}
+a.gray_btn_w{padding:3px 12px;font-size:12px;background:url("/images/center/MyElongCn.png") -395px -163px no-repeat;text-align:center;border:0;cursor:pointer;overflow:hidden;text-decoration:none}
+a:hover.gray_btn_w{color:#001D75;filter:alpha(Opacity=70);Opacity:.7}
+.n_list.Anone dt a,.n_list.Anone dd a{text-decoration:none}
+.n_list dt{background:#daebfa;padding:10px 20px 10px 15px;font-size:14px}
+.offorderlist{border:1px solid #a9cde9;margin-bottom:6px;margin-top:-1px}
+dl.offorderlist dt{height:1.5em}
+dl.offorderlist dt a.pv{padding:10px 5px}
+dl.offorderlist dd{text-align:center}
+dl.offorderlist dd table{width:85%;margin:10px auto;border-collapse:collapse;text-align:left}
+dl.offorderlist dd table thead td{line-height:3em}
+dl.offorderlist dd table tr{line-height:2em}
+dl.offorderlist dd table th{width:90px;text-align:right;padding-right:10px}
+dl.offorderlist dd table td.w50{width:200px}
+dl.offorderlist dd table.offorderlist_air{width:95%;margin:15px auto}
+dl.offorderlist dd table.offorderlist_air th{width:9%;text-align:center;font-weight:bold}
+.AddtoList{background:url("/images/center/MyElongCn.png") 0 -20px no-repeat;width:12px;height:12px;display:inline-block;vertical-align:middle;_vertical-align:baseline;margin-right:3px}
+.DelfromList{background:url("/images/center/MyElongCn.png") -12px -20px no-repeat;width:12px;height:12px;display:inline-block;vertical-align:middle;_vertical-align:baseline;margin-right:3px}
+body.printview{background:#9cf;margin:20px}
+body.printview p.tc a{*vertical-align:33%}
+body.printview div.wrap_in{background:#FFF;padding:40px 80px}
+body.printview div.wrap_out{background:#999;padding:0 4px 4px 0}
+.groupon .gtitle{border-bottom:1px solid #54b5ec;margin-bottom:10px}
+.groupon .gtitle ul li{border:1px solid #54b5ec;border-bottom:0;padding:5px 15px;background:#e9f7ff;font-size:14px;margin-left:10px;_display:inline;float:left}
+.groupon .gtitle ul li.on{background:#fff;font-weight:bold;margin-bottom:-1px;position:relative;z-index:10;padding-bottom:6px}
+.groupon .tl{text-align:left}
+.groupon .order_class{float:right}
+.groupon .order_class span{display:inline-block;margin:0 2px}
+.groupon .order_class span a{width:100%;padding:3px 3px 2px;text-align:center;text-decoration:none}
+.groupon .order_class span a.on{background:#246390;color:#fff}
+#mail_list{border-top:#ccd7e0 solid 1px}
+#mail_list .n_list th{font-weight:normal}
+#mail_list .n_list th,#mail_list .n_list td{text-align:left;padding:7px 0 5px 3px}
+#mail_list .n_list .tc{text-align:center}
+#mail_list .n_list td span.l_black{padding-left:18px;*padding-left:23px}
+#mail_list .n_list td input{vertical-align:-2px;_vertical-align:1px;margin-right:2px;*margin-right:0}
+.fi_q_d .fi_line3{border-color:-moz-use-text-color -moz-use-text-color #999;border-style:none none dotted;border-width:medium medium 1px;height:1px}
+.fi_q_d .fi_q_d2 input{margin-right:2px;vertical-align:middle}
+.fi_q_d p.title{border-bottom:1px dotted #999;padding-bottom:5px;margin-bottom:5px;text-indent:5px}
+.fi_q_d .diaochabox li{float:left;width:250px;margin-bottom:5px}
+.fi_q_d .diaochabox li input{margin-right:3px}
+.cotd{width:100px;height:17px;float:right}
+.cotd a{width:40px;height:20px;float:left;padding-left:2px}
+.cotd a.left{border-right:1px solid #CCC;padding-right:5px;background:url("hsicon1.gif-t=201212271141.gif"/*tpa=http://www.elongstatic.com/myelong/pic/hsicon1.gif?t=201212271141*/) no-repeat 37px}
+.cotd a.left.bn{background:0}
+a.clack{width:36px;float:left;background:url("hsicon1.gif-t=201212271141.gif"/*tpa=http://www.elongstatic.com/myelong/pic/hsicon1.gif?t=201212271141*/) no-repeat right;line-height:22px}
+.hsconz li{height:20px;text-align:left;padding-left:10px;background:url("hsicon.gif-t=201212271141.gif"/*tpa=http://www.elongstatic.com/myelong/pic/hsicon.gif?t=201212271141*/) no-repeat left}
+.hs_h{color:#CCC}
+.cash{width:745px;height:362px;margin-left:15px;padding-top:10px}
+.cash dl{width:745px;height:136px;float:left;border-bottom:1px solid #b9e0ff;padding-top:10px}
+.cash dt{width:205px;height:135px;float:left}
+.cash dt.tic{background:url("cashbg.gif-t=201212271141.gif"/*tpa=http://www.elongstatic.com/myelong/pic/cashbg.gif?t=201212271141*/) 0 0 no-repeat}
+.cash dt.hot{background:url("cashbg.gif-t=201212271141.gif"/*tpa=http://www.elongstatic.com/myelong/pic/cashbg.gif?t=201212271141*/) 0 -136px no-repeat}
+.cash dd{width:525px;float:right;margin-top:17px}
+.cash dd span{float:right;margin-top:5px;*margin-top:-23px;margin-right:25px}
+.cash .zk{width:705px;float:left;margin-top:20px;padding:0 20px}
+.cash .zk a.jt{background:url("cashbg.gif-t=201212271141.gif"/*tpa=http://www.elongstatic.com/myelong/pic/cashbg.gif?t=201212271141*/) 135px -273px no-repeat;padding-right:20px;*margin-top:-22px}
+.qx_btn{margin-top:10px;height:30px;line-height:30px;overflow:hidden}
+.qx_btn input{float:left;border:0}
+.qx_btn input.gray_btn,.qx_btn input.gray_btn_on{margin-top:5px;padding-bottom:2px;padding-top:5px\9}
+.qx_btn .qx_btnl{width:300px;text-align:left;float:left}
+.qx_btn .qx_btnl li{float:left;margin-right:5px}
+.qx_btn .qx_btnr{width:481px;text-align:right;float:left}
+.qx_btn .qx_btnr li{float:right;margin-left:5px}
+.qx_btn .qx_gray_btn,.qx_btn .qx_gray_btn_on{background:url("/images/center/MyElongCn.png") no-repeat scroll -395px -163px transparent;cursor:pointer;font-size:12px;height:21px;overflow:hidden;text-align:center;width:116px;margin-top:5px;padding-top:3px\9}
+.qx_btn .qx_gray_btn_on{filter:alpha(Opacity=70);Opacity:.7}
+.qx_status{margin-left:10px;font-weight:bold;color:#f60}
+.qx_edit a{text-decoration:none;line-height:20px}
+.qx_false strong{font-weight:bold;color:#f30;font-family:"宋体"}
+.qx_suc a{color:#f30;font-weight:bold;padding:0 2px;text-decoration:none}
+.qx_suc a:hover{text-decoration:underline}
+.qx_suc font{margin-left:20px;_margin-left:23px;color:#f30;font-size:12px}
+.qx_content p{margin:0;font-size:14px;line-height:26px;font-family:"宋体"}
+.qx_content p input{margin:20px 0 5px 0}
+.qx_content .qx_alert{color:#f60;font-size:12px}
+.qx_myelongbank{margin-top:20px}
+.qx_myelongbank p{float:left;width:370px;margin-bottom:10px;text-align:center}
+.qx_myelongbank label{float:left;margin-right:20px;margin-left:10px;margin-bottom:10px}
+.qx_myelongbank label input{float:left;margin-top:10px;margin-right:5px}
+.qx_myelongbank span{width:129px;height:35px;float:left}
+.qx_myelongbank .caifu{background:url("qx_bank.gif-t=201212271141.gif"/*tpa=http://www.elongstatic.com/myelong/pic/qx_bank.gif?t=201212271141*/) no-repeat scroll 0 0}
+.qx_myelongbank .zhifubao{background:url("qx_bank.gif-t=201212271141.gif"/*tpa=http://www.elongstatic.com/myelong/pic/qx_bank.gif?t=201212271141*/) no-repeat scroll 0 -45px}
+.qx_myelongbank .jianshe{background:url("qx_bank.gif-t=201212271141.gif"/*tpa=http://www.elongstatic.com/myelong/pic/qx_bank.gif?t=201212271141*/) no-repeat scroll 0 -90px}
+.qx_myelongbank .gongshang{background:url("qx_bank.gif-t=201212271141.gif"/*tpa=http://www.elongstatic.com/myelong/pic/qx_bank.gif?t=201212271141*/) no-repeat scroll 0 -135px}
+.qx_myelongbank .nongye{background:url("qx_bank.gif-t=201212271141.gif"/*tpa=http://www.elongstatic.com/myelong/pic/qx_bank.gif?t=201212271141*/) no-repeat scroll 0 -180px}
+.qx_myelongbank .jiaotong{background:url("qx_bank.gif-t=201212271141.gif"/*tpa=http://www.elongstatic.com/myelong/pic/qx_bank.gif?t=201212271141*/) no-repeat scroll 0 -225px}
+.qx_myelongbank .zhaoshang{background:url("qx_bank.gif-t=201212271141.gif"/*tpa=http://www.elongstatic.com/myelong/pic/qx_bank.gif?t=201212271141*/) no-repeat scroll 0 -270px}
+.qx_myelongbank .zhonghang{background:url("qx_bank.gif-t=201212271141.gif"/*tpa=http://www.elongstatic.com/myelong/pic/qx_bank.gif?t=201212271141*/) no-repeat scroll 0 -405px}
+.qx_myelongbank .ylzaixain{background:url("qx_bank.gif-t=201212271141.gif"/*tpa=http://www.elongstatic.com/myelong/pic/qx_bank.gif?t=201212271141*/) no-repeat scroll 0 -315px}
+.qx_myelongbank .yldianzi{background:url("qx_bank.gif-t=201212271141.gif"/*tpa=http://www.elongstatic.com/myelong/pic/qx_bank.gif?t=201212271141*/) no-repeat scroll 0 -360px}
+.qx_myelongbank .xingye{background:url("qx_bank.gif-t=201212271141.gif"/*tpa=http://www.elongstatic.com/myelong/pic/qx_bank.gif?t=201212271141*/) no-repeat scroll 0 -450px}
+.bleft{float:left;width:506px}
+.bleft h2,#low_price .bright h2{font-size:14px;font-weight:bold;color:#333;text-align:center}
+.bleftbor{border-right:1px #ccc dashed}
+.bright{float:left;margin-left:20px;width:235px}
+.bright .info dt{height:26px;line-height:26px;padding-left:10px;font-weight:bold;background:#eee}
+.bright .info dd{padding-left:10px;margin-top:5px}
+#low_price{width:781px;margin:10px auto 0 auto;font-size:12px}
+#low_price h1,#low_price h3{width:771px;font-size:14px;font-family:'宋体';color:#000;margin:0;padding:5px}
+#low_price h3{width:769px;background:#ffffe5;border:#eee 1px solid;margin-bottom:10px}
+#low_price .fno{color:#f00;font-weight:bold}
+#low_price .wxts_pic{background:url("newtuanbg.gif-t=201212271141.gif"/*tpa=http://www.elongstatic.com/tuan/pic/newtuanbg.gif?t=201212271141*/) no-repeat scroll -338px -62px;width:22px;height:19px;float:left}
+#low_price .lp_tri1,#low_price .lp_tri2{vertical-align:center;margin-bottom:-3px;*margin-bottom:0;margin-bottom:0\9}
+.dj_td .title .lp_tri1{width:16px;height:16px;background:url("low_price.png-t=201212271141.png"/*tpa=http://www.elongstatic.com/package/pic/low_price.png?t=201212271141*/) no-repeat -40px -64px;display:inline-block;cursor:pointer;float:left;margin-left:85px;_margin-left:45px}
+.dj_td .title .lp_tri2{width:16px;height:16px;background:url("low_price.png-t=201212271141.png"/*tpa=http://www.elongstatic.com/package/pic/low_price.png?t=201212271141*/) no-repeat -58px -64px;display:inline-block;cursor:pointer;float:right;margin-right:85px;_margin-right:45px}
+.cal_box{border:1px solid #d9d9d9;border-collapse:collapse}
+.cal_box .DateHeader{width:65px}
+.cal_box th,.cal_box td{border:1px solid #BEDAF3;padding:0;background:#fff;border-collapse:collapse;width:65px}
+.cal_box td{height:45px;text-align:center;line-height:1.2em;color:#000}
+.cal_box td.none_tic{background:#fff;width:68px;font-weight:normal;color:#999;cursor:not-allowed}
+.cal_box td.have{background:url("newtuanbg.gif-t=201212271141.gif"/*tpa=http://www.elongstatic.com/tuan/pic/newtuanbg.gif?t=201212271141*/) no-repeat scroll -285px -151px;border:2px #f30 solid}
+.cal_box td.have:hover{background:url("newtuanbg.gif-t=201212271141.gif"/*tpa=http://www.elongstatic.com/tuan/pic/newtuanbg.gif?t=201212271141*/) no-repeat scroll -285px -151px;color:#000}
+.cal_box td.ohave{color:#999;cursor:not-allowed}
+.cal_box td.ohave:hover{background:0;color:#999}
+.cal_box td .dj_aa{height:35px;padding-top:10px;cursor:pointer}
+.cal_box td .dj_aa:hover{background:#ffffd5;color:#f00}
+.cal_box td .pitchon{background:url("currentbg.gif-t=201212271141.gif"/*tpa=http://www.elongstatic.com/tuan/pic/currentbg.gif?t=201212271141*/) no-repeat scroll 44px 25px;height:31px;padding-top:10px;border:2px #f00 solid}
+.dj_td .title{height:21px;background:url("low_price.png-t=201212271141.png"/*tpa=http://www.elongstatic.com/package/pic/low_price.png?t=201212271141*/) repeat-x;color:#fff;font-size:14px;font-family:arial,SimSun,Verdana,Geneva,Helvetica;font-weight:bold;width:461px;padding-top:5px}
+#CalendarBody .dj_td{height:26px;width:455px}
+#CalendarBody .dj_date{float:left;margin-left:90px;_margin-left:200px;color:#fff;line-height:20px;margin-top:-2px;_margin-top:-18px;vertical-align:middle}
+*html #CalendarBody .dj_date{margin-right:80px}
+#CalendarBody .dj_day{color:#000}
+.inres{width:491px;font-size:14px;font-family:'宋体';font-weight:bold;line-height:30px;margin-top:30px;text-align:center;float:left}
+.inres .cal_box2{width:491px;font-size:12px;margin-bottom:10px}
+.inres .cal_box2 th{height:26px;font-weight:bold;background:#DAEBFA;border:1px #A9CDE9 solid;text-align:center}
+.inres .cal_box2 td{height:26px;border:1px #A9CDE9 solid;color:#001D75;font-weight:normal;text-align:center}
+.inres .txt{margin-bottom:5px}
+.inres .txt input{width:220px;height:20px;line-height:20px}
+.inres .inresinput{margin-top:10px}
+.inres_messages{font-size:14px;margin-bottom:5px;text-align:center}
+.inres .txt .txt_fangxing{width:90px;text-indent:43px;*text-indent:40px;display:inline-block;margin-right:2px;*margin-right:0;*margin-left:-37px;_margin-left:-37px}
+#m_contentend{text-align:center}
+.resling{color:#f00}
+.right_F .navprice{background:#DAEBFA;height:30px;line-height:30px;text-indent:10px;border-left:1px solid #B9E0FF;border-right:1px solid #B9E0FF}
+.StepT{width:145px}
+.search_bt_st{width:61px;height:21px;background:url("newtuanbg.gif-t=201212271141.gif"/*tpa=http://www.elongstatic.com/tuan/pic/newtuanbg.gif?t=201212271141*/) no-repeat -281px -241px;border:0;cursor:pointer;_cursor:hand;color:#FFF}
+.search_bt_st_an{width:61px;height:21px;background:url("newtuanbg.gif-t=201212271141.gif"/*tpa=http://www.elongstatic.com/tuan/pic/newtuanbg.gif?t=201212271141*/) no-repeat -281px -266px;border:0;cursor:pointer;_cursor:hand;color:#FFF}
+.hpic{background:url("/images/center/MyElongCn.png") no-repeat scroll -722px 0 transparent;width:13px;height:8px;display:inline-block}
+.myfxz{background:#F2F2F2;border:1px solid #CCC;padding:10px}
+.inte{width:198px;height:22px;overflow:hidden}
+.list_prompt{height:20px;line-height:20px;padding:10px 5px;text-align:center;font-size:14px}
+.wxts_cms{color:#f00;margin-left:24px}
+.fx_details{height:40px;overflow:hidden}
+.fx_details strong{height:40px;float:left}
+.my_yuyue{margin-bottom:20px;float:left}
+.my_yuyue li{float:left;width:153px;height:40px;overflow:hidden;padding:5px 10px;border:1px #999 solid;margin-left:10px;text-align:left;cursor:pointer}
+.my_yuyue li:hover{border:1px #f00 solid}
+.my_yuyue li.my_yycurrent{background:url("currentbg.gif-t=201212271141.gif"/*tpa=http://www.elongstatic.com/tuan/pic/currentbg.gif?t=201212271141*/) no-repeat 155px 33px;border:1px #f00 solid}
+.rzgj_nat li,.rzgj_natmod li{float:left;margin-right:10px}
+.rzgj_nat li input,.rzgj_natmod li input{width:100px;height:16px;line-height:16px;border:1px #bbb solid;float:left}
+.rzgj_natmod li div{width:125px;height:20px;margin-bottom:5px;line-height:20px}
+.rzgj_nat li .fi_in_w3,.rzgj_natmod li .fi_in_w3{background:url("/images/center/MyElongCn.png") no-repeat -698px 1px;width:16px;height:17px;border:0;cursor:pointer;margin-left:3px;padding:0;vertical-align:-4px;vertical-align:0;float:left}
+.rzgj_nat li.rzgj_natmodtxtbar div,.rzgj_natmod li.rzgj_natmodtxtbar div{width:50px}
+.rzgj_natmod .inputbor{width:130px;height:16px;line-height:16px;border:1px #bbb solid}
+.com_way .m-10{margin-left:18px}
+.com_way .city-i,.com_way .time-i{border:1px solid #7F9DB9;cursor:pointer;height:17px}
+.com_way .sc-w{width:95px}
+.com_way .time-i{background:url("/images/center/MyElongCn.png") no-repeat scroll 77px -214px #fff}
+.com_way .jdtxtbar{border-bottom:1px #bbb solid}
+.upImgk{width:960px;margin:0 auto}
+.upImg{height:1%;overflow:auto;font-family:Tahoma,Geneva,sans-serif}
+.upImg .step{width:390px;height:35px;margin:30px auto;background:url("imgjt.gif-t=201212271141.gif"/*tpa=http://www.elongstatic.com/myelong/pic/imgjt.gif?t=201212271141*/) no-repeat 160px 7px}
+.upImg .step .k{width:150px;height:35px;font-size:14px;text-align:center;line-height:35px;font-weight:bold;background:#f3f3f3;border:1px solid #c6c6c6;margin-right:40px;float:left;color:#a6a6a6}
+.upImg .step .k.k1{background:#fffec9;border:1px solid #ffc97c;color:#ff6000;float:left}
+.upImg .ty{clear:both;margin-top:10px}
+.upImg .tymt{margin-top:20px;margin-bottom:20px}
+.upImg .ty input{vertical-align:middle}
+.upImg .search_bt,.upImg .search_bt_an{font-weight:bold;font-size:14px;margin-right:20px}
+.upImg .search_bt_dis{width:109px;height:30px;background:url("el_com.png-t=201212271141.png"/*tpa=http://www.elongstatic.com/common/pic/el_com.png?t=201212271141*/) no-repeat -173px -272px;font-weight:bold;font-size:14px;border:0;cursor:pointer;color:#949494}
+.upImg input.logining{background:url("indicator.gif-t=201212271141.gif"/*tpa=http://www.elongstatic.com/common/pic/indicator.gif?t=201212271141*/) center center no-repeat;cursor:wait}
+.upImg .con{border:1px solid #c6c6c6;height:1%;margin-top:10px;padding:1px;position:relative}
+.upImg .conhe{height:1%}
+.upImg .pic{width:420px;height:20px;*height:17px;_height:15px;background:#f9f9f9;float:left;padding:10px;margin:10px 0 10px 25px;display:inline;border:1px solid #f9f9f9}
+.upImg .ert{background:#fee5e5;border:1px solid #fb9595}
+.upImg .pic span{margin-right:30px;display:inline}
+.upImg .pic .del{width:25px;height:20px;float:right;overflow:hidden;*margin-top:-20px}
+.upImg .pic .del a{width:25px;height:20px;display:block}
+.upImg .pic .jdt{width:165px;height:20px;float:right;margin-right:10px;display:inline;*margin-top:-20px}
+.upImg .pic .title{width:135px;line-height:20px;height:20px;margin-right:10px;float:left;display:inline;overflow:hidden}
+.upImg .pic .kb{width:50px;overflow:hidden;float:left}
+.upImg .pic .jdt .lv{width:100px;height:7px;border:1px solid #63be19;float:left;margin-top:6px;margin-right:10px;display:inline;overflow:hidden}
+.upImg .connt{width:400px;margin:auto;margin-top:120px;margin-bottom:120px;text-align:center}
+.upImg .connt p{margin-top:10px}
+.upImg .con h3{height:30px;background:url("repeat_bg.png-t=201212271141.png"/*tpa=http://www.elongstatic.com/myelong/pic/repeat_bg.png?t=201212271141*/) repeat-x 0 -240px;padding-left:18px;line-height:30px}
+.upImg .con .mm{width:160px;height:210px;_height:240px;float:left;background:#f9f9f9;padding:10px;margin:10px 5px;_margin:10px 4px;display:inline}
+.upImg .con .mm img{width:160px;height:120px;overflow:hidden;border:1px solid #efeeee}
+.upImg .con .mm p{width:160px;float:left;margin-top:7px}
+.upImg .con .mm p input{width:155px;height:20px;font-size:12px;line-height:23px;padding-left:3px}
+.upImg .con .mm p input.hui{color:#CCC}
+.upImg .con .mm p select{width:162px;height:23px;font-size:12px;padding-left:3px}
+.upImg .con .mm .bor{border:1px solid #f00}
+.upImg .con .mm p input .breg{border:1px solid #e42727}
+.upImg .con .mm p.etc{background:#fff0f0;color:#f00;line-height:25px}
+.upImg .fot{margin-bottom:50px}
+.upImg .enter{width:450px;height:200px;border:1px solid #daefc0;margin:auto;margin-top:100px;padding:20px;background:url("imgcg.gif-t=201212271141.gif"/*tpa=http://www.elongstatic.com/myelong/pic/imgcg.gif?t=201212271141*/) no-repeat 30px 50px}
+.upImg .enter dl{width:360px;float:right;margin-top:30px}
+.upImg .enter dt{color:#4b8701;font-size:14px;font-weight:bold;margin-bottom:15px}
+.upImg .enter dd{margin-bottom:10px}
+.upImg .con .foot{position:absolute;bottom:5px;left:10px;color:#999}
+.date_modified input.time-i{background-position:90px -77px;border:1px solid #a5acb2;width:108px;height:17px;line-height:17px;cursor:pointer;font-size:12px;font-family:Tahoma,Geneva,sans-serif}
+.date_modified ul li{height:25px}
+.date_modified .modifi_ok,.date_modified .modifi_ok_on{width:59px;height:22px;background:url("hotel_new.png-t=201212271141.png"/*tpa=http://www.elongstatic.com/hotels/pic/hotel_new.png?t=201212271141*/) -342px -57px no-repeat;border:0;cursor:pointer;_cursor:hand;color:#FFF;font-size:12px;font-weight:bold}
+.date_modified .modifi_ok_on{background-position:-411px -57px}
+.date_modified .time-i{background:url("el_com.png-t=201212271141.png"/*tpa=http://www.elongstatic.com/common/pic/el_com.png?t=201212271141*/) #fff no-repeat}
+#NewUserUp h1 .zchy_right{float:right;*margin-top:-20px;font-size:16px}
+#NewUserUp a.nunderline,#NewUserUp h1 .zchy_left a{text-decoration:none}
+#NewUserUp h1 .zchy_left{font-family:"宋体";font-size:14px;font-weight:normal;color:#666}
+.deal_infor{width:598px;border:1px solid #999}
+.deal_infor .tit{height:30px;padding-left:10px;line-height:30px;font-size:14px;font-weight:bold;color:#fff;background:#0066CD}
+.deal_infor td{height:28px;line-height:28px}
+.infor_box{padding:0 10px}
+.succ{height:30px;text-align:right;line-height:30px;padding-right:10px;font-size:14px;color:#F00}
+.cooan{background:#e5f3fe}
+.intte{color:#999}
+.shajiag{text-align:center;color:#F00;background:url("zhang_03.png-t=201212271141.png"/*tpa=http://www.elongstatic.com/myelong/pic/zhang_03.png?t=201212271141*/) no-repeat;width:110px}
+.cootd{background:url("zhang_03-1.png-t=201212271141"/*tpa=http://www.elongstatic.com/pic/zhang_03.png?t=201212271141*/) no-repeat;width:110px}
+.modtips{background:url("/images/center/MyElongCn.png") no-repeat -26px -216px;width:344px;height:31px;line-height:26px;text-align:center;position:absolute;margin-top:-2px;margin-left:5px;float:left}
+.modtips a{width:5px;height:6px;position:absolute;margin-top:5px;*margin-top:-1px;margin-left:314px;overflow:hidden;float:left;cursor:pointer}
+.jdinfo{margin-left:98px}
+.lxrinfo{width:65px;display:inline-block}
+.liaxireninfo{margin-left:-10px;margin-left:-16px\9}
+.jdwidth{width:70px;display:inline-block}
+.checkcode input{vertical-align:middle}
+.checkcode .txt{width:200px;height:20px;line-height:20px;border:1px #ccc solid}
+.checkcode .com_search75,.checkcode .com_search75_an{margin-left:5px}
+.checkcode a{text-decoration:none;margin-left:5px;color:#999}
+.checkcode a.link{cursor:pointer;color:#06c;margin-left:5px;display:inline-block}
+.checkcode a.link:hover{text-decoration:underline}
+.tmp_out{opacity:.5;cursor:not-allowed}
+.tmpbtn{background:url("/images/center/MyElongCn.png") no-repeat -32px -45px;width:100px;height:21px;color:#fff;cursor:pointer;border:0}
+.tmpbtn_an{background:url("/images/center/MyElongCn.png") no-repeat -142px -45px;width:100px;height:21px;color:#fff;cursor:pointer;border:0}
+.nct{float:left}
+.nct tt{border:1px solid #FF7D00;display:block;height:5px;line-height:5px;overflow:hidden;padding:0;width:120px}
+.nct i{display:block;font-style:normal;margin-top:-3px;font-size:12px}
+.nct s{background:#fff;display:inline-block;height:5px;margin:0;overflow:hidden;padding:0;width:40px}
+.nct s.low,.nct s.normal,.nct s.high{background:#FFA22A}
+.nct2{margin-left:110px;padding:0;float:left}
+.nctie6{_margin-top:-15px}
+.nct4{margin-left:106px}
+#Cash .tab_B span.txt1{width:160px;text-align:right;float:left}
+#Cash .tab_B span.txt2{width:80px;text-align:left;margin-left:5px;float:left}
+#st{background:url("newtuanbg-1.gif-t=201212271141.gif"/*tpa=http://www.elongstatic.com/myelong/pic/newtuanbg.gif?t=201212271141*/) no-repeat 0 0;width:960px;height:11px;overflow:hidden;float:left}
+#sf a{color:#095CAA;font-family:"宋体";text-decoration:none}
+#sf a:hover{color:#f60;text-decoration:underline}
+#sf{border-left:#fccca5 solid 2px;border-right:#fccca5 solid 2px;width:926px;padding:45px 15px;float:left}
+#sf .info,#sf .info2{width:706px;padding-bottom:20px;margin:0 auto}
+#sf .info dt,#sf .info2 dt{width:44px;height:31px;padding-left:80px;float:left}
+#sf .info dd,#sf .info2 dd{width:582px;float:right}
+#sf .info dd h2,#sf .info2 dd h2{width:582px;padding:5px 0;float:left}
+#sf .info dd .q_info1{width:558px;border:2px #ffc97c solid;background:#fffec9;line-height:26px;padding:10px;margin-top:20px;font-size:14px;color:#000;float:left}
+#sf .info dd .q_info1 .line{border-bottom:1px dotted #FFC97C;width:545px}
+#sf .info2{width:330px}
+#sf .info2 dt{width:30px;height:31px;padding:0;float:left}
+#sf .info2 dd{width:290px;margin-left:5px;float:left}
+#sfb{background:url("newtuanbg-1.gif-t=201212271141.gif"/*tpa=http://www.elongstatic.com/myelong/pic/newtuanbg.gif?t=201212271141*/) no-repeat 0 -12px;width:960px;height:7px;overflow:hidden;margin-bottom:30px\0;float:left}
+span.huixuan{width:16px;height:15px;display:inline-block;background:url("hotel_new.png-t=201212271141.png"/*tpa=http://www.elongstatic.com/hotels/pic/hotel_new.png?t=201212271141*/) no-repeat -184px -231px;vertical-align:-3px;*vertical-align:0;margin:0 6px}
+.xjzhload{border:0;text-align:center;width:100%}
+.left_F .left_invite{border-bottom:#ccc solid 1px;background:#fff;margin:0;padding:10px 0;line-height:22px}
+.left_F .left_invite a{text-decoration:none;display:block}
+.left_F .left_invite dd{margin-left:31px}
+.left_F .left_invite .new{display:inline-block;width:16px;height:7px;background:url("/images/center/MyElongCn.png") no-repeat -949px 0;vertical-align:top}
+.popup_editinfo li{height:30px;line-height:30px;margin-bottom:10px}
+.popup_editinfo .title{display:inline-block;width:90px;padding-right:5px;text-align:right}
+.popup_editinfo .intxt{border:1px solid #d8d8d8;width:113px;height:18px;padding:5px 0 5px 5px;line-height:18px;font-size:14px;box-shadow:inset 1px 1px 2px #e9e9e9;*vertical-align:middle}
+.popup_editinfo .intxt:focus{border:1px solid #0ea0ef;box-shadow:0 0 5px #09f;outline:0}
+.login_error{background:#fffbe1;border:1px solid #fbc47d;color:#333;padding:5px}
+.login_error span{display:inline-block;width:10px;height:10px;margin-right:5px;background:url("login_nav.png-t=201212271141.png"/*tpa=http://www.elongstatic.com/common/pic/login_nav.png?t=201212271141*/) no-repeat 0 -110px;overflow:hidden}
+.flight_ticket .ifeng_box{padding:10px;margin:20px 0;border:2px solid #f90;background:#f3f3f3;font-size:14px}
+.flight_ticket .ifeng_box p{line-height:24px}
+.flight_ticket .ifeng_box li{float:left;width:620px;margin-bottom:10px}
+.flight_ticket .ifeng_box li.title{clear:both;font-weight:700;color:#f90;width:110px;text-align:right}
+.flight_ticket .ifeng_box li.all{clear:both;font-weight:700;color:#333;width:100%}
+.flight_ticket .ifeng_box li.back{padding-top:10px;border-top:1px dotted #ccc}
+.flight_ticket .ifeng_box li.line{clear:both;border-top:1px dotted #ccc;width:100%;height:10px;line-height:10px}
+.flight_ticket .ifeng_box textarea{width:588px;height:58px;border:1px solid #e1e1e1;font-size:12px;padding:5px;resize:vertical}
+.ifeng_save_btn{display:inline-block;width:156px;height:28px;line-height:28px;text-align:center;color:#fff!important;font-weight:700;font-size:14px;text-decoration:none;border-radius:5px;border:1px solid #f60;background:#fd8b2a;background:-moz-linear-gradient(top,#fff 0,#ffa140 5%,#fd8b2a 100%);background:-webkit-linear-gradient(top,#fff 0,#ffa140 5%,#fd8b2a 100%);background:linear-gradient(to bottom,#fff 0,#ffa140 5%,#fd8b2a 100%)}
+.ifeng_save_btn:hover{text-decoration:none!important;background:#f60;color:#fff!important}
+.flight_ticket .choose_seat{padding:10px 20px;margin:20px 0;font-size:14px;font-weight:700;color:#333;border:1px solid #fef3c6;background:#fffae4}
+.flight_ticket .btn{display:inline-block;width:106px;height:28px;line-height:28px;text-align:center;color:#fff!important;font-weight:700;font-size:14px;text-decoration:none;border-radius:5px;border:1px solid #f60;background:#fd8b2a;background:-moz-linear-gradient(top,#fff 0,#ffa140 5%,#fd8b2a 100%);background:-webkit-linear-gradient(top,#fff 0,#ffa140 5%,#fd8b2a 100%);background:linear-gradient(to bottom,#fff 0,#ffa140 5%,#fd8b2a 100%)}
+.flight_ticket .btn:hover{text-decoration:none!important;background:#f60;color:#fff!important}
+.com_hot .order{width:660px}
+.com_hot .order li{font-size:12px;color:#333}
+.com_hot .or_button{margin-top:10px;margin-bottom:10px;text-align:center}
+.com_hot li{cursor:pointer;display:block;font-size:12px;height:25px;line-height:25px;margin:0;overflow:hidden;padding:2px 0 0;font-family:simsun;vertical-align:middle}
+.com_hot{background:none repeat scroll 0 0 #FFF;border:1px solid #AAA;font-size:12px;margin:0;padding:0;position:relative;z-index:99998}

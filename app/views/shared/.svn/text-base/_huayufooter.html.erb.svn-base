@@ -1,0 +1,18 @@
+
+     <div id="footer">
+            <div id="footer-v0">
+                <div class="footer-container">
+                    <div class="ali-pages">
+                        <p id="copyright"><%=t :huayuxx%></p>
+                        <ul>
+                            <li><a href="/"  title=""></a></li>
+                          </ul>
+                    </div>
+                    <div class="ali-group">
+                        <dl>
+                            <dt><a href="/" title="<%=t :huayu%>">Copyright © 2013 HOYO Net Site. Powered by HOYO, Theme by www.hoyosport.com </a></dt>
+                            </dl>
+                    </div>
+                </div>
+            </div>
+      </div>

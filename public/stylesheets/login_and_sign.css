@@ -1,0 +1,87 @@
+.column {
+width: 440px;
+float: left;
+}.marketing h2.subdued {
+font-size: 16px;
+color: 
+#666;
+}.fieldgroup {
+position: relative;
+margin-top: 10px;
+}.equacols .fieldgroup .fields, .htabs .columns.typical .fieldgroup .fields, .htabs .columns.hooks .fieldgroup .fields {
+background-image: url("/images/signup_bg.png");
+}
+.fieldgroup .fields {
+margin: 10px 0 0 0;
+padding: 10px;
+background: url("/images/signup_bg.png") 0 0 no-repeat;
+}
+.fieldgroup .fields dl.form:first-child {
+margin-top: 0;
+}dl.form  dt {
+margin: 0 0 6px 0;
+}dl.form  dt  label {
+position: relative;
+font-size: 14px;
+font-weight: bold;
+color: 
+#333;
+}#signup_form dd {
+position: relative;
+}dl.form  dd input {
+margin-right: 5px;
+width: 300px;
+padding: 6px;
+font-size: 14px;
+color: 
+#666;
+}
+
+input, button, textarea {
+margin: 0;
+/*padding: 0;*/
+font-size: 100%;
+font-family: inherit;
+}dl.form  dd p.note {
+margin: 2px 0 5px 0;
+font-size: 11px;
+color: 
+#666;
+}.form-warning {
+margin: 0px 0 10px 0;
+padding: 8px 10px;
+border: 1px solid 
+#E7E4C2;
+font-size: 14px;
+color: 
+#333;
+background: 
+#FFFFE2;
+border-radius: 4px;
+}.form-warning p {
+margin: 0;
+line-height: 1.5;
+}
+/*#login_error{
+	margin: 10px;
+}*/
+freemedia="screen"
+p {
+margin: 1em 0;
+}
+h2.subdued {
+font-size: 16px;
+color: #555;
+margin: 10px 0 0 10px;
+}
+.error {
+display: none;
+padding: 5px;
+font-size: 11px;
+color: #494620;
+background: #F7EA57;
+border: 1px solid #C0B536;
+border-top-color: white;
+border-bottom-right-radius: 3px;
+border-bottom-left-radius: 3px;
+}

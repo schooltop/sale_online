@@ -1,0 +1,197 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <head>
+    <%=stylesheet_link_tag 'extjs/resources/css/ext-all' %>
+    <%=stylesheet_link_tag 'common-skins/maintain/css/maintain'%>
+    <%=javascript_include_tag 'extjs/ext-base' %>
+    <%=javascript_include_tag 'extjs/ext-base-debug' %>
+    <%=javascript_include_tag 'extjs/ext-all' %>
+    <%=javascript_include_tag 'extjs/ext-lang-zh_CN.js' %>
+    <%=javascript_include_tag 'monthPickerPlugin.js' %>
+  </head>
+  <body>
+
+    <script type="text/javascript">
+      Ext.onReady(function(){
+        //创建表格store
+        var datastore = new Ext.data.JsonStore({
+          autoDestroy: true,
+          url: '/worker_salary_report/grid_data',
+          root : "root",
+          id: 'id',
+          totalProperty : "totalCount",
+          fields: ['work_id','monthtime','work_name','post_salary', 'award','need_attendance_days','actual_attendace_days','salary_days','accumulation','company_social','person_social','allowance','lessmoney','detail','meal','should_salary','tax','actual_salary','description']
+        });
+        datastore.load({params:{start:0,length:10}});
+        //处理周期显示
+        var sm = new Ext.grid.CheckboxSelectionModel();
+        var cm = new Ext.grid.ColumnModel([
+          new Ext.grid.RowNumberer(),//自动行号   
+          sm,
+          // {header:'companyId',dataIndex:'company_id',hidden:true},
+          {header:'员工ID',dataIndex:'work_id',hidden:true},
+          {header:'时间',dataIndex:'monthtime'},
+          {header:'姓名',dataIndex:'work_name'},
+          {header:'合同工资',dataIndex:'post_salary'},
+          {header:'奖金',dataIndex:'award'},
+          {header:'应出勤天数',dataIndex:'need_attendance_days'},
+          {header:'实际出勤天数',dataIndex:'actual_attendace_days'},
+          {header:'计薪天数',dataIndex:'salary_days'},
+          {header:'公积金',dataIndex:'accumulation'},
+          {header:'社保(雇主)',dataIndex:'company_social'},
+          {header:'社保(员工)',dataIndex:'person_social'},
+          {header:'调整(+)',dataIndex:'allowance'},
+          {header:'调整(-)',dataIndex:'lessmoney'},
+          {header:'调整原因',dataIndex:'detail'},
+          {header:'餐补',dataIndex:'meal'},
+          {header:'应发工资',dataIndex:'should_salary'},
+          {header:'个税扣除',dataIndex:'tax'},
+          {header:'实发工资',dataIndex:'actual_salary'},
+          {header:'员工签名',dataIndex:'work_name'},
+          {header:'备注',dataIndex:'description'}
+        ]);
+
+        var view=new Ext.grid.GridView({
+          scrollOffset:0,
+          sortAscText :'正序',
+          sortDescText :'倒序',
+          columnsText :'列显示/隐藏',
+          groupTextTpl :'{text} ({[values.rs.length]} 条记录)',
+          forceFit:true
+        });
+        var tbar = new Ext.Toolbar({
+          buttonAlign :'right',
+          items : [
+            '->', '-',
+            {text : "查询",
+              iconCls:'seaB',
+              scope:this,
+              handler:doquery
+            },'-',{text : "导出数据",
+              //iconCls:'seaB',
+              iconCls:'expB',
+              scope:this,
+              handler:function(){
+                var resName=Ext.getCmp('workName').getValue();
+                var datetime=  Ext.util.Format.date(Ext.getCmp('datetime').getValue(), 'Y-m');
+                Ext.getBody().mask("正在导出数据,请稍后......");
+                window.location.href= "/worker_salary_report/exportSalaryData?workName="+resName+"&datetime="+datetime;
+                Ext.getBody().unmask();
+              }
+            }
+          ]});
+        var grid1 = new Ext.grid.GridPanel({ 
+          id:'gird1',
+          store :  datastore,
+          loadMask : true,  
+          border:false,
+          cm: cm,   
+          sm: sm,//添加的地方  
+          tbar:tbar, 
+          height:document.documentElement.clientHeight - 179-26,
+          view:view,
+          autoHeight:false,
+          autoScroll:false,
+          stripeRows :true,
+          autoWith:true,
+          bbar:new Ext.PagingToolbar({
+            pageSize : 10,
+            store : datastore,
+            displayInfo : true,
+            displayMsg : '显示第 {0} 条到 {1} 条记录，一共 {2} 条',
+            emptyMsg : '没有记录',
+            beforePageText : '第',
+            afterPageText : '页，共 {0}页'
+          })
+        });
+        var  panelAll=new Ext.Panel({
+          id:'panelAll',
+          layout:'form',
+          border:false,
+          height:document.documentElement.clientHeight - 179,
+          frame:false,
+          title:'员工工资',
+          autoWith:true,
+          items:[
+            {
+              id:'searchP',
+              xtype:'panel',
+              layout:'column',
+              border:false,
+              autoWith:true,
+              items:[
+                {
+                  xtype : "panel",
+                  layout : "form",
+                  labelWidth:100,
+                  columnWidth : .5,
+                  bodyStyle : "background-color : #DFE8F6",
+                  border : false,
+                  items : [
+                    {
+                      id:'workName',
+                      fieldLabel : "员工",
+                      xtype : "textfield",
+                      anchor : '50%'
+                    }
+
+                  ]
+                },
+               {
+                    xtype:"panel",
+                    layout:"form",
+                    labelWidth:60,
+                    columnWidth : .5,
+                    bodyStyle : "background-color : #DFE8F6",
+                    border : false,
+                    items:[
+                      {
+                        id:'datetime',
+                        fieldLabel:'日期',
+                        xtype:'datefield',
+                        renderTo: document.body,
+                        plugins:'monthPickerPlugin',
+                        format: 'Y-m'
+                      }]
+                  },
+                {
+                  id:'company_id',
+                  name : "company_id",
+                  xtype : "hidden",
+                  value:'',
+                  anchor : '0%'
+                },
+              ]
+            },
+            grid1
+          ]
+        });
+        framePanel = new Ext.Panel({
+          bodyStyle : "background-color : #DFE8F6",
+          border : true,
+          height:document.documentElement.clientHeight - 179,
+          autoWith:true,
+          layout:"anchor",
+          items:[panelAll]
+        });
+        //执行查询操作
+        function doquery(){
+          var resName=Ext.getCmp('workName').getValue(); 
+          var datetime=  Ext.util.Format.date(Ext.getCmp('datetime').getValue(), 'Y-m');
+          Ext.getCmp('gird1').store.baseParams=eval("({workName:'"+resName+"',datetime:'"+datetime+"'})");
+          Ext.getCmp('gird1').store.load();
+          Ext.getCmp('gird1').getView().refresh();
+        }
+        framePanel.render("content");
+        window.onresize = function () {
+          Ext.getCmp('panelAll').doLayout();
+           }
+      });
+    </script>
+
+    <%=render :partial=>"left"%>
+    <div id="content"></div>
+  </body>
+</html>
+

@@ -1,0 +1,12 @@
+<h1>Editing work_salary</h1>
+
+<% form_for(@work_salary) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @work_salary %> |
+<%= link_to 'Back', work_salaries_path %>

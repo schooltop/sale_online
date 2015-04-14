@@ -1,0 +1,83 @@
+<%=render :partial=>"/admins/left"%>
+  <div id="content">
+        <table style="width:100%"><tbody><tr><td width="100%">
+      <div class="moduleTitle">
+<h2><%=@commission_configs.last.for_time%>月>>提成配置</h2>
+<span>&nbsp;
+<a href="" class="utilsLink" target="_blank">
+<img src="/images/crm/help.gif" alt="帮助"></a>
+<a href="/help" class="utilsLink" target="_blank">
+帮助
+</a></span></div>
+
+<script>
+var keys = [ "Accounts|basic_search","Accounts|advanced_search"]; 
+tabPreviousKey = '';
+
+function selectTabCSS(key)
+{ for( var i=0; i<keys.length;i++)
+  {
+   var liclass = '';
+   var linkclass = '';
+
+ if ( key == keys[i])
+ {
+   var liclass = 'active';
+   var linkclass = 'current';
+ }
+  	document.getElementById('tab_li_'+keys[i]).className = liclass;
+
+  	document.getElementById('tab_link_'+keys[i]).className = linkclass;
+  }
+    SUGAR.searchForm.searchFormSelect(key, tabPreviousKey);
+    tabPreviousKey = key;
+}
+</script>
+
+<ul id="searchTabs" class="tablist">
+<li class="active" id="tab_li_Accounts|basic_search"><a class="current" id="tab_link_Accounts|basic_search" href="javascript:selectTabCSS('Accounts|basic_search');"></a></li>	
+</ul>
+<script></script>
+<table cellpadding="1" cellspacing="0" border="0" width="100%">
+	<tbody>
+		<tr>
+		<td class="buttons" align="left" nowrap="">
+		<button type="button" class="button" title="编辑"  onclick="document.location.href='/commission_config_edit?check_time=<%=@commission_configs.last.for_time%>'">编辑 </button>
+			     &nbsp;
+		<button type="button" class="button" title="返回列表"  onclick="document.location.href='/commission_configs'">返回列表</button></td>
+		</tr>
+	</tbody>
+</table>
+<font color="#ff0000"><%=flash[:notice]%></font>
+<div id="LBL_ADDRESS_INFORMATION">
+<table width="100%" border="0" cellspacing="1" cellpadding="0" class="edit view">
+<tbody><tr><th align="left" colspan="4">
+<h4></h4>
+</th>
+</tr>
+<%for commission_config in @commission_configs%>
+ <tr>	
+ 		<td scope="row" nowrap="nowrap" width="8.3%">提成类型：</td>
+		<td nowrap="nowrap" width="15%"><%= commission_config.commission_style.name %></td>	
+		<td scope="row" nowrap="nowrap" width="8.3%">提成比例：</td>
+		<td nowrap="nowrap" width="15%"><%= commission_config.proprotion%></td>
+ 		<td scope="row" nowrap="nowrap" width="8.3%" align="left">适用时间：</td>
+		<td nowrap="nowrap" width="%" align="left"><%= commission_config.for_time%></td>
+ </tr>
+<% end %>
+<script type="text/javascript" language="javascript">
+    var fromKey = '';
+    var toKey = 'billing';
+    var checkbox = toKey + "_checkbox";
+    var obj = new TestCheckboxReady(checkbox); 
+</script>
+</tbody></table>
+</div>
+<div id="LBL_EMAIL_ADDRESSES">
+
+        </td></tr></tbody></table>
+    </div>
+
+
+
+

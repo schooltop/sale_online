@@ -1,0 +1,144 @@
+
+<%=render :partial=>"/admins/left"%>
+
+<div id="content">
+  <table style="width:100%"><tbody><tr><td>
+<div class="moduleTitle">
+<h2>提成配置:首页</h2>
+<span><a href="" class="utilsLink">
+<img src="/images/crm/print.gif" alt="打印"></a>
+<a href="" class="utilsLink">
+打印
+</a>&nbsp;
+<a href="" target="_blank">
+<img src="/images/crm/help.gif" alt="帮助"></a>
+<a href="" class="utilsLink" target="_blank">
+帮助
+</a></span></div>
+
+<script>
+var keys = [ "Accounts|basic_search","Accounts|advanced_search"]; 
+tabPreviousKey = '';
+
+function selectTabCSS(key)
+{ for( var i=0; i<keys.length;i++)
+  {
+   var liclass = '';
+   var linkclass = '';
+
+ if ( key == keys[i])
+ {
+   var liclass = 'active';
+   var linkclass = 'current';
+ }
+  	document.getElementById('tab_li_'+keys[i]).className = liclass;
+
+  	document.getElementById('tab_link_'+keys[i]).className = linkclass;
+  }
+    SUGAR.searchForm.searchFormSelect(key, tabPreviousKey);
+    tabPreviousKey = key;
+}
+</script>
+
+<ul id="searchTabs" class="tablist">
+<li class="active" id="tab_li_Accounts|basic_search"><a class="current" id="tab_link_Accounts|basic_search" href="javascript:selectTabCSS('Accounts|basic_search');">基本查找</a></li>	
+<li id="tab_li_Accounts|advanced_search" class=""><a id="tab_link_Accounts|advanced_search" href="javascript:selectTabCSS('Accounts|advanced_search');" class="">高级查找</a></li>	
+</ul>
+<script></script>
+<form name="search_form" id="search_form" class="search_form" method="get" action="/companies/companies_search">
+<input type="hidden" name="searchFormTab" value="basic_search">
+
+<table cellpadding="0" cellspacing="0" width="100%" border="0" class="list view">
+	<tbody><tr class="pagination">
+		<td colspan="7">
+			<table border="0" cellpadding="0" cellspacing="0" width="100%" class="paginationTable">
+				<tbody><tr class="pagination">
+					<td nowrap="nowrap" width="2%" class="paginationActionButtons">
+				选择&nbsp;
+			<%= hidden_field_tag 'form_action' %>
+			<!-- <%=submit_tag "删除", :name => "delete",:action=>'delete_accs',:class=>"button" , :onClick => "document.myaccs.form_action.value='delete'"%> -->
+			<%=submit_tag "导出", :name => "export",:class=>"button"%>
+			<%=submit_tag "全部导出", :name => "export",:class=>"button" , :onClick => "document.myaccs.form_action.value='all'"%>
+		    <input title="新建"  onclick="window.open('/commission_styles/new');" class="button" type="button" name="button" value="新建" >
+		   <!--  <%=submit_tag "发电子邮件", :name => "email",:action=>'send_emails',:class=>"button" , :onClick => "document.myaccs.form_action.value='email'"%></td> -->
+			<td nowrap="nowrap" width="1%" align="right" class="paginationChangeButtons">
+				<%if @commission_styles.size>1%>
+					<%= will_paginate @ccommission_styles,:prev_label => '上一页', :next_label => '下一页'%>
+				<%end%></td>
+				</tr>
+			</tbody></table>
+		</td>
+	</tr><tr height="20">
+				<th>
+					<input type="checkbox" name="checkall" onclick="checkUncheckAll(this);"/>
+				</th>
+				
+				<th scope="col" width="20%" nowrap="nowrap">
+					<div style="white-space: nowrap;" width="100%" align="left">
+               		
+                                                       项目&nbsp;&nbsp;
+					<img border="0" src="/images/crm/arrow_down.gif" width="8" height="10" align="absmiddle" alt="排序">
+					</div>
+			   </th>
+			
+				<th scope="col" width="20%" nowrap="nowrap">
+				<div style="white-space: nowrap;" width="100%" align="left">
+                      
+                                                                类型&nbsp;&nbsp;
+					<img border="0" src="/images/crm/arrow.gif" width="8" height="10" align="absmiddle" alt="排序">
+				</div>
+			</th>
+			<th scope="col" width="20%" nowrap="nowrap">
+				<div style="white-space: nowrap;" width="100%" align="left">
+                   
+                                                                粒度&nbsp;&nbsp;
+				<img border="0" src="/images/crm/arrow.gif" width="8" height="10" align="absmiddle" alt="排序">
+				</div>
+			</th>
+				
+					
+								
+			<th scope="col" nowrap="nowrap" width="2%">操作&nbsp;</th>
+			</tr>
+		
+		 <%@commission_styles.each do |commission_style|%>
+		    <tr height="20" class="oddListRowS1">
+						<td width="1%" class="nowrap">
+							<%= check_box_tag 'commission_style_ids[]', commission_style.id %>
+                           	</td>
+						<td scope="row" align="left" valign="top">
+							<a href="/ commission_styles/<%=commission_style.id%>"> <%=commission_style.name%></a>
+							</td>
+						<td scope="row" align="left" valign="top">
+							<%=commission_style.style%></td>
+						<td scope="row" align="left" valign="top">
+							<%=commission_style.gran%>
+							</td>
+									
+						<td width="2%" class="oddListRowS1" bgcolor="" nowrap="">
+						  <%= link_to image_tag("/images/crm/edit_inline.gif"),:action=>"edit",:id=>commission_style.id -%><%= link_to "修改",:action=>"edit",:id=>commission_style.id -%>
+						  <%= link_to image_tag("/images/crm/delete_inline.gif"), commission_style,:method => :delete -%><%= link_to "删除", commission_style, :confirm => '您确认删除该配置吗?',:method => :delete -%>
+						</td>
+	    	</tr>
+		<%end%> 	
+	  </tbody></table>
+	</td>
+	</tr></tbody></table>
+	</form>
+<script>
+	
+function lvg_nav(m,id,act,offset,t){if(t.href.search(/#/) < 0){return;}else{if(act=='pte'){act='ProjectTemplatesEditView';}else if(act=='d'){ act='DetailView';}else{ act='EditView';}url = 'index.php?module='+m+'&offset=' + offset + '&stamp=1317013853036747600&return_module='+m+'&action='+act+'&record='+id;t.href=url;}}
+function lvg_dtails(id){return SUGAR.util.getAdditionalDetails( 'Accounts',id, 'adspan_'+id);}
+</script>
+
+<!-- crmprint -->
+						<script>		if(window.addEventListener){
+							window.addEventListener("load", checkAlerts, false);
+						}else{
+							window.attachEvent("onload", checkAlerts);
+						}
+						</script><!--end body panes-->
+
+
+
+</div>

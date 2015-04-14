@@ -1,0 +1,10 @@
+#ui-datepicker-div {font-family:Verdana,Arial,sans-serif;font-size:10px;display:none;margin:15px 0 0 0;z-index:10000;}
+.calendarHidden {font-size:10px;display:block;width:0;height:0;}
+#datepicker {position:absolute;left:10px;top:30px;}
+#datepicker2 {position:absolute;left:208px;top:30px;}
+#chkIn{position:absolute;left:87px;font-size:10px;color:#cccccc;font-weight:bold;}
+#chkOut{position:absolute;left:278px;font-size:10px;color:#cccccc;font-weight:bold;}
+#close{position:absolute;right:10px;font-size:10px;color:#cccccc;cursor:pointer;}
+#tendine {display:block;font-size:10px;position:relative;top:217px;color:#cccccc;float:left;width:120px;}
+#prenotaContainer {display:none;background:url("/images/oldimages/bgFooter.png");position:absolute;width:390px;height:270px;right:0;padding:10px}
+#tendine a {color:#fae7bf;}

@@ -1,0 +1,251 @@
+
+<!--新鲜事列表-->		
+<%=javascript_include_tag 'school_menu'%>		
+<%= stylesheet_link_tag 'school_show' %>		
+<%= stylesheet_link_tag 'school_index' %>
+ <div class="TabTitle" style="width:534px ">
+        <ul id="myTab0">
+          <li class="active" onclick="snTabs(this,0);"><%='会员特权'%></li>
+          <li class="normal" onclick="snTabs(this,1);"><%='会员特权等级福利'%></li>
+        </ul>
+      </div>
+<div class="snTab">
+      <!-- 标题开始 -->
+  
+      <!-- 内容开始 -->
+ <div class="TabContent">
+   
+ <div id="myTab0_Content0">  
+ 	    <div>
+  	     	<div style="float:left;"><img src="/images/vipnotice/11.png" /> </div>
+  	     	<div style="float:right;width: 600px;margin-right:16px;margin-left:2px;margin-top:20px  ">
+  	     		<b>会员专享贵宾区</b><br>
+  	     		上海机场不仅是上海的窗口也是中国的窗口，目前上海枢纽领先于全国T2max在机场的服务场所皆在航站楼的核心区域，交通方便，指引明显
+  	     	</div> 	     	
+  	        </div>
+  	        <div class="clear">&nbsp;</div>  	       
+            
+            <div style="margin-top:10px">
+  	     	<div style="float:left;"><img src="/images/vipnotice/22.png" /> </div>
+  	     	<div style="float:right;width: 600px;margin-right:16px;margin-left:2px;margin-top:20px  ">
+  	     		<b>在全球顶级五星酒店和度假村享有企业折扣和贵宾服务</b><br>
+  	     		您只需在www.T2max.com轻点鼠标或是拨打400-008-7272，由美国XXX公司量身开发的T2max信息化系统将按排好您所需的一切
+  	     	</div> 	     	
+  	        </div>
+  	        <div class="clear">&nbsp;</div>
+  	        
+  	        <div style="margin-top:10px">
+  	     	<div style="float:left;"><img src="/images/vipnotice/33.png" /> </div>
+  	     	<div style="float:right;width: 600px;margin-right:16px;margin-left:2px;margin-top:20px  ">
+  	     		<b>前台保险箱务</b><br>
+  	     		为您所想，想您所未曾想。我们经过英国管家行会培训的私人管家将以您为尊，全面贴心的照顾好您的习惯、心情和需求。
+  	     	</div> 	     	
+  	        </div>
+  	        <div class="clear">&nbsp;</div>
+  	        
+  	        <div style="margin-top:10px">
+  	     	<div style="float:left;"><img src="/images/vipnotice/44.png" /> </div>
+  	     	<div style="float:right;width: 600px;margin-right:16px;margin-left:2px;margin-top:20px  ">
+  	     		<b>高端的志趣相投的人脉资源</b><br>
+  	     		T2max打造非凡细节，无论是设备或用具都彰显王者气概，在环境的布局中更以人体五感为轴心,体现视觉的美感,听觉的悦耳
+  	     		,嗅觉的芬芳,味觉的奢华,触觉的舒适. 为您带来舒心感受
+  	     	</div> 	     	
+  	        </div>
+  	        <div class="clear">&nbsp;</div>
+  	        
+  	        <div style="margin-top:10px">
+  	     	<div style="float:left;"><img src="/images/vipnotice/55.png" /> </div>
+  	     	<div style="float:right;width: 600px;margin-right:16px;margin-left:2px;margin-top:20px  ">
+  	     		<b>会员在T2max使用各项设施可享有各项优惠（会员优惠价附后）</b><br>
+  	     		T2max与天合联盟、星空联盟、寰宇一家全球三大航空联盟都建立了合作，是上海机场贵宾公司的战略合作伙伴，全球品牌酒
+  	     		店联盟成员，更是顶级私人俱乐部、多国在沪商会的指定接待平台
+  	     	</div> 	     	
+  	        </div>
+  	        <div class="clear">&nbsp;</div>
+  	        
+  	        
+  	        <div> 
+  	        	   <div style="float:left;">
+  	        		
+				  	        <div style="margin-top:10px">
+				  	     	<div style="float:left;"><img src="/images/vipnotice/1.png" /> </div>
+				  	     	<div style="float:right;width: 230px;margin-right:16px;margin-left:2px;margin-top:20px  ">
+				  	     		社交&商务事件年历
+				  	     	</div> 	     	
+				  	        </div>
+				  	        <div class="clear">&nbsp;</div>
+				  	        
+				  	        <div style="margin-top:10px">
+				  	     	<div style="float:left;"><img src="/images/vipnotice/3.png" /> </div>
+				  	     	<div style="float:right;width: 230px;margin-right:16px;margin-left:2px;margin-top:20px  ">
+				  	     		专享T2MAX现有以及未来分支会所的使用权
+				  	     	</div> 	     	
+				  	        </div>
+				  	        <div class="clear">&nbsp;</div>
+				  	        
+				  	        <div style="margin-top:10px">
+				  	     	<div style="float:left;"><img src="/images/vipnotice/5.png" /> </div>
+				  	     	<div style="float:right;width: 230px;margin-right:16px;margin-left:2px;margin-top:20px  ">
+				  	     		24小时保安
+				  	     	</div> 	     	
+				  	        </div>
+				  	        <div class="clear">&nbsp;</div>
+				  	        
+				  	         <div style="margin-top:10px">
+				  	     	<div style="float:left;"><img src="/images/vipnotice/7.png" /> </div>
+				  	     	<div style="float:right;width: 230px;margin-right:16px;margin-left:2px;margin-top:20px  ">
+				  	     		提供订票信息咨询服务
+				  	     	</div> 	     	
+				  	        </div>
+				  	        
+ 
+  	        	   </div>
+  	        	
+  	        	    
+ 	        	  
+ 	        	   <div style="float:right;">
+  	        		
+				  	        <div style="margin-top:10px">
+				  	     	<div style="float:left;"><img src="/images/vipnotice/2.png" /> </div>
+				  	     	<div style="float:right;width: 230px;margin-right:106px;margin-left:2px;margin-top:20px  ">
+				  	     		优先知道T2MAX新的分店信息
+				  	     	</div> 	     	
+				  	        </div>
+				  	        <div class="clear">&nbsp;</div>
+				  	        
+				  	        <div style="margin-top:10px">
+				  	     	<div style="float:left;"><img src="/images/vipnotice/4.png" /> </div>
+				  	     	<div style="float:right;width: 230px;margin-right:106px;margin-left:2px;margin-top:20px  ">
+				  	     		快速等级及退房服务
+				  	     	</div> 	     	
+				  	        </div>
+				  	        <div class="clear">&nbsp;</div>
+				  	        
+				  	        <div style="margin-top:10px">
+				  	     	<div style="float:left;"><img src="/images/vipnotice/6.png" /> </div>
+				  	     	<div style="float:right;width: 230px;margin-right:106px;margin-left:2px;margin-top:20px  ">
+				  	     		外汇兑换
+				  	     	</div> 	     	
+				  	        </div>
+				  	        <div class="clear">&nbsp;</div>
+				  	        
+				  	         <div style="margin-top:10px">
+				  	     	<div style="float:left;"><img src="/images/vipnotice/8.png" /> </div>
+				  	     	<div style="float:right;width: 230px;margin-right:106px;margin-left:2px;margin-top:20px  ">
+				  	     		免费提供城市旅游服务信息
+				  	     	</div> 	     	
+				  	        </div>
+ 
+  	        	    </div>
+  	        </div>
+  	        	       
+   	            	
+     <div class="clear">&nbsp;</div>
+  </div>
+       
+  <div id="myTab0_Content1" class="none1">  
+  	<style>
+    .print td{border-top:1px solid#878787;border-right:1px solid#878787;text-align:center;color:#000000;   }
+    .firsttd {width:218px;height:55px;}
+    .print{margin-top:1px; border-bottom:1px solid#878787 ;border-left:1px solid#878787;}
+	#date{ float:right;}
+   </style>
+  	     	<table class="print" style="margin-right:10px " >
+  	     	<tr style="background-color:#e8e8e8">
+  	     		<td width="218px" height="55px"><b><font color="000000">特权种类</font></b></td>
+  	     		<td width="150px" height="55px"><b><font color="97130e">银卡会员</font></b><br/><font color="37597e">9800.00元/年</font></td>
+  	     		<td width="150px" height="55px"><b><font color="97130e">金卡会员</font></b><br/><font color="37597e">50000.00元/年</font></td>
+  	     		<td width="150px" height="55px"><b><font color="97130e">白金会员</font></b><br/><font color="37597e">150000.00元/年</font></td>
+  	     		<td width="150px" height="55px"><b><font color="97130e">董事钻石卡会员</font></b><br/><font color="37597e">800000.00元/年</font></td>
+  	     	</tr>	
+  	     	<tr>
+  	     		<td class="firsttd"><font color="37597e">会籍有效期</font></td>
+  	     		<td>1年</td>
+  	     		<td>1年</td>
+  	     		<td>3年</td>
+  	     		<td>5年</td> 	     		
+  	     	</tr>
+  	     	<tr>
+  	     		<td class="firsttd"><font color="37597e">享受T2MAX会员价</font></td>
+  	     		<td>享受</td>
+  	     		<td>享受</td>
+  	     		<td>享受</td>
+  	     		<td>享受</td> 	     		
+  	     	</tr>
+  	     	<tr>
+  	     		<td class="firsttd"><font color="37597e">免费贵宾通道快捷服务</font><br/><font color="878787">含休息区免费餐饮，上网。</font></td>
+  	     		<td>5次</td>
+  	     		<td>10次</td>
+  	     		<td>30次</td>
+  	     		<td>无限制</td> 	     		
+  	     	</tr>
+  	     	<tr>
+  	     		<td class="firsttd"><font color="37597e">体验卡</font></td>
+  	     		<td>299元体验卡<br>5张</td>
+  	     		<td>499元体验卡<br>5张</td>
+  	     		<td>499元体验卡<br>10张</td>
+  	     		<td>499元体验卡<br>20张</td> 	     		
+  	     	</tr>
+  	     	<tr>
+  	     		<td class="firsttd"><font color="37597e">免费使用会议室</font><br/><font color="878787">每次60分钟</font></td>
+  	     		<td>无</td>
+  	     		<td>5次</td>
+  	     		<td>10次</td>
+  	     		<td>20次</td> 	     		
+  	     	</tr>
+  	     	<tr>
+  	     		<td class="firsttd"><font color="37597e">免费使用棋牌室</font><br/><font color="878787">每次60分钟</font></td>
+  	     		<td>无</td>
+  	     		<td>5次</td>
+  	     		<td>10次</td>
+  	     		<td>20次</td> 	     		
+  	     	</tr>
+  	     	<tr>
+  	     		<td class="firsttd"><font color="37597e">分店优惠政策</font></td>
+  	     		<td>无</td>
+  	     		<td>无</td>
+  	     		<td>享受</td>
+  	     		<td>享受</td> 	     		
+  	     	</tr>
+  	     	
+  	     	<tr>
+  	     		<td class="firsttd"><font color="37597e">指定四星或五星酒店</font><br/><font color="878787">需提前预定</font></td>
+  	     		<td>无</td>
+  	     		<td>无</td>
+  	     		<td>5晚</td>
+  	     		<td>10晚</td> 	     		
+  	     	</tr>
+  	     	</table>
+  	        
+  	        
+  	     
+     <div class="clear">&nbsp;</div>
+   </div>
+ 
+    
+        
+        <div style="background-color:#d9d9d9;height:130px;padding:10px ;margin-top:10px " >
+   	       	<div>
+   	       		<div style="width:580px;margin-left:10px;float:left   ">
+   	       			<b>T2MAX奖励</b><br>
+					1.	持会员卡在T2max消费除可享受会员特价外，亦可累积各项消费（仅限现金价值部分）的积分；<br/>
+					2.	持会员卡在T2max每消费100元积1分，1分价值1元，积分可用于T2max积分商城内商品兑换；<br/>
+					3.	可享受T2MAX旗下品牌VITA SPA水疗和理疗服务的会员价优惠，并可享有积分累积；<br/>
+					4.	无论国内和国际航班，会员均可享受180.00元/次的贵宾休息和贵宾通道服务，并可享有积分累积；<br/>
+					5.	定期举办"会员联谊"或回馈活动；<br/>
+					6.	每逢会员的生日可获赠T2max生日积分；<br/>
+					7.	凡当日在机场T2MAX消费，可获赠等值机场免费停车两小时的积分。
+   	       		</div>
+
+   	       		<div style="width:50px;margin-right:16px;float:left;margin-top:80px    ">
+   	       			<a href="#"><img src="/images/discription/addvip.png"></a>
+   	       		</div>
+   	       	</div>
+   	       	
+   	    </div>
+       
+</div>  
+</div>
+
+
+     

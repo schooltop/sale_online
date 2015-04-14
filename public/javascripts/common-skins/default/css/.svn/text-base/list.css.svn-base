@@ -1,0 +1,214 @@
+
+
+
+
+a:link {
+	color:#000;
+	TEXT-DECORATION: underline ;
+	
+}
+
+a:active {
+	color: #000;
+	font-weight:bold;
+	TEXT-DECORATION: none
+}
+
+a:visited {
+	color: green;
+	TEXT-DECORATION: underline
+}
+
+a:hover {
+	color: #931414;
+	TEXT-DECORATION: underline;
+}
+
+#bigTable1 {
+	font-size: 12px;
+	border-top: 1px solid #8db2e3;
+	border-left: 1px solid #8db2e3;
+	word-break: break-all; 
+    word-wrap: break-word;
+    color:#000;
+}
+
+#bigTable1 td {
+	border-right: 1px solid #8db2e3;
+	border-bottom: 1px solid #8db2e3;
+	height: 25px;
+	padding-top: 3px;
+}
+
+
+
+.bigTable1 {
+	font-size: 12px;
+	border-top: 1px solid #8db2e3;
+	border-left: 1px solid #8db2e3;
+	color:#000;
+	font-weight:boid;
+}
+
+.bigTable1 td {
+	border-right: 1px solid #8db2e3;
+	border-bottom: 1px solid #8db2e3;
+	height: 25px;
+	padding-top: 3px;
+	padding-left:5px;
+}
+
+.bigTable1 a{
+	font-size:12px;
+	text-decoration:none;
+}
+
+.bigTable1 a:hover {
+	font-size:12px;
+	text-decoration:underline;
+	color:#F60;
+}
+
+.bigTable1 a:visited {
+	font-size:12px;
+	text-decoration:none;
+}
+
+.title {
+	font-size: 12px;
+	color: #000;
+	text-align: center;
+	font-weight:bold;
+}
+
+.title2 {
+	background-color: #def5ff;
+	font-size: 12px;
+	color: #990000;
+	text-align: left;
+	padding-left: 4px;
+}
+
+.messagestyle {color: #990000}
+
+.td1 {
+	background-color: #FFEEEF;
+	font-size: 12px;
+	color: #000000;
+	text-align: left;
+	padding-left: 4px;
+}
+
+.td11 {
+	background-color: #FFEEEF;
+	font-size: 12px;
+	color: #000000;
+	text-align: right;
+	padding-right: 4px;
+	width: 50%;
+}
+
+.td2 {
+	background-color: #F7F7F7;
+	font-size: 12px;
+	color: #000000;
+	text-align: left;
+	padding-left: 4px;
+}
+
+.td3 {
+	background-color: #fff;
+	font-size: 12px;
+	color: #000000;
+	text-align: left;
+	padding-left: 4px;
+}
+
+input {
+	height: 20px;
+	padding: 1px 1px 1px 3px;
+	margin: 1px 1px 1px 1px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 9pt;
+	color: #000000;
+	text-decoration: none;
+	border: 1px solid #7FB8DC;
+
+}
+
+textarea {
+	border: 1px solid #7FB8DC;
+}
+
+.title3 {
+	font-size: 14;
+	font-weight: bold;
+	padding-left: 6px;
+	height: 25px;
+}
+image{
+	border: 0px ;
+}
+.button { 
+	border: 1px solid #8E9AC2;
+	background: url(../images/button.gif);
+	height:22px;
+	margin:1px 0 1px 0px;
+	padding:2px 1px 2px 6px;
+	letter-spacing:3px;
+	font-size:12px;
+}
+.button_go { 
+	border: 1px solid #8E9AC2;
+	background: url(../images/button_go.gif);
+	height:22px;
+	width:45px;
+	margin:12px 0 12px 0px;
+	padding:3px 8px 0 10px;
+	letter-spacing:3px;
+	font-size:12px;
+}
+#loading {
+	position: absolute;
+	left: 40%;
+	top: 40%;
+	padding: 2px;
+	z-index: 20001;
+	height: auto;
+}
+
+#loading a {
+	color: #225588;
+}
+
+#loading .loading-indicator {
+	background: white;
+	color: #444;
+	font: bold 13px tahoma, arial, helvetica;
+	padding: 10px;
+	margin: 0;
+	height: auto;
+}
+
+#loading-msg {
+	font: normal 10px arial, tahoma, sans-serif;
+}
+#header .api-title {vertical-align:text-bottom,buttom;	 FONT: 18px tahoma, arial, sans-serif; 	COLOR: white;BACKGROUND: url(hd-bg.gif) #1e4176 repeat-x 0px 0px buttom; height: 18px;}
+
+.tabLis {  float:left; width:100%; font-size:12px; line-height:normal;}
+.tabLis li {  margin-left:3px; padding:0; float: left; }
+.tabLis a { float:left; background:url("images/tableft.gif") no-repeat left top; margin:0;  padding:0 0 0 4px; text-decoration:none; }
+.tabLis a span { float:left; display:block;  background:url("images/tabright.gif") no-repeat right top; padding:5px 15px 4px 6px; color:#FFFFFF; }
+.tabLis a:link { TEXT-DECORATION: none ;}
+.tabLis a:visited {	TEXT-DECORATION: none ;}
+.tabLis a span {float:none;}
+.tabLis a:hover span { color:#0e0da7; }
+.tabLis a:hover { background-position:0% -25px;color:#0e0da7;TEXT-DECORATION: none }
+.tabLis a:hover span { background-position:100% -25px;color:#0e0da7;}
+.tabLis a.aHover span { color:#0e0da7; }
+.tabLis a.aHover { float:left; background:url("images/tableft.gif") no-repeat left -25px; margin:0;  padding:0 0 0 4px; text-decoration:none; }
+.tabLis a.aHover span { font-family:Arial, Helvetica, sans-serif; float:left; display:block;   background:url("images/tabright.gif") no-repeat right -25px; padding:5px 15px 4px 6px; color:#0e0da7;font-weight: bold; }
+.tabLis a.aHover:hover span { color:#0e0da7; }
+.tabLis a.aHover:hover { float:left; background:url("images/tableft.gif") no-repeat left -25px; margin:0;  padding:0 0 0 4px; text-decoration:none; }
+.tabLis a.aHover:hover span { float:left; display:block;  background:url("images/tabright.gif") no-repeat right -25px; padding:5px 15px 4px 6px; color:#0e0da7;cursor:hand;  }
+

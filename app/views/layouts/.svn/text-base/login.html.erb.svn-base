@@ -1,0 +1,62 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+   <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>T2MAX将成为上海社会高端精英的终极象征。</title><meta name="description" content="T2max以Time, Terminal, Traveler为核心经营要素,立足于空港，力求打造更加深入和宽泛的服务，在吸收了海内外各知名机场配套服务的有点后，将机票酒店预订、商务秘书、机场VIP快捷通道、贵宾接送机、免税品订购等融合为一站式服务，打造出创新的空港现代服务平台，并树立了顶级的机场商旅服务管家形象。" /><meta name="keywords" content="" />
+    <script type="text/javascript" src="/javascripts/jquery-1.4.2.min.js" tppabs="jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.ctg.backgroundScale.js" tppabs="jquery.ctg.backgroundScale.js"></script>     
+    <script type="text/javascript" src="/javascripts/it.fullsix.menu.js" tppabs="it.fullsix.menu.js"></script>
+    <script type="text/javascript" src="/javascripts/it.fullsix.util.js" tppabs="it.fullsix.util.js"></script>    
+    <script type="text/javascript" src="/javascripts/jquery.mousewheel.js" tppabs="jquery.mousewheel.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.cookies.js" tppabs="jquery.cookies.js"></script>
+    <script type="text/javascript" src="/javascripts/jScrollPane.js" tppabs="jScrollPane.js"></script>
+    
+      
+    <link rel="stylesheet" href="/stylesheets/nav.css" tppabs="nav.css" type="text/css" />
+    <link rel="stylesheet" href="/stylesheets/jScrollPane.css" tppabs="jScrollPane.css" type="text/css" />
+    <link rel="stylesheet" href="/stylesheets/screen.css" tppabs="screen.css" type="text/css" />
+    <link rel="stylesheet" href="/stylesheets/zh-CN.css" tppabs="languages/zh-CN.css" type="text/css" />
+   
+    
+    <script type="text/javascript" src="/javascripts/jquery.simplemodal-1.3.5.min.js" tppabs="simplemodal/jquery.simplemodal-1.3.5.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.bulgari.js" tppabs="jquery.bulgari.js"></script>
+
+        <script type="text/javascript" src="/javascripts/jquery.easing.1.3.js" tppabs="jquery.easing.1.3.js"></script>
+        <script type="text/javascript" src="/javascripts/jquery.jcarousel.min.js" tppabs="slideshow/jquery.jcarousel.min.js"></script>
+       
+        <!--[if IE]><link type="text/css" rel="stylesheet" href="screen_ie.css" tppabs="screen_ie.css"><![endif]-->
+        <!--[if IE 7]><link type="text/css" rel="stylesheet" href="screen_ie7.css" tppabs="screen_ie7.css"><![endif]-->
+        
+         <script type="text/javascript">
+             var isRunningIE6OrBelow = false; 
+         </script>
+         <!--[if lte IE 6]> 
+        <script type="text/javascript"> 
+          isRunningIE6OrBelow = true; 
+        </script> 
+        <![endif]-->
+         <script type="text/javascript">
+             if (isRunningIE6OrBelow) {
+                 alert('This site supports Internet Explorer starting from version 7 only.');
+             }
+         </script>
+    </head>
+  <body>       
+             <div class="wrapper landing" >       
+                 <!-- tophead -->                	
+                    <%=render :partial=>"/pageshares/top"-%>                 	              
+                 <!-- whats on -->
+             <div class="main-container">
+                <div class="content">                    
+                  <!-- central content -->        
+                    <%=yield%>
+                   
+                  <!--end bottomContainer-->             
+                 </div>
+             </div>
+                 <!-- footer --> 
+                                              
+             </div>  
+  </body>
+</html>

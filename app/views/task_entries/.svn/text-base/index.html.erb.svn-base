@@ -1,0 +1,18 @@
+<h1>Listing task_entries</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% @task_entries.each do |task_entry| %>
+  <tr>
+    <td><%= link_to 'Show', task_entry %></td>
+    <td><%= link_to 'Edit', edit_task_entry_path(task_entry) %></td>
+    <td><%= link_to 'Destroy', task_entry, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New task_entry', new_task_entry_path %>

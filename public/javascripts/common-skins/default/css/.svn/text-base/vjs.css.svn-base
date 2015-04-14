@@ -1,0 +1,2 @@
+	.vjs_css_required   { background-image : url(../images/required.gif); background-position:top right; background-repeat:no-repeat;}	
+	.vjs_css_error    { BACKGROUND-COLOR: #EEFFB6;}

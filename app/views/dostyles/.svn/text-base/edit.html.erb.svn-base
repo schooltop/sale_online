@@ -1,0 +1,12 @@
+<h1>Editing dostyle</h1>
+
+<% form_for(@dostyle) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @dostyle %> |
+<%= link_to 'Back', dostyles_path %>

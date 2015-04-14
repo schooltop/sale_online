@@ -1,0 +1,58 @@
+<!-- remote_form_for @address ,:html => {:id=>"address_form" },:update=>"addresses",:loading=>js_show("spinner"),:complete=>js_hide("spinner")+"jQuery('#address_form').remove();" -->
+<% form_for @address ,:html => { :multipart => true,:id=>"address_form" }  do |f| %>
+  			<%= f.error_messages %>
+	  			<dl class="">
+	  				<dt><%=t :address_user_name%>:</dt>
+	  				<dd class="col2">
+	  					<%= text_field 'address', 'address_user_name',:class=>"itext itext-long",:maxlength=>"50"  %>
+	  				</dd>
+	  			</dl>
+	  			<dl class="">
+	  				<dt><%=t :location%>:</dt>
+	  				<dd class="col2">
+	  					<%=render :partial=>"/addresses/select_area"%>
+	  				</dd>
+	  			</dl>
+	  			<dl class="">
+	  				<dt><%=t :desc_address%>:</dt>
+	  				<dd class="col2">
+	  					<%= text_area 'address', 'desc_address',:cols=>80,:rows=>5  %>
+	  				</dd>
+	  			</dl>
+	  			<dl class="">
+	  				<dt><%=t :tel%>:</dt>
+	  				<dd class="col2">
+	  					<%= text_field 'address', 'tel',:class=>"itext itext-long",:maxlength=>"50"  %>
+	  				</dd>
+	  			</dl>
+	  			<dl class="">
+	  				<dt><%=t :phone%>:</dt>
+	  				<dd class="col2">
+	  					<%= text_field 'address', 'phone',:class=>"itext itext-long",:maxlength=>"50"  %>
+	  				</dd>
+	  			</dl>
+	  			<dl class="">
+	  				<dt><%=t :post_code%>:</dt>
+	  				<dd class="col2">
+	  					<%= text_field 'address', 'post_code',:class=>"itext itext-long",:maxlength=>"6"  %>
+	  				</dd>
+	  			</dl>
+				<dl>
+					<dt><%=t :default_address%></dt>
+					<dd><select  name="address[is_default]">
+									    		<%[{0=>"否"},{1=>"是"}].each do |d|%>
+									    			<option value="<%=d.keys[0]%>" <%="selected='true'" if @address.is_default == d.keys[0]%> ><%=d.values[0]%></option>
+									    		<%end%>
+										    </select></dd>
+				</dl>
+	  			<dl>
+					<dt>&nbsp;</dt>
+					<dd>
+						<%= f.submit t(:save),:class=>"btn-confirm" %>
+					</dd>
+					<dd>
+						<%= link_to_function t(:cancel),"jQuery('#address_form').remove();",:class=>"btn-confirm" %>
+					</dd>
+				</dl>
+  			
+	<% end %>

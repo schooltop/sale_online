@@ -1,0 +1,169 @@
+
+     <div class="contentContainer" id="toshow" style="display:none " >
+  	    <div class="collapsed" id="wctt">
+  		<div class="left"><span>T2max</span></div>
+  		<div class="right"><a href="#" title="Expand">展开</a></div>
+  		<div class="clear"></div>
+  		</div>
+  		<div class="open">
+  			
+  			<div class="floatLeft"><h1>T2max</h1> </div>
+  			
+  			<div class="clear"></div>
+  			<div class="text scroll-pane" style="height: 220px " >
+  			     T2max以“Time, Terminal, Traveler"为<br/>
+  			           核心经营要素,立足于空港，力求打造更<br/>
+  			           加深入和宽泛的服务，在吸收了海内外<br/>
+  			           各知名机场配套服务的有点后，将机票<br/>
+  				酒店预订、商务秘书、机场VIP快捷通<br/>
+  				道、贵宾接送机、免税品订购等融合为<br/>
+  				一站式服务，打造出创新的空港现代服<br/>
+  				务平台，并树立了顶级的“机场商旅服<br/>务管家”形象。 			
+  			<a href="/vipnotice" target="_blank"><img src="/images/discription/tovipcn.png" style="float:right;margin-top:40px;margin-right:25px   "></a>
+  			</div>
+  			
+  			<!-- 
+  			
+  			<div class="filettoSlider" style="height:1px;background-image:url("/images/discription/touming.png"); " ></div>
+  			 -->
+  			
+  			<div class="bottom left" id="leftLink">
+  				<ul><li ><a href="/品牌 T2max1会员章程.doc" target="_blank" style="margin-left:20px "><b>下载宣传册</b></a></li>  					
+  				</ul>
+  			</div>
+  			<div class="bottom right" id="rightLink">
+  			<ul><li ><a title="预订"  href="#"><b>预订</b></a></li></ul>
+  			</div>
+  			<div class="clear"></div>
+  			
+  			 			
+    	</div>
+  </div>
+  
+  <script type="text/javascript">
+          var bck_Timer;
+          var bck_Src = '/images/oldimages/the_resort.jpg';
+          jQuery(document).ready(function () {
+
+          if (bck_Src != 'none')
+          {
+          bck_Timer = setTimeout('changeBck(bck_Src)',21000);
+          }
+          });
+
+          function changeBck(bck_Src)
+          {
+          clearTimeout(bck_Timer);
+          $('#imageDisplay img.bg-image').delay(21000).attr("src", bck_Src);
+          }
+ </script> 
+<div class="bg-container" id="imageDisplay">
+       	<img src="/images/oldimages/bhr.image.empty.png"class="bg-image" id="0" />
+       </div>
+ <script type="text/javascript">		
+		
+		window.setTimeout(function(){ 
+   var a=document.getElementById('toshow');	
+			a.style.display="block";
+   var b=document.getElementById('show_flash');	
+			b.style.display="none";
+},21000); 
+</script> 
+
+ <!--  <div style="position:fixed;left: window.screen.width;right:auto; top:0px; width:auto;  height:auto; z-index:-130;"id="show_flash"> </div>-->
+  <div class="bg-container" id="show_flash" align="center">
+  <embed src="/flash/firse_page_flash.swf" width="1010" height="660" quality="high"  align="middle" allowScriptAccess="always" allowFullScreen="true" wmode="transparent" type="application/x-shockwave-flash" id="videoAll" style="z-index: -130"></embed>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     <div class="contentContainer" id="toshow" style="display:none " >
+  	    <div class="collapsed" id="wctt">
+  		<div class="left"><span>T2max</span></div>
+  		<div class="right"><a href="#" title="Expand">展开</a></div>
+  		<div class="clear"></div>
+  		</div>
+  		<div class="open">
+  			
+  			<div class="floatLeft"><h1>T2max</h1> </div>
+  			
+  			<div class="clear"></div>
+  			<div class="text scroll-pane" style="height: 220px " >
+  			     T2max以“Time, Terminal, Traveler"为
+  			           核心经营要素,立足于空港，力求打造更
+  			           加深入和宽泛的服务，在吸收了海内外
+  			           各知名机场配套服务的有点后，将机票
+  				酒店预订、商务秘书、机场VIP快捷通
+  				道、贵宾接送机、免税品订购等融合为
+  				一站式服务，打造出创新的空港现代服
+  				务平台，并树立了顶级的“机场商旅服务管家”形象。 			
+  			<a href="/vipnotice" target="_blank"><img src="/images/discription/tovipcn.png" style="float:right;margin-top:40px;margin-right:25px   "></a>
+  			</div>
+		
+  			
+  			 <div style="height:2px;background-color:#545454;margin:0px;padding-left:0px;width:320px;float:left " ></div>
+  			
+  			<div class="bottom left" id="leftLink">
+  				<ul><li ><a href="/品牌 T2max1会员章程.doc" target="_blank" style="margin-left:20px "><b>下载宣传册</b></a></li>  					
+  				</ul>
+  			</div>
+  			<div class="bottom right" id="rightLink">
+  			<ul><li ><a title="预订"  href="#"><b>预订</b></a></li></ul>
+  			</div>
+  			<div class="clear"></div>
+  			
+  			 			
+    	</div>
+  </div>
+  
+  <script type="text/javascript">
+          var bck_Timer;
+          var bck_Src = '/images/oldimages/the_resort.jpg';
+          jQuery(document).ready(function () {
+
+          if (bck_Src != 'none')
+          {
+          bck_Timer = setTimeout('changeBck(bck_Src)',20000);
+          }
+          });
+
+          function changeBck(bck_Src)
+          {
+          clearTimeout(bck_Timer);
+          $('#imageDisplay img.bg-image').delay(20000).attr("src", bck_Src);
+          }
+ </script> 
+<div class="bg-container" id="imageDisplay">
+       	<img src="/images/oldimages/bhr.image.empty.png"class="bg-image" id="0" />
+       </div>
+ <script type="text/javascript">		
+		
+		window.setTimeout(function(){ 
+   var a=document.getElementById('toshow');	
+			a.style.display="block";
+   var b=document.getElementById('show_flash');	
+			b.style.display="none";
+			
+},21000); 
+</script> 
+
+ <!--  <div style="position:fixed;left: window.screen.width;right:auto; top:0px; width:auto;  height:auto; z-index:-130;"id="show_flash"> </div>-->
+  <div class="bg-container" id="show_flash" align="center">
+  <embed src="/flash/firse_page_flash.swf" width="1024" height="660" quality="high"  align="middle" allowScriptAccess="always" allowFullScreen="true" wmode="transparent" type="application/x-shockwave-flash" id="videoAll" style="z-index: -130"></embed>
+
+  </div>

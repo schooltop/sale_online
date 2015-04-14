@@ -1,0 +1,16 @@
+
+#guestGallery .carousel_clip {
+    margin-left:10px;
+    /* debug
+    border:1px solid red;*/
+}
+
+.guestCarouselDetailFixed
+{
+    margin-top:-23px;
+    padding-left: 0px;
+    /* debug
+    border:1px solid yellow;*/
+}
+
+.checkBox label {padding:0 0 0 3px;position:relative;top:-3px;}

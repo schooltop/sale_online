@@ -1,0 +1,282 @@
+#content {
+position: relative;
+}
+#comm-header-inner, #content {
+width: 950px;
+margin: auto;
+}.address {
+margin-bottom: 40px;
+}.address h3 {
+border-bottom: 2px solid 
+#F1F1F1;
+margin-bottom: 20px;
+}
+h3 {
+font-size: 14px;
+}.address li.selected {
+margin-bottom: 7px;
+margin-top: 5px;
+-webkit-box-shadow: 5px 5px 0 
+#F3F3F3;
+-moz-box-shadow: 5px 5px 0 #f3f3f3;
+box-shadow: 5px 5px 0 
+#F3F3F3;
+line-height: 32px;
+}.address .manage-address {
+float: right;
+font-size: 12px;
+font-weight: 400;
+margin-top: -30px;
+}
+.manage-address a{
+	color: #36c;s
+}
+.address li.selected {
+background-color: 
+#FFF5CC;
+border: 1px solid 
+#FFE580;
+}
+.address .address-list li {
+border: 1px solid 
+white;
+line-height: 24px;
+padding-left: 75px;
+position: relative;
+}.address li.selected .marker, .address li.selected .marker-tip, .address li.selected .modify {
+display: block;
+}
+.address .marker {
+background: url(/images/buy/address.gif) no-repeat 
+transparent;
+position: absolute;
+top: 6px;
+_top: 1px;
+left: 10px;
+width: 15px;
+height: 25px;
+display: none;
+}.address li.selected .marker, .address li.selected .marker-tip, .address li.selected .modify {
+display: block;
+}
+.address .marker-tip {
+position: absolute;
+top: 0;
+left: 30px;
+color: 
+#F50;
+font-weight: 700;
+display: none;
+_height: 24px;
+_line-height: 24px;
+}
+Inherited from li.J_Addr.J_MakePoint.clearfix.J_DefaultAddr.selected
+.address li.selected {
+line-height: 32px;
+}
+.address .address-list li {
+line-height: 24px;
+}
+li {
+list-style: none;
+}.address li.selected .marker, .address li.selected .marker-tip, .address li.selected .modify {
+display: block;
+}
+.address .modify {
+float: right;
+margin-right: 10px;
+display: none;
+}.address li input, .address li label {
+vertical-align: middle;
+}
+select, input, button, textarea {
+font: 100% Tahoma,Helvetica,Arial,sans-serif;
+}.address-list .selected label, .address-list .selected label em {
+font-weight: 700;
+font-size: 14px;
+}
+.address li label {
+padding-left: 10px;
+}
+.address li input, .address li label {
+vertical-align: middle;
+}.address-list .selected label, .address-list .selected label em {
+font-weight: 700;
+font-size: 14px;
+}
+.address-list label em {
+color: 
+gray;
+}.address-list .tip {
+color: s
+gray;
+vertical-align: middle;
+margin-left: 20px;
+}
+address, caption, cite, code, dfn, em, strong, th, var {
+font-style: normal;
+font-weight: normal;
+}.address .set-default {
+margin-left: 15px;
+}
+
+/*提交订单*/
+
+.order-go {
+text-align: right;
+}.address-confirm {
+height: 140px;
+position: relative;
+margin-top: 10px;
+}.address-confirm .kd-popup {
+position: absolute;
+-moz-box-shadow: none;
+-webkit-box-shadow: none;
+box-shadow: none;
+border-color: 
+#2ca1d2;
+right: 0;
+background-color: 
+#8ed8f8;
+}
+.pop-back {
+border-color: 
+#FFD47F;
+background: 
+#FEC;
+}
+.kd-popup {
+position: relative;
+z-index: 100;
+padding: 3px;
+background: 
+#F2F2F2;
+border: 1px solid 
+#A6A6A6;
+font-family: tahoma;
+font-size: 12px;
+-moz-box-shadow: 2px 2px 0 #ccc;
+-webkit-box-shadow: 2px 2px 0 
+#CCC;
+box-shadow: 2px 2px 0 
+#CCC;
+}.address-confirm .kd-popup .box {
+padding: 1px 10px 10px 20px;
+}
+.kd-popup .box {
+background: 
+white;
+padding: 10px 15px 10px 10px;
+font-size: 12px;
+margin-bottom: 0;
+position: static;
+}
+.box {
+position: relative;
+margin-bottom: 10px;
+}.kd-popup .bd {
+margin-top: 2px;
+line-height: 20px;
+color: 
+#404040;
+padding: 0;
+border: 0;
+background: 0;
+}
+.box .bd {
+padding: 10px;
+border: 1px solid 
+#CCC;
+background-color: #F7F7F7;
+}.order-table tfoot .point-in {
+position: relative;
+padding-bottom: 10px;
+}.order-table tfoot .point-in .t {
+font-weight: 700;
+}
+address, caption, cite, code, dfn, em, strong, th, var {
+font-style: normal;
+font-weight: normal;
+}
+address, cite, dfn, em, var {
+font-style: normal;
+}
+/*cite, em, var, address, dfn {
+font-style: italic;
+}*/
+.kd-popup .bd {
+line-height: 20px;
+color: 
+#404040;
+}
+.kd-popup .box {
+font-size: 12px;s
+}
+.kd-popup {
+font-family: tahoma;
+font-size: 12px;
+}.price .style-large-bold-red {
+color: 
+#F50;
+font: bold 26px tahoma;
+}
+.order-go .g_price span {
+font-size: 26px;
+}
+.g_price span {
+font-size: 18px;
+margin-right: 4px;
+}
+.g_price span {
+color: 
+#999;
+margin-right: 3px;
+}
+.order-go {
+text-align: right;
+}.g_price {
+font-family: arial;
+}
+.kd-popup .bd {
+line-height: 20px;
+color: 
+#404040;
+}
+.btn-go {
+background: url(/images/center/buy-btn_new.png) no-repeat scroll 0 1px ;
+border:none;
+cursor:pointer;
+width: 127px;
+height: 36px;
+position: absolute;
+right: -1px;
+bottom: -35px;
+_right: -2px;
+_bottom: -36px;
+font: bold 18px/36px arial;
+}
+.empty_cart {background: url(/images/center/empty_cart.png) no-repeat scroll 0 1px ;}
+.back {background: url(/images/center/back.png) no-repeat scroll 0 1px ;}
+.pay-btn{
+	background: #FB863B;
+	color: white;
+}
+.btn-go b {
+/*background: url(/images/buy/buy-btn.png) no-repeat scroll 0 1px transparent;*/
+width: 127px;
+height: 36px;
+float: left;
+position: absolute;
+top: 0;
+left: 0;
+}
+.dpl-button {
+cursor: pointer;
+margin-right: 0;
+overflow: hidden;
+border: 0;
+vertical-align: middle;
+text-indent: -99999px;
+}.btn-go {
+font: bold 18px/36px arial;
+}

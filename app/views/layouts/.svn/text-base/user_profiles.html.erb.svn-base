@@ -1,0 +1,19 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <%= stylesheet_link_tag 'global','login_and_sign'%>
+    <%= javascript_include_tag 'jquery','prototype','areas','validate' %>
+</head>
+<body>
+<div id="doc">
+	
+
+	<div class="w952 top-line">
+  		<%=yield%>
+  	</div>
+        
+</body>
+</html>
+

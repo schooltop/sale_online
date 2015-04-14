@@ -1,0 +1,95 @@
+
+<%=render :partial=>"/admins/left"%>
+<div id="content">
+     <table style="width:100%"><tbody><tr><td>
+       <div class="moduleTitle">
+         <h2><%=@cares.last.for_time.strftime('%Y-%m' )%>月>>财务信息</h2>
+            <span><a href="" class="utilsLink"><img src="/images/crm/print.gif" alt="打印"></a>
+                  <a href="" class="utilsLink">打印</a>&nbsp;
+                  <a href="" class="utilsLink" target="_blank">
+                  <img src="/images/crm/help.gif" alt="帮助"></a>
+                  <a href="/help" class="utilsLink" target="_blank">帮助</a>
+            </span>
+       </div>
+<table cellpadding="1" cellspacing="0" border="0" width="100%">
+<tbody>
+   <tr>
+     <td class="buttons" align="left" nowrap="">
+    <button type="button" class="button" title="编辑"  onclick="document.location.href='/care_edit?check_time=<%=@cares.last.for_time%>'">编辑 </button>
+			     &nbsp;
+	<button type="button" class="button" title="返回列表"  onclick="document.location.href='/cares'">返回列表</button></td>
+	</td>
+  </tr>
+</tbody>
+</table>
+    <div id="DEFAULT" class="detaile view">
+       <table id="detailepanel_1" cellspacing="0">
+          <tbody>
+            <tr class="pagination">
+                 <td colspan="20" style="padding: 0px;">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tbody>
+                      <tr><td nowrap="" align="right"></td></tr>
+                    </tbody>
+                  </table>
+                 </td>
+            </tr>
+            <%for care in @cares%>
+ 
+            <tr>
+                <td width="5%" scope="row">员工：</td>
+                <td width="5%"><span id="name"><%= care.work.name%></span></td>
+                <td width="5%" scope="row">月份时间：</td>
+                <td width="5%"><%=care.for_time.strftime('%Y-%m' )%> </td>
+                <td width="5%" scope="row">当月需上班天数：</td>
+                <td width="5%"><%=care.need_attendance_days%></td>	
+            
+                <td width="5%" scope="row">餐补：</td>
+                <td width="5%"><span id="name"><%=care.meal%></span></td>
+                <td width="5%" scope="row">奖金：</td>
+                <td width="5%"><%=care.award%> </td>
+                <td width="5%" scope="row">奖金详细描述：</td>
+                <td width="5%"><%=care.award_detaile%></td>	
+            
+                <td width="5%" scope="row">补贴：</td>
+                <td width="5%"><span id="name"><%=care.allowance%></span></td>
+                <td width="5%" scope="row">贴补描述：</td>
+                <td width="5%"><%=care.allowance_detaile%> </td>
+                <td width="5%" scope="row">扣钱：</td>
+                <td width="5%"><%=care.lessmoney%></td>	
+            
+                <td width="5%" scope="row">扣钱详细描述：</td>
+                <td width="5%"><span id="name"><%=care.less_detaile%></span></td>
+                <td width="5%" scope="row">税扣：</td>
+                <td width="5%"><%=care.tax%> </td>
+                <td width="5%" scope="row">备注：</td>
+                <td width="5%"><%=care.description%></td>	
+                     	                
+                <td width="5%" scope="row">本月工资系数：</td>
+                <td width="5%"><%=care.work_salary_id%> </td>
+                <td width="5%" scope="row">考勤开始时间：</td>
+                <td width="5%"><%=care.work_start_time%></td>	
+                <td width="5%" scope="row">勤考结束时间：</td>
+                <td width="5%"><%=care.work_end_time%></td>	
+            
+               	<td width="5%" scope="row">记录人员：</td>
+                <td width="5%"><span id="name"><%=care.user_id%></span></td>
+                <td width="5%" scope="row">创建时间：</td>
+                <td width="5%"><%=care.created_at%></td>	
+            </tr>
+<% end %>
+<script type="text/javascript" language="javascript">
+    var fromKey = '';
+    var toKey = 'billing';
+    var checkbox = toKey + "_checkbox";
+    var obj = new TestCheckboxReady(checkbox); 
+</script>
+</tbody></table>
+</div>
+
+
+
+
+
+  
+</div>

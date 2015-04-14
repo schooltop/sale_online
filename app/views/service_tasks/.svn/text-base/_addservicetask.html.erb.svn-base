@@ -1,0 +1,111 @@
+
+
+
+<table width="100%" cellspacing="0" cellpadding="0" border="0" class="subpanelTabForm">
+<tbody><tr>
+		<td>
+<ul class="noBullet" id="subpanel_list">
+	<li class="noBullet" id="whole_subpanel_activities">
+<div id="subpanel_title_activities" onmouseover="this.style.cursor = 'move';">
+<table width="100%" cellpadding="0" cellspacing="0" border="0" class="formHeader h3Row">
+<tbody>
+<tr><td nowrap=""><h3><span><a name="activities"> </a><span id="show_link_activities" style="display: none"><a href="#" class="utilsLink" onclick="current_child_field = 'activities';showSubPanel('activities',null,null,'Accounts');document.getElementById('show_link_activities').style.display='none';document.getElementById('hide_link_activities').style.display='';return false;"><img src="/images/crm/advanced_search.gif" width="8" height="8" alt="显示" border="0 align=" absmiddle""=""></a></span><span id="hide_link_activities" style="display: "><a href="#" class="utilsLink" onclick="hideSubPanel('activities');document.getElementById('hide_link_activities').style.display='none';document.getElementById('show_link_activities').style.display='';return false;"><img src="/images/crm/basic_search.gif" width="8" height="8" alt="隐藏" border="0" align="absmiddle"></a></span>&nbsp;相关任务调配</span></h3>	
+</td>
+<td width="100%"><img height="1" width="1" src="/images/crm/blank.gif" alt="">
+</td></tr>
+</tbody></table></div>
+
+<div cookie_name="activities_v" id="subpanel_activities" style="display:">
+<table cellpadding="0" cellspacing="0" width="100%" border="0" class="list view">
+<tbody>
+<tr class="pagination">
+<td colspan="20" align="right">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tbody><tr>
+		<td align="left"><span><table cellpadding="0" cellspacing="0"><tbody><tr>
+			<td class="buttons">
+		
+
+				<td class="buttons">
+					<%= hidden_field_tag 'form_action1' %>
+					
+		            <input type="button" onClick="showEdbg(document.getElementById('edbg_size').value)" value="添加任务">
+		            <%= submit_tag("保存", :name => "send",:class=>'button') -%>	
+					</td></tr></tbody></table></span></td>
+					
+					</tr></tbody></table>
+				</td>
+		</tr>
+		
+		    <tr height="20">
+			<th>		    
+    <input  type="hidden" id= "edbg_size" name= "edbg_size" value= "1"> 
+	<%1.upto 20 do |i|%>
+	<%if i==1%>
+	<table id="edbg<%= i%>" name="edbg<%= i%>"  class="print" width="1117" style="margin-top:0px;border-color: #8ed8f8" frame="box"  border="0"  cellpadding="0" cellspacing="0" >
+	<tr><td align="left" width="227">&nbsp;&nbsp;从：<%=calendar_date_select_tag "edbgtime#{i}",Time.now.strftime('%Y-%m-%d' ),:time => true ,:style=>"width:130px" %></td> <td colspan="2" align="center" width="519"><input type="button" onClick="destroyRemark('edbg'+<%= i%>)" value="删除"></td>
+  	<tr><td align="left">&nbsp;&nbsp;至：<%=calendar_date_select_tag "tedbgtime#{i}",Time.now.strftime('%Y-%m-%d' ),:time => true ,:style=>"width:130px"  %></td>  	
+  	<td align="left"> 物资匹配：<%=select( "company#{i}","",Company.find(:all).collect {|p| [ p.name, p.id ] },:include_blank => true)%></td> <td align="left"> 人力匹配：<%=select( "work#{i}","", Work.find(:all).collect {|p| [ p.name, p.id ] },:include_blank => true)%></td></tr>
+  	<tr><td align="left"  colspan="3">
+		<%=text_area_tag "description#{i}","",:cols=>216,:rows=>4,:placeholder=>t(:message_to_seller)%>    	
+    </td></tr>
+	</table>
+	<%else%>
+	<table id="edbg<%= i%>" name="edbg<%= i%>" class="print" width="1117" style="display:none;margin-top:0px;border-color: #8ed8f8;" frame="box"  border="0" cellpadding="0" cellspacing="0" >
+	<tr><td align="left" width="227">&nbsp;&nbsp;从：<%=calendar_date_select_tag "edbgtime#{i}",Time.now.strftime('%Y-%m-%d' ),:time => true ,:style=>"width:130px"  %></td> <td colspan="2" align="center" width="519"><input type="button" onClick="destroyRemark('edbg'+<%= i%>)" value="删除"></td>
+  	<tr><td align="left" width="227">&nbsp;&nbsp;至：<%=calendar_date_select_tag "tedbgtime#{i}",Time.now.strftime('%Y-%m-%d' ),:time => true ,:style=>"width:130px"  %></td>  	
+  	<td align="left"> 物资匹配：<%=select( "company#{i}","",Company.find(:all).collect {|p| [ p.name, p.id ] },:include_blank => true)%></td> <td align="left"> 人力匹配：<%=select( "work#{i}","", Work.find(:all).collect {|p| [ p.name, p.id ] },:include_blank => true)%></td></tr>
+    <tr><td align="left"  colspan="3">
+		<%=text_area_tag "description#{i}","",:cols=>216,:rows=>4,:placeholder=>t(:message_to_seller)%>    	
+    </td></tr>
+    </table>
+	<%end%>
+	<%end%>
+	
+		    </th>
+		    </tr>
+		</tbody>
+		</table>
+		</div>
+		</div>
+  		
+</li>	
+</ul></td></tr></tbody></table>  
+
+
+ <script type="text/javascript">
+ function checkAll(n){
+ if (n == 0) {
+ 	var chkStatus = document.getElementsByName("active[cad_contact_ids][]");
+ 	for (i = 0; i < chkStatus.length; i++) {
+ 		chkStatus[i].checked = event.srcElement.checked;
+ 	}
+ }
+ else if(n==1) {
+ 	var chkStatus1 = document.getElementsByName("active[stu_reg_inf_ids][]");
+ 	for (i = 0; i < chkStatus1.length; i++) {
+ 		chkStatus1[i].checked = event.srcElement.checked;
+ 	}
+ }
+	}
+	
+	
+	function showEdbg(n){
+	if (n<21)
+	{
+		document.getElementById('edbg_size').value=Number(document.getElementById('edbg_size').value)+1;
+	}
+	else
+	{
+		document.getElementById('edbg_size').value=1;
+	}
+    document.getElementById('edbg'+document.getElementById('edbg_size').value).style.display="block";
+	
+}
+
+function destroyRemark(trid){
+	var account_base = document.getElementById(trid);
+    account_base.parentNode.removeChild(account_base);
+}		
+
+</script>

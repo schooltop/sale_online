@@ -1,0 +1,184 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <head>
+    <%=stylesheet_link_tag 'extjs/resources/css/ext-all' %>
+    <%=stylesheet_link_tag 'common-skins/maintain/css/maintain'%>
+    <%=javascript_include_tag 'extjs/ext-base' %>
+    <%=javascript_include_tag 'extjs/ext-base-debug' %>
+    <%=javascript_include_tag 'extjs/ext-all' %>
+    <%=javascript_include_tag 'extjs/ext-lang-zh_CN.js' %>
+  </head>
+  <body>
+
+    <script type="text/javascript">
+      Ext.onReady(function(){
+        //创建表格store
+        var datastore = new Ext.data.JsonStore({
+          autoDestroy: true,
+          url: '/finance_report/grid_data_customer',
+          root : "root",
+          id: 'id',
+          totalProperty : "totalCount",
+          fields: ['company_id','customer_name', 'fromtime','totime','title','total_price']
+        });
+        datastore.load({params:{start:0,length:10}});
+        //处理周期显示
+        var sm = new Ext.grid.CheckboxSelectionModel();
+        var cm = new Ext.grid.ColumnModel([
+          new Ext.grid.RowNumberer(),//自动行号   
+          sm,
+          {header:'companyId',dataIndex:'company_id',hidden:true},
+          {header:'客户',dataIndex:'customer_name'},
+          {header:'上工',dataIndex:'fromtime'},
+          {header:'下工',dataIndex:'totime'},
+          {header:'项目',dataIndex:'title'},
+          {header:'金额',dataIndex:'total_price'}
+        ]);
+
+        var view=new Ext.grid.GridView({
+          scrollOffset:0,
+          sortAscText :'正序',
+          sortDescText :'倒序',
+          columnsText :'列显示/隐藏',
+          groupTextTpl :'{text} ({[values.rs.length]} 条记录)',
+          forceFit:true
+        });
+        var tbar = new Ext.Toolbar({
+          buttonAlign :'right',
+          items : [
+            '->', '-',
+            {text : "查询",
+              iconCls:'seaB',
+              scope:this,
+              handler:doquery
+            },'-',{text : "导出数据",
+              //iconCls:'seaB',
+              iconCls:'expB',
+              scope:this,
+              handler:function(){
+                var resName=Ext.getCmp('customerName').getValue();
+                var datetime=  Ext.util.Format.date(Ext.getCmp('datetime').getValue(), 'Y-m-d');
+                Ext.getBody().mask("正在导出数据,请稍后......");
+                window.location.href= "/finance_report/export_customerData?customerName="+resName+"&datetime="+datetime;
+                Ext.getBody().unmask();
+              }
+            }
+          ]});
+        var grid1 = new Ext.grid.GridPanel({ 
+          id:'gird1',
+          store :  datastore,
+          loadMask : true,  
+          border:false,
+          cm: cm,   
+          sm: sm,//添加的地方  
+          tbar:tbar, 
+          height:document.documentElement.clientHeight - 179-26,
+          view:view,
+          autoHeight:false,
+          autoScroll:false,
+          stripeRows :true,
+          autoWith:true,
+          bbar:new Ext.PagingToolbar({
+            pageSize : 10,
+            store : datastore,
+            displayInfo : true,
+            displayMsg : '显示第 {0} 条到 {1} 条记录，一共 {2} 条',
+            emptyMsg : '没有记录',
+            beforePageText : '第',
+            afterPageText : '页，共 {0}页'
+          })
+        });
+        var  panelAll=new Ext.Panel({
+          id:'panelAll',
+          layout:'form',
+          border:false,
+          height:document.documentElement.clientHeight - 179,
+          frame:false,
+          title:'SPA收入分析(客户)',
+          autoWith:true,
+          items:[
+            {
+              id:'searchP',
+              xtype:'panel',
+              layout:'column',
+              border:false,
+              autoWith:true,
+              items:[
+                {
+                  xtype : "panel",
+                  layout : "form",
+                  labelWidth:100,
+                  columnWidth : .5,
+                  bodyStyle : "background-color : #DFE8F6",
+                  border : false,
+                  items : [
+                    {
+                      id:'customerName',
+                      fieldLabel : "客户",
+                      xtype : "textfield",
+                      anchor : '50%'
+                    }
+
+                  ]
+                },
+                {
+                  xtype:"panel",
+                  layout:"form",
+                  labelWidth:60,
+                  columnWidth : .5,
+                  bodyStyle : "background-color : #DFE8F6",
+                  border : false,
+                  items:[
+                    {
+                      id:'datetime',
+                      fieldLabel:'日期',
+                      xtype:'datefield',
+                      format : 'Y-m-d',
+                      editable : false,
+                      width:243,
+                      emptyText:'请选择',
+                      triggerAction: 'all',
+                      lazyRender:false,
+                     
+                      minListWidth : 220,
+                      anchor : '50%'
+                    }]
+                },
+                {
+                  id:'company_id',
+                  name : "company_id",
+                  xtype : "hidden",
+                  value:'',
+                  anchor : '0%'
+                },
+              ]
+            },
+            grid1
+          ]
+        });
+        framePanel = new Ext.Panel({
+          bodyStyle : "background-color : #DFE8F6",
+          border : true,
+          height:document.documentElement.clientHeight - 179,
+          autoWith:true,
+          layout:"anchor",
+          items:[panelAll]
+        });
+        //执行查询操作
+        function doquery(){
+          var resName=Ext.getCmp('customerName').getValue();
+          var datetime=  Ext.util.Format.date(Ext.getCmp('datetime').getValue(), 'Y-m-d');
+          Ext.getCmp('gird1').store.baseParams=eval("({customerName:'"+resName+"',datetime:'"+datetime+"'})");
+          Ext.getCmp('gird1').store.load();
+          Ext.getCmp('gird1').getView().refresh();
+        }
+        framePanel.render("content");
+      });
+    </script>
+
+    <%=render :partial=>"/admins/caiwuleft"%>
+    <div id="content"></div>
+  </body>
+</html>
+

@@ -1,0 +1,134 @@
+
+  		<div class="module">
+  			<div id="left-content">
+  				<%=render :partial=>"/shared/huayucategories"%>
+				<div id="left-box1">
+				<a href="http://mail.yibar.com/webim/client.php?locale=zh-cn" target="_blank" 
+				onclick="if(navigator.userAgent.toLowerCase().indexOf('opera') != -1 &amp;&amp; window.event.preventDefault) window.event.preventDefault();this.newWindow = window.open('http://mail.yibar.com/webim/client.php?locale=zh-cn&amp;url='+escape(document.location.href)+'&amp;referrer='+escape(document.referrer), 'webim', 'toolbar=0,scrollbars=0,location=0,status=1,menubar=0,width=640,height=480,resizable=1');this.newWindow.focus();this.newWindow.opener=window;return false;">
+					<img align="center" src="http://mail.yibar.com/webim/b.php?i=webim&amp;lang=zh-cn" border="0" alt=""/></a>
+				</div> 
+				
+				<div  class="m m1" id="left-box1" style="width:206px;margin-top:20px  ">
+											<div class="mt">
+												<h2><%= t :huayu_contacts%></h2>
+												<div class="extra">
+													<a href="/news" target="_blank" style="color: white;"><%=t :more%>...</a>
+												</div>
+											</div>
+											<div class="mc" style="padding:8px "><h5><font color="#c0c0c0" >
+												企业机构：北京华宇新星体育设施工程有限责任公司<br>
+                                                                                                                                法人代表： 张常立 <br>
+                                                                                                                                注册资本： 人民币1000万 <br>
+                                                                                                                                经营模式： 生产加工、经销批发 <br>
+                                                                                                                                员工数量： 51 - 100 人 <br>
+                                                                                                                                传真：86-010-84721269<br>
+                                                                                                                                电话：86-010-84721268<br>
+                                                                                                                                邮编：100102<br>
+                                                                                                                                地址：中国北京 北京市 朝阳区望京中环南路甲2号佳境天城国际商务公寓B座2006室
+                                                                                                                                
+
+                                                                    </font></h5>                                                                                 
+									      	</div>
+										</div>			
+  			  </div>
+			
+
+  			<div id="right-content">
+  				<%= javascript_include_tag 'slide2' %>
+				<div class="slide_right">
+						<div class="foucs">
+				            <div class="focuscont">
+				                <ul class="home-ul">
+				                	<!-- <%Picture.admin_pics.each do |p|%>
+					                     <li  <%="style='display:block'" if Picture.admin_pics[0]==p%>>
+					                     	<a href="<%=p.pic_link%>" target="_blank"><img src="<%=p.src%>" /></a>
+					                     </li>
+				                    <%end%> -->
+				                    <%for i in 1..3%>
+					                     <li  <%="style='display:block'" %>>
+					                     	<a href="/" target="_blank"><img src="/images/hytop/<%=i%>.jpg" /></a>
+					                     </li>
+				                    <%end%>
+				              </ul>
+				                <div class="num"><span class="cur">1</span><span>2</span><span>3</span></div>
+				  			</div>
+								<div class="news">
+									<div id="jdnews" class="m m1">
+											<div class="mt">
+												<h2><%= t :huayu_news%></h2>
+												<div class="extra">
+													<a href="/news" target="_blank" style="color: white;"><%=t :more%>...</a>
+												</div>
+											</div>
+											<div class="mc">
+												<ul>
+													<%@news.each do |news|%>
+										      			<li class="odd">
+										      				<a href="/news/<%=news.id%>" target="_blank" ><%=news.name%></a>
+										      			</li>
+									      			<%end%>
+									      		</ul>
+									      	</div>
+										</div>
+										<div class="dazhe">
+										   <a href="/huayu"><img src="/images/huayu/pic2.jpg" /></a>									
+										</div>
+										<div class="dazhe">
+										   <a href="/huayu"><img src="/images/huayu/pic3.jpg" /></a>									
+										</div>
+								</div>
+						</div>
+					</div>		
+							
+				<div id="productions-content">
+					<div class="heng-bar">
+					    		<h3><%=t :huayuproduct%>
+					    			<span style="float: right;margin-right: 40px;"><%=link_to t(:more),"/suggest_nb"%></span>
+					    		</h3>
+					    		
+					</div>
+			     	<div class="produtions-show">
+			     		<!-- <%=render :partial=>"/home/suggest_productions",:locals=>{:ps=>@suggest_ps}%> -->
+			     		<%for i in 1..6%>
+						     <div class="min-production-desc">
+										<div class="p-img">
+											<a href="/hyproduct/<%=i%>"><img src="/images/hyproducts/<%=i%>.jpg" /></a>
+										</div>
+										<div class="p-desc">
+												<p class="right-p-desc">
+													<a href="/product/<%=i%>" target="_blank">塑胶跑道</a>
+												</p>
+												<p class="right-p-price"><a href="/productions/<%=%>" target="_blank" style="color:#d00">复合塑胶 </a></p>
+												<p>透气型塑胶跑道材料</p>
+										</div>
+									
+							</div>
+					     <%end%>	
+			     	</div>
+					<div class="heng-bar">
+					    		<h3><%=t :huayusaved%>
+					    		<span style="float: right;margin-right: 40px;"><%=link_to t(:more),"/suggest_nb"%></span>
+					            </h3>
+					</div>
+			     	<div class="produtions-show">
+			     		<!-- <%=render :partial=>"/home/suggest_productions",:locals=>{:ps=>@hot_ps}%> -->
+			     		<%for i in 1..6%>
+						     <div class="min-production-desc">
+										<div class="p-img">
+											<a href="/hyproduct/<%=i%>"><img src="/images/hyproducts/<%=i%>.gif" /></a>
+										</div>
+										<div class="p-desc">
+												<p class="right-p-desc">
+													<a href="/product/<%=i%>" target="_blank">足球场</a>
+												</p>
+												<p class="right-p-price"><a href="/productions/<%=%>" target="_blank" style="color:#d00">内蒙古大学 </a></p>
+												<p>透气型塑胶跑道材料</p>
+										</div>
+									
+							</div>
+					     <%end%>	
+			     	</div>
+  				</div>
+  			</div>
+  		</div>
+		

@@ -1,0 +1,22 @@
+<h4>添加权限</h4>
+
+<% form_for(@permission) do |f| %>
+  <%= f.error_messages %>
+ <p>
+    <%= f.label :名称 %><br />
+    <%= f.text_field :name %>
+  </p>
+   <p>
+    <%= f.label :Action %><br/>
+    <%= f.text_field :action %>
+  </p>
+  <p>
+    <%= f.label :所属系统 %><br/>
+    <%=f.select( :stu_state_id, StuState.find(:all).collect {|p| [ p.name_zh_CN, p.id ] },:include_blank => true)%>
+  </p>
+  <p>
+    <%= f.submit '提交'%>
+  </p>
+<% end %>
+
+<%= link_to '返回', permissions_path %>

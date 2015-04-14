@@ -1,0 +1,32 @@
+	<div id="header">
+			<div id="masthead-v4" class="w952 fd-clr">
+			    <div class="ali-logo-v4">
+					    	<div class="yiba-logo">
+						         <a title="<%=t(:website)%>" href="/huayu" class="main-logo-v4">
+					         	      <img  src="/images/huayu/huayu.jpg">
+					         	</a>
+					        </div>
+					        <div class="red-left" >
+					           <h5><font color="#969696" >
+					           北京华宇新星体育设施工程有限责任公司是集咨询设计、科研开发、生产销售及工程施工为一体的营造运动场地的专业公司，从事各类体育场地及配套附属设施的施工建设，并逐渐形成了完善的科学管理体系。公司具有建设部颁发的体育场地设施工程专业承包三级资质。	
+					            </font></h5>  	
+					        </div>
+			         	  
+				         	  <div class="search-panel ks-switchable-content">
+								    <form target="_top" action="/search" name="search">
+								      <div class="search-panel-fields">
+								        <input id="q" name="q" accesskey="s" autofocus="true" autocomplete="off" x-webkit-speech="" x-webkit-grammar="builtin:translate">
+								        <s></s>
+								      </div>
+			  					      <button type="submit">搜 索</button>
+								    </form><br/><br/>
+								    <div class="black-left" style="float:left ">
+					        	     <h5><font color="#c0c0c0" >热门搜索：
+					        	     	&nbsp;塑胶跑道 &nbsp;篮球场 &nbsp;人造草坪 &nbsp;体育器材
+					        	     	</font></h5>
+					                </div>
+							  </div>
+					        <div class="black-left"></div>
+			     </div>
+			</div> 
+		</div>

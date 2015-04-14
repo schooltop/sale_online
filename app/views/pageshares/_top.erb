@@ -1,0 +1,31 @@
+<div class="header" style="z-index:1050px;">
+            <div class="content">
+	               <div style=" left:0;height:12px;position:absolute;padding:3px 1px 0 0;top:0;z-index:99999;font-size:12px;color:#ffffff;text-align:right;">
+	                                           会员尊享热线： 400-008-7272 
+	                </div> 
+	              	
+	               <div class="destination">	               	
+	              	<ul>  	              	         			    	              		         
+              		<li><a class="shopping_text" href="/stores" title="" id="destination">我的购物车</a></li>
+              		<%if current_user%>
+              		<li><a class="shopping_text" href="/centers" title="" id="destination"><b><%=current_user.name%></b></a></li>
+              		<li><a class="shopping_text" href="/logout" title="" id="destination"><b>退出</b></a></li>
+              		<%else%>
+              		<li><a class="shopping_text" href="/login" title="" id="destination"><b>登录</b></a></li>
+              		<%end%>              		
+              		<li><a class="shopping_text" href="/vipnotice" title="" id="destination">T2MAX会员章程</a></li>
+              		<li><a class="shopping_text" href="#" title="" id="destination">English</a></li>
+              	    </ul>
+	               </div>
+	                 
+                 <div class="tit">
+                	<div style="float:left;margin-left:44px  ">
+              		<div>
+              		<a href="/overview"><img src="/images/oldimages/bhrLogo.png" alt="" /></a>              		              	    
+              		<!-- <a href="/overview"><img src="/images/oldimages/ttt.png" alt="" /></a>   -->            		
+              	    </div>
+                    </div> 	                 	                  	
+                    <%=render :partial=>"/shares/menu"-%>                 	              
+                 </div>         
+            </div> 
+          </div>    

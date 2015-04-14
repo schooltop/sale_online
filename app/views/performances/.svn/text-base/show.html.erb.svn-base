@@ -1,0 +1,68 @@
+
+<%=render :partial=>"/admins/left"%>
+<div id="content">
+     <table style="width:100%"><tbody><tr><td>
+       <div class="moduleTitle">
+         <h2>绩效</h2>
+            <span><a href="" class="utilsLink"><img src="/images/crm/print.gif" alt="打印"></a>
+                  <a href="" class="utilsLink">打印</a>&nbsp;
+                  <a href="" class="utilsLink" target="_blank">
+                  <img src="/images/crm/help.gif" alt="帮助"></a>
+                  <a href="/help" class="utilsLink" target="_blank">帮助</a>
+            </span>
+       </div>
+<table cellpadding="1" cellspacing="0" border="0" width="100%">
+<tbody>
+   <tr>
+     <td class="buttons" align="left" nowrap="">
+     <button type="button" class="button" title="编辑" onclick="document.location.href='/performances/<%=@performance.id%>/edit'">编辑</button>
+     &nbsp;
+     <button type="button" class="button" title="返回列表" onclick="document.location.href='/performances'">返回列表</button>
+     </td>
+  </tr>
+</tbody>
+</table>
+    <div id="DEFAULT" class="detail view">
+       <table id="detailpanel_1" cellspacing="0">
+          <tbody>
+            <tr class="pagination">
+                 <td colspan="20" style="padding: 0px;">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tbody>
+                      <tr><td nowrap="" align="right"></td></tr>
+                    </tbody>
+                  </table>
+                 </td>
+            </tr>
+            <tr>
+                <td width="12.5%" scope="row">事件类型：</td>
+                <td width="20.5%"><span id="name"><%=@performance.leave_style_id%></span></td>
+                <td width="12.5%" scope="row">补贴、扣款钱数:</td>
+                <td width="20.5%"><%=@performance.performance_price%> </td>
+                <td width="12.5%" scope="row">备注：</td>
+                <td width="20.5%"><%=@performance.description%></td>	
+            </tr>
+            <tr>
+                <td width="12.5%" scope="row">月份时间：</td>
+                <td width="20.5%"><span id="name"><%=@performance.for_time%></span></td>
+                <td width="12.5%" scope="row">所属模型：</td>
+                <td width="20.5%"><%=@performance.frommodel%> </td>
+                <td width="12.5%" scope="row">所属ids：</td>
+                <td width="20.5%"><%=@performance.fromids%></td>	
+            </tr>
+
+<script type="text/javascript" language="javascript">
+    var fromKey = '';
+    var toKey = 'billing';
+    var checkbox = toKey + "_checkbox";
+    var obj = new TestCheckboxReady(checkbox); 
+</script>
+</tbody></table>
+</div>
+
+
+
+
+
+  
+</div>

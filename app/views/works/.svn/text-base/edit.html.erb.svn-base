@@ -1,0 +1,253 @@
+
+<%=render :partial=>"left"%>
+
+
+  <div id="content">
+        <table style="width:100%"><tbody><tr><td width="100%">
+      <div class="moduleTitle">
+<h2>修改员工信息</h2>
+<span>&nbsp;
+<a href="" class="utilsLink" target="_blank">
+<img src="/images/crm/help.gif" alt="帮助"></a>
+<a href="/help" class="utilsLink" target="_blank">
+帮助
+</a></span></div>
+<% form_for(@work) do |f| %>
+
+  <%= f.error_messages %>
+<!-- <%if @s_id%>
+<input  type="hidden" id= "s_id" name= "s_id" value=<%#=@s_id%>> 
+<%end%> -->
+<table width="100%" cellspacing="0" cellpadding="0" class="detail view" id="tabFormPagination">
+</table>
+<div id="LBL_ACCOUNT_INFORMATION">
+<table width="100%" border="0" cellspacing="1" cellpadding="0" class="edit view">
+<tbody><tr><th align="left" colspan="8">
+<h4>员工信息</h4>
+</th>
+</tr>
+<tr>
+	<%=f.hidden_field :user_id, :value => session[:user_id]%>
+<td valign="top" id="name_label" width="12.5%" scope="row">
+   <%= f.label :姓名 %><span class="required">*</span><br />
+</td>
+<td valign="top" width="37.5%">
+    <%= f.text_field :name%>
+</td>
+
+
+
+<td valign="top" id="name_label" width="12.5%" scope="row">
+   <%= f.label :性别 %><span class="required">*</span><br />
+</td>	
+<td valign="top" colspan="3">
+    <%=f.radio_button(:sex,"男",{})%>男
+    <%=f.radio_button(:sex,"女",{})%>女
+    <%=f.radio_button(:sex,"不确定",{})%>保密
+</td>	
+</tr>
+
+
+<!-- <td valign="top" id="name_label" width="12.5%" scope="row">
+   <%= f.label :就职状态 %><br />
+</td>
+<td valign="top" width="37.5%" >
+    <%#=f.select( :situation_id, Situation.find(:all,:conditions=>"id>4").collect {|p| [ p.name, p.id ] },:include_blank => true)%>
+</td> -->
+	
+
+<tr>
+<td valign="top" id="name_label" width="12.5%" scope="row">
+   <%= f.label :手机 %><!-- <span class="required">*</span> --><br />
+</td>
+<td valign="top" width="37.5%">
+    <%= f.text_field :phone%>
+</td>
+<td valign="top" id="name_label" width="12.5%" scope="row">
+   <%= f.label :公司电话 %><br />
+</td>
+<td valign="top" width="37.5%">
+    <%= f.text_field :tel%>
+</td>
+</tr>
+<tr>
+<td valign="top" id="name_label" width="12.5%" scope="row">
+   <%= f.label :职位 %><!-- <span class="required">*</span> --><br />
+</td>
+
+<td valign="top" width="37.5%">
+<!-- <%#=select_tag 'dept[dept_ids][]', options_for_select(  Dept.find(:all).collect {|p| [ truncate(p.name.gsub(/<[^>]*>/, ""), 30), p.id ]}, @work.dept_id ), :multiple => true, :size => 5%> -->
+<%=f.select( :dept_id, Dept.all.collect {|p| [ p.name, p.id ] },:include_blank => true)%>
+</td>
+<td valign="top" id="name_label" width="12.5%" scope="row">
+   <%= f.label :工号 %><br />
+</td>
+<td valign="top" width="37.5%">
+    <%= f.text_field :worknum%>
+</td>
+</tr>
+<tr>
+<td valign="top" id="name_label" width="12.5%" scope="row">
+   <%= f.label :身份证号%><br />
+</td>
+   
+ <script>
+function check_work(){
+var a=document.getElementById('work_idnum')
+new Ajax.Updater('checkwork', '/works/check_worker?idnum='+a.value
+); }
+ </script>
+ 
+<td valign="top" width="47.5%" id="show">
+    <%= f.text_field :idnum ,:onchange=>"check_work()"%><font color="#ff0000"><div id="checkwork"></div></font>
+</td>
+
+<td valign="top" id="name_label" width="12.5%" scope="row">
+   <%= f.label :邮箱 %><span class="required"> *</span> <br />
+</td>
+<td valign="top" width="37.5%">
+    <%= f.text_field :email%>
+</td>
+</tr>
+<tr>
+<td valign="top" id="name_label" width="12.5%" scope="row">
+   <%= f.label :用工状况 %><!-- <span class="required">*</span> --><br />
+</td>
+
+<td valign="top" width="37.5%">
+<!-- <%#=select_tag 'dept[dept_ids][]', options_for_select(  Dept.find(:all).collect {|p| [ truncate(p.name.gsub(/<[^>]*>/, ""), 30), p.id ]}, @work.dept_id ), :multiple => true, :size => 5%> -->
+<%= f.text_field :agreement%>
+</td>
+<td valign="top" id="name_label" width="12.5%" scope="row">
+   <%= f.label :照片 %><br />
+</td>
+<td valign="top" width="37.5%">
+    <%= f.text_field :photo%>
+</td>
+</tr>
+<!-- 
+<tr>
+<td valign="top" id="name_label" width="12.5%" scope="row">
+   <%#= f.label :所有者 %><span class="required">*</span><br />
+</td>
+<td valign="top" width="37.5%">
+    <%#= f.text_field :encontact%>
+</td>
+</tr> -->
+
+</tbody></table>
+</div>
+<div id="LBL_ADDRESS_INFORMATION">
+<table width="100%" border="0" cellspacing="1" cellpadding="0" class="edit view">
+<tbody><tr><th align="left" colspan="8">
+<h4>工资福利</h4>
+</th>
+</tr><tr>
+<td valign="top" width="80%">
+<table border="0" cellspacing="5" cellpadding="0">
+<tbody><tr>
+<!-- <td valign="top" id="billing_address_street_label" width="%" scope="row">
+付款地址:
+</td>
+<td width="%">
+<textarea id="billing_address_street" name="billing_address_street" maxlength="150" rows="2" cols="30" tabindex="116"></textarea>
+</td> -->
+</tr>	
+<tr>
+
+<script type="text/javascript">
+function postsalary(){
+var a = document.getElementById('post_salary').value*0.8;
+document.getElementById('probation_salary').value=a;
+}
+</script>
+<td id="billing_address_country_label" width="%" scope="row">
+岗位工资: <!-- <span class="required">*</span> -->
+</td>
+<td width="%" >
+	<%= text_field_tag :post_salary,@work.work_salary.post_salary, :onchange=>"postsalary()" %>
+</td>
+<td id="billing_address_city_label" width="%" scope="row">
+试用工资:<!-- <span class="required">*</span> -->
+</td>
+<td width="%" >
+	<%= text_field_tag :probation_salary,@work.work_salary.probation_salary%>
+</td>
+
+</tr>
+<tr>
+
+<td id="billing_address_city_label" width="%" scope="row">
+补贴:
+</td>
+<td width="%">
+	<%= text_field_tag :benefit ,@work.work_salary.benefit%>
+		
+</td>
+<td id="billing_address_postalcode_label" width="%" scope="row">
+公积金:<!-- <span class="required">*</span> -->
+</td>
+<td width="%">
+	<%= text_field_tag :accumulation_fund,@work.work_salary.accumulation_fund%>
+		
+</td>
+<!-- </tr>
+<tr> -->
+
+</tr>
+<tr>
+<td colspan="2">&nbsp;</td>
+</tr>
+</tbody></table>
+<script type="text/javascript" language="javascript">
+    var fromKey = '';
+    var toKey = 'billing';
+    var checkbox = toKey + "_checkbox";
+    var obj = new TestCheckboxReady(checkbox); 
+</script>
+</td><td valign="top" width="50%">
+<script type="text/javascript" src="include/SugarFields/Fields/Address/SugarFieldAddress.js"></script>
+
+
+</td></tr>
+</tbody></table>
+</div>
+<div id="LBL_EMAIL_ADDRESSES">
+
+
+<div id="LBL_DESCRIPTION_INFORMATION">
+<table width="100%" border="0" cellspacing="1" cellpadding="0" class="edit view">
+<tbody><tr><th align="left" colspan="8">
+<h4>说明信息</h4>
+</th>
+</tr><tr>
+<td valign="top" id="name_label" width="12.5%" scope="row">
+   <%= f.label :说明 %><!-- <span class="required">*</span> --><br />
+</td>
+<td valign="top" width="37.5%">
+	<%= f.text_area :id, :cols => 80, :rows => 6%>
+
+</td>
+
+</tr>
+<tr>
+<td valign="top" id="_label" width="12.5%" scope="row">
+</td>
+<td valign="top" width="37.5%">
+</td><td valign="top" id="_label" width="12.5%" scope="row">
+</td>
+<td valign="top" width="37.5%">
+</td></tr>
+</tbody></table>
+<div id="LBL_EMAIL_ADDRESSES">
+<div class="buttons">
+
+  <p>
+
+    <%= f.submit '保存' %>
+     <button type="button" class="button" title="返回列表" onclick="document.location.href='/works'">返回列表</button></td>
+  </p><% end %>
+</div></div>
+
+        </td></tr></tbody></table>
+    </div>

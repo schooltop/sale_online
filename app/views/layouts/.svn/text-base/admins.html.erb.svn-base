@@ -1,0 +1,346 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>T2MAX后台管理系统</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <%=javascript_include_tag 'sugar_grp1_yui','sugar_grp1','zh_cn','zh_cn(1)','style-min','sugar_grp_overlib','sugar_grp_yui_widgets','dashlets','JSON','MySugar','swfobject'  %>
+ 	<%=javascript_include_tag 'Account','SugarEmailAddress','SugarFieldAddress' %>
+    <%=javascript_include_tag 'Datetimecombo','SubPanelTiles','popup_helper','popup_parent_helper' %>
+    <%=javascript_include_tag 'overlibmws_iframe','overlibmws','public_smo_scripts'%>
+    <%=stylesheet_link_tag "crm-style",'yui','deprecated','colors.sugar','fonts.normal','tree' %>
+    <%=javascript_include_tag 'jquery'%>
+         <%= stylesheet_link_tag "xtree" %>
+         <%= javascript_include_tag 'xtree' %>
+    <% CalendarDateSelect.format = :finnish%>
+    <%= calendar_date_select_includes%>
+    <%=javascript_include_tag  'prototype' %> 
+		
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000"></div>
+<!-- end includes for overlib -->
+
+
+<!-- <link rel="stylesheet" type="text/css" href="./127.0.0.1_files/colors.sugar.css" id="current_color_style">
+<link rel="stylesheet" type="text/css" href="./127.0.0.1_files/fonts.normal.css" id="current_font_style"> -->
+<script>var sugar_cache_dir = 'cache/';</script>
+<script>var sugar_upload_dir = 'cache/upload/';</script>
+<script>var action_sugar_grp1 = 'index';</script>
+<script>jscal_today = 1316952620000; if(typeof app_strings == "undefined") app_strings = new Array();</script>
+<script type="text/javascript">
+var asynchronous_key = "b81a4e6e-2bd0-a13b-6eb5-4e7ea95b44b5";
+SUGAR.themes.image_server="";</script>
+<style>
+    .print td{border-top:1px  solid;border-right:1px  solid;border-color: #D1D1D1 !important;}
+    .print{margin-top:1px; margin-left:5px; border-bottom:1px  solid;border-left:2px  solid;border-color: #D1D1D1;background-color:#F6F6F6 }	
+</style>
+
+<script type="text/javascript">
+ var name_format = "l f s";</script>
+ <script type="text/javascript">
+	var time_reg_format = '([0-9]{1,2}):([0-9]{1,2})([ap]m)';
+	var date_reg_format = '([0-9]{1,2})/([0-9]{1,2})/([0-9]{4})';
+	var date_reg_positions = {'m': 1,'d': 2,'Y': 3};
+	var time_separator = ':';
+	var cal_date_format = '%m/%d/%Y';
+	var time_offset = 28800;
+	var num_grp_sep = ',';
+	var dec_sep = '.';
+</script>
+<script type="text/javascript">
+<!--
+SUGAR.themes.theme_name      = 'Sugar';
+SUGAR.themes.theme_ie6compat = false;
+SUGAR.themes.hide_image      = '/images/crm/hide.gif';
+SUGAR.themes.show_image      = '/images/crm/show.gif';
+SUGAR.themes.allThemes       = eval({"BoldMove":{"name":"Bold Move","description":"Sugar theme II with Tabs","ie6compat":false},"FinalFrontier":{"name":"Final Frontier","description":"Night Sky theme","ie6compat":false},"Legacy":{"name":"Legacy","description":"Legacy Theme","ie6compat":false},"Links":{"name":"Links","description":"Golf theme","ie6compat":false},"Love":{"name":"Love","description":"Love theme","ie6compat":false},"Paradise":{"name":"Paradise","description":"Paradise theme","ie6compat":false},"Retro":{"name":"Retro","description":"Retro theme","ie6compat":false},"RipCurl":{"name":"RipCurl","description":"Surfing theme","ie6compat":false},"Shred":{"name":"Shred","description":"Snowboarding theme","ie6compat":false},"Sugar":{"name":"Sugar","description":"Sugar","ie6compat":false},"SugarIE6":{"name":"Sugar IE6","description":"Sugar theme for IE 6","ie6compat":true},"SugarLite":{"name":"Sugar Lite","description":"Lite theme","ie6compat":false},"TrailBlazers":{"name":"Trail Blazers","description":"Bold red theme","ie6compat":false},"WhiteSands":{"name":"White Sands","description":"pure and simple","ie6compat":false}});
+-->
+</script>
+
+</head>
+
+
+
+<body onmouseout="closeMenus();" class="yui-skin-sam">
+	<div id="all">
+		
+	
+	<div id="ygddfdiv" style="position: absolute; visibility: hidden; cursor: move; border-top-width: 2px; border-right-width: 2px; border-bottom-width: 2px; border-left-width: 2px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; z-index: 999; height: 25px; width: 25px; border-top-color: transparent; border-right-color: transparent; border-bottom-color: transparent; border-left-color: transparent; background-color: rgb(246, 245, 229); opacity: 0.76; ">
+		<div style="height: 100%; width: 100%; background-color: rgb(204, 204, 204); opacity: 0; "></div>
+		</div>
+		<iframe id="_yuiResizeMonitor" title="Text Resize Monitor" style="position: absolute; width: 2em; height: 2em; top: -29px; left: 0px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; visibility: visible; "></iframe>
+
+		
+		
+		
+		<div id="header">
+		    <div id="companyLogo">
+		    <a href="/" target="_blank"><img src="/images/crm/company_logos.png" width="212" height="40" alt="Company Logo" border="0"></a>
+		   </div>    
+		
+<div class="yui-panel-container yui-dialog yui-overlay-hidden shadow" id="themepickerDialog_c" style="visibility: hidden; z-index: 2; ">
+	<div id="themepickerDialog" style="visibility: inherit; width: 250px; " class="yui-module yui-overlay yui-panel">
+  
+
+<a class="container-close" href="Home&action=index#">Close</a></div></div>
+    <div id="globalLinks">					
+        <ul>
+        <li>
+        <a href="/centers">我的帐户</a>
+        </li>
+        <li>
+    <span>|</span>    <a href="/works">员工</a>
+        </li>
+        <li>
+    <span>|</span>    <a href="/admins">系统管理</a>
+        </li>
+        <li>
+    <span>|</span>    <a href="#">帮助</a>
+        </li>
+        <li>
+    <span>|</span>    <a href="/discription" target="_blank">关于</a>
+        </li>
+        </ul>
+</div>    <div id="welcome">
+    欢迎, <strong><%=current_user.login%></strong> [ <a href="/login" class="utilsLink">注销</a> ]
+</div>
+    <div class="clear"></div>
+    <div id="search">
+    <form name="UnifiedSearch" onsubmit="return SUGAR.unifiedSearchAdvanced.checkUsaAdvanced()">
+        <input type="hidden" name="action" value="UnifiedSearch">
+        <input type="hidden" name="module" value="Home">
+        <input type="hidden" name="search_form" value="false">
+        <input type="hidden" name="advanced" value="false">
+        <img id="unified_search_advanced_img" src="/images/crm/searchMore.gif" border="0" alt="查找">&nbsp;
+        <input type="text" name="query_string" id="query_string" size="20" value="">&nbsp;
+        <input type="submit" class="button" value="查找">
+    </form><br>
+    <div id="unified_search_advanced_div"> </div>
+</div>
+<!-- <div id="sitemapLink">
+    <span id="sitemapLinkSpan">
+        站点地图
+        <img src="/images/crm/MoreDetail.png">
+    </span>
+</div> -->
+<span id="sm_holder"></span>
+    <div class="clear"></div>
+            <div id="moduleList">
+			<ul>
+			    <li class="noBorder">&nbsp;</li>
+			        <%if current_user&&(current_user.is_admin?||current_user.work)%>
+			        <li class="noBorder">
+			        <span class="currentTabLeft">&nbsp;</span><span class="currentTab">
+			            <a href="/admins" id="grouptab_0">首页</a>
+			        </span><span class="currentTabRight">&nbsp;</span>
+			        </li>
+			        <%end%>      
+			       
+			        <%if current_user&&current_user.is_hr_and_admin?%>
+			        <li>
+			        <span class="notCurrentTabLeft">&nbsp;</span><span class="notCurrentTab">
+			        <a href="/cad_positions" id="grouptab_1">人事</a>
+			        </span><span class="notCurrentTabRight">&nbsp;</span>
+			        </li>
+			        <%end%>
+			        <%if current_user&&current_user.is_cw_and_admin?%>
+			        <li>
+			        <span class="notCurrentTabLeft">&nbsp;</span><span class="notCurrentTab">
+			        <a href="/vip_records" id="grouptab_2">财务</a>
+			        </span><span class="notCurrentTabRight">&nbsp;</span>
+			        </li>
+			        <%end%>
+			        <%if current_user&&current_user.is_kf_and_admin?%>
+			        <li>
+			        <span class="notCurrentTabLeft">&nbsp;</span><span class="notCurrentTab">
+			        <a href="/orders" id="grouptab_3">客服</a>
+			        </span><span class="notCurrentTabRight">&nbsp;</span>
+			        </li>
+			        <%end%>
+			        <%if current_user&&current_user.is_xs_and_admin?%>
+			        <li>
+			        <span class="notCurrentTabLeft">&nbsp;</span><span class="notCurrentTab">
+			        <a href="/vips" id="grouptab_4">销售</a>
+			        </span><span class="notCurrentTabRight">&nbsp;</span>
+			        </li>
+			        <%end%>
+			        <%if current_user&&current_user.is_kf_and_admin?%>
+			        <li>
+			        <span class="notCurrentTabLeft">&nbsp;</span><span class="notCurrentTab">
+			        <a href="/vips" id="grouptab_5">系统</a>
+			        </span><span class="notCurrentTabRight">&nbsp;</span>
+			        </li>
+			        <%end%>
+			    </ul>
+			</div>
+<div class="clear"></div>
+<div id="subModuleList">
+	
+	 <span id="moduleLink_0" class="selected" style="margin-left: 1px; ">
+    	<ul>
+	        	        <li>
+	        		        	<a href="/admins" id="moduleTab_0_Home">首页</a>
+	        </li>
+	        <li>
+	        		        	<a href="/service_styles" id="moduleTab_0_Dashboard">服务类型管理</a>
+	        </li>	    
+	        <li>
+	        		        	<a href="/services" id="moduleTab_0_Dashboard">服务管理</a>
+	        </li>	    
+	        <li>
+	        		        	<a href="/products" id="moduleTab_0_Dashboard">产品管理</a>
+	        </li>	              
+	        <li>
+	        		        	<a href="/vip_details" id="moduleTab_9_Dashboard">VIP特权配置管理</a>
+	        </li>
+	        <li>
+	        		        	<a href="/vip_services" id="moduleTab_9_Dashboard">VIP服务类型管理</a>
+	        </li>
+        </ul>
+    </span>
+             
+    <span id="moduleLink_1">
+    	<ul>
+    		 <li>
+	        		        	<a href="/cad_positions" id="moduleTab_9_Emails">招聘信息</a>
+	        </li>
+    		<li>
+	        		        	<a href="/works" id="moduleTab_9_Emails">员工信息</a>
+	        </li>
+	        <li>
+	        		        	<a href="/checkins" id="moduleTab_9_Dashboard">考勤管理</a>
+	        </li>
+	         <li>
+	        		        	<a href="/worker_salary_report" id="moduleTab_9_Dashboard">工资报表</a>
+	        </li>
+	         <li>
+	        		        	<a href="/cares" id="moduleTab_9_Dashboard">绩效审核</a>
+	        </li>
+	        <li>
+	        		        	<a href="/leaves" id="moduleTab_9_Dashboard">OA管理</a>
+	        </li>	        	        
+        </ul>
+    </span>
+    
+    <span id="moduleLink_2">
+    	<ul>
+            <!--  <li>
+	        		        	<a href="#" id="moduleTab_9_Dashboard">客房收入分析</a>
+	        </li>
+	         <li>
+	        		        	<a href="#" id="moduleTab_9_Dashboard">餐饮收入分析</a>
+	        </li> -->
+	        <li>
+	        		        	<a href="/finance_report/customer" id="moduleTab_9_Dashboard">SPA客户消费分析</a>
+	        </li> 
+	        <li>
+	        		        	<a href="/finance_report" id="moduleTab_9_Dashboard">SPA员工日绩分析</a>
+	        </li>
+	        	        	        
+        </ul>
+    </span>
+    
+   <span id="moduleLink_3">
+    	<ul>
+	        <li>
+	        		        	<a href="/companies" id="moduleTab_6_Dashboard">合作商库</a>
+	        </li>
+	        <li>
+	        		        	<a href="/vips"  id="moduleTab_2_Campaigns">VIP会员库</a>
+	        </li>
+	        <li>
+	        		        	<a href="/orders" id="moduleTab_4_Emails">待处理订单</a>
+	        </li>
+	        <li>
+	        		        	<a href="/service_tasks" id="moduleTab_5_Emails">调度任务</a>
+	        </li>
+	        <li>
+	        		        	<a href="/works" id="moduleTab_5_Dashboard">人力调配</a>
+	        </li>
+	        <li>
+	        		        	<a href="/spas" id="moduleTab_5_Dashboard">物资调配</a>
+	        </li>
+	        	        	        
+        </ul>
+    </span>
+    
+   <span id="moduleLink_4">
+    	<ul>
+	        <li>
+	        		        	<a href="/finance_report" id="moduleTab_9_Dashboard">销售员业绩</a>
+	        </li>
+	        <!-- <li>
+	        		        	<a href="#" id="moduleTab_9_Dashboard">客户意见反馈</a>
+	        </li> -->
+	        <li>
+	        		        	<a href="/vip_sell_report" id="moduleTab_9_Dashboard">VIP销售分析</a> 
+	        </li>
+	        <!-- <li>
+	        		        	<a href="#" id="moduleTab_9_Dashboard">销售线索统计</a>
+	        </li> -->
+	        <li>
+	        		        	<a href="/commission_configs" id="moduleTab_9_Dashboard">销售提成管理</a>
+	        </li>
+	        	        	        
+        </ul>
+    </span>
+    
+     <span id="moduleLink_5">
+    	<ul>
+	        <li>
+	        		        	<a href="/companies" id="moduleTab_9_Dashboard">店面管理</a>
+	        </li>
+	        <li>
+	        		        	<a href="/depts" id="moduleTab_9_Dashboard">部门管理</a>
+	        </li>
+	        <li>
+	        		        	<a href="/works" id="moduleTab_9_Dashboard">员工管理</a>
+	        </li>
+	        <li>
+	        		        	<a href="/spas" id="moduleTab_9_Dashboard">物资管理</a>
+	        </li>
+	        <li>
+	        		        	<a href="/users" id="moduleTab_9_Dashboard">用户管理</a>
+	        </li>
+	         <li>
+	        		        	<a href="/roles" id="moduleTab_9_Dashboard">角色管理</a>
+	        </li>
+	        <li>
+	        		        	<a href="/permissions" id="moduleTab_9_Dashboard">权限管理</a>
+	        </li>
+	        	        
+        </ul>
+    </span>
+    
+      
+</div>
+        <div class="clear"></div>
+    <div class="line"></div>
+        <div id="lastView" class="headerList">
+        <b style="white-space:nowrap;">最近查看:&nbsp;&nbsp;</b>
+    <span>
+        无
+        </span>
+</div>
+        </div>
+
+		<div id="main">
+		<%=yield%>
+		</div>
+		
+		<div id="footer">
+    服务器响应时间:  1秒。<br>
+    <div id="copyright">
+    	 © 2012-2013 上海T2MAX管理系统  版权所有
+    	<br />
+       <img style="margin-top: 2px" border="0" width="106" height="23" src="/images/crm/poweredby_sugarcrm.png" alt="Powered By SugarCRM">
+
+    </div>
+</div>
+
+
+<div style="position: absolute; height: 1px; width: 1px; top: -1000px; left: -1000px; "><span class="ygtvtm">&nbsp;</span>
+	<span class="ygtvtmh">&nbsp;</span><span class="ygtvtp">&nbsp;</span><span class="ygtvtph">&nbsp;</span>
+	<span class="ygtvln">&nbsp;</span><span class="ygtvlm">&nbsp;</span><span class="ygtvlmh">&nbsp;</span>
+	<span class="ygtvlp">&nbsp;</span><span class="ygtvlph">&nbsp;</span><span class="ygtvloading">&nbsp;</span>
+</div></div>
+	</body></html>

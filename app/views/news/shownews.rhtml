@@ -1,0 +1,241 @@
+<%= javascript_include_tag 'jquery','lunbo-index' %>
+<%= stylesheet_link_tag 'details','lunbo-index2'%>
+
+<style type="text/css">
+
+body, td, th {
+
+	font-family: "微软雅黑", tahoma, arial, sans-serif;
+
+}
+
+.lx a {
+
+	color:#666;
+
+}
+
+.lx a:hover {
+
+	color:#000;
+
+}
+
+</style>
+
+<div id="d-center">
+
+  <div id="left_center">
+
+    <div id="left_center_a">
+
+      <div id="ltxt">
+
+        <p   style="font-size:16px"><span>大赛报名时间请关注大赛公告</span></p>
+        <%if session[:user]%>
+        <a href="/center">
+		<%else%>
+		<a href="/users/login">
+		<%end%>
+		<img src="/images_news/btn_03.gif"  style="margin-left:auto; margin-right:auto; margin-top:20px; clear:both"/></a>
+        <%if !session[:user]%>
+        <p   style="margin-top:40px;_margin-top:20px; color:#669933;"><a href="/users/login" style="color:#693" target="_blank">登录</a> | <a href="/users/new" style="color:#693" target="_blank">注册</a></p>
+        <%end%>
+      </div>
+
+    </div>
+
+<!--     <div id="left_center_c">
+
+  <div id="banners">
+
+    <ul>
+
+      <li class="on">1</li>
+
+      <li >2</li>
+
+      <li >3</li>
+
+      <li >4</li>
+
+      <li >5</li>
+
+    </ul>
+
+    <div id="banner_list"><a href="#" target="_blank"><img src="/images_news/beijing.jpg"  /></a><a href="#" target="_blank"><img src="/images_news/shanghai.jpg"  /></a><a href="#" target="_blank"><img src="/images_news/ningbo.jpg"/></a><a href="#" target="_blank"><img src="/images_news/shenzhen.jpg"  /></a><a href="#" target="_blank"><img src="/images_news/chengdu.jpg"  /></a> </div>
+
+  </div>
+
+</div> -->
+
+      </div>
+
+  <div id="right_center" style="min-height:0px;">
+
+    <div id="right_center_top"> 您的位置： <% if @news.newsgroup.parent %>
+                                <%= @news.newsgroup.parent.name %>
+                                -> <% end %>
+                                <% if @news.newsgroup.parent %>
+								<%= @news.newsgroup.name %>
+                                <!--<%= link_to @news.newsgroup.name, :conroller=>"main", :action=>"showgroup", :id=> @news.newsgroup%>-->
+                                <% else %>
+                                <%= @news.newsgroup.name %>
+                                <% end %>
+                                -> <%= @news.name %> </div>
+
+    
+
+    <div style="background-image: url(/images_news/lbjj_03.jpg); width:100%; height:auto; padding-top:10px;">
+
+        <div  align="center" style="z-index:0">
+
+<style type="text/css" media="all">
+
+.d1{width:550px;height:auto;overflow:hidden;border:#999 0px solid;background-color:#000000;position:relative;}
+
+.loading{width:550px;border:#666666 0px solid;background-color:#999;color:#FFCC00;font-size:12px;height:300px;text-align:center;padding-top:30px;font-family:Verdana, Arial, Helvetica, sans-serif;font-weight:bold;}
+
+.d2{width:550px;height:300px;overflow:hidden;}
+
+.num_list{position:absolute;width:100%;left:0px;bottom:-1px;background-color:#000000;color:#FFFFFF;font-size:12px;padding:4px 0px;height:20px;overflow:hidden;}
+
+.num_list span{display:inline-block;height:16px;padding-left:6px;}
+
+img{border:0px;}
+
+#fade_focus ul{display:none;}
+
+.button{position:absolute; z-index:1000; right:0px; bottom:2px; font-size:13px; font-weight:bold; font-family:Arial, Helvetica, sans-serif;}
+
+.b1,.b2{background-color:#666666;display:block;float:left;padding:2px 6px;margin-right:3px;color:#FFFFFF;text-decoration:none;cursor:pointer;}
+
+.b2{color:#FFCC33;background-color:#FF6633;}
+
+</style>
+
+<script language="javascript" type="text/javascript">
+
+/*
+
+power by: http://www.wxwdesign.cn
+
+*/
+
+//主函数
+
+var s=function(){
+
+var interv=2000; //切换间隔时间
+
+var interv2=10; //切换速速
+
+var opac1=80; //文字背景的透明度
+
+var source="fade_focus" //焦点轮换图片容器的id名称
+
+//获取对象
+
+function getTag(tag,obj){if(obj==null){return document.getElementsByTagName(tag)}else{return obj.getElementsByTagName(tag)}}
+
+function getid(id){return document.getElementById(id)};
+
+var opac=0,j=0,t=63,num,scton=0,timer,timer2,timer3;var id=getid(source);id.removeChild(getTag("div",id)[0]);var li=getTag("li",id);var div=document.createElement("div");var title=document.createElement("div");var span=document.createElement("span");var button=document.createElement("div");button.className="button";for(var i=0;i<li.length;i++){var a=document.createElement("a");a.innerHTML=i+1;a.onclick=function(){clearTimeout(timer);clearTimeout(timer2);clearTimeout(timer3);j=parseInt(this.innerHTML)-1;scton=0;t=63;opac=0;fadeon();};a.className="b1";a.onmouseover=function(){this.className="b2"};a.onmouseout=function(){this.className="b1";sc(j)};button.appendChild(a);}
+
+//控制图层透明度
+
+function alpha(obj,n){if(document.all){obj.style.filter="alpha(opacity="+n+")";}else{obj.style.opacity=(n/100);}}
+
+//控制焦点按钮
+
+function sc(n){for(var i=0;i<li.length;i++){button.childNodes[i].className="b1"};button.childNodes[n].className="b2";}
+
+title.className="num_list";title.appendChild(span);alpha(title,opac1);id.className="d1";div.className="d2";id.appendChild(div);id.appendChild(title);id.appendChild(button);
+
+//渐显
+
+var fadeon=function(){opac+=5;div.innerHTML=li[j].innerHTML;span.innerHTML=getTag("img",li[j])[0].alt;alpha(div,opac);if(scton==0){sc(j);num=-2;scrolltxt();scton=1};if(opac<100){timer=setTimeout(fadeon,interv2)}else{timer2=setTimeout(fadeout,interv);};}
+
+//渐隐
+
+var fadeout=function(){opac-=5;div.innerHTML=li[j].innerHTML;alpha(div,opac);if(scton==0){num=2;scrolltxt();scton=1};if(opac>0){timer=setTimeout(fadeout,interv2)}else{if(j<li.length-1){j++}else{j=0};fadeon()};}
+
+//滚动文字
+
+var scrolltxt=function(){t+=num;span.style.marginTop=t+"px";if(num<0 && t>3){timer3=setTimeout(scrolltxt,interv2)}else if(num>0 && t<62){timer3=setTimeout(scrolltxt,interv2)}else{scton=0}};
+
+fadeon();
+
+}
+
+//初始化
+
+window.onload=s;
+
+</script>
+
+<div id="fade_focus">
+
+    <div class="loading"></div>
+
+    <ul>
+
+      <li><a href="#" target="_blank"><img src="/images/dsxc.jpg" width="550" height="300" alt="" /></a></li>
+
+      <li><a href="#" target="_blank"><img src="/images/gjfc.jpg" width="550" height="300" alt="" /></a></li>
+
+      <li><a href="#" target="_blank"><img src="/images/jbzd.jpg" width="550" height="300" alt="" /></a></li>
+
+      <li><a href="#" target="_blank"><img src="/images/tdjs.jpg" width="550" height="300" alt="" /></a></li>
+
+      <li><a href="#" target="_blank"><img src="/images/IMG_2431.jpg" width="550" height="300" alt="" /></a></li>
+
+      <li><a href="#" target="_blank"><img src="/images/IMG_2748.jpg" width="550" height="300" alt="" /></a></li>
+
+    </ul>
+
+</div>
+
+        
+
+        
+
+        </div>
+
+        </div>
+
+    <div id="right_center_txt" style="min-height:0px;">
+
+      <div style="min-height:500px; border:0; width:100%; padding-bottom:20px;; height:500px;">
+
+        <div style="padding-top:30px; width:100%; height:10px;"></div>
+
+
+         <!-- 有子栏目-->
+  	    <% if @group.children.size > 0 %>
+                <% for group in @group.children %>
+                <div class="lx"> <span style="float:left;">&#8226; <%= link_to  group.name, :conroller=>"main", :action=>"showgroup", :id=>group %></span><span>2012-07-19</span></div>
+                <% end %>
+       <% else %>
+				<!-- 没有子栏目 -->
+             
+                <%@all_news = News.paginate :page=>params[:page],:conditions=>"newsgroup_id=#{@group.id}",:order=>"top desc, position, publish_time desc", :per_page=>10%>
+				<% for news in @all_news %>
+				<div class="lx"> <span style="float:left;">&#8226; <%= link_to news.name, :conroller=>"main", :action=>"news", :id=>news,:group=>@group %></span><span>2012-07-19</span></div>
+				
+                <% end %>
+       <% end %>
+      </div>
+
+      <div  style="border:0px; text-align:center;">
+
+         <%=will_paginate @all_news ,:prev_label   => '上一步',:next_label   => '下一步 ' %>    </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<div style="clear:both;"></div>
+

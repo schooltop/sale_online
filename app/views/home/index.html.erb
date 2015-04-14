@@ -1,0 +1,100 @@
+
+  		<div class="module">
+  			<div id="left-content">
+  				<%=render :partial=>"/shared/categories"%>
+				<div id="left-box1">
+				<a href="http://mail.yibar.com/webim/client.php?locale=zh-cn" target="_blank" 
+				onclick="if(navigator.userAgent.toLowerCase().indexOf('opera') != -1 &amp;&amp; window.event.preventDefault) window.event.preventDefault();this.newWindow = window.open('http://mail.yibar.com/webim/client.php?locale=zh-cn&amp;url='+escape(document.location.href)+'&amp;referrer='+escape(document.referrer), 'webim', 'toolbar=0,scrollbars=0,location=0,status=1,menubar=0,width=640,height=480,resizable=1');this.newWindow.focus();this.newWindow.opener=window;return false;">
+					<img align="center" src="http://mail.yibar.com/webim/b.php?i=webim&amp;lang=zh-cn" border="0" alt=""/></a>
+				</div>
+				
+				<div  class="m m1" id="left-box1" style="width:206px;margin-top:28px;float:left ">
+											<div class="mt">
+												<h2><%= t :contact_us%></h2>
+												<div class="extra">
+					 								<a href="/contact_us" target="_blank" style="color: white;"><%=t :more%>...</a>
+												</div>
+											</div>
+											<div class="mc" style="padding:6px "><h5><font color="#c0c0c0" >
+												  
+												  总部直线：(+86)21 62592768<br/>
+                                                                                                                                  客服热线：400 008 7272<br/>
+                                                 E-mail:hanley@t2max.com<br/>
+                                                                                                                                  地址：中国上海市长宁区水城南  <br/>
+                                                                                                                                  路59号明珠大楼1401室 <br/>                                                                              
+												  
+												 <!--  直线电话/Tel: (021)62783692<br/>
+											  	  客服热线：400 008 7272<br/>
+											  	  手机/Mobile:  186 2136 2813<br/>
+											  	  电邮/E-mail：   helen@t2max.com<br/>											  	    
+											  	  地址：中国上海市延安西路2588号  
+											  	  千禧海鸥大酒店 3喽A室201103<br/>
+											  	 Room A,Floor 3,Milennium Hongqiao Shanghai
+											  	 2588 West YanAn Road,Shanghai,Chain201103<br/> -->
+                                                </font></h5>                                                                                 
+									      	</div>
+				 </div>	
+				
+  			</div>
+			
+
+  			<div id="right-content">
+  				<%= javascript_include_tag 'slide2' %>
+				<div class="slide_right">
+						<div class="foucs">
+				            <div class="focuscont">
+				                <ul class="home-ul">
+				                	<%Picture.admin_pics.each do |p|%>
+					                     <li  <%="style='display:block'" if Picture.admin_pics[0]==p%>>
+					                     	<a href="<%=p.pic_link%>" target="_blank"><img src="<%=p.src%>" /></a>
+					                     </li>
+				                    <%end%>
+				              </ul>
+				                <div class="num"><span class="cur">1</span><span>2</span><span>3</span></div>
+				  			</div>
+								<div class="news">
+									<div id="jdnews" class="m m1">
+											<div class="mt">
+												<h2><%= t :t2max_news%></h2>
+												<div class="extra">
+													<a href="/news" target="_blank" style="color: white;"><%=t :more%>...</a>
+												</div>
+											</div>
+											<div class="mc">
+												<ul>
+													<%@news.each do |news|%>
+										      			<li class="odd">
+										      				<a href="/news/<%=news.id%>" target="_blank" ><%=news.name%></a>
+										      			</li>
+									      			<%end%>
+									      		</ul>
+									      	</div>
+										</div>
+										<div class="dazhe">
+											<a href="/vipnotice"><img src="/images/vip2.jpg" /></a>
+										</div>
+								</div>
+						</div>
+					</div>		
+							
+				<div id="productions-content">
+					<div class="heng-bar">
+					    		<h3><%=t :suggest_ps%>
+					    			<span style="float: right;margin-right: 40px;"><%=link_to t(:more),"/suggest_nb"%></span>
+					    		</h3>
+					</div>
+			     	<div class="produtions-show">
+			     		<%=render :partial=>"/home/suggest_productions",:locals=>{:ps=>@suggest_ps}%>
+			     	</div>
+					<div class="heng-bar">
+					    		<h3><%=t :hot_ps%>
+					    			<span style="float: right;margin-right: 40px;"><%=link_to t(:more),"/suggest_nb"%></span>
+					    		</h3>
+					</div>
+			     	<div class="produtions-show">
+			     		<%=render :partial=>"/home/suggest_productions",:locals=>{:ps=>@hot_ps}%>
+			     	</div>
+  				</div>
+  			</div>
+  		</div>
+		

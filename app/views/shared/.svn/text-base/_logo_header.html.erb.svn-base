@@ -1,0 +1,33 @@
+	<div id="header">
+			<div id="masthead-v4" class="w952 fd-clr">
+			    <div class="ali-logo-v4">
+					    	<div class="yiba-logo">
+						         <a title="<%=t(:website)%>" href="/" class="main-logo-v4">
+						         	<img  src="/images/oldimages/bhrLogo.png">
+					         	</a>
+					        </div>
+					    <div style="width: 1090px;">
+					        <div class="red-left" style="float:left ">
+					           <h5><font color="#c0c0c0" >T2MAX 以 Time Terminal Traveler 为核心要素，将机票酒店预订、商务秘书、机场 VIP 通道、贵宾接送机、免税品订购等融合为一站式服务，打造出创新的空港现代服务平台，并树立顶级的“机场商旅服务管家”形象。
+					        	     	</font></h5>  	
+					        </div>
+			         	  
+				         	  <div class="search-panel ks-switchable-content" style="float:right ">
+								    <form target="_top" action="/search" name="search">
+								      <div class="search-panel-fields">
+								        <input id="q" name="q" accesskey="s" autofocus="true" autocomplete="off" x-webkit-speech="" x-webkit-grammar="builtin:translate">
+								        <s></s>
+								      </div>
+			  					      <button type="submit">搜 索</button>
+								    </form><br/><br/>
+								    <div class="black-left" style="float:left ">
+					        	     <h5><font color="#c0c0c0" >热门搜索：
+					        	     	&nbsp;中医理疗 &nbsp;美发沙龙 &nbsp;精品美食 &nbsp;机场休息 
+					        	     	</font></h5>
+					                </div>
+							  </div>
+						 </div>	  
+					        <div class="black-left"></div>
+			     </div>
+			</div> 
+		</div> 

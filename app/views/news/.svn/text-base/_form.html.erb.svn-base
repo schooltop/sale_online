@@ -1,0 +1,46 @@
+<script src="/javascripts/ckeditor/ckeditor.js" type="text/javascript"></script>
+<%=render :partial=>"/admins/left"%>
+<div id="content">
+
+<% form_for @news,:url=>"/news/#{params[:id] ? 'update' : 'create'}"  do |f| %>
+  			<%= f.error_messages %>
+	  			
+	  			<dl class="">
+	  				<dt><%=t :title%>:</dt>
+	  				<dd class="col2">
+	  					<%= text_field 'news', 'name',:class=>"itext itext-long",:maxlength=>"50"  %>
+	  				</dd>
+	  			</dl>
+	  			<dl class="">
+	  				<dt><%=t :action%>:</dt>
+	  				<dd class="col2">
+						<%= check_box 'news', 'top' %>
+						<label for="news_publisher"><%=t :to_top%></label>
+						
+						<%= check_box 'news', 'hide' %>
+						<label for="news_hide"><%=t :to_hide%></label>
+	  				</dd>
+	  				
+	  			</dl>
+	  			<dl class="">
+	  				<dt><%=t :category%>:</dt>
+	  				<dd class="col2">
+	  					<%=f.select :newsgroup_id,Newsgroup.all.collect{|t| [t.name,t.id]}%>
+	  				</dd>
+	  			</dl>
+	  			<dl class="">
+	  				<dd class="col2">
+	  					<%= text_area("news", "text", :class=>"ckeditor" ,:width=>760,:height=>150) %>   
+	  					
+	  				</dd>
+	  			</dl>
+	  			<dl>
+					<dt>&nbsp;</dt>
+					<dd>
+						<%= f.submit t(:save),:class=>"btn-confirm" %>
+					</dd>
+				</dl>
+  			
+	<% end %>
+	
+</div>

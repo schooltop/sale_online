@@ -1,0 +1,37 @@
+<title>New User</title>
+	
+	<div class="container">
+		<div class="login">
+			<h4>New User</h4>
+			<br /><%@email=params[:email]%>
+			<% form_for :users, :url => {:action => "new_user_password"} do |form| %>
+			<table style="margin:10px 50px;">
+				<tr><td></td><td><%if flash[:notice]%><p style="color:red;"><%=flash[:notice]%></p><%end%></td></tr>
+				<tr><td><b>Email</b></td><td><%=@email%></td></tr>
+				<tr><td><%=form.hidden_field  :login,:value=>@email%></td><td><%=form.hidden_field :email,:value=>@email%></td></tr>
+				<tr>
+					<td><label for="user_password" ><b>Password</b></label></td>
+					<td><%= form.password_field :password, :size => 45, :class => 'input' ,:id=>"p1"%></td>
+				</tr>
+				<tr style="height:10px;"><td></td><td>At least 6 characters long.</td></tr>
+				<tr>
+					<td><label for="user_password_confirmation" ><b>Confirm Password&nbsp;</b></label></td>
+					<td><%= form.password_field :password_confirmation, :size => 45, :class => 'input',:id=>"p2" %></td>
+				</tr>
+				<tr style="height:10px;"><td></td><td><span id="p_notice"></span></td></tr>
+				<tr height=50px><td></td><td><input type="button" value="submit" class="button" onclick="jiancha()"></td></tr>
+			</table>
+			<% end -%>
+		</div>
+	</div>
+<script src="/javascripts/jquery.js"></script>
+<script>
+	function jiancha(){
+		p1=document.getElementById("p1").value
+		p2=document.getElementById("p2").value
+		if(p1==p2){document.forms[1].submit();}
+		else{
+			$("#p_notice").html("password mismatch");
+		}
+	}
+</script>

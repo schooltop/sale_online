@@ -1,0 +1,18 @@
+<div><%=text_field_tag "are",params["are"],:value=>params["are"],:onclick=>"showSiterbar(0)",:placeholder=>"请选择",:style=>"width:257px;"%></div>
+<div style="overflow-x: auto; overflow-y: auto;display:none;  height: 100px;width:260px; border:solid 1px;border-color:#aaa;" id="myare0">
+     <%@parents=Myare.parent_menus%>
+     <%for @parent in @parents%>
+     <%=render :partial=>"tree_tag",:object=>@parent%>
+     <%end%>
+</div>
+
+<script>
+ function showSiterbar(i){
+    var b=document.getElementById('myare'+i)
+if(b.style.display=="block"){
+     b.style.display="none";
+}else{
+   b.style.display="block";
+}
+}
+</script>

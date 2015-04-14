@@ -1,0 +1,153 @@
+<div class="clx order_list">
+                <div class="mt10 y_tips">
+                    <span class="TipsIcon left"></span>
+                    <div class="ml20">
+                        系统自动保留您一年的订单，如需查询更久的历史订单，请致电客服中心。</div>
+                        <span class="TipsIcon left"></span>
+                        <div class="ml20">
+                        系统在线支付尚未开通，您可以申请VIP支付和现场支付，我们的工作人员将在您下单的第一时间和您取得联系。</div>
+                </div>
+
+
+<script>
+function snTabs(thisObj,Num){
+if(thisObj.className == "action")return;
+var tabObj = thisObj.parentNode.id;
+var tabList = document.getElementById(tabObj).getElementsByTagName("li");
+for(i=0; i <tabList.length; i++)
+{
+  if (i == Num)
+  {
+   thisObj.className = "action";
+      document.getElementById(tabObj+"_Content"+i).style.display = "block";
+  }else{
+   tabList[i].className = "normal";
+   document.getElementById(tabObj+"_Content"+i).style.display = "none";
+  }
+}
+}
+</script>
+
+
+                <div id="TSwitch">
+                    <ul class="Switch pt20 clx" id="Tab">
+                        
+                        <li class="action" method="3month" onclick="snTabs(this,0);">
+                            6个月内的订单</li>
+                        <li class="normal" method="All" onclick="snTabs(this,1);">
+                            6-12个月的订单</li>
+                    </ul>
+                </div>
+                <!-- 订单列表-->
+                <div class="ml10 mr10">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="n_list Anone"
+                        id="placeContent">
+                        
+<thead>
+    <tr>
+        <th width="13%">
+            订单号
+        </th>
+        <th width="12%">
+            下单日期
+        </th>
+        <th width="12%">
+            使用时间
+        </th>
+        <th width="10%">
+            服务项目
+        </th>
+        <th width="8%">
+            总金额
+        </th>
+        <th width="8%">
+            订单状态
+        </th>
+        <th width="10%">
+            操作
+        </th>
+    </tr>
+</thead>
+</table>
+
+    <table id="Tab_Content0" width="100%" border="0" cellspacing="0" cellpadding="0" class="n_list Anone">
+    	<%for jichang in @jichangs%>
+    	
+    <tr>
+        <th width="13%">
+           <%=jichang.order.order_num%>
+        </th>
+        <th width="12%">
+            <%=jichang.order.created_at.strftime('%Y-%m-%d' ) if jichang.order.created_at%>
+        </th>
+        <th width="12%">
+            <%=jichang.order.created_at.strftime('%Y-%m-%d' ) if jichang.order.created_at%>
+        </th>
+        <th width="10%">
+            <%=jichang.product.title%>
+        </th>
+        <th width="8%">
+            <%=jichang.total_price%>
+        </th>
+        <th width="8%">
+            <%=jichang.order.pay_situation%>
+        </th>
+        <th width="10%">
+            <%if jichang.order.has_pay==1%>查看
+            <%else%>
+                               付款&nbsp;|&nbsp;取消
+            <%end%>
+        </th>
+    </tr>
+     
+       <%end%>
+
+    </table>
+    
+    <table id="Tab_Content1" style="display: none" width="100%" border="0" cellspacing="0" cellpadding="0" class="n_list Anone">
+  <%for jichang in @jichangs%>
+    	
+    <tr>
+        <th width="13%">
+            <%=jichang.order.order_num%>
+        </th>
+        <th width="12%">
+            <%=jichang.order.created_at.strftime('%Y-%m-%d' ) if jichang.order.created_at%>
+        </th>
+        <th width="12%">
+            <!-- <%=jichang.product.company.name if jichang.product.company%>
+            <%=jichang.totime%> -->
+            <%=jichang.order.created_at.strftime('%Y-%m-%d' ) if jichang.order.created_at%>
+        </th>
+        <th width="10%">
+            <%=jichang.product.title%>
+        </th>
+        <th width="8%">
+            <%=jichang.total_price%>
+        </th>
+        <th width="8%">
+            <%=jichang.order.pay_situation%>
+        </th>
+        <th width="10%">
+            <%if jichang.order.has_pay==1%>查看
+            <%else%>
+                               付款&nbsp;|&nbsp;取消
+            <%end%>
+        </th>
+    </tr>
+     
+       <%end%>
+
+
+          </table>
+                    <div style="display: none" class="tc mt10 pt20 t14" id="three">
+                        您在此期间没有订单</div>
+                    <div style="display: none" class="tc mt10 pt20 t14" id="all">
+                        您在此期间没有订单</div>
+                    <div id="page_list" method="page_list" class="mt10">
+                    </div>
+                    
+                   
+                </div>
+                <!-- 订单列表 end-->
+            </div>

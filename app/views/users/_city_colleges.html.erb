@@ -1,0 +1,42 @@
+ <tr id="select_univers">
+ 	<script>
+	    	    function check_university(province_id)
+					{
+					   new Ajax.Updater('select_univers', '/penpals/check?province_id='+province_id.toString(), 
+						   {asynchronous:true, 
+						   	evalScripts:true
+						   	}
+					   	); 
+					}		   
+			</script>
+    <td><%=t :college%>:</td>
+    <td>
+    	<%if current_user_in_fb.is_chinese?%>
+    	   	<select id="province_id" name="province_id" onchange="check_university(this.value)">
+	    		<%Province.all.each do |p|%>
+	    			<option value="<%=p.id%>" <%="selected='true'" if @p_id.to_i == p.id%> ><%=p.name%></option>
+	    		<%end%>
+		    </select>
+		    <select id="user_profile_university_id" name="user_profile[university_id]" >
+	    		<%@universities.each do |p|%>
+	    			<option value="<%=p.id%>" <%="selected='true'" if @user_profile && @user_profile.university_id == p.id%> ><%=p.name%></option>
+	    		<%end%>
+		    </select>
+		    <span style="font-size: 12px;"><%=t :no_college_in_this%><%=link_to_function t(:hand_input),js_show("hand_in"),:style=>"color:#900"%></span>
+		    <div id="hand_in" style="display: none">	
+				<span style="font-size: 12px;"><%=t :select_and_input%></span>
+				<select id="p_id" name="p_id">
+					    		<%Province.all.each do |p|%>
+					    			<option value="<%=p.id%>" <%="selected='true'" if @p_id.to_i == p.id%> ><%=p.name%></option>
+					    		<%end%>
+						    </select>
+				<%= text_field 'user_profile', 'college_name'%>
+				<span style="font-size: 12px;">
+						    	<%=link_to_function t(:cancel),js_blank("user_profile_college_name")+js_hide("hand_in"),:style=>"color:#900"%>
+				</span>
+		    </div>
+    	<%else%>
+    		<%=select("user_profile","college_id",College.all.collect{|p|[p.name, p.id]},:include_blank => false)%>
+    	<%end%>
+    </td>
+  </tr>

@@ -1,0 +1,204 @@
+
+<script language="JavaScript" type="text/javascript">
+window.onload=function snTabs(){
+var tabObj = <%=session[:top_tab]%>; 	
+for(i=0; i <5; i++)
+{
+  if (i == tabObj)
+  {
+   document.getElementById("all"+i).style.display = "block";
+  }else{   
+   document.getElementById("all"+i).style.display = "none";
+  }
+}
+}
+ </script>
+ <div style="float:right ">
+	<div id="home_page_top" >	
+        <div id="navigation_bar" class="menu">
+            <ul style="padding-top:10px;">           	       	
+                        	
+            <li>
+                <img src="/images/oldimages/line.png"  alt="" />
+            </li>	
+            	
+            <li>
+               <%if current_user%><a href="/centers" class="nov"><%='会员中心'%></a>
+               <%else%>
+               <a href="/login" class="nov"><%='会员中心'%></a>
+               <%end%>
+               <div style="margin-top: 20px;display:none " id="all4">
+                	<div style="padding:0px;margin: 0px "><img src="/images/oldimages/bluforwor.png"  alt="" / align="center"></div>
+                	<div style="height:5px;background-color:#8ed8f8  ">
+                	</div>
+                </div>
+            </li>
+ 
+ 	
+            <li>
+                <img src="/images/oldimages/line.png"  alt="" />
+            </li>	
+            	
+            <li>
+               <a href="/discription" class="nov"><%='关于我们'%></a>
+               <div style="margin-top: 20px;display:none " id="all0">
+                	<div style="padding:0px;margin: 0px "><img src="/images/oldimages/bluforwor.png"  alt="" / align="center"></div>
+                	<div style="height:5px;background-color:#8ed8f8  ">
+                	</div>
+                </div>
+            </li>
+ 
+ 
+           <li>
+                <img src="/images/oldimages/line.png"  alt="" />
+            </li>
+            
+ 
+            <li>
+                <a href="/objectservicethird" class="nov" style="padding: 0px 23px 0px 23px;"><%='特色服务'%>
+                </a>
+                <div style="margin-top: 20px;display:none " id="all1">
+                	<div style="padding:0px;margin: 0px "><img src="/images/oldimages/bluforwor.png"  alt="" / align="center"></div>
+                	<div style="height:5px;background-color:#8ed8f8  ">
+                	</div>
+                </div>
+                                 <ul style="float:left;">                               
+                                <li style=" z-index:150;margin-top: 20px;">
+								   	<img src="/images/oldimages/bluforwor.png"  alt="" / align="center"><br/>
+								   <a href="/bodystyleservice" target="_self" style="padding:12px 10px 2px 10px"><%='形象塑造服务'%></a>   
+                                   <div style="padding:0px;margin: 0px "><img src="/images/oldimages/dian.png"  alt="" / align="center" width="106"></div>
+                                </li>
+                                <li style=" z-index:150">
+								   <a href="/secretaryservice" target="_self" ><%='商务秘书服务'%></a>
+								   <div style="padding:0px;margin: 0px "><img src="/images/oldimages/dian.png"  alt="" / align="center" width="106"></div>                                  
+                                </li>
+                                <!-- <li style=" z-index:150;">
+								   <a href="/servicetow" target="_self" ><%='机场免税商品预订'%></a>
+                                   <div style="padding:0px;margin: 0px "><img src="/images/oldimages/dian.png"  alt="" / align="center" width="106"></div>
+                                   
+                                </li> -->
+                                <li style=" z-index:150;">
+								 
+                                   <a href="/safeservice" target="_self" ><%='全天候交通及安保服务'%></a>
+                                    <div style="padding:0px;margin: 0px "><img src="/images/oldimages/lanxia.png"  alt="" / align="center" width="106"></div>
+                                </li>
+                              
+                            </ul>
+
+                
+            </li>
+            
+            
+            <li>
+                <img src="/images/oldimages/line.png"  alt="" />
+            </li>
+           
+            <!-- <li>
+                <a href="/objectservicetow" class="nov" style="padding: 0px 25px 0px 25px;"><%='酒店及机票预订'%>
+                    </a>
+                            <ul>
+                                <li style=" z-index:150;margin-top: 20px;">
+                                   <img src="/images/oldimages/bluforwor.png"  alt="" / align="center"><br/>
+                                   <a href="/service" target="_self" style="padding: 12px 18px 2px 18px;"><%='商务舱和公务舱机票特惠预订'%></a> 
+                                    <img src="/images/oldimages/dian.png"  alt="" / align="center"  width="155">   
+                                </li>                               
+                                <li style=" z-index:150;">
+                                  <a href="/service" target="_self" ><%='实时航班抵离查询'%></a> 
+                                   <img src="/images/oldimages/dian.png"  alt="" / align="center"  width="155">   
+                                </li>
+                                <li style=" z-index:150;">
+                                  <a href="/service" target="_blank" ><%='实时路况交通查询'%></a> 
+                                   <img src="/images/oldimages/dian.png"  alt="" / align="center"  width="155">   
+                                </li>
+                                <li style=" z-index:150;" style="padding: 0px 30px 0px 30px;">
+                                  <a href="/service" target="_self" ><%='国内酒店预定'%></a> 
+                                   <img src="/images/oldimages/dian.png"  alt="" / align="center"  width="155">   
+                                </li>
+                                <li style=" z-index:150;" style="padding: 0px 30px 0px 60px;">
+                                  <a href="/service" target="_blank" ><%='国际酒店预定'%></a> 
+                                <img src="/images/oldimages/lanxia.png"  alt="" / align="center" width="155">
+                                </li>
+
+                            </ul>
+            </li>
+            
+            <li>
+                <img src="/images/oldimages/line.png"  alt="" />
+            </li> -->
+            
+            
+            <li>         	
+                <a href="/objectservice" class="nov" ><%='机场服务'%>  
+                 </a>
+                 <div style="margin-top: 20px;display:none " id="all2">
+                	<div style="padding:0px;margin: 0px "><img src="/images/oldimages/bluforwor.png"  alt="" / align="center"></div>
+                	<div style="height:5px;background-color:#8ed8f8  ">
+                	</div>
+                </div>
+
+                                <ul > 
+                          
+                                <li style=" z-index:150;margin-top: 20px;">
+								   	<img src="/images/oldimages/bluforwor.png"  alt="" / align="center"><br/>
+								   <a href="/vipfastservice" target="_self" style="padding:12px 10px 2px 10px" >
+								   	<%='VIP快捷通道'%><br>
+								   	<%='贵宾接送机服务'%>
+                                   </a> 
+								   <div style="padding:0px;margin: 0px "><img src="/images/oldimages/dian.png"  alt="" / align="center" width="110"></div>                                 
+                                </li>
+                                <li style=" z-index:150;" >
+                                    <a href="/service" target="_self" ><%='棋牌、专业雪茄品鉴'%></a> 
+                                                
+                                    <div style="padding:0px;margin: 0px "><img src="/images/oldimages/dian.png"  alt="" / align="center" width="110"></div>
+                                   
+                                 </li>
+                                <li style=" z-index:150;">
+								   <a href="/servicetow" target="_self" ><%='SPA美体'%>
+								   	</a>
+                                   <div style="padding:0px;margin: 0px "><img src="/images/oldimages/dian.png"  alt="" / align="center" width="110"></div>
+                                </li>
+                                <li style=" z-index:150;" >
+								   <a href="/foodservice" target="_self" ><%='精致餐饮'%></a>
+                                   <div style="padding:0px;margin: 0px "><img src="/images/oldimages/dian.png"  alt="" / align="center" width="110"></div>
+                                </li>
+                                
+                                 <li style=" z-index:150;" >
+								   
+                                   <a href="/timehotelservice" target="_self"><%='计时客房'%></a>
+                                   <div style="padding:0px;margin: 0px "><img src="/images/oldimages/dian.png"  alt="" / align="center" width="110"></div>
+                                </li>
+                                
+                                 <li style=" z-index:150;" >
+								   
+                                   <a href="/meetingservice" target="_self"><%='商务会议'%></a>
+                                   <div style="padding:0px;margin: 0px "><img src="/images/oldimages/dian.png"  alt="" / align="center" width="110"></div>
+                                 </li>
+                                 <li style=" z-index:150;" > 
+                                   <a href="/otherservice" target="_self" ><%='其他免费服务'%></a>
+                                    <div style="padding:0px;margin: 0px "><img src="/images/oldimages/lanxia.png"  alt="" / align="center" width="110"></div>
+                                 </li>
+
+                            </ul>
+            </li>
+            
+            
+            <li>
+                <img src="/images/oldimages/line.png"  alt="" />
+            </li>
+            
+            <li>
+                <a href="/overview" class="nov"><%='主页'%></a>
+                             
+                <div style="margin-top: 20px;display:none " id="all3">
+                	<div style="padding:0px;margin: 0px "><img src="/images/oldimages/bluforwor.png"  alt="" / align="center"></div>
+                	<div style="height:5px;background-color:#8ed8f8  ">
+                	</div>
+                </div>
+            </li>
+            <li>
+                <img src="/images/oldimages/line.png"  alt="" />
+            </li>
+        </ul>
+    </div>
+    </div>
+   </div>

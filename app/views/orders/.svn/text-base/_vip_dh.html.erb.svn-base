@@ -1,0 +1,30 @@
+<% form_remote_tag  :url=>{:controller =>'send_vip_consume_message'},:update=>'passnum_all' do -%>
+			<%if current_user&&current_user.time_vips&&@cart.items.size>0%>								
+			    <div ><font color="#8ed8f8" size="5px">您有以下VIP特权可兑换消费</font></div>
+				<div style="margin: 20px;padding: 10px;">
+					<table class="order-table seller-type-B bought-table">									
+					<%for @production in @cart.items%>  									  
+									<%product=Product.find(@production.product.id)%>
+							<%if product.vip_service_id&&current_user.one_vip_service(product.vip_service_id)%>
+									<tr class="shop-hd col-name" style="background-color:#8ed8f8">
+				                    <td class="s-title" style="width:300px;"> 
+									<%=VipService.find(product.vip_service_id).description%>兑换<%=product.title%>: 可用数量 <%=current_user.one_vip_service(product.vip_service_id)%>
+									<input type="hidden" name="dh" value="1">
+									<%= text_field_tag "dh#{product.vip_service_id}[#{@production.product.id}]","",:placeholder=>t(:change_num)%><br/>
+									</td></tr>
+							<%end%>
+					<%end%><br/>																			 		
+					</table>
+				</div><br/>	
+			<%end%>	
+				<div><a href='/stores/back'><img src="/images/center/back.png"></a>
+										<a href='/stores/empty_cart'/><img src="/images/center/empty_cart.png"></a>												
+					 <%if current_user&&current_user.time_vips&&@cart.items.size>0%>
+										<div id="passnum_all">
+										<button type="submit" class="button" style="border:0px">
+	  	 		                        <img src="/images/center/dh.png" />
+	                                    </button>	
+	                                    </div>
+	                 <%end%>																	    	
+			    </div>		
+<%end%>	

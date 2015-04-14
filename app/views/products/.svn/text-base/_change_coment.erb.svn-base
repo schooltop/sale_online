@@ -1,0 +1,1 @@
+&nbsp;&nbsp;小结：<%= text_field_tag "price#{@i}","",:style=>"width:140px",:value=>@com_price%>元

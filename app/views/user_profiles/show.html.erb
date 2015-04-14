@@ -1,0 +1,80 @@
+<div class="module module-validate">
+		        <dl class="">
+	  				    <dt><%=t :contact%>:</dt>
+						<dd class="col2">
+							<div class="vpart">
+								<%= @user_profile.contact %>
+						    </div>
+						</dd>
+	  			</dl>
+	  			<dl class="">
+	  				<dt><%=t :position%>:</dt>
+	  				<dd class="col2">
+	  					<%= @user_profile.position %>
+	  				</dd>
+	  			</dl>
+				<dl class="dl-radio">
+					<dt> <%=t :gender%>:</dt>
+					<dd class="col2">
+					    <%=  @user_profile.sex%>
+					 </dd>
+				</dl>
+					  				  			
+	  				  				  				  			
+	  			<dl class="dl-ok">
+	  				<dt><%=t :tel_num%>:</dt>
+	  				<dd class="col2">	
+	  					<%= @user_profile.tel_num %>
+				    </dd>
+	  			</dl>
+	  			<dl class="">
+	  				<dt><%=t :company%>:</dt>
+	  				<dd class="col2">
+	  					<%= @user_profile.company  %>
+					</dd>
+	  			</dl>
+	  			<dl class="">
+					<dt><%=t :company_location%>:</dt>
+	  				<dd>	
+	  					<%= @user_profile.user.address.area.total_name rescue nil%>
+					</dd>
+	  			</dl>
+	  			<dl class="">
+					<dt><%=t :company_address%>:</dt>
+	  				<dd>	
+	  					<%= @user_profile.user.address.desc_address rescue nil%>
+					</dd>
+	  			</dl>
+	  			<dl class="">
+					<dt><%=t :yyzz%>:</dt>
+	  				<dd>	
+	  					<img src="<%= @user_profile.yyzz.url rescue nil%>" class="yyzz"/>
+					</dd>
+	  			</dl>
+	  			
+	  			<dl class="">
+	  				<dt><%=t :homepage%>:</dt>
+	  				<dd class="col2">
+	  					<%= @user_profile.homepage %>
+					</dd>
+	  			</dl>
+	  			<dl class="">
+	  				<dt><%=t :trade%>:</dt>
+	  				<dd class="col2">
+	  					<%= @user_profile.trade.name rescue nil%>
+	  				</dd>
+	  			</dl>
+	  			<dl class="">
+	  				<dt><%=t :quale%>:</dt>
+	  				<dd class="col2">
+	  					<%= @user_profile.quale.name rescue nil%>
+	  				</dd>
+	  			</dl>
+	  			<dl class="dl">
+	  				<dt><%=t :main_business%>:</dt>
+	  				<dd class="col2">
+	  					出售的产品:<%=@user_profile.sales%>
+	  					采购的产品:<%=@user_profile.sales%>
+	  				</dd>
+	  			</dl>
+</div>

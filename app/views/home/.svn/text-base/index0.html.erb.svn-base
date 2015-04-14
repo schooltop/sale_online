@@ -1,0 +1,37 @@
+
+  		<div class="module">
+  			<%=render :partial=>"/shared/categories"%>
+  			<%= javascript_include_tag 'slide' %>
+				<div class="slide_right">
+						<div class="foucs">
+				            <div class="focuscont">
+				                <ul class="home-ul">
+				                     <li style="display:block">
+				                     	<a href="/" target="_blank"><img src="/test/test1.png" /></a>
+				                     </li>
+				                     <li>
+				                     	<a href="/" target="_blank"><img src="/test/test.png" /></a>
+				                     </li>
+				                     <li>
+				                     	<a href="/" target="_blank"><img src="/test/test1.png" /></a>
+				                     </li>
+				              </ul>
+				                <div class="num"><span class="cur">1</span><span>2</span><span>3</span></div>
+				  			</div>
+						</div>
+					</div>
+  		</div>
+					
+		<div id="productions-content">
+					<div class="heng-bar">
+					    		<h3>推荐商品</h3>
+					</div>
+			     	<div class="produtions-show">
+			     		
+			     	</div>
+					<div class="heng-bar">
+					    		<h3>热卖商品</h3>
+					</div>
+			     	<div class="produtions-show">
+			     		
+			     	</div>

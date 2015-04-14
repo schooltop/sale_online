@@ -1,0 +1,1013 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>北京国家发展研究院职业发展管理系统</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <%=javascript_include_tag 'sugar_grp1_yui','sugar_grp1','calendar-zh','zh_cn','zh_cn(1)','style-min','sugar_grp_overlib','sugar_grp_yui_widgets','dashlets','JSON','MySugar','swfobject'  %>
+
+    <%=javascript_include_tag 'Account','SugarEmailAddress','SugarFieldAddress' %>
+   
+    <%=javascript_include_tag 'Datetimecombo','SubPanelTiles' %>
+  
+    <%=stylesheet_link_tag "crm-style",'yui','deprecated','colors.sugar','fonts.normal','crm-style','','tree' %>
+ 
+    <%= javascript_include_tag :defaults, :fckeditor %>
+    
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000"></div>
+
+<script type="text/javascript">
+<!--
+SUGAR.themes.theme_name      = 'Sugar';
+SUGAR.themes.theme_ie6compat = false;
+SUGAR.themes.hide_image      = '/images/crm/hide.gif';
+SUGAR.themes.show_image      = '/images/crm/show.gif';
+SUGAR.themes.allThemes       = eval({"BoldMove":{"name":"Bold Move","description":"Sugar theme II with Tabs","ie6compat":false},"FinalFrontier":{"name":"Final Frontier","description":"Night Sky theme","ie6compat":false},"Legacy":{"name":"Legacy","description":"Legacy Theme","ie6compat":false},"Links":{"name":"Links","description":"Golf theme","ie6compat":false},"Love":{"name":"Love","description":"Love theme","ie6compat":false},"Paradise":{"name":"Paradise","description":"Paradise theme","ie6compat":false},"Retro":{"name":"Retro","description":"Retro theme","ie6compat":false},"RipCurl":{"name":"RipCurl","description":"Surfing theme","ie6compat":false},"Shred":{"name":"Shred","description":"Snowboarding theme","ie6compat":false},"Sugar":{"name":"Sugar","description":"Sugar","ie6compat":false},"SugarIE6":{"name":"Sugar IE6","description":"Sugar theme for IE 6","ie6compat":true},"SugarLite":{"name":"Sugar Lite","description":"Lite theme","ie6compat":false},"TrailBlazers":{"name":"Trail Blazers","description":"Bold red theme","ie6compat":false},"WhiteSands":{"name":"White Sands","description":"pure and simple","ie6compat":false}});
+-->
+</script>
+
+</head>
+
+
+
+<body onmouseout="closeMenus();" class="yui-skin-sam">
+	<div id="ygddfdiv" style="position: absolute; visibility: hidden; cursor: move; border-top-width: 2px; border-right-width: 2px; border-bottom-width: 2px; border-left-width: 2px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; z-index: 999; height: 25px; width: 25px; border-top-color: transparent; border-right-color: transparent; border-bottom-color: transparent; border-left-color: transparent; background-color: rgb(246, 245, 229); opacity: 0.76; ">
+		<div style="height: 100%; width: 100%; background-color: rgb(204, 204, 204); opacity: 0; "></div>
+		</div>
+		<iframe id="_yuiResizeMonitor" title="Text Resize Monitor" style="position: absolute; width: 2em; height: 2em; top: -29px; left: 0px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; visibility: visible; "></iframe>
+
+		<div id="HideMenu" class="leftList">
+		<div id="hiddenShortcuts" class="leftList">
+		    <h3><span>快捷方式</span></h3>
+		    <ul onmouseover="hiliteItem(this,'no');">
+		
+		  <li>
+		        <a href="/cad_enterprises/new"><img src="/images/crm/CreateAccounts.gif" width="16" height="16" alt="新增企业" border="0" align="absmiddle">&nbsp;<span>新增企业</span></a>
+		    </li>
+		     <li>
+		        <a href="/career_stu_new"><img src="/images/crm/CreateCases.gif" width="16" height="16" alt="新增学生" border="0" align="absmiddle">&nbsp;<span>新增学生</span></a>
+		    </li>
+		    		      <li>
+		        <a href="/cad_positions/new"><img src="/images/crm/CreateTasks.gif" width="16" height="16" alt="新增招聘" border="0" align="absmiddle">&nbsp;<span>新增招聘</span></a>
+		    </li> 
+		     <li>
+		        <a href="/cad_contacts/new"><img src="/images/crm/CreateContacts.gif" width="16" height="16" alt="新增联系人" border="0" align="absmiddle">&nbsp;<span>新增联系人</span></a>
+		    </li>
+		    		       <li>
+     		   <a href="/cad_actives/new"><img src="/images/crm/CreateCampaigns.gif" width="16" height="16" alt="新增活动" border="0" align="absmiddle">&nbsp;<span>新增一个活动</span></a>
+  			  </li>
+  			  <!--
+		        <li>
+		        <a href="/cad_feedbacks/new"><img src="/images/crm/CreateCases.gif" width="16" height="16" alt="新增企业反馈" border="0" align="absmiddle">&nbsp;<span>新增企业反馈</span></a>
+		    </li> -->
+		    <li>
+		        <a href="/cad_gifts/new"><img src="/images/crm/CreateCases.gif" width="16" height="16" alt="新增答谢记录" border="0" align="absmiddle">&nbsp;<span>新增答谢记录</span></a>
+		    </li>
+
+		        <li>
+		        <a href="/cad_active_categories/new"><img src="/images/crm/CreateMeetings.gif" width="16" height="16" alt="新增活动分类" border="0" align="absmiddle">&nbsp;<span>新增活动分类</span></a>
+		    </li>
+		        <li>
+		        <a href="/cad_gift_styles/new"><img src="/images/crm/CreateCalls.gif" width="16" height="16" alt="新增答谢分类" border="0" align="absmiddle">&nbsp;<span>新增答谢分类</span></a>
+		    </li>
+		      <li>
+		        <a href="/cad_enterpriseinformations/new"><img src="/images/crm/CreateOpportunities.gif" width="16" height="16" alt="新增企业服务" border="0" align="absmiddle">&nbsp;<span>新增企业服务</span></a>
+		    </li>
+		      <li>
+		        <a href="/cad_studentinformations/new"><img src="/images/crm/CreateOpportunities.gif" width="16" height="16" alt="新增学生服务" border="0" align="absmiddle">&nbsp;<span>新增学生服务</span></a>
+		    </li>
+		        <li>
+		        <a href="/new_cademail"><img src="/images/crm/CreateEmails.gif" width="16" height="16" alt="撰写电子邮件" border="0" align="absmiddle">&nbsp;<span>撰写电子邮件</span></a>
+		    </li>
+		        </ul>
+		</div>
+		</div>
+
+		<div id="header">
+		    <div id="companyLogo">
+		    <img src="/images/crm/company_logos.png" width="212" height="40" alt="Company Logo" border="0">
+		   </div>    
+		
+<div class="yui-panel-container yui-dialog yui-overlay-hidden shadow" id="themepickerDialog_c" style="visibility: hidden; z-index: 2; ">
+	<div id="themepickerDialog" style="visibility: inherit; width: 250px; " class="yui-module yui-overlay yui-panel">
+  
+
+<a class="container-close" href="Home&action=index#">Close</a></div></div>
+    <div id="globalLinks">					
+        <ul>
+        <li>
+        <a href="">我的帐户</a>
+        </li>
+        <li>
+    <span>|</span>    <a href="rcrm_employees">员工</a>
+        </li>
+        <li>
+    <span>|</span>    <a href="/firstpage">系统管理</a>
+        </li>
+        <li>
+    <span>|</span>    <a href="/help">帮助</a>
+        </li>
+        <li>
+    <span>|</span>    <a href="/about">关于</a>
+        </li>
+        </ul>
+</div>    <div id="welcome">
+    欢迎, <strong><%=current_user.name%></strong> [ <a href="/logout" class="utilsLink">注销</a> ]
+</div>
+    <div class="clear"></div>
+    <div id="search">
+    <form name="UnifiedSearch" onsubmit="return SUGAR.unifiedSearchAdvanced.checkUsaAdvanced()">
+        <input type="hidden" name="action" value="UnifiedSearch">
+        <input type="hidden" name="module" value="Home">
+        <input type="hidden" name="search_form" value="false">
+        <input type="hidden" name="advanced" value="false">
+        <img id="unified_search_advanced_img" src="/images/crm/searchMore.gif" border="0" alt="查找">&nbsp;
+        <input type="text" name="query_string" id="query_string" size="20" value="">&nbsp;
+        <input type="submit" class="button" value="查找">
+    </form><br>
+    <div id="unified_search_advanced_div"> </div>
+</div>
+<!-- <div id="sitemapLink">
+    <span id="sitemapLinkSpan">
+        站点地图
+        <img src="/images/crm/MoreDetail.png">
+    </span>
+</div> -->
+<span id="sm_holder"></span>
+    <div class="clear"></div>
+            <div id="moduleList">
+			<ul>
+			    <li class="noBorder">&nbsp;</li>
+			                    <li class="noBorder">
+			        <span class="currentTabLeft">&nbsp;</span><span class="currentTab">
+			            <a href="/cad_students/vocation_page" id="grouptab_0">首页</a>
+			        </span><span class="currentTabRight">&nbsp;</span>
+			                </li>
+			                <li>
+			        <span class="notCurrentTabLeft">&nbsp;</span><span class="notCurrentTab">
+			        <a href="/cad_enterprises" id="grouptab_1">企业</a>
+			        </span><span class="notCurrentTabRight">&nbsp;</span>
+			        </li>
+			                <li>
+			        <span class="notCurrentTabLeft">&nbsp;</span><span class="notCurrentTab">
+			        <a href="/stu_reg_infs" id="grouptab_2">学生</a>
+			        </span><span class="notCurrentTabRight">&nbsp;</span>
+			        </li>
+			            <!--    <li>
+			        <span class="notCurrentTabLeft">&nbsp;</span><span class="notCurrentTab">
+			        <a href="/" id="grouptab_3">服务</a>
+			        </span><span class="notCurrentTabRight">&nbsp;</span>
+			        </li>-->
+			                <li>
+			        <span class="notCurrentTabLeft">&nbsp;</span><span class="notCurrentTab">
+			        <a href="/cad_actives" id="grouptab_3">事件</a>
+			        </span><span class="notCurrentTabRight">&nbsp;</span>
+			        </li>
+			            <li>
+			        <span class="notCurrentTabLeft">&nbsp;</span><span class="notCurrentTab">
+			        <a href="/cad_positions" id="grouptab_4">招聘</a>
+			        </span><span class="notCurrentTabRight">&nbsp;</span>
+			        </li> 
+			        <!--
+			                <li>
+			        <span class="notCurrentTabLeft">&nbsp;</span><span class="notCurrentTab">
+			        <a href="/" id="grouptab_6">反馈</a>
+			        </span><span class="notCurrentTabRight">&nbsp;</span>
+			        </li>
+			        -->
+			    </ul>
+			</div>
+<div class="clear"></div>
+<div id="subModuleList">
+                <span id="moduleLink_0" class="selected" style="margin-left: 1px; ">
+    	<ul>
+	        	        <li>
+	        		        	<a href="/cad_students/vocation_page" id="moduleTab_0_Home">首页</a>
+	        </li>
+	        	        <li>
+	        		        	<a href="/feedback_graph" id="moduleTab_0_Dashboard">统计图</a>
+	        </li>
+	        	        	
+	        	        <li>
+	        		        	<a href="/cad_input" id="moduleTab_0_Dashboard">导入数据</a>
+	        </li>       
+	                    <li>
+	        		        	<a href="/cad_student_class_resumes" id="moduleTab_0_Dashboard">导入简历</a>
+	        </li>    
+        </ul>
+    </span>
+            <span id="moduleLink_1">
+    	<ul>
+	        	        <li>
+	        		        	<a href="/cad_enterprises" id="moduleTab_1_Accounts">企业库</a>
+	        </li>
+	        	        <li>
+	        		        	<a href="/cad_contacts" id="moduleTab_1_Opportunities">联系人库</a>
+	        </li>
+	        	        <li>
+	        		        	<a href="/cad_positions"  id="moduleTab_1_Leads">企业招聘</a>
+	        </li>
+	        	        <li>
+	        		        	<a href="/cad_enterprise_actives"  id="moduleTab_1_Contacts">企业活动</a>
+	        </li>
+	         <li>
+	        		        	<a href="/cad_enterpriseinformations"  id="moduleTab_1_Leads">企业服务</a>
+	        </li>
+	        	        	        
+        </ul>
+    </span>
+            <span id="moduleLink_2">
+    	<ul>
+	        	        <li>
+	        		        	<a href="/stu_reg_infs"  id="moduleTab_2_Campaigns">学生库</a>
+	        </li>
+	        	        <li>
+	        		        	<a href="/cad_employs" id="moduleTab_2_Contacts">学生应聘</a>
+	        </li>
+	        	        <li>
+	        		        	<a href="/cad_student_actives" id="moduleTab_2_Leads">学生活动</a>
+	        </li>
+	        	       	        	       
+	        	        <li>
+	        		        	<a href="/cad_studentinformations" id="moduleTab_2_Accounts">学生服务</a>
+	        </li>
+	        	       
+	        	        	        
+        </ul>
+    </span>
+            <!--
+            <span id="moduleLink_3">
+    	<ul>
+	        	        <li>
+	        		        	<a href="/cad_enterpriseinformations" id="moduleTab_4_Activities">企业服务</a>
+	        </li>
+	        	        <li>
+	        		        	<a href="/cad_studentinformations" id="moduleTab_4_Calendar">学生服务</a>
+	        </li>
+	        	        	        
+        </ul>
+    </span>
+      -->
+    <span id="moduleLink_3">
+    	<ul>
+
+	        	        <li>
+	        		        	<a href="/cad_gifts" id="moduleTab_3_Cases">答谢</a>
+	        		        	
+	        </li>
+	        <li>
+	        		        	<a href="/cad_emails" id="moduleTab_3_Cases">邮件</a>
+	        		        	
+	        </li>
+	                 <li>
+	        		        	<a href="/cad_actives" id="moduleTab_3_Cases">活动</a>
+	        </li>
+	        	       	        	        	        
+        </ul>
+    </span>
+            <span id="moduleLink_4">
+    	<ul>
+	        	        <li>
+	        		        	<a href="/cad_positions" id="moduleTab_5_Emails">企业招聘</a>
+	        </li>
+	        	        <li>
+	        		        	<a href="/cad_employs" id="moduleTab_5_Documents">学生应聘</a>
+	        </li>
+	        	        	        
+        </ul>
+    </span>
+    <!--
+            <span id="moduleLink_6">
+    	<ul>
+	        	        <li>
+	        		        	<a href="/cad_feedbacks" id="moduleTab_6_Dashboard">企业反馈</a>
+	        </li>
+	         <li>
+	        		        	<a href="/feedbackstu" id="moduleTab_6_Dashboard">学生反馈</a>
+	        </li>
+	        	        	        
+        </ul>
+    </span>
+       -->
+</div>
+        <div class="clear"></div>
+    <div class="line"></div>
+        <div id="lastView" class="headerList">
+        <b style="white-space:nowrap;">最近查看:&nbsp;&nbsp;</b>
+    <span>
+        无
+        </span>
+</div>
+        </div>
+
+<div id="main">
+        <div id="leftHandle">
+    <img id="HideHandle" name="HideHandle" src="/images/crm/hide.gif" alt="">
+</div>    <div id="leftColumn">
+                <div id="shortcuts" class="leftList">
+    <img id="shortcuts_img" alt="隐藏" align="right" src="/images/crm/hide_submenu_shortcuts.gif">
+    <img id="shortcuts_img_1" alt="显示" align="right" src="/images/crm/show_submenu_shortcuts.gif">
+    <h3><span>快捷方式</span></h3>
+    <ul id="ul_shortcuts">
+	    
+		   <li>
+		        <a href="/cad_enterprises/new"><img src="/images/crm/CreateAccounts.gif" width="16" height="16" alt="新增企业" border="0" align="absmiddle">&nbsp;<span>新增企业</span></a>
+		    </li>
+		   
+		        <li>
+		        <a href="/career_stu_new"><img src="/images/crm/CreateCases.gif" width="16" height="16" alt="新增学生" border="0" align="absmiddle">&nbsp;<span>新增学生</span></a>
+		    </li>
+		    		      <li>
+		        <a href="/cad_positions/new"><img src="/images/crm/CreateTasks.gif" width="16" height="16" alt="新增招聘" border="0" align="absmiddle">&nbsp;<span>新增招聘</span></a>
+		    </li> 
+		     <li>
+		        <a href="/cad_contacts/new"><img src="/images/crm/CreateContacts.gif" width="16" height="16" alt="新增联系人" border="0" align="absmiddle">&nbsp;<span>新增联系人</span></a>
+		    </li>
+		    		       <li>
+     		   <a href="/cad_actives/new"><img src="/images/crm/CreateCampaigns.gif" width="16" height="16" alt="新增活动" border="0" align="absmiddle">&nbsp;<span>新增一个活动</span></a>
+  			  </li>
+  			  
+		    <li>
+		        <a href="/cad_gifts/new"><img src="/images/crm/CreateCases.gif" width="16" height="16" alt="新增答谢记录" border="0" align="absmiddle">&nbsp;<span>新增答谢记录</span></a>
+		    </li>
+		        <li>
+		        <a href="/cad_active_categories/new"><img src="/images/crm/CreateMeetings.gif" width="16" height="16" alt="新增活动分类" border="0" align="absmiddle">&nbsp;<span>新增活动分类</span></a>
+		    </li>
+		        <li>
+		        <a href="/cad_gift_styles/new"><img src="/images/crm/CreateCalls.gif" width="16" height="16" alt="新增答谢分类" border="0" align="absmiddle">&nbsp;<span>新增答谢分类</span></a>
+		    </li>
+		      <li>
+		        <a href="/cad_enterpriseinformations/new"><img src="/images/crm/CreateOpportunities.gif" width="16" height="16" alt="新增企业服务" border="0" align="absmiddle">&nbsp;<span>新增企业服务</span></a>
+		    </li>
+		      <li>
+		        <a href="/cad_studentinformations/new"><img src="/images/crm/CreateOpportunities.gif" width="16" height="16" alt="新增学生服务" border="0" align="absmiddle">&nbsp;<span>新增学生服务</span></a>
+		    </li>
+		        <li>
+		        <a href="/new_cademail"><img src="/images/crm/CreateEmails.gif" width="16" height="16" alt="撰写电子邮件" border="0" align="absmiddle">&nbsp;<span>撰写电子邮件</span></a>
+		    </li>
+        </ul>
+</div>
+        <div id="newRecord">
+<img id="newrecordicon" alt="隐藏" align="right" src="/images/crm/hide_submenu_shortcuts.gif">
+<img id="newrecordicon_1" alt="显示" align="right" src="/images/crm/show_submenu_shortcuts.gif">
+</div>
+    </div>
+        <div id="content">
+        <table style="width:100%"><tbody><tr><td>
+
+
+
+<style>
+.menu{
+	z-index:100;
+}
+
+.subDmenu{
+	z-index:100;
+}
+
+.closedashlet {
+   width:17px;
+   height:12px;
+   background:transparent url(/images/crm/layout_sprite.png) no-repeat -20px -100px;
+   border:1px solid #808080;
+   float:right;
+   margin-top: 3px;
+}
+</style>
+
+
+<div id="pageContainer" class="yui-skin-sam">
+<div id="pageNum_0_div">
+<table width="100%" cellspacing="0" cellpadding="0" border="0" style="margin-top: 5px;">
+ 	<tbody><tr>
+
+
+
+	 	<td>
+		&nbsp;
+		</td>
+	
+		<td rowspan="3">
+				<img src="/images/crm/blank.gif" width="15" height="1" border="0">
+		</td>
+		<!-- <td align="right">
+			<input id="add_dashlets" class="button" type="button" value="添加栏目" onclick="return SUGAR.mySugar.showDashletsDialog();">
+			<a href="" class="utilsLink" target="_blank">
+				<img src="/images/crm/help.gif" width="13" height="13" alt="帮助" border="0" align="absmiddle">
+            </a>
+            <a href="/help" class="utilsLink" target="_blank">
+				帮助
+			</a>
+		</td> -->
+	</tr>
+	<tr>
+		
+				<td valign="top" width="60%">
+			<ul class="noBullet" id="col_0_0">
+			<!-- 	<li id="page_0_hidden0b" style="height: 5px" class="noBullet">&nbsp;&nbsp;&nbsp;</li>
+		    -->
+						
+				<li class="noBullet" id="dashlet_">
+					<div id="dashlet_entire_">
+						
+				<div onmouseover="this.style.cursor = 'move';" id="dashlet_header_"><table width="100%" cellpadding="0" cellspacing="0" border="0" class="formHeader h3Row">
+<tbody><tr>
+<td nowrap=""><h3><span>企业招聘</span></h3></td><td width="20"><img height="1" width="20" src="/images/crm/blank.gif" alt=""></td>
+<td valign="middle" nowrap="" width="100%"><table width="100%" cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+	<td width="99%"></td>
+	</tr></tbody></table></td></tr>
+</tbody></table></div>
+
+<table cellpadding="0" cellspacing="0" width="100%" border="0" class="list view">
+    <tbody><tr class="pagination">
+        <td colspan="5" align="right">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tbody><tr>
+                    <td align="left">&nbsp;</td>
+                    <td align="right" nowrap="nowrap">                    
+                     
+                     <%= will_paginate @cad_positions,:param_name=>"position_page" ,:prev_label => '上一页', :next_label => '下一页'%></td>
+                </tr>
+            </tbody></table>
+        </td>
+    </tr>
+    <tr height="20">
+        	        <th scope="col" width="20%" nowrap="nowrap">
+				<div style="white-space: nowrap;" width="100%" align="left">
+                 
+	                <a href="Home&action=index#" onclick="Dashlet&amp;lvso=ASC&amp;Home2_ACCOUNT_ORDER_BY=name&amp;sugar_body_only=1&amp;id=')" class="listViewThLinkS1">企业名称</a>&nbsp;&nbsp;
+	                                        	                    <img border="0" src="/images/crm/arrow.gif" width="8" height="10" align="absmiddle" alt="排序">
+	                	           			   </div>
+            </th>
+        	        <th scope="col" width="18%" nowrap="nowrap">
+				<div style="white-space: nowrap;" width="100%" align="left">
+                 
+	                <a href="Home&action=index#" onclick=")" class="listViewThLinkS1">联系人</a>&nbsp;&nbsp;
+	                                        	                    <img border="0" src="/images/crm/arrow.gif" width="8" height="10" align="absmiddle" alt="排序">
+	                	           			   </div>
+            </th>
+        	        <th scope="col" width="18%" nowrap="nowrap">
+				<div style="white-space: nowrap;" width="100%" align="left">
+                 
+	                <a href="Home&action=index#" onclick="" class="listViewThLinkS1">招聘职位</a>&nbsp;&nbsp;
+	                                        	                    <img border="0" src="/images/crm/arrow.gif" width="8" height="10" align="absmiddle" alt="排序">
+	                	           			   </div>
+            </th>
+                   <th scope="col" width="18%" nowrap="nowrap">
+				<div style="white-space: nowrap;" width="100%" align="left">
+                 
+	                <a href="Home&action=index#" onclick="" class="listViewThLinkS1">时间</a>&nbsp;&nbsp;
+	                                        	                    <img border="0" src="/images/crm/arrow.gif" width="8" height="10" align="absmiddle" alt="排序">
+	                	           			   </div>
+            </th>
+            <th scope="col" width="13%" nowrap="nowrap">
+				<div style="white-space: nowrap;" width="100%" align="left">
+                 
+	                <a href="Home&action=index#" onclick="" class="listViewThLinkS1">状态</a>&nbsp;&nbsp;
+	                                        	                    <img border="0" src="/images/crm/arrow.gif" width="8" height="10" align="absmiddle" alt="排序">
+	                	           			   </div>
+            </th>
+             <th scope="col" width="10%" nowrap="nowrap">
+				<div style="white-space: nowrap;" width="100%" align="left">
+                 
+	                <a href="Home&action=index#" onclick="" class="listViewThLinkS1">审核</a>&nbsp;&nbsp;
+	                                        	                    <img border="0" src="/images/crm/arrow.gif" width="8" height="10" align="absmiddle" alt="排序">
+	                	           			   </div>
+            </th>
+        				<th scope="col" nowrap="nowrap" width="1%">操作&nbsp;</th>
+		    </tr>
+		    	   <%@cad_positions.each do |cad_position|%>
+		    <tr height="20" class="oddListRowS1">
+						
+						
+							<td scope="row" align="left" valign="top" class="oddListRowS1" bgcolor=""><span sugar="sugar0b">
+									
+						<%if cad_position.cad_enterprise%><a href='/cad_enterprises/<%=cad_position.cad_enterprise_id%>'><%=cad_position.cad_enterprise.company%></a><%else%><%=cad_position.title%><%end%>
+									</span></td>
+				
+							<td scope="row" align="left" valign="top" class="oddListRowS1" bgcolor=""><span sugar="sugar1b">
+					    <%if cad_position.cad_contact%><a href="/cad_contacts/<%=cad_position.cad_contact_id%>"><%=cad_position.cad_contact.name%></a><%else%><%=cad_position.contact%><%end%></span></td>
+							<td scope="row" align="left" valign="top" class="oddListRowS1" bgcolor=""><span sugar="sugar2b">
+						<a href='/cad_positions/<%=cad_position.id%>'><%=cad_position.positionname%></a></span></td>
+						<td scope="row" align="left" valign="top" class="oddListRowS1" bgcolor=""><span sugar="sugar1b">
+					 <%if cad_position.created_at%><%=cad_position.created_at.strftime('%Y-%m-%d' )%><%end%></span></td>
+							<td scope="row" align="left" valign="top" class="oddListRowS1" bgcolor=""><span sugar="sugar2b">
+						<%if cad_position.situation_id==1%><font color="#FF0000"><%=cad_position.situation.name%></font>
+							<%elsif cad_position.situation_id==4%>
+							<font color="#adcd00"><%=cad_position.situation.name%></font>
+							<%else%>
+							<%=cad_position.situation.name%>
+							<%end%>	</span></td>
+				            <td scope="row" align="left" valign="top" class="oddListRowS1" bgcolor=""><span sugar="sugar2b">
+						<%= link_to "审核",:controller=>"cad_positions" , :action=>"show",:id=>cad_position.id-%></span></td>
+									<td width="1%" class="oddListRowS1" bgcolor="" nowrap="">
+						  <%= link_to image_tag("/images/crm/edit_inline.gif"),:controller=>"cad_positions" ,:action=>"edit",:id=>cad_position.id -%>
+						  <%= link_to image_tag("/images/crm/view_inline.gif"),:controller=>"cad_positions" , :action=>"show",:id=>cad_position.id-%>
+							</td>
+				    	</tr>
+        <%end%>
+        
+	</tbody></table>
+<br> 
+					</div>
+				</li>
+						
+						
+			        
+		        
+		        		
+				<li class="noBullet" id="dashlet_242e5510-8fff-a459-5a23-4e7d6438b3ad">
+					<div id="dashlet_entire_242e5510-8fff-a459-5a23-4e7d6438b3ad">
+						
+						<div onmouseover="this.style.cursor = 'move';" id="dashlet_header_242e5510-8fff-a459-5a23-4e7d6438b3ad"><table width="100%" cellpadding="0" cellspacing="0" border="0" class="formHeader h3Row">
+<tbody><tr>
+<td nowrap=""><h3><span>学生应聘</span></h3></td><td width="20"><img height="1" width="20" src="/images/crm/blank.gif" alt=""></td>
+</tr></tbody></table></div>
+
+<table cellpadding="0" cellspacing="0" width="100%" border="0" class="list view">
+    <tbody><tr class="pagination">
+        <td colspan="7" align="right">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tbody><tr>
+                    <td align="left">&nbsp;</td>
+                    <td align="right" nowrap="nowrap">                    
+                  <%= will_paginate @cad_employs ,:param_name=>"employ_page",:prev_label => '上一页', :next_label => '下一页'%>
+                           </td>
+                </tr>
+            </tbody></table>
+        </td>
+    </tr>
+    <tr height="20">
+        	 <th scope="col" width="20%" nowrap="nowrap">
+				<div style="white-space: nowrap;" width="100%" align="left">
+                 
+	                <a href="Home&action=index#" onclick="" class="listViewThLinkS1">企业名称</a>&nbsp;&nbsp;
+	                                      </div>
+            </th>
+        	        <th scope="col" width="12%" nowrap="nowrap">
+				<div style="white-space: nowrap;" width="100%" align="left">
+                	           		招聘职位
+	           			   </div>
+            </th>
+        	        <th scope="col" width="16%" nowrap="nowrap">
+				<div style="white-space: nowrap;" width="100%" align="left">
+                 
+	                <a href="Home&action=index#" onclick="" class="listViewThLinkS1">开始日期</a>&nbsp;&nbsp;
+	                               		   </div>
+            </th>
+        	        <th scope="col" width="12%" nowrap="nowrap">
+				<div style="white-space: nowrap;" width="100%" align="left">
+                	           		应聘学生
+	           			   </div>
+            </th> 
+             <th scope="col" width="12%" nowrap="nowrap">
+				<div style="white-space: nowrap;" width="100%" align="left">
+                	           		状态
+	           			   </div>
+            </th> 
+            <th scope="col" width="12%" nowrap="nowrap">
+				<div style="white-space: nowrap;" width="100%" align="left">
+                	           		审核
+	           			   </div>
+            </th> 
+        				<th scope="col" nowrap="nowrap" width="1%">操作&nbsp;</th>
+		    </tr>
+          	   <%@cad_employs.each do |cad_employ|%>
+		    <tr height="20" class="oddListRowS1">
+						
+						
+							<td scope="row" align="left" valign="top" class="oddListRowS1" bgcolor=""><span sugar="sugar0b">
+									
+						<a href="/cad_enterprises/<%=cad_employ.cad_enterprise_id%>"><%=cad_employ.cad_enterprise.company%></a>
+									</span></td>
+				        <td scope="row" align="left" valign="top" class="oddListRowS1" bgcolor=""><span sugar="sugar0b">									
+						<a href="/cad_positions/<%=cad_employ.cad_position_id%>"><%=cad_employ.cad_position.positionname%></a>
+									</span></td>
+							<td scope="row" align="left" valign="top" class="oddListRowS1" bgcolor=""><span sugar="sugar1b">
+					    <%=cad_employ.created_at.strftime('%Y-%m-%d' )%></span></td>
+						    <td scope="row" align="left" valign="top" class="oddListRowS1" bgcolor=""><span sugar="sugar2b">
+						<%= link_to cad_employ.stu_reg_inf.name,:controller=>"career_stu_show",:id=>cad_employ.stu_reg_inf.id -%></span></td> 
+				            <td scope="row" align="left" valign="top" class="oddListRowS1" bgcolor=""><span sugar="sugar2b">
+						<%if cad_employ.situation_id==1%><font color="#FF0000"><%=cad_employ.situation.name%></font>
+							<%elsif cad_employ.situation_id==4%>
+							<font color="#adcd00"><%=cad_employ.situation.name%></font>
+							<%else%>
+							<%=cad_employ.situation.name%>
+							<%end%>	</span></td> 
+						<td scope="row" align="left" valign="top" class="oddListRowS1" bgcolor=""><span sugar="sugar2b">
+						<a href="/cad_employs/<%=cad_employ.id%>">审核</a></span></td> 
+									<td width="1%" class="oddListRowS1" bgcolor="" nowrap="">
+									<a title="编辑" href="/cad_employs/<%=cad_employ.id%>/edit"><img border="0" src="/images/crm/edit_inline.gif"></a>
+									<a title="查看" href="/cad_employs/<%=cad_employ.id%>"><img border="0" src="/images/crm/view_inline.gif"></a>
+							</td>
+				    	</tr>
+        <%end%>
+	</tbody></table>
+<br> 
+					</div>
+				</li>
+																																														
+				<li class="noBullet" id="dashlet_44278365-d567-c0fe-53dc-4e7d649c5374">
+					<div id="dashlet_entire_44278365-d567-c0fe-53dc-4e7d649c5374">
+						
+						<div onmouseover="this.style.cursor = 'move';" id="dashlet_header_44278365-d567-c0fe-53dc-4e7d649c5374">
+							<table width="100%" cellpadding="0" cellspacing="0" border="0" class="formHeader h3Row">
+<tbody><tr>
+<td nowrap=""><h3><span>我的答谢记录</span></h3></td><td width="20"><img height="1" width="20" src="/images/crm/blank.gif" alt=""></td>
+<td valign="middle" nowrap="" width="100%"><table width="100%" cellspacing="0" cellpadding="0" border="0"><tbody><tr><td width="99%"></td>
+	<td nowrap="" width="1%">
+		
+	</td></tr></tbody></table></td></tr>
+</tbody></table></div>
+
+<table cellpadding="0" cellspacing="0" width="100%" border="0" class="list view">
+    <tbody><tr class="pagination">
+        <td colspan="6" align="right">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tbody><tr>
+                    <td align="left">&nbsp;</td>
+                     <%= will_paginate @cad_gifts,:param_name=>"gift_page" ,:prev_label => '上一页', :next_label => '下一页'%>
+                </tr>
+            </tbody></table>
+        </td>
+    </tr>
+    <tr height="20">
+        	        <th scope="col" width="8%" nowrap="nowrap">
+				<div style="white-space: nowrap;" width="100%" align="left">
+                 
+	                <a href="Home&action=index#" onclick="" class="listViewThLinkS1">编号</a>&nbsp;&nbsp;
+	                                        	                    <img border="0" src="/images/crm/arrow.gif" width="8" height="10" align="absmiddle" alt="排序">
+	                	           			   </div>
+            </th>
+        	        <th scope="col" width="30%" nowrap="nowrap">
+				<div style="white-space: nowrap;" width="100%" align="left">
+                 
+	                <a href="Home&action=index#" onclick="" class="listViewThLinkS1">主题</a>&nbsp;&nbsp;
+	                                        	                    <img border="0" src="/images/crm/arrow.gif" width="8" height="10" align="absmiddle" alt="排序">
+	                	           			   </div>
+            </th>
+        	        <th scope="col" width="21%" nowrap="nowrap">
+				<div style="white-space: nowrap;" width="100%" align="left">
+                 
+	                <a href="Home&action=index#" onclick=")" class="listViewThLinkS1">类型</a>&nbsp;&nbsp;
+	                                        	                    <img border="0" src="/images/crm/arrow.gif" width="8" height="10" align="absmiddle" alt="排序">
+	                	           			   </div>
+            </th>
+        	        <th scope="col" width="11%" nowrap="nowrap">
+				<div style="white-space: nowrap;" width="100%" align="left">
+                 
+	                <a href="Home&action=index#" onclick=")" class="listViewThLinkS1">状态</a>&nbsp;&nbsp;
+	                                        	                    <img border="0" src="/images/crm/arrow.gif" width="8" height="10" align="absmiddle" alt="排序">
+	                	           			   </div>
+            </th>
+        				<th scope="col" nowrap="nowrap" width="1%">操作&nbsp;</th>
+		    </tr>
+		     <%@cad_gifts.each do |cad_gift|%>
+		    <tr height="20" class="oddListRowS1">
+						
+						
+							<td scope="row" align="left" valign="top" class="oddListRowS1" bgcolor=""><span sugar="sugar0b">
+									
+						<a href="/cad_gifts/<%=cad_gift.id%>"><%=cad_gift.id%></a>
+									</span></td>
+				
+							<td scope="row" align="left" valign="top" class="oddListRowS1" bgcolor=""><span sugar="sugar1b">
+					    <a href="/cad_gifts/<%=cad_gift.id%>"><%=cad_gift.name%></a>
+					    </span></td>
+							<td scope="row" align="left" valign="top" class="oddListRowS1" bgcolor=""><span sugar="sugar2b">
+						<%if cad_gift.cad_gift_style%><%=cad_gift.cad_gift_style.name%><%end%></span></td>
+							<td scope="row" align="left" valign="top" class="oddListRowS1" bgcolor=""><span sugar="sugar2b">
+						<%if cad_gift.level%><%=cad_gift.level.name%><%end%></span></td>
+				
+									<td width="1%" class="oddListRowS1" bgcolor="" nowrap="">
+									<a title="编辑" href="/cad_gifts/<%=cad_gift.id%>/edit"><img border="0" src="/images/crm/edit_inline.gif"></a>
+									<a title="查看" href="/cad_gifts/<%=cad_gift.id%>"><img border="0" src="/images/crm/view_inline.gif"></a>
+							</td>
+				    	</tr>
+        <%end%>
+        
+	</tbody></table>
+<br> 
+					</div>
+				</li>
+				
+				     		
+				
+								<li id="page_0_hidden0" style="height: 5px" class="noBullet">&nbsp;&nbsp;&nbsp;</li>
+								
+							
+			</ul>
+		</td>
+		
+		
+		
+				<td valign="top" width="40%">
+			<ul class="noBullet" id="col_0_1">
+			<!-- 	<li id="page_0_hidden1b" style="height: 5px" class="noBullet">&nbsp;&nbsp;&nbsp;</li>
+		        --> 
+		        
+		        
+		        
+		        <li class="noBullet" id="dashlet">
+					<div id="dashlet_entire">
+						
+						<div onmouseover="this.style.cursor = 'move';" id="dashlet_header" style="cursor: move; ">
+							<table width="100%" cellpadding="0" cellspacing="0" border="0" class="formHeader h3Row">
+								<tbody><tr>
+									<td nowrap=""><h3><span>我的活动</span></h3></td>
+									<td width="20"><img height="1" width="20" src="/images/crm/blank.gif" alt=""></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+<table cellpadding="0" cellspacing="0" width="100%" border="0" class="list view">
+    <tbody><tr class="pagination">
+        <td colspan="5" align="right">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tbody><tr>
+                    <td align="left">&nbsp;</td>
+                    <td align="right" nowrap="nowrap">                    
+                     <%= will_paginate @cad_actives ,:param_name=>"active_page",:prev_label => '上一页', :next_label => '下一页'%>
+                             
+                                            </td>
+                </tr>
+            </tbody></table>
+        </td>
+    </tr>
+  <tr height="20">
+        	        <th scope="col" width="30%" nowrap="nowrap">
+				<div style="white-space: nowrap;" width="100%" align="left">
+                 
+	                <a href="Home&action=index#" onclick="">活动名称</a>&nbsp;&nbsp;
+	                                        	                    <img border="0" src="/images/crm/arrow.gif" width="8" height="10" align="absmiddle" alt="排序">
+	                	           			   </div>
+            </th>
+        	        <th scope="col" width="15%" nowrap="nowrap">
+				<div style="white-space: nowrap;" width="100%" align="left">
+                 
+	                <a href="" onclick="" class="listViewThLinkS1">状态</a>&nbsp;&nbsp;
+	                                        	                    <img border="0" src="/images/crm/arrow.gif" width="8" height="10" align="absmiddle" alt="排序">
+	                	           			   </div>
+            </th>
+        	    <th scope="col" width="15%" nowrap="nowrap">
+				<div style="white-space: nowrap;" width="100%" align="left">
+                 
+	                <a href="Home&action=index#" onclick="">类型</a>&nbsp;&nbsp;
+	            </div>
+            </th> 
+                  <th scope="col" width="20%" nowrap="nowrap">
+				<div style="white-space: nowrap;" width="100%" align="left">
+                 
+	                <a href="Home&action=index#" onclick="">开始时间</a>&nbsp;&nbsp;
+	            </div>
+            </th>
+                  <th scope="col" width="20%" nowrap="nowrap">
+				<div style="white-space: nowrap;" width="100%" align="left">
+                 
+	                <a href="Home&action=index#" onclick="">负责人</a>&nbsp;&nbsp;
+	            </div>
+            </th>
+        				<th scope="col" nowrap="nowrap" width="1%">操作&nbsp;</th>
+		    </tr>
+			 <%@cad_actives.each do |cad_active|%>
+		    <tr height="20" class="oddListRowS1">
+		    	       <td scope="row" align="left" valign="top">
+							<%= link_to cad_active.name,:controller=>"cad_actives",:action=>"show",:id=>cad_active.id -%></td>
+						<td scope="row" align="left" valign="top">
+							<%=cad_active.statue%></td>
+						<td scope="row" align="left" valign="top">
+							<%=cad_active.cad_active_category.name%></td> 
+						<td scope="row" align="left" valign="top">
+							<%=cad_active.start_time.strftime('%Y-%m-%d' )%></td>
+						<td scope="row" align="left" valign="top">
+							<%if cad_active.user%><%=cad_active.user.name%><%end%></td>
+						<td width="1%" class="oddListRowS1" bgcolor="" nowrap="">
+						  <%= link_to image_tag("/images/crm/edit_inline.gif"),:controller=>"cad_actives" ,:action=>"edit",:id=>cad_active.id -%>
+						  <%= link_to image_tag("/images/crm/view_inline.gif"),:controller=>"cad_actives" , :action=>"show",:id=>cad_active.id-%>
+						</td>
+	    	</tr>
+		<%end%> 	
+	</tbody></table>
+<br> 
+					</div>
+				</li>
+		        
+		        
+		        
+		        
+
+				<li class="noBullet" id="dashlet_2f2ff127-37ef-f768-ca0b-4e7d64aa823f">
+					<div id="dashlet_entire_2f2ff127-37ef-f768-ca0b-4e7d64aa823f">
+						
+						<div onmouseover="this.style.cursor = 'move';" id="dashlet_header_2f2ff127-37ef-f768-ca0b-4e7d64aa823f"><table width="100%" cellpadding="0" cellspacing="0" border="0" class="formHeader h3Row">
+<tbody><tr>
+<td nowrap=""><h3><span>我的企业服务</span></h3></td><td width="20"><img height="1" width="20" src="/images/crm/blank.gif" alt=""></td>
+</tr>
+</tbody></table></div>
+
+<table cellpadding="0" cellspacing="0" width="100%" border="0" class="list view">
+    <tbody><tr class="pagination">
+        <td colspan="7" align="right">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tbody><tr>
+                    <td align="left">&nbsp;</td>
+                    <td align="right" nowrap="nowrap">                    
+                    <%= will_paginate @cad_enterpriseinformations,:param_name=>"em_page" ,:prev_label => '上一页', :next_label => '下一页'%> </td>
+                </tr>
+            </tbody></table>
+        </td>
+    </tr>
+    <tr height="20">
+        	 
+        	        <th scope="col" width="25%" nowrap="nowrap">
+				<div style="white-space: nowrap;" width="100%" align="left">
+                 
+	               企业
+	                	            			   </div>
+            </th>
+        	        <th scope="col" width="18%" nowrap="nowrap">
+				<div style="white-space: nowrap;" width="100%" align="left">
+                	           		主题
+	           			   </div>
+            </th>
+        	        <th scope="col" width="18%" nowrap="nowrap">
+				<div style="white-space: nowrap;" width="100%" align="left">
+                 
+	               时间	           			   </div>
+            </th>
+        				<th scope="col" nowrap="nowrap" width="1%">操作&nbsp;</th>
+		    </tr>
+          <%@cad_enterpriseinformations.each do |cad_enterpriseinformation|%>
+		    <tr height="20" class="oddListRowS1">
+						
+						
+							<td scope="row" align="left" valign="top" class="oddListRowS1" bgcolor=""><span sugar="sugar0b">
+							<%if cad_enterpriseinformation.cad_enterprise%><%= link_to cad_enterpriseinformation.cad_enterprise.company,:controller=>"cad_enterprises",:action=>"show",:id=>cad_enterpriseinformation.cad_enterprise.id -%><%end%>	
+						
+									</span></td>
+				
+							<td scope="row" align="left" valign="top" class="oddListRowS1" bgcolor=""><span sugar="sugar2b">
+						<a href="/cad_enterpriseinformations/edit/<%=cad_enterpriseinformation.id%>"><%=cad_enterpriseinformation.cad_category.name%></a>
+						</span></td>
+							<td scope="row" align="left" valign="top" class="oddListRowS1" bgcolor=""><span sugar="sugar1b">
+					 <%=cad_enterpriseinformation.created_at.strftime('%Y-%m-%d' )%></span></td>
+				
+									<td width="1%" class="oddListRowS1" bgcolor="" nowrap="">
+									<a title="编辑" href="/cad_enterpriseinformations/<%=cad_enterpriseinformation.id%>/edit"><img border="0" src="/images/crm/edit_inline.gif"></a>
+									<a title="查看" href="/cad_enterpriseinformations/<%=cad_enterpriseinformation.id%>"><img border="0" src="/images/crm/view_inline.gif"></a>
+							</td>
+				    	</tr>
+        <%end%>
+	</tbody></table>
+<br> 
+					</div>
+				</li>
+						
+						
+						
+			<li class="noBullet" id="dashlet_2f2ff127-37ef-f768-ca0b-4e7d64aa823f">
+					<div id="dashlet_entire_2f2ff127-37ef-f768-ca0b-4e7d64aa823f">
+						
+						<div onmouseover="this.style.cursor = 'move';" id="dashlet_header_2f2ff127-37ef-f768-ca0b-4e7d64aa823f"><table width="100%" cellpadding="0" cellspacing="0" border="0" class="formHeader h3Row">
+<tbody><tr>
+<td nowrap=""><h3><span>我的学生服务</span></h3></td><td width="20"><img height="1" width="20" src="/images/crm/blank.gif" alt=""></td>
+</tr>
+</tbody></table></div>
+
+<table cellpadding="0" cellspacing="0" width="100%" border="0" class="list view">
+    <tbody><tr class="pagination">
+        <td colspan="7" align="right">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tbody><tr>
+                    <td align="left">&nbsp;</td>
+                    <td align="right" nowrap="nowrap">                    
+                    <%= will_paginate @cad_studentinformations,:param_name=>"sm_page" ,:prev_label => '上一页', :next_label => '下一页'%> </td>
+                </tr>
+            </tbody></table>
+        </td>
+    </tr>
+    <tr height="20">
+        	 
+        	        <th scope="col" width="25%" nowrap="nowrap">
+				<div style="white-space: nowrap;" width="100%" align="left">
+                 
+	               学生
+	                	            			   </div>
+            </th>
+        	        <th scope="col" width="18%" nowrap="nowrap">
+				<div style="white-space: nowrap;" width="100%" align="left">
+                	           		主题
+	           			   </div>
+            </th>
+        	        <th scope="col" width="18%" nowrap="nowrap">
+				<div style="white-space: nowrap;" width="100%" align="left">
+                 
+	               时间	           			   </div>
+            </th>
+        				<th scope="col" nowrap="nowrap" width="1%">操作&nbsp;</th>
+		    </tr>
+          <%@cad_studentinformations.each do |cad_studentinformation|%>
+		    <tr height="20" class="oddListRowS1">
+						
+						
+							<td scope="row" align="left" valign="top" class="oddListRowS1" bgcolor=""><span sugar="sugar0b">
+							<%if cad_studentinformation.stu_reg_inf%><%= link_to cad_studentinformation.stu_reg_inf.name,:controller=>"career_stu_show",:id=>cad_studentinformation.stu_reg_inf.id -%><%end%>		
+						
+									</span></td>
+				
+							<td scope="row" align="left" valign="top" class="oddListRowS1" bgcolor=""><span sugar="sugar2b">
+						<a href="/cad_studentinformations/edit/<%=cad_studentinformation.id%>"><%=cad_studentinformation.cad_category.name%></a>
+						</span></td>
+							<td scope="row" align="left" valign="top" class="oddListRowS1" bgcolor=""><span sugar="sugar1b">
+					        <%if cad_studentinformation.created_at%><%=cad_studentinformation.created_at.strftime('%Y-%m-%d' )%><%end%></span></td>
+				
+									<td width="1%" class="oddListRowS1" bgcolor="" nowrap="">
+									<a title="编辑" href="/cad_studentinformations/<%=cad_studentinformation.id%>/edit"><img border="0" src="/images/crm/edit_inline.gif"></a>
+									<a title="查看" href="/cad_studentinformations/<%=cad_studentinformation.id%>"><img border="0" src="/images/crm/view_inline.gif"></a>
+							</td>
+				    	</tr>
+        <%end%>
+	</tbody></table>
+<br> 
+					</div>
+				</li>		
+						
+						
+						
+						
+						
+				
+								<li id="page_0_hidden1" style="height: 5px" class="noBullet">&nbsp;&nbsp;&nbsp;</li>
+			</ul>
+		</td>
+		
+			</tr>
+</tbody></table>
+	</div>
+	
+		<div id="pageNum_0_div" style="display:none;">
+	</div>
+
+				
+	
+</div>
+
+
+<script type="text/javascript">
+SUGAR.mySugar.maxCount = 	15;
+SUGAR.mySugar.homepage_dd = new Array();
+SUGAR.mySugar.init = function () {
+	j = 0;
+	
+	
+	dashletIds = ["29940a58-286a-abbc-1bc0-4e7d64485ccd","","44278365-d567-c0fe-53dc-4e7d649c5374","242e5510-8fff-a459-5a23-4e7d6438b3ad","2f2ff127-37ef-f768-ca0b-4e7d64aa823f","3ef4c1c0-bacf-97f1-212e-4e7d6442a22a"];
+	
+		
+	for(i in dashletIds) {
+		SUGAR.mySugar.homepage_dd[j] = new ygDDList('dashlet_' + dashletIds[i]);
+		SUGAR.mySugar.homepage_dd[j].setHandleElId('dashlet_header_' + dashletIds[i]);
+		SUGAR.mySugar.homepage_dd[j].onMouseDown = SUGAR.mySugar.onDrag;  
+		SUGAR.mySugar.homepage_dd[j].afterEndDrag = SUGAR.mySugar.onDrop;
+		j++;
+	}
+	for(var wp = 0; wp <= 2; wp++) {
+	    SUGAR.mySugar.homepage_dd[j++] = new ygDDListBoundary('page_'+activePage+'_hidden' + wp);
+	}
+
+	YAHOO.util.DDM.mode = 1;
+	
+		
+	SUGAR.mySugar.renderDashletsDialog(
+
+
+	SUGAR.mySugar.loadSugarCharts();
+}
+
+</script>
+
+
+<script type="text/javascript">
+	YAHOO.util.Event.addListener(window, 'load', SUGAR.mySugar.init); 
+</script><!-- crmprint --><script>		if(window.addEventListener){
+			window.addEventListener("load", checkAlerts, false);
+		}else{
+			window.attachEvent("onload", checkAlerts);
+		}
+		</script><!--end body panes-->
+        </td></tr></tbody></table>
+    </div>
+    <div class="clear"></div>
+</div>
+
+<div id="footer">
+    服务器响应时间: 5.74 秒。<br>
+    <div id="copyright">
+        © 2011-2012 北京国家发展研究院职业发展管理系统  版权所有   <br><img style="margin-top: 2px" border="0" width="106" height="23" src="/images/crm/poweredby_sugarcrm.png" alt="Powered By SugarCRM">
+
+    </div>
+</div>
+
+
+<div style="position: absolute; height: 1px; width: 1px; top: -1000px; left: -1000px; "><span class="ygtvtm">&nbsp;</span><span class="ygtvtmh">&nbsp;</span><span class="ygtvtp">&nbsp;</span><span class="ygtvtph">&nbsp;</span><span class="ygtvln">&nbsp;</span><span class="ygtvlm">&nbsp;</span><span class="ygtvlmh">&nbsp;</span><span class="ygtvlp">&nbsp;</span><span class="ygtvlph">&nbsp;</span><span class="ygtvloading">&nbsp;</span></div></body></html>

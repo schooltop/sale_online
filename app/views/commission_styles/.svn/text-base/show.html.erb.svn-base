@@ -1,0 +1,66 @@
+
+<%=render :partial=>"/admins/left"%>
+<div id="content">
+     <table style="width:100%"><tbody><tr><td>
+       <div class="moduleTitle">
+         <h2>提成配置</h2>
+            <span><a href="" class="utilsLink"><img src="/images/crm/print.gif" alt="打印"></a>
+                  <a href="" class="utilsLink">打印</a>&nbsp;
+                  <a href="" class="utilsLink" target="_blank">
+                  <img src="/images/crm/help.gif" alt="帮助"></a>
+                  <a href="/help" class="utilsLink" target="_blank">帮助</a>
+            </span>
+       </div>
+<table cellpadding="1" cellspacing="0" border="0" width="100%">
+<tbody>
+   <tr>
+     <td class="buttons" align="left" nowrap="">
+     <button type="button" class="button" title="编辑" onclick="document.location.href='/commission_styles/<%=@commission_style.id%>/edit'">编辑</button>
+     &nbsp;
+     <button type="button" class="button" title="返回列表" onclick="document.location.href='/commission_styles'">返回列表</button>
+     </td>
+  </tr>
+</tbody>
+</table>
+    <div id="DEFAULT" class="detail view">
+       <table id="detailpanel_1" cellspacing="0">
+          <tbody>
+            <tr class="pagination">
+                 <td colspan="20" style="padding: 0px;">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tbody>
+                      <tr><td nowrap="" align="right"></td></tr>
+                    </tbody>
+                  </table>
+                 </td>
+            </tr>
+            <tr>
+                <td width="12.5%" scope="row">项目:</td>
+                <td width="30.5%"><span id="name"><%=@commission_style.name%></span></td>
+                <td width="12.5%" scope="row">类型:</td>
+                <td width="30.5%">
+                <%=@commission_style.style%>
+                </td>
+            <td scope="row" nowrap="nowrap" width="8.3%">粒度</td>
+		<td nowrap="nowrap" width="15%">
+			<%=@commission_style.gran%>
+		</td>	
+		
+		
+ </tr>
+
+<script type="text/javascript" language="javascript">
+    var fromKey = '';
+    var toKey = 'billing';
+    var checkbox = toKey + "_checkbox";
+    var obj = new TestCheckboxReady(checkbox); 
+</script>
+</tbody></table>
+</div>
+
+
+
+
+
+  
+</div>

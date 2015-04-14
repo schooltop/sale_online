@@ -1,0 +1,12 @@
+<h1>Editing service_task</h1>
+
+<% form_for(@service_task) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @service_task %> |
+<%= link_to 'Back', service_tasks_path %>

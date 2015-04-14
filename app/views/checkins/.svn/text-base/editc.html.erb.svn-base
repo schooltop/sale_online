@@ -1,0 +1,113 @@
+
+  <script type="text/javascript">   
+        
+     function buttonDisable(n){    
+         var checkbox = document.getElementsByName("checkin[late_stu_reg_inf_"+n+"][]");        
+             if (checkbox[0].checked) {    
+                 document.getElementById("latediv"+n).style.display = "block";   
+                 return;    
+             }else{    
+                 document.getElementById("latediv"+n).style.display = "none"; 
+				 document.getElementById("late"+n).value = "";    
+             }                       
+     }    
+	 
+	    function leaverbuttonDisable(n){    
+         var checkbox = document.getElementsByName("checkin[leaver_stu_reg_inf_"+n+"][]");        
+             if (checkbox[0].checked) {    
+                 document.getElementById("leaverdiv"+n).style.display = "block";   
+                 return;    
+             }else{    
+                 document.getElementById("leaverdiv"+n).style.display = "none"; 
+				 document.getElementById("leaver"+n).value = "";    
+             }                       
+     }
+     function truantbuttonDisable(n){    
+         var checkbox = document.getElementsByName("checkin[truant_stu_reg_inf_"+n+"][]");        
+             if (checkbox[0].checked) {    
+                 document.getElementById("truantdiv"+n).style.display = "block";   
+                 return;    
+             }else{    
+                 document.getElementById("truantdiv"+n).style.display = "none"; 
+				 document.getElementById("truant"+n).value = "";    
+             }                       
+     }
+     function kuabanbuttonDisable(n){    
+         var checkbox = document.getElementsByName("checkin[kuaban_stu_reg_inf_"+n+"][]");        
+             if (checkbox[0].checked) {    
+                 document.getElementById("kuabandiv"+n).style.display = "block";   
+                 return;    
+             }else{    
+                 document.getElementById("kuabandiv"+n).style.display = "none"; 
+				 document.getElementById("kuaban"+n).value = "";    
+             }                       
+     }
+
+   </script> 
+
+<h3>考情管理>>修改考勤>>班级:<%=@student_class.name%>>>课程:<%=@course.name%></h3>	
+
+
+    <tr class="even"><td><b>班级：</b><font color="#FF0000"><%=@student_class.name%> </font></td><td>&nbsp;&nbsp;<b>课程：</b><font color="#FF0000"><%=@course.name%></font></td><%if @team&&@team!=""%><td>&nbsp;&nbsp;<b>组：</b><font color="#FF0000"><%=@team.name%></font></td><%end%><td>&nbsp;&nbsp;<b>教室：</b><font color="#FF0000"><%=(@event.classroom)?(@event.classroom.name): ""%></font>&nbsp;&nbsp;<b>老师：</b><font color="#FF0000"><%=@event.teacher.lastname%><%=@event.teacher.firstname%></font>&nbsp;&nbsp;<b>时间：</b><font color="#FF0000"><%=@event.starttime.strftime("%Y年%m月%d日%H时")%></font></td></tr>		
+
+<input title="返回"  onclick="window.location='/checkin_teams?student_class_id=<%=@student_class.id%>&amp;course_id=<%=@course.id%>';" class="button" type="submit" name="button" value="返回">
+
+<% form_for @event,:url=>{:action=>"update",:event_id=>@event.id}do |f| %>
+<%=f.hidden_field :student_class_id, :value =>@student_class.id%>
+<%=f.hidden_field :course_id, :value =>@course.id%>
+ <table style="border:solid 1px;border-color:#FFE66F">
+	<tr class="even"><td><b>学生学号</b></td><td><b>学生名称</b></td><td><b>迟到</b></td><td><b>早退</b></td><td><b>没来</b></td><td><b>跨班上</b></td></tr>
+
+	<%z=0%>
+	<%for stu_reg_inf in @cou_stu_reg_infs.sort_by{|u|u.itemno}%>			
+	<%z=z+1%>
+	 <%if (z%2==0)%><tr class="even"><%else%>
+	<tr><%end%><td><%=stu_reg_inf.itemno%></td><td width="185px"><%=stu_reg_inf.name%></td>
+	<%if @late_stu_reg_infs.include?(stu_reg_inf)%>
+	  <td width="185px"><div><div style="float:left;"><input checked="checked" id="checkin_late_stu_reg_inf_<%=stu_reg_inf.id%>_" name="checkin[late_stu_reg_inf_<%=stu_reg_inf.id%>][]" type="checkbox" value="<%=stu_reg_inf.id%>" onclick="buttonDisable('<%=stu_reg_inf.id%>')"/>迟到</div>
+	  <%late_checkin=Checkin.find(:last,:conditions=>"event_id=#{@event.id} and stu_reg_inf_id=#{stu_reg_inf.id} and late='迟到'")%>
+	  <div id="latediv<%=stu_reg_inf.id%>" name="latediv<%=stu_reg_inf.id%>" ><input name="late<%=stu_reg_inf.id%>" type="text" class="late" id="late<%=stu_reg_inf.id%>" value="<%=late_checkin.latetime%>" style="width:20px;"/>分钟</div></div></td>
+	<%else%>
+	   <td width="185px"><div><div style="float:left;"><input id="checkin_late_stu_reg_inf_<%=stu_reg_inf.id%>_" name="checkin[late_stu_reg_inf_<%=stu_reg_inf.id%>][]" type="checkbox" value="<%=stu_reg_inf.id%>" onclick="buttonDisable('<%=stu_reg_inf.id%>')"/>迟到</div>
+	   <div id="latediv<%=stu_reg_inf.id%>" name="latediv<%=stu_reg_inf.id%>" style="display:none;"><input name="late<%=stu_reg_inf.id%>" type="text" class="late" id="late<%=stu_reg_inf.id%>" style="width:20px;"/>分钟</div></div></td>
+	<%end%>	  	  
+	 <%if @leaver_stu_reg_infs.include?(stu_reg_inf)%>
+	  <td width="185px"><div><div style="float:left;"><input checked="checked" id="checkin_leaver_stu_reg_inf_<%=stu_reg_inf.id%>_" name="checkin[leaver_stu_reg_inf_<%=stu_reg_inf.id%>][]" type="checkbox" value="<%=stu_reg_inf.id%>" onclick="leaverbuttonDisable('<%=stu_reg_inf.id%>')"/>早退</div>
+	  <%leaver_checkin=Checkin.find(:last,:conditions=>"event_id=#{@event.id} and stu_reg_inf_id=#{stu_reg_inf.id} and leaver='早退'")%>
+	  <div id="leaverdiv<%=stu_reg_inf.id%>" name="leaverdiv<%=stu_reg_inf.id%>"><input name="leaver<%=stu_reg_inf.id%>" type="text" class="leaver" id="leaver<%=stu_reg_inf.id%>" value="<%=leaver_checkin.leavertime%>" style="width:20px;"/>分钟</div></div></td>
+	<%else%>
+	   <td width="185px"><div><div style="float:left;"><input id="checkin_leaver_stu_reg_inf_<%=stu_reg_inf.id%>_" name="checkin[leaver_stu_reg_inf_<%=stu_reg_inf.id%>][]" type="checkbox" value="<%=stu_reg_inf.id%>" onclick="leaverbuttonDisable('<%=stu_reg_inf.id%>')"/>早退</div>
+	   <div id="leaverdiv<%=stu_reg_inf.id%>" name="leaverdiv<%=stu_reg_inf.id%>" style="display:none;"><input name="leaver<%=stu_reg_inf.id%>" type="text" class="late" id="leaver<%=stu_reg_inf.id%>" style="width:20px;"/>分钟</div></div></td>
+	<%end%> 	  	
+	 <!-- <td width="185px"><%= check_box_tag "checkin[truant_stu_reg_inf_#{stu_reg_inf.id}][]",stu_reg_inf.id ,@truant_stu_reg_infs.include?(stu_reg_inf) %>没来</td></tr>	-->		 
+	 <%if @truant_stu_reg_infs.include?(stu_reg_inf)%>
+	  <td width="185px"><div><div style="float:left;"><input checked="checked" id="checkin_truant_stu_reg_inf_<%=stu_reg_inf.id%>_" name="checkin[truant_stu_reg_inf_<%=stu_reg_inf.id%>][]" type="checkbox" value="<%=stu_reg_inf.id%>" onclick="truantbuttonDisable('<%=stu_reg_inf.id%>')"/>没来</div>
+	  <%truant_checkin=Checkin.find(:last,:conditions=>"event_id=#{@event.id} and stu_reg_inf_id=#{stu_reg_inf.id} and truant='没来'")%>
+	  <div id="truantdiv<%=stu_reg_inf.id%>" name="truantdiv<%=stu_reg_inf.id%>"><input name="truant<%=stu_reg_inf.id%>" type="text" class="truant" id="truant<%=stu_reg_inf.id%>" value="<%=truant_checkin.truantrecord%>" style="width:60px;"/>记录</div></div></td>
+	<%else%>
+	   <td width="185px"><div><div style="float:left;"><input id="checkin_truant_stu_reg_inf_<%=stu_reg_inf.id%>_" name="checkin[truant_stu_reg_inf_<%=stu_reg_inf.id%>][]" type="checkbox" value="<%=stu_reg_inf.id%>" onclick="truantbuttonDisable('<%=stu_reg_inf.id%>')"/>没来</div>
+	   <div id="truantdiv<%=stu_reg_inf.id%>" name="truantdiv<%=stu_reg_inf.id%>" style="display:none;"><input name="truant<%=stu_reg_inf.id%>" type="text" class="late" id="truant<%=stu_reg_inf.id%>" style="width:60px;"/>记录</div></div></td>
+	<%end%> 
+	<%if @kuaban_stu_reg_infs.include?(stu_reg_inf)%>
+	  <td width="185px"><div><div style="float:left;"><input checked="checked" id="checkin_kuaban_stu_reg_inf_<%=stu_reg_inf.id%>_" name="checkin[kuaban_stu_reg_inf_<%=stu_reg_inf.id%>][]" type="checkbox" value="<%=stu_reg_inf.id%>" onclick="kuabanbuttonDisable('<%=stu_reg_inf.id%>')"/>跨班</div>
+	  <%kuaban_checkin=Checkin.find(:last,:conditions=>"event_id=#{@event.id} and stu_reg_inf_id=#{stu_reg_inf.id} and kuaban='跨班'")%>
+	  <div id="kuabandiv<%=stu_reg_inf.id%>" name="kuabandiv<%=stu_reg_inf.id%>"><input name="kuaban<%=stu_reg_inf.id%>" type="text" class="kuaban" id="kuaban<%=stu_reg_inf.id%>" value="<%=kuaban_checkin.truantrecord%>" style="width:20px;"/>记录</div></div></td>
+	<%else%>
+	   <td width="185px"><div><div style="float:left;"><input id="checkin_kuaban_stu_reg_inf_<%=stu_reg_inf.id%>_" name="checkin[kuaban_stu_reg_inf_<%=stu_reg_inf.id%>][]" type="checkbox" value="<%=stu_reg_inf.id%>" onclick="kuabanbuttonDisable('<%=stu_reg_inf.id%>')"/>跨班</div>
+	   <div id="kuabandiv<%=stu_reg_inf.id%>" name="kuabandiv<%=stu_reg_inf.id%>" style="display:none;"><input name="kuaban<%=stu_reg_inf.id%>" type="text" class="late" id="kuaban<%=stu_reg_inf.id%>" style="width:20px;"/>记录</div></div></td>
+	<%end%> 
+	</tr>
+	
+	<%end%>
+	    <%= f.submit '修改' %>
+	 <tr class="even"><td colspan="5"> <%= f.submit '修改' %> </td> </tr>
+</table>
+
+<%end%>
+<input title="返回"  onclick="window.location='/checkin_teams?student_class_id=<%=@student_class.id%>&amp;course_id=<%=@course.id%>';" class="button" type="submit" name="button" value="返回">
+	    
+
+
+
+
+

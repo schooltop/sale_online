@@ -1,0 +1,124 @@
+
+   <div class="contentContainer" style="height:300px;width:927px;background:url('/images/oldimages/bgBox.png') repeat">
+  	<div class="collapsed" style="width:927px;">
+  		<div class="left"><span><b>T2MAX机场服务专区</b></span></div>
+  		<div class="right"><a href="#" title="展开">展开</a></div>
+  		<div class="clear"></div>
+  	</div>
+  	<div class="open" >
+  		<ul><li><a href="/objectservice" title="T2MAX机场服务专区" class="selected">T2MAX机场服务专区</a></li><li><a href=service" title="Press Offices">Press Offices</a></li></ul>
+  		<div class="sx"><h1>T2MAX机场服务专区</h1>
+  			<div class="text" id=""><!-- description --><p>请选择要浏览的服务</p><br /><br /><br />
+  				<dl><dd>
+  					<select size="1" id="press" name="press">
+  						<option value="-1">Select a location</option>
+  						<option value="0" >VIP快捷通道贵宾接送机服务</option>
+  						<option value="1" >棋牌、专业雪茄品鉴</option>
+  						<option value="2" >SPA美体</option>
+  						<option value="3" >精致餐饮</option>
+  						<option value="4" >计时客房</option>
+  						<option value="5" >商务会议</option>
+  						<option value="6" >其他免费服务</option>
+  						</select>
+  				</dd></dl>
+  			</div>
+  		</div>
+  		<div class="text scroll-pane press" id="pane3" style="width:640px;">
+  			<div class="pressContainer" name="0">
+  				<div class="press-ph">
+  					<img src="/images/object1/1.png" width="203" height="114" alt="" />
+  				</div>
+  				<div class="press-txt" style="width:280px ">
+  					<p>VIP快捷通道贵宾接送机服务</p><br /><span>T2max打造非凡细节，无论是设备或用具都彰显王者气概，在环境的布局中更以人体五感为轴心,体现视觉的美感,听觉的悦耳
+  	     		,嗅觉的芬芳,味觉的奢华,触觉的舒适. 为您带来舒心感受</span> 					
+  				</div>
+  				<div class="press-lnk" style="float:right">
+  					<a href="/品牌 T2max1会员章程.doc" target="_blank">更多了解
+  					<img src="/images/oldimages/padTopMenu.gif" width="35" height="6" alt="" /></a>
+  				</div>
+  				<div class="clear"></div>
+  				<div class="filettoSlider" style="padding-bottom:10px;">
+  					<img src="/images/oldimages/filettoBox.png" alt="" />
+  				</div>
+  			</div>
+  			
+  			<div class="pressContainer" name="1">
+  				<div class="press-ph">
+  					<a href="/service" target="_blank"><img src="/images/object1/2.png" width="203" height="114" alt="" /></a>
+  				</div>
+  				<div class="press-txt" style="width:280px ">
+  					<p>棋牌、专业雪茄品鉴</p><br /><span>T2max打造非凡细节，无论是设备或用具都彰显王者气概，在环境的布局中更以人体五感为轴心,体现视觉的美感,听觉的悦耳
+  	     		,嗅觉的芬芳,味觉的奢华,触觉的舒适. 为您带来舒心感受</span> 					
+  				</div>
+  				<div class="press-lnk" style="float:right">
+  					<a href="/service" target="_blank">更多了解
+  					<img src="/images/oldimages/padTopMenu.gif" width="35" height="6" alt="" /></a>
+  				</div>
+  				<div class="clear"></div>
+  				<div class="filettoSlider" style="padding-bottom:10px;">
+  					<img src="/images/oldimages/filettoBox.png" alt="" />
+  				</div>
+  			</div>
+  			
+  			<div class="pressContainer" name="2">
+  				<div class="press-ph">
+  					<a href="/servicetow" target="_blank"><img src="/images/object1/3.png" width="203" height="114" alt="" /></a>
+  				</div>
+  				<div class="press-txt" style="width:280px ">
+  					<p>SPA美体</p><br /><!-- <a href="/servicetow" target="_blank"> --><span>T2max打造非凡细节，无论是设备或用具都彰显王者气概，在环境的布局中更以人体五感为轴心,体现视觉的美感,听觉的悦耳
+  	     		,嗅觉的芬芳,味觉的奢华,触觉的舒适. 为您带来舒心感受</span><!-- </a> --> 					
+  				</div>
+  				<div class="press-lnk" style="float:right">
+  					<a href="/servicetow" target="_blank">更多了解
+  					<img src="/images/oldimages/padTopMenu.gif" width="35" height="6" alt="" /></a>
+  				</div>
+  				<div class="clear"></div>
+  				<div class="filettoSlider" style="padding-bottom:10px;">
+  					<img src="/images/oldimages/filettoBox.png" alt="" />
+  				</div>
+  			</div>
+  			
+  			
+  			<%for i in 4..7%>
+  			<div class="pressContainer" name="<%=i-1%>">
+  				<div class="press-ph">
+  					<a href="/service" target="_blank"><img src="/images/object1/<%=i.to_s%>.png" width="203" height="114" alt="" /></a>
+  				</div>
+  				<div class="press-txt" style="width:280px ">
+  					<p>A luxury brand of hotel</p><br /><!-- <a href="/service" target="_blank"> --><span>june 2010 | Influence</span> <!-- </a> -->					
+  				</div>
+  				<div class="press-lnk" style="float:right">
+  					<a href="/品牌 T2max1会员章程.doc" target="_blank">更多了解
+  					<img src="/images/oldimages/padTopMenu.gif" width="35" height="6" alt="" /></a>
+  				</div>
+  				<div class="clear"></div>
+  				<div class="filettoSlider" style="padding-bottom:10px;">
+  					<img src="/images/oldimages/filettoBox.png" alt="" />
+  				</div>
+  			</div>
+  			<%end%>	
+  			</div></div></div>
+
+ 
+                <script type="text/javascript">
+          var bck_Timer;
+          var bck_Src = '/images/services/jichangfw.jpg';
+          jQuery(document).ready(function () {
+
+
+
+          if (bck_Src != 'none')
+          {
+          bck_Timer = setTimeout('changeBck(bck_Src)',300);
+
+
+          }
+          });
+
+          function changeBck(bck_Src)
+          {
+          clearTimeout(bck_Timer);
+          $('#imageDisplay img.bg-image').delay(1000).attr("src", bck_Src);
+          }
+      </script><div class="bg-container" id="imageDisplay"><img src="/images/oldimages/bhr.image.empty.png" tppabs="http://www.t2max.com/img/background/bhr.image.empty.png" alt="" class="bg-image" id="0" /></div>
+

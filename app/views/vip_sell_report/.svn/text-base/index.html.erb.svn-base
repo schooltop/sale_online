@@ -1,0 +1,232 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <head>
+    <%=stylesheet_link_tag 'extjs/resources/css/ext-all' %>
+    <%=stylesheet_link_tag "crm-style",'yui','deprecated','colors.sugar','fonts.normal','tree' %>
+    <%=stylesheet_link_tag 'common-skins/maintain/css/maintain'%>
+    <%=javascript_include_tag 'extjs/ext-base' %>
+    <%=javascript_include_tag 'extjs/ext-base-debug' %>
+    <%=javascript_include_tag 'extjs/ext-all' %>
+    <%=javascript_include_tag 'extjs/ext-lang-zh_CN.js' %>
+    <%= javascript_include_tag "FusionCharts.js" %>
+  </head>
+  <body>
+    <%=render :partial=>"/admins/caiwuleft"%>
+    <div id="content">
+<div>
+  <table cellpadding="1" cellspacing="1" border="0" width="100%" style="margin-top:0px;margin-bottom: 10px;">
+    <tr>
+      <td style="float: left">
+      <%str_xml = render "vip_sell_report/builder_xml/vipsell_pie",{:data =>@vipSellTotalPrice}
+        hash_data={}
+        for x in @vipSellTotalPrice
+            hash_data[x.id.to_s+"="]=x.name
+        end
+        hash_data.each do |k,v|
+           str_xml= str_xml.gsub(k.to_s,v.to_s)
+        end
+      str_xml=str_xml.gsub("them","当月vip销售额")
+        render_chart '../FusionCharts/Pie2D.swf','',str_xml,'vipie',500,300, false, false do %>
+       <%end%>
+      </td>
+      
+      <td style="float: right">
+      <%str_xml = render "vip_sell_report/builder_xml/vipsell_column",{:data =>@vipSellTotalPrice}
+        hash_data={}
+        for x in @vipSellTotalPrice
+            hash_data[x.id.to_s+"="]=x.name
+        end
+        hash_data.each do |k,v|
+           str_xml= str_xml.gsub(k.to_s,v.to_s)
+        end
+      str_xml=str_xml.gsub("them","当月vip销售额")
+      str_xml=str_xml.gsub("pyname","销售额额")
+        render_chart '../FusionCharts/ScrollStackedColumn2D.swf','',str_xml,'vipcolumn',500,300, false, false do %>
+       <%end%>
+      </td>
+      </tr>
+  </table>
+</div>
+
+
+
+
+      <script type="text/javascript">
+        Ext.onReady(function(){
+          //创建表格store
+          var datastore = new Ext.data.JsonStore({
+            autoDestroy: true,
+            url: '/vip_sell_report/grid_data',
+            root : "root",
+            id: 'id',
+            totalProperty : "totalCount",
+            fields: ['vip_type', 'vip_num', 'total_price','deal_time','name']
+          });
+          datastore.load({params:{start:0,length:10}});
+          //处理周期显示
+          var sm = new Ext.grid.CheckboxSelectionModel();
+          var cm = new Ext.grid.ColumnModel([
+            new Ext.grid.RowNumberer(),//自动行号   
+            sm,
+
+            {header:'vip卡类型',dataIndex:'vip_type'},
+            {header:'卡号',dataIndex:'vip_num'},
+            {header:'价格',dataIndex:'total_price'},
+            {header:'办卡时间',dataIndex:'deal_time'},
+             {header:'工作人员',dataIndex:'name'}
+          ]);
+
+          var view=new Ext.grid.GridView({
+            scrollOffset:0,
+            sortAscText :'正序',
+            sortDescText :'倒序',
+            columnsText :'列显示/隐藏',
+            groupTextTpl :'{text} ({[values.rs.length]} 条记录)',
+            forceFit:true
+          });
+          var tbar = new Ext.Toolbar({
+            buttonAlign :'right',
+            items : [
+              '->', '-',
+              {text : "查询",
+                iconCls:'seaB',
+                scope:this,
+                handler:doquery
+              },'-',{text : "导出数据",
+                //iconCls:'seaB',
+                iconCls:'expB',
+                scope:this,
+                handler:function(){
+                  var vipStyle=Ext.getCmp('vipStyle').getValue();
+                  var resName=Ext.getCmp('workName').getValue();
+                  var datetime=  Ext.util.Format.date(Ext.getCmp('datetime').getValue(), 'Y-m-d');
+                  Ext.getBody().mask("正在导出数据,请稍后......");
+                  window.location.href= "/vip_sell_report/export_data?workName="+resName+"&vipStyle="+vipStyle+"&datetime="+datetime;
+                  Ext.getBody().unmask();
+                }
+              }
+            ]});
+          var grid1 = new Ext.grid.GridPanel({ 
+            id:'gird1',
+            store :  datastore,
+            loadMask : false,  
+            border:false,
+
+            cm: cm,   
+            sm: sm,//添加的地方  
+            tbar:tbar, 
+            height:document.documentElement.clientHeight - 179-26,
+            view:view,
+            autoHeight:false,
+            autoScroll:true,
+            stripeRows :true,
+            autoWith:true,
+            bbar:new Ext.PagingToolbar({
+              pageSize : 10,
+              store : datastore,
+              displayInfo : true,
+              displayMsg : '显示第 {0} 条到 {1} 条记录，一共 {2} 条',
+              emptyMsg : '没有记录',
+              beforePageText : '第',
+              afterPageText : '页，共 {0}页'
+            })
+          });
+          var  panelAll=new Ext.Panel({
+            id:'panelAll',
+            layout:'form',
+            border:false,
+
+            frame:true,
+            title:'vip销售分析',
+            width:'100%',
+            items:[
+              {
+                id:'searchP',
+                xtype:'panel',
+                layout:'column',
+                border:false,
+                autoWith:true,
+                items:[
+                  {
+                    xtype : "panel",
+                    layout : "form",
+                    labelWidth:100,
+                    columnWidth : .33,
+                    bodyStyle : "background-color : #DFE8F6",
+                    border : false,
+                    items : [
+                      {
+                        id:'vipStyle',
+                        fieldLabel : "vip卡类型",
+                        xtype : "textfield",
+                        anchor : '50%'
+                      }
+
+                    ]
+                  },
+                 {
+                    xtype : "panel",
+                    layout : "form",
+                    labelWidth:100,
+                    columnWidth : .33,
+                    bodyStyle : "background-color : #DFE8F6",
+                    border : false,
+                    items : [
+                      {
+                        id:'workName',
+                        fieldLabel : "工作人员",
+                        xtype : "textfield",
+                        anchor : '50%'
+                      }
+
+                    ]
+                  },
+                  {
+                    xtype:"panel",
+                    layout:"form",
+                    labelWidth:60,
+                    columnWidth : .33,
+                    bodyStyle : "background-color : #DFE8F6",
+                    border : false,
+                    items:[
+                      {
+                        id:'datetime',
+                        fieldLabel:'日期',
+                        xtype:'datefield',
+                        format : 'Y-m',
+                        editable : false,
+                        width:243,
+                        emptyText:'请选择',
+                        triggerAction: 'all',
+                        lazyRender:false,
+                        mode: 'local',
+                        minListWidth : 220,
+                        anchor : '50%'
+                      }]
+                  }
+                ]
+              },
+              grid1
+            ]
+          });
+
+          //执行查询操作
+          function doquery(){
+            var vipStyle=Ext.getCmp('vipStyle').getValue();
+            var workName=Ext.getCmp('workName').getValue();
+            var datetime=  Ext.util.Format.date(Ext.getCmp('datetime').getValue(), 'Y-m');
+            Ext.getCmp('gird1').store.baseParams=eval("({vipStyle:'"+vipStyle+"',workName:'"+workName+"',datetime:'"+datetime+"'})");
+            Ext.getCmp('gird1').store.load();
+            Ext.getCmp('gird1').getView().refresh();
+          }
+          panelAll.render("content");
+          window.onresize = function () {
+          Ext.getCmp('panelAll').doLayout();
+           }
+        });
+      </script>
+      </div>
+  </body>
+</html>
+

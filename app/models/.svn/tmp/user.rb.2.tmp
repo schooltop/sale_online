@@ -1,0 +1,266 @@
+require 'digest/sha1'
+
+class User < ActiveRecord::Base
+  include Authentication
+  include Authentication::ByPassword
+  include Authentication::ByCookieToken
+
+  include Authorization::StatefulRoles
+
+  has_many  :vips
+  has_many  :vip_records
+  has_many :orders
+  has_one  :user_profile
+  has_one :work
+  has_many  :leaves
+  has_and_belongs_to_many :roles
+   has_many  :commission_configs
+  validates_presence_of     :login
+  validates_length_of       :login,    :within => 2..40
+  validates_uniqueness_of   :login
+  validates_format_of       :login,    :with => Authentication.login_regex, :message => Authentication.bad_login_message
+
+  #validates_format_of       :name,     :with => Authentication.name_regex,  :message => Authentication.bad_name_message, :allow_nil => true
+  #validates_length_of       :name,     :maximum => 100
+
+  validates_presence_of     :email
+  validates_length_of       :email,    :within => 6..100 #r@a.wk
+  validates_uniqueness_of   :email
+  #validates_format_of       :email,    :with => Authentication.email_regex, :message => Authentication.bad_email_message
+
+  
+
+  # HACK HACK HACK -- how to do attr_accessible from here?
+  # prevents a user from submitting a crafted form that bypasses activation
+  # anything else you want your user to change should be added here.
+  attr_accessible :email, :name, :password, :password_confirmation,:login,:sign_from
+
+  def self.all_admins
+    all_admin_users=[]
+    for user in self.all
+      if user.is_admin?
+        all_admin_users<<user
+      end
+    end
+    return all_admin_users
+  end
+
+  def permissions  
+        user_permissions = Array.new  
+        for role in self.roles  
+            user_permissions += role.permissions              
+        end  
+        user_permissions.uniq!  
+        user_permissions  
+    end  
+      
+    #Get user's allowed requests uri  
+    def permission_urls  
+        user_urls = Array.new  
+        user_permissions = Array.new  
+        for role in self.roles  
+            user_permissions += role.permissions              
+        end  
+        for user_permission in user_permissions  
+            user_urls << user_permission.action             
+        end  
+        user_urls  
+    end  
+
+
+  def is_hr_and_admin?
+    boo=false
+    for role in self.roles
+      if role.id == 5 || role.id == 1
+        boo=true
+      end
+    end
+    return boo
+  end
+  
+  def is_cw_and_admin?
+    boo=false
+    for role in self.roles
+      if role.id == 6 || role.id == 1
+        boo=true
+      end
+    end
+    return boo
+  end
+  
+  def is_xs_and_admin?
+     boo=false
+    for role in self.roles
+      if role.id == 7 || role.id == 1
+        boo=true
+      end
+    end
+    return boo
+  end
+  
+  def is_kf_and_admin?
+     boo=false
+    for role in self.roles
+      if role.id == 8 || role.id == 1
+        boo=true
+      end
+    end
+    return boo
+  end
+
+
+  def is_admin?
+    self.roles.include?(Role.find_by_name('管理员'))
+  end
+  
+   def is_zhuguan?
+    self.roles.include?(Role.find_by_name('主管'))
+  end
+  
+  # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
+  #
+  # uff.  this is really an authorization, not authentication routine.  
+  # We really need a Dispatch Chain here or something.
+  # This will also let us return a human error message.
+  #
+  def self.authenticate(login, password)
+    return nil if login.blank? || password.blank?
+    #u = find_in_state :first, :active, :conditions => {:email => login.downcase} # need to get the salt
+    #u = find_in_state :first, :active, :conditions => {:login => login.downcase} if !u
+    u=self.find(:first,:conditions=>"email='#{login.downcase}'")
+    u=self.find(:first,:conditions=>"login='#{login.downcase}'")if !u
+    u && u.authenticated?(password) ? u : nil
+  end
+  
+  def addresses
+    Address.all.select{|a| a.creater_id == self.id}
+  end
+  
+  def time_vips
+   vips=Vip.find(:all,:conditions=>"user_id=#{self.id} and totime>'#{Time.now.to_formatted_s(:db)}' ")
+   return vips
+  end
+  
+  def one_vip_service(i) #一个用户可以有多个vip卡号。所以同一个用户的有效期内的vip特权要叠加。
+    vips=Vip.find(:all,:conditions=>"user_id=#{self.id} and totime>'#{Time.now.to_formatted_s(:db)}' ")
+    vip_records_time=0
+    service_all_time=0
+    service_leave_time=0
+    for vip in vips    
+      vip_detail=VipDetail.find(:last,:conditions=>"vip_style_id=#{vip.vip_style_id} and vip_service_id=#{i}") 
+      if vip_detail
+      service_all_time=service_all_time+vip_detail.timenum  
+      end   
+      records=VipRecord.find(:all,:conditions=>"user_id=#{self.id} and vip_service_id=#{i} and be_delete is null")
+      for record in records
+      vip_records_time=vip_records_time+record.timenum
+      end    
+    end
+    service_leave_time=service_all_time-vip_records_time
+    if service_leave_time>0
+      return service_leave_time
+    else
+      return false
+    end
+  end
+  
+  def address
+    Address.find_by_address_type_and_creater_id("profile",self.id)
+  end
+#  def login=(value)
+#    write_attribute :login, (value ? value.downcase : nil)
+#  end
+  
+  def yirus
+    Order.all.select{|o| o.buyer_id == self.id}
+  end
+  
+  def yichus
+    Order.all.select{|o| o.seller_id == self.id}
+  end
+  
+  def email_is_useful?
+    self.email && (self.email.index('@') && self.email.index('.'))
+  end
+
+  def email=(value)
+    write_attribute :email, (value ? value.downcase : nil)
+  end
+
+  def nickname
+     self.login
+  end
+
+  def login_name
+    (login ? login.split("@")[0] : (name && name!="" ? name : ""))
+  end
+  
+  def total_name
+    name = ""
+    if self.user_profile 
+      pro = self.user_profile
+      name = pro.firstname.to_s + pro.lastname.to_s
+      name = pro.lastname.to_s + pro.firstname.to_s if self.sign_from == "bizsim"
+    end
+    name
+  end
+  
+  def head_picture
+    self.user_profile.image.url rescue "/images/avatar.gif"
+  end
+  
+ def forgot_password
+      @forgotten_password = true
+      self.make_password_reset_code
+    end
+
+    def reset_password
+      # First update the password_reset_code before setting the 
+      # reset_password flag to avoid duplicate email notifications.
+      update_attributes(:password_reset_code => nil)
+      @reset_password = true
+    end  
+  def recent_register
+    @recent_register = true
+  end
+  
+  def sign_state
+    if self.user_profile
+      self.user_profile.is_sign ? "已签约" : "未签约"
+    end
+  end
+  
+  def signed?
+     self.user_profile && self.user_profile.is_sign
+  end
+   
+    #used in user_observer
+    def recently_forgot_password?
+      @forgotten_password
+    end
+    
+    def recently_reset_password?
+      @reset_password
+    end
+   
+    def sex
+      user_profile && user_profile.gender==0 ? "male" : "female"
+    end
+    
+    def recently_activated?
+      @recent_active
+    end
+
+
+  protected
+  
+    def make_activation_code
+      self.deleted_at = nil
+      #self.activation_code = self.class.make_token
+      self.activation_code = Digest::SHA1.hexdigest( Time.now.to_s.split(//).sort_by {rand}.join )
+    end
+
+    def make_password_reset_code
+      self.password_reset_code = Digest::SHA1.hexdigest( Time.now.to_s.split(//).sort_by {rand}.join )
+    end
+end

@@ -1,0 +1,266 @@
+<% content_for :head do %>
+  <%=javascript_include_tag 'ui/external/cluetip/jquery.cluetip' %>
+  <%=javascript_include_tag 'ui/external/cluetip/jquery.hoverIntent.js' %>
+  <%#=javascript_include_tag 'My97DatePicker/WdatePicker.js' %>
+  <%= stylesheet_link_tag "ui/ui/ui.datepicker.css" %>
+  <%= stylesheet_link_tag "ui/ui/ui.slider.css" %>
+  <%= javascript_include_tag "ui/ui/i18n/ui.datepicker-zh-CN.js"%>
+  <%= javascript_include_tag "ui/ui/ui.slider.js"%>
+  <%= javascript_include_tag "ui/ui/ui.datepicker.js"%>
+  <%#= javascript_include_tag "timepicker.js"%>
+  <%= javascript_include_tag 'ui/external/form/jquery.form' %>
+  <%=stylesheet_link_tag '/javascripts/ui/external/cluetip/jquery.cluetip.css',:media=>'all' %>
+  <%=javascript_include_tag 'ui/ui/jquery.autocomplete'%>
+
+
+  <style type="text/css">
+    .ui-grid-scrollable TABLE{
+      width:100%;
+    }
+  </style>
+  
+<script type="text/javascript">
+    $(document).ready(function(){
+     
+
+     var title = document.getElementById('birth__1i');
+     var me=<%=params[:birth]["(1i)"].to_s if params[:birth] %>;
+       alert(me);
+     for(var i=0;i<title.options.length;i++){
+       if(title.options[i].innerHTML == me){
+         title.options[i].selected = true; break; }
+     }
+
+     var actions =$("#control .actions"),form = $('#event-grid');
+      var _method = $('#event-grid input[name=_method]');
+      form.submit(function(){
+        var ids = form.find('input[name^=ids]:checked');
+        if(!ids.length){
+          alert('请至少选择一个告警。');
+          return false;
+        }
+        else if(confirm('确定操作所选告警?')){
+          return true;
+        }
+        return false;
+      });
+      actions.find('input[name=confirm]').click(function(){
+        var ids = form.find('input[name^=ids]:checked');
+        var id = $.map(ids,function(i){
+          return i.value;
+        }).join(',');
+        if(ids.length > 0){
+          var url = {
+            arams_logo: "<%=params[:arams_logo]%>",
+            redirect_to: "<%=url_for(params)%>"
+          };
+          location.href = "/fault/events/confirm/"+id+"?"+$.param(url);
+        }else{
+          alert('请至少选择一个告警。');
+        }
+      });
+      actions.find('input[name=clear]').click(function(){
+        form.attr('action',"/fault/events/clear").submit();
+      });
+      actions.find('input[name=del]').click(function(){
+        form.attr('action',"<%= url_for(:action => 'destroy') %>").submit();
+      });
+      actions.find('input[name=remove]').click(function(){
+        form.attr('action',"/fault/events/remove").submit();
+      });
+
+      $(".alarm-detail").cluetip({
+        width: 420,
+        cluetipClass: 'jtip',
+        arrows: true,
+        dropShadow: false,
+        hoverIntent: {
+          sensitivity : 3,
+          interval : 1000 ,
+          timeout : 2000
+        },
+        onShow:function(ct,c){
+          $(document).ready(function(){
+            $(".access_controlled").each(function(){
+              $(this).attr("disabled",true).attr("title","当前没有权限");
+            }).click(function(){return false;});
+          });
+        },
+        sticky: true,
+        mouseOutClose: true,
+        titleAttribute: 'detail_title',
+        closePosition: 'title',
+        closeText: '<img src="/images/cross.png" alt="关闭" />'
+      });
+      function customRange(input){
+        return {
+          minDate: (input.id == "end_time" ? $("#begin_time").datepicker("getDate") : null),
+          maxDate: (input.id == "begin_time" ? $("#end_time").datepicker("getDate") : null)
+        };
+      }
+      $('#begin_time,#end_time').datepicker({
+        duration: '',
+        showTime: true,
+        constrainInput: false,
+        stepMinutes: 1,
+        stepHours: 1,
+        altTimeField: '',
+        time24h: true,
+        howStatus: true,
+        beforeShow: customRange
+      });
+      $("#expand_show").click(function(){
+        $(".expand").slideDown();
+        $("#expand_show").hide();
+        $("#expand_hide").show();
+      });
+      $("#expand_hide").click(function(){
+        $(".expand").slideUp();
+        $("#expand_show").show();
+        $("#expand_hide").hide();
+      });
+      enableSave();
+      $("#event_con").find("select, input.text").each(function(){
+        $(this).change(function(){ enableSave();});
+      });
+      function enableSave(){
+        $("input[name=save_conditions]").attr("disabled", false);
+      };
+    });
+    function creset(){
+      $("#ossCity,#ossDistrict,#ossSite,#event_con_alarm_source,#begin_time,#end_time,#event_con_severity_level,\n\
+  #event_con_alarm_name,#event_con_device_state,#event_con_is_checked,#event_con_sheet_status,#0sel_area,#1sel_area,#2sel_area,#event_con_source_class,#integration_unit,#event_con_supply_name").not($(".ui-state-disabled")).attr("value",'');
+    };
+    function saveConditions(){
+      var form = $("#event_con");
+      var params = {};
+      form.find("select,input.text").each(function(){
+        var name  = this.name;
+        var value = this.value;
+        if(value.length > 0){ params[name] = value };
+      })
+      var url = "/fault/events/save_conditions" + "?" + $.param(params);
+      $.get(url, function(data){
+        alert(data);
+      });
+    };
+    function removeConditions(){
+      var url = "/fault/events/remove_conditions";
+      $.get(url, function(data){
+        alert(data);
+      });
+      creset();
+    }
+    function unableSave(){
+      $("input[name=save_conditions]").attr("disabled", true);
+    };
+    function enableSave(){
+      $("input[name=save_conditions]").attr("disabled", false);
+    };
+    function unableRecovery(){
+      $("input[name=remove_conditions]").attr("disabled", true);
+    };
+    function enableRecovery(){
+      $("input[name=remove_conditions]").attr("disabled", false);
+    };
+  </script>
+
+<%end %>
+<%content_for :header_title do %>
+  二级认证手机终端流量统计报表
+<%end %>
+  <%params[:ult_wg_radiu] ||= {}%>
+  <%  area_gran=params[:ult_wg_radiu][:area_gran]
+      time_gran=params[:ult_wg_radiu][:time_gran]
+  %>
+
+  <% form_for :ult_wg_radiu,@ult_wg_radiu,:url =>{:controller=>'ultra/ult_wg_radius'}, :html=>{:class => "form ui-widget", :method=>:get} do |f| %>
+    <%= ui_error(f.error_messages) unless f.error_messages.empty? %>
+    <%= hidden_field_tag :redirect_to, params[:redirect_to] %>
+    <% field_set_tag "检索条件", :style => "font-size:12px;padding: 1em;background:transparent;", :class => "ui-widget-content ui-corner-all" do %>
+      <div class="wrap">
+         <div class="li">
+          <div class="col left">
+            <%=f.label :resourcer,"数据来源", :class => "label" %>
+            <%=f.select :resourcer,[['全部','全部'],['校园网','0'],['集团','1']],{:include_blank => false, :selected => (params[:resourcer])},:style => "width:125px;",:id =>"resourcer"%>
+          </div>
+          <div class="col right">
+            <%=f.label :unit_type,"设备名称", :class => "label" %>
+            <%=f.select :unit_type,[['全部','全部'],['手机','手机'],['电脑','电脑']],{:include_blank => false, :selected => (params[:unit_type])},:style => "width:125px;",:id =>"unit_type"%>
+          </div>
+         </div>
+        <div class="li">
+          <div class="col left">
+          <%=f.label nil, "开始时间", :class => "label"%>
+          <%= text_field_tag "begin_time",params[:begin_time], :style => "width:120px;" ,:id =>'begin_time'%>
+          </div>
+          <div class="col right">
+          <%=f.label nil, "结束时间", :class => "label"%>
+          <%= text_field_tag "end_time",params[:end_time], :style => "width:120px;" ,:id =>'end_time'%>
+          </div>
+        </div>
+        <div class="li">
+          <div class="col left">
+          <%=f.label :unit_type,"时间粒度", :class => "label" %>
+          <%=select( "time_gran","",[["日","1"],["月","2"]],{:selected=>params[:mtime_gran],:include_blank => false},:style => "width:125px;",:class =>"time_gran")%>
+          </div>
+        </div>
+      </div>
+   <div class="actions devices_control" style="float:right">
+     <%=f.submit "确定", :onclick => "return checktime()"  %>
+      <%= export_to 'csv', "CSV", params %>
+         </div>
+    <% end %>
+  <%end%>
+
+  <%
+  sort_url = params.merge({:page => nil})
+  %>
+<div id="showdata" class="form">
+    <% form_tag(url_for(:action => 'index'), :method=>:post,:id =>'ult_wg_radiu' ) do%>
+    <%=hidden_field_tag '_method', ''%>
+    <% ui_grid_for @grid ,:scrollable =>true do |g, cols, data| %>
+      <% g.head do %>
+        <% g.r do %>
+            <%= g.format_sort(:riqi, "日期",:html => {:width => "75px"}, :url =>sort_url) %>
+            <%= g.format_sort(:resourcer, "数据来源",:html => {:width => "75px"}, :url =>sort_url) %>
+            <%= g.format_sort(:unit_type,"认证", :html => {:width => "110px"}, :url =>sort_url) %>
+            <%= g.format_sort(:sendkbytes,"上行流量(GB)", :html => {:width =>"120px"}, :url =>sort_url) %>
+            <%= g.format_sort(:receivekbytes,"下行流量(GB)", :html => {:width => "80px"}, :url =>sort_url) %>
+            <%= g.format_sort(:allbytes,"总流量(GB)", :html => {:width =>"100px"}, :url =>sort_url) %>
+            <%if params[:mtime_gran]&&params[:mtime_gran]=="1"%>
+            <%= g.format_sort(:users,"用户数", :html => {:width => "140px"}, :url =>sort_url) %>
+            <%end%>
+            <%= g.format_sort(:hours,"总时长(小时)", :html => {:width =>"176px"}, :url =>sort_url) %>
+          <% end %>
+      <% end %>
+      <% g.body  do  %>
+        <% if data.size >0 %>
+          <% data.each do |d| %>
+           <% g.r do %>
+                <%if params[:mtime_gran]&&params[:mtime_gran]=="1"%>
+                <%=g.d d[:riqi]%>
+                <%else%>
+                <%=g.d d[:yea]%>
+                <%=g.d d[:mond]%>
+                <%end%>
+                <% g.d :class =>"ui-grid-actions" do %>
+                <%=g.d d[:unit_type] %>    
+                <%=g.d d[:unit_type] %>
+                <%=g.d d[:sendkbytes]%>
+                <%=g.d d[:receivekbytes] %>
+                <%=g.d d[:allbytes] %>
+                <%if params[:mtime_gran]&&params[:mtime_gran]=="1"%><%=g.d d[:users] %><%end%>
+                <%=g.d d[:hours] %>
+              <% end %>
+          <% end %>
+        <% else %>
+          <td colspan="<%= 2+cols.size %>">当前没有数据。</td>
+        <% end %>
+        <%end%>
+          <%end%>
+  <%end%>
+</div>
+  <%= obj = @ult_wg_radius
+bottom_show obj %>
+

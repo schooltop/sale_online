@@ -1,0 +1,18 @@
+<h1>Listing vipconsumnos</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% @vipconsumnos.each do |vipconsumno| %>
+  <tr>
+    <td><%= link_to 'Show', vipconsumno %></td>
+    <td><%= link_to 'Edit', edit_vipconsumno_path(vipconsumno) %></td>
+    <td><%= link_to 'Destroy', vipconsumno, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New vipconsumno', new_vipconsumno_path %>

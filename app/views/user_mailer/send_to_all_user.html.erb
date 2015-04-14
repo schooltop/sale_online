@@ -1,0 +1,5 @@
+<%if @user.is_admin%>
+<%=render :partial=>"/user_mailer/to_bizsim_user"%><br />
+<%else%>
+<%=render :partial=>"/user_mailer/to_#{@user.sign_from}_user"%>
+<%end%>

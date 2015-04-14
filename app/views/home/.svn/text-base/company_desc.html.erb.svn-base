@@ -1,0 +1,33 @@
+<%=stylesheet_link_tag "desc"%>
+<%mid = @menu_id%>
+<div class="module">
+<div id="company_menu">
+	<img src="/images/company_desc/<%=@menu_id%>.png" />
+		<div class="menu_title">
+          <h2><a href="/<%=@path%>"><%=t @path%></a></h2>
+        </div>
+        <ul>
+        	<%@menus.each_with_index do |m,i|%>
+	        	<li><span><a href="/<%=@path%>/<%=i+1%>" class="cate_title"><%=m%></a>
+	        		<%=image_tag "/images/company_desc/sj.png",:class=>"menu_sj" if i+1 == mid%></span></li> 
+        	<%end%>
+        </ul>   
+ </div>
+ <div id="company_content">
+		<div class="m_title">
+          <h2>
+          	<a href="/<%=@path%>"><%=t @path%></a> 
+          	<%if mid!=0%> >> 
+          		<a href="/<%=@path%>/<%=@menu_id%>"><%= @menus[mid-1]%></a>
+          	<%end%>
+          </h2>
+        </div>
+        <div class="con">
+        	<% if mid!=0%>
+        		<%=@news[mid-1].text%>
+        	<%else%>
+        		<%=News.find(317).text%>
+        	<%end%>
+        </div>
+ </div>
+</div>

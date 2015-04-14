@@ -1,0 +1,193 @@
+
+<%= javascript_include_tag 'jquery','lunbo-index' %>
+<%= stylesheet_link_tag 'details','lunbo-index2'%>
+
+<style type="text/css">
+
+body, td, th {
+
+	font-family: "微软雅黑", tahoma, arial, sans-serif;
+
+}
+
+.lx a {
+
+	color:#666;
+
+}
+
+.lx a:hover {
+
+	color:#000;
+
+}
+
+</style>
+
+<div id="d-center">
+
+  <div id="left_center">
+
+    <div id="left_center_a">
+
+      <div id="ltxt">
+        <%if Locale.base?%>
+        <p style="font-size:16px"><span>大赛报名截止时间 2012-11-15</span></p>
+        <%else%>
+        <p style="font-size:16px"><span>Auditions deadline on 2012-11-15</span></p>
+        <%end%>
+        <%if session[:user]%>
+        <a href="/center">
+		<%else%>
+		<a href="/users/login">
+		<%end%>
+		<%if Locale.base?%>
+        <img src="/images_news/btn_03.gif"  style="margin-left:auto; margin-right:auto; margin-top:20px; clear:both"/></a>
+		<%else%>
+		<img src="/images_news/en_btn_03.gif"  style="margin-left:auto; margin-right:auto; margin-top:20px; clear:both"/></a>
+		<%end%>
+		
+		
+        <%if !session[:user]%>
+        <p   style="margin-top:40px;_margin-top:20px; color:#669933;"><a href="/users/login" style="color:#693" target="_blank"><%if Locale.base?%>登录<%else%>Login<%end%></a> | <a href="/users/new" style="color:#693" target="_blank"><%if Locale.base?%>注册<%else%>Register<%end%></a></p>
+        <%end%>
+      </div>
+
+    </div>
+
+
+   <!-- <div id="left_center_c">
+
+  <div id="banners">
+
+    <ul>
+
+      <li class="on">1</li>
+
+      <li >2</li>
+
+      <li >3</li>
+
+      <li >4</li>
+
+      <li >5</li>
+
+    </ul>
+
+    <div id="banner_list"><a href="#" target="_blank"><img src="/images_news/beijing.jpg"  /></a><a href="#" target="_blank"><img src="/images_news/shanghai.jpg"  /></a><a href="#" target="_blank"><img src="/images_news/ningbo.jpg"/></a><a href="#" target="_blank"><img src="/images_news/shenzhen.jpg"  /></a><a href="#" target="_blank"><img src="/images_news/chengdu.jpg"  /></a> </div>
+
+ 
+
+  </div>
+
+</div>-->
+ <table width="160" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td height="31"><table width="300" height="23" border="0" cellpadding="0" cellspacing="0" class="table_down_xu">
+          <tr>
+            <td height="31">&nbsp;</td>
+          </tr>
+        </table></td>
+      </tr>
+      
+      <!-- 有子栏目-->
+      <% if @group.children.size > 0 %>
+        <% for group in @group.children %>
+        <tr>
+          <td height="23">
+            <table width="300" height="30" border="0" cellpadding="0" cellspacing="0" class="table_down_xu">
+              <tr>
+                <td width="30"><div align="center"><img src="/images/fen.jpg" width="9" height="22"></div></td>
+                <td style="font-size:12px ">
+                <%= link_to  group.name, :conroller=>"main", :action=>"showgroup", :id=>group%> 
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+       <% end %>
+      <% else %>   <!-- 没有子栏目 -->
+      <%@newss=@group.news.find(:all,:order=>"id desc",:limit=>17)%>
+        <% for news in @newss%>
+        <tr>
+          <td height="23">
+            <table width="300" height="22" border="0" cellpadding="0" cellspacing="0" class="table_down_xu">
+              <tr>
+                <td width="30"><div align="center"><img src="/images/fen.jpg" width="9" height="22"></div></td>
+                <td style="font-size:12px ">
+                	 <%if Locale.base?||news.from==""%>
+                    <%= link_to news.name, :conroller=>"main", :action=>"news", :id=>news,:group=>@group%> 
+                    <%else%>                   
+				  	 <%= link_to news.from, :conroller=>"main", :action=>"news", :id=>news,:group=>@group%> 				  	 
+				    <%end%>
+                 </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+       <% end %>
+      <% end %>
+      
+    </table>
+
+
+
+      </div>
+
+  <div id="right_center" style="min-height:0px;">
+
+    <div id="right_center_top"> 您的位置：<% if @news.newsgroup.parent %>
+                                <%= @news.newsgroup.parent.name %>
+                                -> <% end %>
+                                <% if @news.newsgroup.parent %>
+								<%= @news.newsgroup.name %>
+                                <!--<%= link_to @news.newsgroup.name, :conroller=>"main", :action=>"showgroup", :id=> @news.newsgroup%>-->
+                                <% else %>
+                                <%= @news.newsgroup.name %>
+                                <% end %>
+                                -><%= truncate(@news.name.gsub(/<[^>]*>/, ""), 25) %>
+    </div>
+
+    <div id="right_center_txt">
+<%if @news.id!=339%>
+      <div id="right_center_txt_name" style="border:0px; font-size:16px"><b><%if Locale.base?||@news.from==""%><%= @news.name %><%else%>
+				  	<%= @news.from%>
+				  <%end%></b></div>
+<%end%>
+      <div style="width:100%; height:10px;"></div>
+
+      <div style="white-space:normal;">
+
+                 <%if Locale.base?%>
+                	<%= @news.text %>
+				  <%else%>
+				  	<%= @news.text_en%>
+				  <%end%>
+
+<p style="text-indent:2em;">
+
+	<br />
+
+</p>
+
+<p style="text-indent:2em;">
+
+	<br />
+
+</p>
+
+<p style="text-indent:2em;">
+
+	<br />
+
+</p> </div>
+
+      </div>
+
+  </div>
+
+</div>
+
+<div style="clear:both;"></div>
+
+

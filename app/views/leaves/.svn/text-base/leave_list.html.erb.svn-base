@@ -1,0 +1,101 @@
+
+
+<div id="content">
+     <table style="width:100%"><tbody><tr><td>
+       <div class="moduleTitle">
+         <h2>员工: <%=current_user.name%></h2>
+            <span><a href="" class="utilsLink"><img src="/images/crm/print.gif" alt="打印"></a>
+                  <a href="" class="utilsLink">打印</a>&nbsp;
+                  <a href="" class="utilsLink" target="_blank">
+                  <img src="/images/crm/help.gif" alt="帮助"></a>
+                  <a href="/help" class="utilsLink" target="_blank">帮助</a>
+            </span>
+       </div>
+<table cellpadding="1" cellspacing="0" border="0" width="100%">
+<tbody>
+   <tr>
+     <td class="buttons" align="left" nowrap="">
+     <button type="button" class="button" title="编辑" onclick="document.location.href='/leaves/<%=@leave.id%>/edit'">编辑</button>
+     &nbsp;
+     <button type="button" class="button" title="返回列表" onclick="document.location.href='/leaves'">返回列表</button>
+     </td>
+  </tr>
+</tbody>
+</table>
+    <div id="DEFAULT" class="detail view">
+       <table id="detailpanel_1" cellspacing="0">
+          <tbody>
+            <tr class="pagination">
+                 <td colspan="20" style="padding: 0px;">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tbody>
+                      <tr><td nowrap="" align="right"></td></tr>
+                    </tbody>
+                  </table>
+                 </td>
+            </tr>
+            <tr>
+                <td width="12.5%" scope="row">申请人:</td>
+                <td width="37.5%"><span id="name"><%=@leave.work.name if @leave.work%></span></td>
+                <td width="12.5%" scope="row">员工号:</td>
+                <td width="37.5%">
+                <%=@leave.work.worknum if @leave.work%>
+                </td>
+            <td scope="row" nowrap="nowrap" width="8.3%">请假类型</td>
+		<td nowrap="nowrap" width="15%">
+			<%=@leave.leave_style.name%>
+		</td>	
+		<td scope="row" nowrap="nowrap" width="8.3%">开始时间</td>
+		<td nowrap="nowrap" width="15%">
+			<%=@leave.start_time%>
+			<!--  <%#=calendar_date_select_tag "start_time",into_date(@leave.start_time)%> -->
+		    <!-- <%#=calendar_date_select_tag "leave[start_time]",@leave.start_time.strftime('%Y-%m-%d %H:%M:%S' ),:time => true  %>             -->
+		</td>	
+		<td scope="row" nowrap="nowrap" width="8.3%">结束时间</td>
+		<td nowrap="nowrap" width="15%">
+			<%=@leave.end_time%>
+          
+		</td>	
+		<td  nowrap="nowrap" width="8.3%">天数</td>
+		<td    width="10">
+			<%=@leave.days%>
+		</td>	
+
+		
+ </tr>
+
+<script type="text/javascript" language="javascript">
+    var fromKey = '';
+    var toKey = 'billing';
+    var checkbox = toKey + "_checkbox";
+    var obj = new TestCheckboxReady(checkbox); 
+</script>
+</tbody></table>
+</div>
+<div id="LBL_EMAIL_ADDRESSES">
+
+
+<div id="LBL_DESCRIPTION_INFORMATION">
+<table width="100%" border="0" cellspacing="1" cellpadding="0" class="edit view">
+<tbody><tr><th align="left" colspan="4">
+<h4>说明信息</h4>
+</th>
+</tr><tr>
+<td valign="top"  width="12.5%" scope="row">
+   请假原因 ：<br />
+</td> 
+<td valign="top" width="37.5%">
+	<%=@leave.description%>
+
+</td>
+
+</tr>
+           
+          </tbody>
+       </table>
+<%unless  @leave.state == 0%> 
+    <input title="修改"  onclick="window.location='/leaves/<%=@leave.id%>/edit';" class="button" type="submit" name="button" value="修改" >
+	<input title="通过"  onclick="window.location='/leaves/leave_state?id=<%=@leave.id%>';" class="button" type="submit" name="button" value="提交" >
+<% end %>
+   </div>
+</div>

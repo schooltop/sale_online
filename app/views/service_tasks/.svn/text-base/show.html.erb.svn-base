@@ -1,0 +1,212 @@
+
+<%=render :partial=>"/admins/left"%>
+
+<div id="content">
+
+        <table style="width:100%"><tbody><tr><td>
+        	<div class="moduleTitle">
+<h2>跟单任务: 订单号<%=@service_task.order.order_num%>>><%=@service_task.line_item.product.title%></h2>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<span><a href="" class="utilsLink">
+<img src="/images/crm/print.gif" alt="打印"></a>
+<a href="" class="utilsLink">
+打印
+</a>&nbsp;
+<a href="" class="utilsLink" target="_blank">
+<img src="/images/crm/help.gif" alt="帮助"></a>
+<a href="/help" class="utilsLink" target="_blank">
+帮助
+</a></span></div>
+<table cellpadding="1" cellspacing="0" border="0" width="100%">
+<tbody><tr>
+<td class="buttons" align="left" nowrap="">
+	
+<button type="button" class="button" title="编辑" onclick="document.location.href='/service_tasks/<%=@service_task.id%>/edit'">编辑</button>
+<input title="打印任务清单"  onclick="window.open('/edit_activelist/?service_task_id=<%=@service_task.id%>');" class="button" type="submit" name="button" target="_blank"  value="打印任务清单" >				    
+
+<button type="button" class="button" title="返回列表" onclick="document.location.href='/service_tasks'">返回列表</button>
+<!-- <%= link_to '删除', @cad_enterprise, :confirm => '确定要删除此客户么?', :method => :delete ,:class=>"button" %> --></td>
+<td class="buttons" align="left" nowrap=""></td>
+<td align="right" width="100%"></td>
+</tr>
+</tbody>
+</table>
+<div id="DEFAULT" class="detail view">
+<table id="detailpanel_1" cellspacing="0">
+<tbody><tr class="pagination">
+<td colspan="20" style="padding: 0px;">
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr>
+<td nowrap="" align="right">
+		</td></tr></tbody></table></td></tr>
+<tr>
+<td width="12.5%" scope="row">
+订单号:
+</td>
+<td width="37.5%">
+<span id="name"><%=@service_task.order.order_num%></span>
+</td>
+<td width="12.5%" scope="row">
+	使用时间:
+</td>
+<td width="37.5%">
+<%=@service_task.line_item.totime.strftime('%Y-%m-%d') if @service_task.line_item.totime%>
+</td>
+</tr>
+<tr>
+<td width="12.5%" scope="row">
+客户名称:
+</td>
+<td width="37.5%">
+	<%=@service_task.order.user ? @service_task.order.user.name : "匿名"%>
+</td>
+<td width="12.5%" scope="row">
+客户电话:
+</td>
+<td width="37.5%">
+	<%=@service_task.order.tel%>
+</td>
+</tr>
+<tr>
+<td width="12.5%" scope="row">
+服务项目:
+</td>
+<td width="37.5%">
+<%=@service_task.line_item.product.title%>
+</td>
+<td width="12.5%" scope="row">
+服务类型:
+</td>
+<td width="37.5%">
+<%=@service_task.line_item.product.service_style ? @service_task.line_item.product.service_style.name : ""%>
+</td>
+</tr>
+<tr>
+<td width="12.5%" scope="row">
+数量:
+</td>
+<td width="37.5%"><%=@service_task.line_item.quantity%>
+</td>
+<td width="12.5%" scope="row">
+小结:
+</td>
+<td width="37.5%">
+<span id="employees"><%=@service_task.line_item.total_price%></span>
+</td>
+</tr>
+<tr>
+<td width="12.5%" scope="row">
+支付状态:
+</td>
+<td width="37.5%">
+<%=@service_task.order.has_pay%>
+</td>
+<td width="12.5%" scope="row">
+处理状态:
+</td>
+<td width="37.5%">
+<%=@service_task.situation%>
+</td>
+</tr>
+</tbody></table>
+</div>
+
+
+<script>
+	SUGAR.subpanelUtils.currentSubpanelGroup = '所有';
+	
+	SUGAR.subpanelUtils.subpanelMoreTab = '协作';
+	
+	SUGAR.subpanelUtils.subpanelMaxSubtabs = '12';
+	
+	SUGAR.subpanelUtils.subpanelHtml = new Array();
+	
+	SUGAR.subpanelUtils.loadedGroups = Array();
+	SUGAR.subpanelUtils.loadedGroups.push('所有');
+	
+	SUGAR.subpanelUtils.subpanelSubTabs = new Array();
+	SUGAR.subpanelUtils.subpanelGroups = new Array();
+	SUGAR.subpanelUtils.subpanelGroups['所有'] = ['activities', 'history'];
+	SUGAR.subpanelUtils.subpanelGroups['销售'] = ['contacts', 'opportunities', 'leads', 'accounts'];
+	SUGAR.subpanelUtils.subpanelGroups['市场'] = ['contacts', 'leads', 'accounts'];
+	SUGAR.subpanelUtils.subpanelGroups['服务'] = ['contacts', 'cases'];
+	SUGAR.subpanelUtils.subpanelGroups['活动'] = ['activities', 'history'];
+	SUGAR.subpanelUtils.subpanelGroups['协作'] = ['project', 'contacts', 'cases'];
+
+	SUGAR.subpanelUtils.subpanelTitles = {};
+
+	SUGAR.subpanelUtils.tabCookieName = get_module_name() + '_sp_tab';
+	
+	SUGAR.subpanelUtils.showLinks = false;
+	
+	SUGAR.subpanelUtils.requestUrl = '';
+</script>
+
+
+
+<ul id="groupTabs" class="subpanelTablist">
+	<li id="所有_sp_tab">
+		<a class="current" href="javascript:SUGAR.subpanelUtils.loadSubpanelGroup('所有');">所有</a>
+	</li>
+	<!-- <li id="销售_sp_tab">
+		<a class="" href="javascript:SUGAR.subpanelUtils.loadSubpanelGroup('销售');">销售</a>
+	</li>
+	<li id="市场_sp_tab">
+		<a class="" href="javascript:SUGAR.subpanelUtils.loadSubpanelGroup('市场');">市场</a>
+	</li> 
+	<li id="服务_sp_tab">
+		<a class="" href="javascript:SUGAR.subpanelUtils.loadSubpanelGroup('服务');">服务</a>
+	</li>
+	<li id="活动_sp_tab">
+		<a class="" href="javascript:SUGAR.subpanelUtils.loadSubpanelGroup('活动');">活动</a>
+	</li> 
+	<li id="协作_sp_tab">
+		<a class="" href="javascript:SUGAR.subpanelUtils.loadSubpanelGroup('协作');">协作</a>
+	</li> -->
+</ul>
+	<%for task_entry in @task_entries%>
+	<table id="edbg" name="edbg"  class="print" width="1117" style="margin-top:0px;border-color: #8ed8f8" frame="box"  border="0"  cellpadding="0" cellspacing="0" >
+	<tr><td align="left" width="227">&nbsp;&nbsp;从：<%=calendar_date_select_tag "edbgtime",Time.now.strftime('%Y-%m-%d' ),:time => true ,:style=>"width:130px" %></td> <td colspan="2" align="center" width="519"><input type="button" onClick="destroyRemark('edbg')" value="删除"></td>
+  	<tr><td align="left">&nbsp;&nbsp;至：<%=calendar_date_select_tag "tedbgtime",Time.now.strftime('%Y-%m-%d' ),:time => true ,:style=>"width:130px"  %></td>  	
+  	<td align="left"> 物资匹配：<%=select( "company","",Company.find(:all).collect {|p| [ p.name, p.id ] },:selected=>task_entry.company_id,:include_blank => true)%></td> <td align="left"> 人力匹配：<%=select( "work","", Work.find(:all).collect {|p| [ p.name, p.id ] },:selected=>task_entry.work_id,:include_blank => true)%></td></tr>
+  	<tr><td align="left"  colspan="3">
+		<%=text_area_tag "description","#{task_entry.description}",:cols=>216,:rows=>4,:placeholder=>t(:message_to_seller)%>    	
+    </td></tr>
+	</table>
+	<%end%>
+<form name="search_form" id="search_form" class="search_form" method="get" action="/task_entry_into">
+<input type="hidden" name="service_task_id" value="<%=@service_task.id%>">	
+<%=render :partial=>"/service_tasks/addservicetask"%>
+</form>
+  <script>
+    	var SubpanelInit = function() {
+    		SubpanelInitTabNames(["activities","history","contacts","opportunities","leads","cases","accounts","bugs","project"]);
+    	}
+        var SubpanelInitTabNames = function(tabNames) {
+    		subpanel_dd = new Array();
+    		j = 0;
+    		for(i in tabNames) {
+    			subpanel_dd[j] = new ygDDList('whole_subpanel_' + tabNames[i]);
+    			subpanel_dd[j].setHandleElId('subpanel_title_' + tabNames[i]);
+    			subpanel_dd[j].onMouseDown = SUGAR.subpanelUtils.onDrag;
+    			subpanel_dd[j].afterEndDrag = SUGAR.subpanelUtils.onDrop;
+    			j++;
+    		}
+
+    		YAHOO.util.DDM.mode = 1;
+    	}
+    	currentModule = 'Accounts';
+    	YAHOO.util.Event.addListener(window, 'load', SubpanelInit);
+    </script><!-- crmprint --><script>		if(window.addEventListener){
+			window.addEventListener("load", checkAlerts, false);
+		}else{
+			window.attachEvent("onload", checkAlerts);
+		}
+		
+		</script>
+<!--end body panes-->
+        </td></tr></tbody></table>
+
+    </div>
+    <div class="clear"></div>
+

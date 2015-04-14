@@ -1,0 +1,237 @@
+
+<%=render :partial=>"/admins/left"%>
+
+<div id="content">
+  <table style="width:100%"><tbody><tr><td>
+<div class="moduleTitle">
+<h2>盟友管理:首页</h2>
+<span><a href="" class="utilsLink">
+<img src="/images/crm/print.gif" alt="打印"></a>
+<a href="" class="utilsLink">
+打印
+</a>&nbsp;
+<a href="" target="_blank">
+<img src="/images/crm/help.gif" alt="帮助"></a>
+<a href="" class="utilsLink" target="_blank">
+帮助
+</a></span></div>
+
+<script>
+var keys = [ "Accounts|basic_search","Accounts|advanced_search"]; 
+tabPreviousKey = '';
+
+function selectTabCSS(key)
+{ for( var i=0; i<keys.length;i++)
+  {
+   var liclass = '';
+   var linkclass = '';
+
+ if ( key == keys[i])
+ {
+   var liclass = 'active';
+   var linkclass = 'current';
+ }
+  	document.getElementById('tab_li_'+keys[i]).className = liclass;
+
+  	document.getElementById('tab_link_'+keys[i]).className = linkclass;
+  }
+    SUGAR.searchForm.searchFormSelect(key, tabPreviousKey);
+    tabPreviousKey = key;
+}
+</script>
+
+<ul id="searchTabs" class="tablist">
+<li class="active" id="tab_li_Accounts|basic_search"><a class="current" id="tab_link_Accounts|basic_search" href="javascript:selectTabCSS('Accounts|basic_search');">基本查找</a></li>	
+<li id="tab_li_Accounts|advanced_search" class=""><a id="tab_link_Accounts|advanced_search" href="javascript:selectTabCSS('Accounts|advanced_search');" class="">高级查找</a></li>	
+</ul>
+<script></script>
+<form name="search_form" id="search_form" class="search_form" method="get" action="/companies/companies_search">
+<input type="hidden" name="searchFormTab" value="basic_search">
+<div id="Accountsbasic_searchSearchForm" style="" class="edit view search">
+
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tbody><tr>
+	<td scope="row" nowrap="nowrap" width="8.3%">company号码</td>
+	<td nowrap="nowrap" width="25%"><input type="text" name="name" id="name" size="30" maxlength="" value="" title="" tabindex=""> </td>
+	</tr>
+<tr>
+	<td colspan="5">&nbsp;</td>
+	<td style="text-align: right"><img border="0" src="/images/crm/help.gif" 
+		onmouseover="return overlib(SUGAR.language.get('app_strings', 'LBL_SEARCH_HELP_TEXT'), STICKY, MOUSEOFF,1000,WIDTH, 700, LEFT,CAPTION,'&lt;div style=\'float:left\'&gt;'+SUGAR.language.get('app_strings', 'LBL_SEARCH_HELP_TITLE')+'&lt;/div&gt;', CLOSETEXT, '&lt;div style=\'float: right\'&gt;&lt;img border=0 style=\'margin-left:2px; margin-right: 2px;\' src=/images/crm/close.gif&gt;&lt;/div&gt;',CLOSETITLE, SUGAR.language.get('app_strings', 'LBL_SEARCH_HELP_CLOSE_TOOLTIP'), CLOSECLICK,FGCLASS, 'olFgClass', CGCLASS, 'olCgClass', BGCLASS, 'olBgClass', TEXTFONTCLASS, 'olFontClass', CAPTIONFONTCLASS, 'olCapFontClass');">
+	</td>
+</tr>
+</tbody></table>
+
+</div>
+<div id="Accountsadvanced_searchSearchForm" style="display: none; " class="edit view search">
+	<table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tbody>
+	<tr>
+		<td scope="row" nowrap="nowrap" width="8.3%">company号码</td>
+		<td nowrap="nowrap" width="25%"><input type="text" name="name_ent" id="name_ent" size="30" maxlength="" value="" title="" tabindex=""> </td>
+		<td scope="row" nowrap="nowrap" width="8.3%">company名称</td>
+		<td nowrap="nowrap" width="25%"><input type="text" name="name_com" id="name_com" size="30" maxlength="" value="" title="" tabindex=""> </td>
+		<td scope="row" nowrap="nowrap" width="8.3%">电话</td>
+		<td nowrap="nowrap" width="25%"><input type="text" name="tel" id="tel" size="30" value="" title="" tabindex=""></td>
+	 </tr>
+	 <tr>
+		
+		<td scope="row" nowrap="nowrap" width="8.3%">company类型</td>
+		<td nowrap="nowrap" width="25%"><input type="text" name="website" id="website" size="30" maxlength="" value="" title="" tabindex=""> 	</td>
+		<td scope="row" nowrap="nowrap" width="8.3%">城市</td>
+		<td nowrap="nowrap" width="25%"><%=select("post", "city_id", City.all.collect {|p| [ p.name, p.id ] }, { :include_blank => true })%></td>
+		<td scope="row" nowrap="nowrap" width="8.3%">电子邮件</td>
+		<td nowrap="nowrap" width="25%"><input type="text" name="email" id="email" size="30" value="" title="" tabindex="">  </td>
+	</tr>
+	<tr>
+		<td colspan="20">
+			&nbsp;
+		</td>
+	</tr>	
+	<tr>
+		<td colspan="6"><div style="display:none" id="inlineSavedSearch"></div></td>
+	</tr>
+
+<tr>
+	<td colspan="5">&nbsp;</td>
+	<td style="text-align: right">
+		<img border="0" src="/images/crm/help.gif" onmouseover="return overlib(SUGAR.language.get('app_strings', 'LBL_SEARCH_HELP_TEXT'), STICKY, MOUSEOFF,1000,WIDTH, 700, LEFT,CAPTION,'&lt;div style=\'float:left\'&gt;'+SUGAR.language.get('app_strings', 'LBL_SEARCH_HELP_TITLE')+'&lt;/div&gt;', CLOSETEXT, '&lt;div style=\'float: right\'&gt;&lt;img border=0 style=\'margin-left:2px; margin-right: 2px;\' src=/images/crm/close.gif&gt;&lt;/div&gt;',CLOSETITLE, SUGAR.language.get('app_strings', 'LBL_SEARCH_HELP_CLOSE_TOOLTIP'), CLOSECLICK,FGCLASS, 'olFgClass', CGCLASS, 'olCgClass', BGCLASS, 'olBgClass', TEXTFONTCLASS, 'olFontClass', CAPTIONFONTCLASS, 'olCapFontClass');"></td>
+</tr>
+
+</tbody></table>
+
+<script>
+
+	if(typeof(loadSSL_Scripts)=='function'){
+		loadSSL_Scripts();
+	}
+	
+</script><script language="javascript">if(typeof sqs_objects == 'undefined'){var sqs_objects = new Array;}sqs_objects['search_form_modified_by_name_advanced']={"form":"search_form","method":"get_user_array","field_list":["user_name","id"],"populate_list":["modified_by_name_advanced","modified_user_id_advanced"],"required_list":["modified_user_id"],"conditions":[{"name":"user_name","op":"like_custom","end":"%","value":""}],"limit":"30","no_match_text":"\u6ca1\u6709\u5339\u914d"};sqs_objects['search_form_created_by_name_advanced']={"form":"search_form","method":"get_user_array","field_list":["user_name","id"],"populate_list":["created_by_name_advanced","created_by_advanced"],"required_list":["created_by"],"conditions":[{"name":"user_name","op":"like_custom","end":"%","value":""}],"limit":"30","no_match_text":"\u6ca1\u6709\u5339\u914d"};sqs_objects['search_form_assigned_user_name_advanced']={"form":"search_form","method":"get_user_array","field_list":["user_name","id"],"populate_list":["assigned_user_name_advanced","assigned_user_id_advanced"],"required_list":["assigned_user_id"],"conditions":[{"name":"user_name","op":"like_custom","end":"%","value":""}],"limit":"30","no_match_text":"\u6ca1\u6709\u5339\u914d"};sqs_objects['search_form_parent_name_advanced']={"form":"search_form","method":"query","modules":["Accounts"],"group":"or","field_list":["name","id"],"populate_list":["search_form_parent_name_advanced","parent_id_advanced"],"conditions":[{"name":"name","op":"like_custom","end":"%","value":""}],"required_list":["parent_id"],"order":"name","limit":"30","no_match_text":"\u6ca1\u6709\u5339\u914d"};sqs_objects['search_form_campaign_name_advanced']={"form":"search_form","method":"query","modules":["Campaigns"],"group":"or","field_list":["name","id"],"populate_list":["campaign_name_advanced","campaign_id_advanced"],"conditions":[{"name":"name","op":"like_custom","end":"%","value":""}],"required_list":["campaign_id"],"order":"name","limit":"30","no_match_text":"\u6ca1\u6709\u5339\u914d"};</script></div>
+<div id="Accountssaved_viewsSearchForm" style="display: none; " ;=""></div>
+<span class="white-space">
+</span>
+<%= submit_tag("查找", :name => "send",:class=>'button') -%>
+</form>
+
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0" class="formHeader h3Row">
+<tbody><tr>
+<td nowrap=""><h3><span>盟友库</span></h3></td><td width="100%"><img height="1" width="1" src="/images/crm/blank.gif" alt=""></td></tr>
+</tbody></table>
+
+
+<form name="myaccs" class="search_form" method="get" action="/companies/contact_export_excel">
+<div id="myall"></div>				   
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;">
+	
+</div>
+<table cellpadding="0" cellspacing="0" width="100%" border="0" class="list view">
+	<tbody><tr class="pagination">
+		<td colspan="7">
+			<table border="0" cellpadding="0" cellspacing="0" width="100%" class="paginationTable">
+				<tbody><tr class="pagination">
+					<td nowrap="nowrap" width="2%" class="paginationActionButtons">
+				选择&nbsp;
+			<%= hidden_field_tag 'form_action' %>
+			<!-- <%=submit_tag "删除", :name => "delete",:action=>'delete_accs',:class=>"button" , :onClick => "document.myaccs.form_action.value='delete'"%> -->
+			<%=submit_tag "导出", :name => "export",:class=>"button"%>
+			<%=submit_tag "全部导出", :name => "export",:class=>"button" , :onClick => "document.myaccs.form_action.value='all'"%>
+		    <input title="新建"  onclick="window.open('/companies/new');" class="button" type="button" name="button" value="新建" >
+		   <!--  <%=submit_tag "发电子邮件", :name => "email",:action=>'send_emails',:class=>"button" , :onClick => "document.myaccs.form_action.value='email'"%></td> -->
+			<td nowrap="nowrap" width="1%" align="right" class="paginationChangeButtons">
+				<%if @companies.size>1%>
+					<%= will_paginate @companies ,:prev_label => '上一页', :next_label => '下一页'%>
+				<%end%></td>
+				</tr>
+			</tbody></table>
+		</td>
+	</tr><tr height="20">
+				<th>
+					<input type="checkbox" name="checkall" onclick="checkUncheckAll(this);"/>
+				</th>
+				
+				<th scope="col" width="20%" nowrap="nowrap">
+					<div style="white-space: nowrap;" width="100%" align="left">
+               		
+                                                       company卡号&nbsp;&nbsp;
+					<img border="0" src="/images/crm/arrow_down.gif" width="8" height="10" align="absmiddle" alt="排序">
+					</div>
+			   </th>
+			
+				<th scope="col" width="20%" nowrap="nowrap">
+				<div style="white-space: nowrap;" width="100%" align="left">
+                      
+                                                                company姓名&nbsp;&nbsp;
+					<img border="0" src="/images/crm/arrow.gif" width="8" height="10" align="absmiddle" alt="排序">
+				</div>
+			</th>
+			<th scope="col" width="20%" nowrap="nowrap">
+				<div style="white-space: nowrap;" width="100%" align="left">
+                   
+                                                                company类型&nbsp;&nbsp;
+				<img border="0" src="/images/crm/arrow.gif" width="8" height="10" align="absmiddle" alt="排序">
+				</div>
+			</th>
+				<th scope="col" width="18%" nowrap="nowrap">
+				<div style="white-space: nowrap;" width="100%" align="left">
+                   
+                                                                电话&nbsp;&nbsp;
+				<img border="0" src="/images/crm/arrow.gif" width="8" height="10" align="absmiddle" alt="排序">
+				</div>
+			</th>
+			<th scope="col" width="18%" nowrap="nowrap">
+				<div style="white-space: nowrap;" width="100%" align="left">
+                    
+                                                                邮箱&nbsp;&nbsp;
+				<img border="0" src="/images/crm/arrow.gif" width="8" height="10" align="absmiddle" alt="排序">
+				</div>
+			</th>
+					
+								
+			<th scope="col" nowrap="nowrap" width="2%">操作&nbsp;</th>
+			</tr>
+		
+		 <%@companies.each do |company|%>
+		    <tr height="20" class="oddListRowS1">
+						<td width="1%" class="nowrap">
+							<%= check_box_tag 'company_ids[]', company.id %>
+                           	</td>
+						<td scope="row" align="left" valign="top">
+							<a href="/companies/<%=company.id%>"> <%=company.comnum%></a>
+							</td>
+						<td scope="row" align="left" valign="top">
+							<a href="/companies/<%=company.id%>"><%=company.name%></a></td>
+						<td scope="row" align="left" valign="top">
+							<%=company.name%>
+							</td>
+						<td scope="row" align="left" valign="top">
+							<%=company.tel%></td>
+						<td scope="row" align="left" valign="top">
+							<%=company.email%></td>				
+						<td width="2%" class="oddListRowS1" bgcolor="" nowrap="">
+						  <%= link_to image_tag("/images/crm/edit_inline.gif"),:action=>"edit",:id=>company.id -%><%= link_to "修改",:action=>"edit",:id=>company.id -%>
+						  <%= link_to image_tag("/images/crm/delete_inline.gif"), company,:method => :delete -%><%= link_to "删除", company, :confirm => '您确认删除该company吗?',:method => :delete -%>
+						</td>
+	    	</tr>
+		<%end%> 	
+	  </tbody></table>
+	</td>
+	</tr></tbody></table>
+	</form>
+<script>
+	
+function lvg_nav(m,id,act,offset,t){if(t.href.search(/#/) < 0){return;}else{if(act=='pte'){act='ProjectTemplatesEditView';}else if(act=='d'){ act='DetailView';}else{ act='EditView';}url = 'index.php?module='+m+'&offset=' + offset + '&stamp=1317013853036747600&return_module='+m+'&action='+act+'&record='+id;t.href=url;}}
+function lvg_dtails(id){return SUGAR.util.getAdditionalDetails( 'Accounts',id, 'adspan_'+id);}
+</script>
+
+<!-- crmprint -->
+						<script>		if(window.addEventListener){
+							window.addEventListener("load", checkAlerts, false);
+						}else{
+							window.attachEvent("onload", checkAlerts);
+						}
+						</script><!--end body panes-->
+
+
+
+</div>

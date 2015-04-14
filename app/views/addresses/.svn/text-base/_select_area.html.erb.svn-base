@@ -1,0 +1,28 @@
+<div id="select_provinces" class="areas">
+		  						<select id="province_id" name="address[province_id]" onchange="check_province(this.value)">
+						    		<%Province.all.each do |p|%>
+						    			<option value="<%=p.id%>" <%="selected='true'" if @address && @address.province_id == p.id%> ><%=p.name%></option>
+						    		<%end%>
+							    </select>
+							   <div id="select_cities" class="areas">
+										    <select id="city_id" name="address[city_id]" onchange="check_city(this.value)">
+									    		<%@cities.each do |p|%>
+									    			<option value="<%=p.id%>" <%="selected='true'" if @address && @address.city_id == p.id%> ><%=p.name%></option>
+									    		<%end%>
+										    </select>
+										   <div id="select_areas" class="areas">
+													    <select id="area_id" name="address[area_id]">
+												    		<%@areas.each do |p|%>
+												    			<option value="<%=p.id%>" <%="selected='true'" if @address && @address.area_id == p.id%> ><%=p.name%></option>
+												    		<%end%>
+													    </select>
+							                	
+							                </div>
+				                	
+				                </div>
+</div>
+               <style>
+               	.areas{
+               		display: inline;
+               	}
+               </style>
